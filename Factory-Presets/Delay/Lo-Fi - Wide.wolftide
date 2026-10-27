@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WolfTidePreset version="2" scope="1" name="Lo-Fi - Wide" presetId="f82de75441454eccab427d7f9ba0c8ad"
+                delayModel="3" reverbModel="2" delayVersion="1" reverbVersion="1">
+  <p id="dTime" value="375.0"/>
+  <p id="dFeedback" value="0.320000022649765"/>
+  <p id="dTone" value="11000.0"/>
+  <p id="dAmount" value="0.2400000095367432"/>
+  <p id="dMotion" value="0.0"/>
+  <p id="dWidth" value="1.0"/>
+  <p id="drive" value="0.0"/>
+  <p id="dLowcut" value="150.0"/>
+  <p id="dDuck" value="0.1500000059604645"/>
+  <p id="dRate" value="0.4000000059604645"/>
+  <p id="ratio" value="0.75"/>
+  <p id="dSense" value="1.0"/>
+  <p id="dRelease" value="280.0"/>
+  <p id="dType" value="0.0"/>
+  <p id="rhythm" value="3.0"/>
+  <p id="stereo" value="2.0"/>
+  <p id="interval" value="3.0"/>
+  <p id="dOn" value="1.0"/>
+  <p id="sync" value="1.0"/>
+  <p id="pitchMode" value="1.0"/>
+  <p id="dBTime" value="500.0"/>
+  <p id="dBFeedback" value="0.320000022649765"/>
+  <p id="dBLevel" value="1.0"/>
+  <p id="dSwell" value="0.0"/>
+  <p id="dModel" value="3.0"/>
+  <p id="dVersion" value="1.0"/>
+  <p id="dPattern" value="2.0"/>
+  <p id="dDual" value="0.0"/>
+  <p id="dBRhythm" value="3.0"/>
+</WolfTidePreset>

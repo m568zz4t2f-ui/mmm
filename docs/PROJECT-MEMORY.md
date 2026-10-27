@@ -1,41 +1,49 @@
 # Wolf Tide project memory
 
-Snapshot: 2026-10-27. This repository contains a source/documentation snapshot of Tide 1.1.0 for code indexing. It is not the installer or a complete vendored build distribution: JUCE vendor files, binary assets, demos, and build outputs were not uploaded.
+Updated October 27, 2026. The default branch now consolidates **Tide 1.2.0**, its effect audit and available project assets. Historical 1.1/planning claims are superseded by the release source and audit. Tide is separate from Cosmos and Prism.
 
-## Implemented in the checked source
-- Stereo delay and reverb, independent on/off and presets, combined presets and routing.
-- Delay models: Digital, Tape, Bucket, Multitap, Reverse, Pitch.
-- Reverb models: Room, Plate, Hall, Bloom. There is no dedicated Cloud model.
-- Pitch modes: Climbing Repeats shifts inside feedback; Fixed Harmony shifts the return after unshifted feedback. Windowed shifting adds wet latency and can smear transients. Climbing changes effective repeat spacing.
-- Shared shimmer processing surrounds the selected reverb; dedicated shimmer architectures are not implemented.
-- Activity-aware DSP sleeping, cached coefficients, cubic pitch interpolation, pitch-dependent anti-alias filtering, Hann lookup tables and efficient oscillators are present.
-- Grey delay and blue reverb interface, cached boutique artwork, Static/Activity/Motion graphics, mix and engine locks, A/B snapshots and scoped portable presets.
+## Verified state
 
-## Confirmed source issue, not yet fixed
-A focused standalone Echo test reproduced a pending delay-target bug: requesting 300 ms during an active transition to 200 ms leaves the first repeat at 200 ms. Echo::set starts transitions only when fade>=1, while Engine::set skips identical settings afterward. Coalesce requests and apply the latest pending target at a processing transition boundary.
+- Mac universal arm64/x86_64 AU, VST3 and Standalone 1.2.0 built and installed with rollback backups; four CTest suites and AU validation passed. See [validation](VALIDATION-1.2.0.md) and [raw logs](test-logs). These checks missed functional defects subsequently reproduced.
+- Nine delay choices: Digital, Tape, Bucket, Pattern/Multitap, Reverse, Pitch, Diffusion, Granular Pitch and Lo-Fi.
+- Eleven reverb choices: Room, Classic Plate, Classic Hall, Classic Bloom, Chamber, Cloud Ensemble, Halo Shimmer, Glint, Studio Plate, Studio Hall and Studio Bloom. A dedicated Cloud choice now exists; do not repeat the 1.1 “no Cloud” statement.
+- 60 parameter IDs: original 44 retained, 16 appended. Preserve IDs, order, selector domains and normalized mappings. Appending choices to old selectors can break automation; use explicit extensions/migration.
+- 52 combined factory programs and 40 side starters are exported in Factory-Presets. They are designed starting points, not instrument-validated optimized presets.
+- Grey/blue boutique UI, scoped browser, locks, Undo Last Load and cached artwork are implemented. Hidden-editor timers suspend. Capability/UI defects remain.
+- Coalesced delay-time requests during transitions and same-sample-rate preparation tails were repaired in 1.2; remaining Pattern/Reverse transitions are separate issues.
+- Air Throw Fixed Harmony reset was a false earlier finding: defaults iterate floats, pitchMode is a choice. Keep intent-based preset validation, not a fix to a nonexistent reset.
 
-## Corrected finding
-The earlier claim that Air Throw's Fixed Harmony is reset by the defaults loop was incorrect. Parameters.h specs contains float parameters only; pitchMode is a separate choice. applyFactory therefore preserves Fixed Harmony. Do not implement a fix for this nonexistent reset; keep intent-based preset validation.
+## Current defects and repair order
 
-## Proposed next update, not implemented
-1. Measure and improve pitch accuracy, high-interval aliasing, transient quality and repeat timing; preserve legacy sessions. Evaluate Signalsmith Stretch as an explicit Studio option only after latency/CPU comparison.
-2. Dedicated original reverbs: Halo (coupled allpass shimmer tank), Aurora Shimmer (working name for spectral pitch plus dedicated FDN, previously proposed as Prism), Glint (bloom envelope/diffusion/modulated tank), Cloud Ensemble (dense diffuse tank and ensemble modulation).
-3. Everyday delay priority: clean Digital, Tape and Analog/Bucket; independent Dual A/B configuration; curated Pattern taps; reusable duck/swell options and slapback/musical recipes. Then Diffusion and bounded Granular; Resonator is conditional.
-4. Preset browser: Delay/Reverb/Combined scopes, direct Factory/User browsing, previous/next, Favorites/Recent, instrument tags, accurate Edited and partial-recall indicators, routing lock, Undo Last Load distinct from A/B.
-5. Profile grouped coefficient updates, safe activity horizons, buffer reuse, unnecessary per-sample work, bounded transition tails and UI polling. Do not lose long buffered repeats, freeze or audible tails.
-6. Preserve parameter IDs and old algorithm mappings. Test choice-parameter migrations before extending lists.
-7. Validate audio, stability and CPU, then build a versioned AU/VST3 Mac installer with rollback support.
+[Full effect audit](TIDE-1.2.0-EFFECT-AUDIT.md) is the source of truth, with 356 controlled control-matrix renders plus special diagnostics.
 
-## Next-update specification
-See docs/TIDE-1.2-UPDATE-SPEC.md for the consolidated proposed 1.2 scope, research, compatibility strategy, preset counts and validation gates. It is a specification, not a compiled release. Cloud/Halo/Glint are core additions; spectral Aurora, Spring and Resonator remain gated. Proposed presets: 32 combined musical plus 4 utility and two side starters per shipped engine; these are not yet curated.
+1. Mono ping-pong swaps identical histories and does not alternate in eight tested conventional modes.
+2. Halo/Studio Plate Size and Modulation do nothing: they configure an unused FDN rather than the active plate.
+3. Glint/Studio Bloom reset a gain envelope across the whole existing tail on a new note, causing a major dip.
+4. Pattern/Reverse ignore independent B-time and bypass the complete old/new read crossfade.
+5. Reverb Diffusion also controls Diffusion delay; append an independent delay control and migrate deliberately.
+6. Extension delay filtering depends on hidden legacy dType; derive behavior from the effective model.
+7. Swell attenuates sustained input instead of providing an onset/attack ramp.
+8. UI enables controls using legacy selector state rather than the active engine. Centralize actual capabilities.
+9. Granular's upper voices duplicate at +24; Studio Plate shares the Classic tank; unpitched Glint overlaps Studio Bloom. Improve actual models before expanding names.
+10. Calibrate fixed post-tank gains and band-dependent decay; improve pitch/coefficient work and preallocation only against measured quality/cost.
 
-## Research and evidence boundaries
-- Official BigSky plugin and firmware are research targets. Strymon's public preset librarian and preset-byte maps do not expose reverb DSP.
-- Supported Eventide H9000 VSig graphs expose module connections; modules remain precompiled and some algorithms are locked. Do not assume H90 source access.
-- Hologram offers Microcosm SysEx firmware; availability does not prove unencrypted executable DSP.
-- We have not recovered or verified proprietary Strymon, Eventide or Hologram algorithms. Online one-shot decompilation claims are unverified leads.
-- Decompilation produces reconstructed pseudocode, not original source. Validate against known-source binaries, executable references where available, and controlled audio. Track redistribution permissions separately.
-- Research leads: https://github.com/Signalsmith-Audio/signalsmith-stretch ; https://github.com/GhostNoteAudio/CloudSeedCore ; https://github.com/roblg/ghidra-sharc ; https://github.com/strymon/spl ; https://www.hologramelectronics.com/pages/microcosm-firmware ; https://cdn.eventideaudio.com/manuals/h9000/2.2.11/content/development/vsig3.html
+No audit repair has been applied to the installed plug-in. Preserve compatibility while adding behavioral tests for every advertised control, stereo routing, independent sides, tail continuity, automation and presets. Then repeat host and installer validation.
 
-## Engineering requirements
-No allocation, locking, blocking I/O or logging in audio callbacks. Profile before optimizing; report typical and peak DSP independently of UI and DAW CPU. Keep one dry path, coherent stereo, safe feedback, smooth automation and intentional tails. Transport-stop tails depend on the host continuing callbacks. Preserve old sessions and distinguish testing actually performed from planned checks. Keep maintainable code and avoid speculative abstractions. Use Graphify only after confirming repository access and index readiness; never claim memory was saved without acknowledgement.
+## References and boundaries
+
+The audit records exact inspected revisions and reuse caveats for Plateau/Dattorro, RSAlgorithmicVerb, CloudSeedCore, ChowMatrix, chowdsp BBD, CHOW Tape, Daisy granular delay, Signalsmith Stretch, Faust JPverb/Greyhole and Phantasmagoria. CloudSeedCore and Signalsmith are MIT candidates; licensing differs per repository/component. Do not transplant mono-only wrappers or audio-thread allocations.
+
+No verified exact reconstruction of BigSky/TimeLine, H90, Microcosm or Line 6 Glitz DSP has been recovered. Firmware, preset bytes, VSig graphs and decompilation claims do not establish recovered source or redistribution rights. Validate original published/open implementations with audio evidence.
+
+## Engineering and product direction
+
+Preserve stereo input, one dry path, independent side presets/bypass, coherent delay-to-reverb integration, safe feedback and continuous tails. Provide clean everyday delays plus distinct plate/hall/cloud/shimmer/granular algorithms. Keep grey delay/blue reverb, a cleaner boutique appearance and easy instrument presets with advanced controls contextual.
+
+No allocation, locking, blocking I/O or logging in audio callbacks. Profile typical and peak blocks, UI separately, and inactive engines. Preserve late buffered repeats/freeze. Transport-stop tails require the DAW to continue callbacks. Meaningful listening on vocals/guitar/keys and matched hardware comparisons remain outstanding.
+
+## Recovery and memory
+
+See [backup index](BACKUP-INDEX.md) for branches, original release baseline, installer location and checksums. Source on the build Mac matched all 21 checked Source/tests/scripts blobs in the saved 1.2 audit baseline before this consolidation. Research diagnostics are measurements, not passing release gates.
+
+Graphify notes acknowledge durable intake and require Memory > Needs review acceptance before publication. Its code graph is an indexed snapshot; verify its commit before trusting it for current source. At the start of this upload it indexed d38085d (old 1.1 source), despite 1.2 and audit branches already existing.

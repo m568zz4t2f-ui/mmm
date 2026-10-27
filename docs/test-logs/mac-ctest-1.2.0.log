@@ -1,0 +1,14 @@
+Internal ctest changing into directory: $PROJECT/build-mac
+Test project $PROJECT/build-mac
+    Start 1: dsp
+1/4 Test #1: dsp ..............................   Passed    3.45 sec
+    Start 2: update
+2/4 Test #2: update ...........................   Passed    0.08 sec
+    Start 3: models
+3/4 Test #3: models ...........................   Passed    2.26 sec
+    Start 4: host
+4/4 Test #4: host .............................   Passed    0.85 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   6.64 sec

@@ -1,0 +1,702 @@
+{
+  "project": "Wolf Tide",
+  "version": "1.2.0",
+  "date": "2026-10-27",
+  "baseline_commit": "72d3241648fe230a14082f825bc0fc1231584d9e",
+  "source_identity_check": "21 Source/tests/scripts files matched saved GitHub blobs",
+  "files": [
+    {
+      "path": "Source/BloomDSP.h",
+      "bytes": 9054,
+      "sha256": "011d2da47069e8f6003e73082ea086bfb55c9be69d57712ec53a76626cff91fb",
+      "git_blob_sha": "1abcfff92649f4d80f9529d9a9bdfb7ecb9eb0a6",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "Source/Parameters.h",
+      "bytes": 9339,
+      "sha256": "af8647775cc2a19a4f3353ebde14e10441e710e8304fb2170e5db481cf053ad2",
+      "git_blob_sha": "1e3af6b8ed9b382bb800c2ee6158abd1aa48cebb",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "Source/PluginEditor.cpp",
+      "bytes": 30298,
+      "sha256": "485f8237c524b55281d5541243841b97eae0d36e1e89d423167720a7de72c69a",
+      "git_blob_sha": "37dbaec5a49429b8bb145970d078e344643b1ed7",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "Source/PluginEditor.h",
+      "bytes": 2272,
+      "sha256": "cfde457d9e20ec1b8ab8a8e8760cbcb66c96c43c742465061f693bb9e866cb99",
+      "git_blob_sha": "7d2b287a2b4bef83bb137d7679717b8b60b92dbf",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "Source/PluginProcessor.cpp",
+      "bytes": 20200,
+      "sha256": "12c27e3ae5d9b6c50766ae2973a6d5d128b67c5621c619ea6d64798ebcbad199",
+      "git_blob_sha": "6edd53eb6e9125fbe20c28c95745e0f2c30df7d2",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "Source/PluginProcessor.h",
+      "bytes": 3415,
+      "sha256": "e7090d1258f4ef31568d9da796dadf61d4e02e7d6036b393e4015ccc9a4c982c",
+      "git_blob_sha": "04408099742ea03962fea0b54862a12388c13cda",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "Source/PresetBrowser.h",
+      "bytes": 7997,
+      "sha256": "1c724321a2a858737286ba03a79f8879d119817d62bf02d744c875526db467cc",
+      "git_blob_sha": "1493ff3383354aa13e3dd85333a251a346ce73c0",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "Source/TideDSP.h",
+      "bytes": 35403,
+      "sha256": "aea68681da77cddba8de417306ac5310a269baec902d2d15648d36c13d23d257",
+      "git_blob_sha": "3d471f04b6bab805c86aca83d8126f7af49b854c",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "tests/benchmark.cpp",
+      "bytes": 899,
+      "sha256": "65d4f8286b5239e39f5b58839fcfeed191246863bb40d1d85aa48d0b403823a8",
+      "git_blob_sha": "02a3fdd46e34f6cca236b6de75fef56deb2baab1",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "tests/compare_benchmarks.py",
+      "bytes": 1448,
+      "sha256": "12a7403f46c65ec7e0fd57c7c1ac6792f886706a844411dbd909d92d55929caa",
+      "git_blob_sha": "faa295372ac58d57142a9a4ed68a277b7f9beeea",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "tests/dsp_tests.cpp",
+      "bytes": 5864,
+      "sha256": "36854bbeef68548953564f7e2fa0953f12cc06b095f73fa3f3baf6bbc660a236",
+      "git_blob_sha": "c4ecc53ae07dc1b117ed354f95394c6692e27085",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "tests/host_tests.cpp",
+      "bytes": 9367,
+      "sha256": "f6eef3839c6c9c75fa2e9042991da3e5cfa8b133de431f85e364569924ded1ab",
+      "git_blob_sha": "9072d7be84c706aa93b76ee6de9bb0798051f3cb",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "tests/models_tests.cpp",
+      "bytes": 2446,
+      "sha256": "0eecc30300b9b5df6bdd73060a57e077cfd48a45c3d7bede1e271d6eb14a95b3",
+      "git_blob_sha": "fd618e7ec13cb09e06af4032b6d31f1585bc31dd",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "tests/performance.cpp",
+      "bytes": 1116,
+      "sha256": "13081e501cece1fa9d9cd6d39218241cd905139cd4ef36d7b120284389c78a64",
+      "git_blob_sha": "ba5c58dcc765fe826a5516ee935a88bf5edf18ce",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "tests/render.cpp",
+      "bytes": 2038,
+      "sha256": "302d100b7f37aef3e9a1163feb6d36a378de97e2c71e5f1e16332c7fa5b11d4e",
+      "git_blob_sha": "e5b2d8d550491a7e59d6d5c489c9fcb3598bac1c",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "tests/safety_tests.cpp",
+      "bytes": 1041,
+      "sha256": "80b95974b51a8cfb82a3fe7d0026b19424bb14ac8ff7b3c732f0133040a0a340",
+      "git_blob_sha": "542207f8de830d31fc35ca33e8d79027f225d621",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "tests/update_tests.cpp",
+      "bytes": 4711,
+      "sha256": "e64f96d78a9a7512f633bb3232d2472b7fac49461247897bf785cd3084e3692d",
+      "git_blob_sha": "792482dca53471f564290e930af6bd10bfa5df40",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "scripts/install-linux.sh",
+      "bytes": 677,
+      "sha256": "a1b6238f2b0e5cd2f47f8b02328e4259972ab3d54fde1719e83d17bf4eb123ae",
+      "git_blob_sha": "56b4f5d9ab1aeefd83d3700030225332cc3c863a",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "scripts/install-user-mac.py",
+      "bytes": 2374,
+      "sha256": "9c218edd3a0d089ed24f0bed40bdaab7a0d3a66ab6a5b002ae4ecbc15211084c",
+      "git_blob_sha": "00ef9a9d2add7c576a1c6fe5660c26b4258b3343",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "scripts/package-mac.sh",
+      "bytes": 3847,
+      "sha256": "c25303c47585cc05b1abcb0d3c6f63ac547ef4955d0ac93c039268d13230294c",
+      "git_blob_sha": "028a65c414c15185ac023eb9fc47b73f7a31d38a",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "scripts/source-archive.py",
+      "bytes": 1012,
+      "sha256": "3d4840f21a0c37e60f2ed05c851c50c8435509845ed8174d402b11bd16ef73f0",
+      "git_blob_sha": "7c5f397ab72a6bc2c868435924b6d0c0f1bf88e0",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "preview/Wolf-Tide-1.2.0-edit-delay.png",
+      "bytes": 345204,
+      "sha256": "895d67a367a991a6d172d1c1e04e52354852035c3a36fec8f563c7af70464f98",
+      "git_blob_sha": "848376afa8366226c3e9a5d11f99c9fd929e233c",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "preview/Wolf-Tide-1.2.0-edit-reverb.png",
+      "bytes": 336126,
+      "sha256": "7904cf2912b3eeefd3e165ec8419282e43067bd9eb7672f1ed5697626e51b0d6",
+      "git_blob_sha": "05cc2d9831ba02d4dccf88b8bfb5a0886f12041f",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "preview/Wolf-Tide-1.2.0-routing.png",
+      "bytes": 324119,
+      "sha256": "fe38fab41c2d135764a1f02452a5dae1d118b5d4e0fb14baebb5d88995949724",
+      "git_blob_sha": "4650e94257f2410b90ba2ee93a4d05637cfde62a",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "preview/Wolf-Tide-1.2.0.png",
+      "bytes": 297762,
+      "sha256": "a00abda4af22d5c73c279bd0a1438b2d2b97aa6651b49a2690b9a6614b608867",
+      "git_blob_sha": "e0a86468981397e9f1ecd8caf8a20dee603a9013",
+      "uploaded_to_github": true
+    },
+    {
+      "path": "vendor/JUCE-8.0.12.tar.gz",
+      "bytes": 22808845,
+      "sha256": "91505bee78c343c37d757f03d87c50e494aff85d41811f25ab389698781704e6",
+      "git_blob_sha": "8db9bd27a8fd2652d63fb3cb80777de8fae8dc33",
+      "uploaded_to_github": false
+    },
+    {
+      "path": "dist/Wolf-Tide-1.2.0-unsigned.pkg",
+      "bytes": 43887533,
+      "sha256": "a4f18801e38b6bfea769db42120b15eae1cd7f20ce214c58b313a52cd1dff983",
+      "git_blob_sha": "fd38680e0af0927441f448e7e6b667d1b68d1ae0",
+      "uploaded_to_github": false
+    }
+  ],
+  "recovered_text_files": [
+    {
+      "path": "Factory-Presets/Ambient - Cloud Coast.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Ambient - Diffused Echo.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Ambient - Glint Bloom.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Ambient - Grain Lantern.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Ambient - Halo Ascent.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Ambient - Lo-Fi Shore.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Ambient - Lunar Drift.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Ambient - Reverse Tide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Ambient - Slow Bloom.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Ambient - Submerged.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Bucket - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Bucket - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Diffusion - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Diffusion - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Digital - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Digital - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Granular Pitch - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Granular Pitch - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Lo-Fi - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Lo-Fi - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Multitap - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Multitap - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Pitch - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Pitch - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Reverse - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Reverse - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Tape - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Delay/Tape - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Analog Lead.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Cloud Horizon.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Digital Quarter.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Dotted Eighth.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Halo Lift.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Plate Solo.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Reverse Halo.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Rhythmic Sky.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Slow Horizon.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Stereo Dual.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Warm Lead.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Guitar - Warm Tape.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Analog Velvet.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Cloud Ensemble.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Concert Hall.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Crystal Pad.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Electric Tape.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Electric Velvet.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Glint Piano.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Halo Pad.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Natural Chamber.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Keys - Stereo Pattern.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Piano - Concert Horizon.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Piano - Natural Room.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Bloom - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Bloom - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Chamber - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Chamber - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Cloud Ensemble - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Cloud Ensemble - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Glint - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Glint - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Hall - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Hall - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Halo Shimmer - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Halo Shimmer - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Plate - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Plate - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Room - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Room - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Studio Bloom - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Studio Bloom - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Studio Hall - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Studio Hall - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Studio Plate - Focused.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Reverb/Studio Plate - Wide.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Utility - Cloud Only.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Utility - Delay Only.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Utility - Modern Delay Only.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Utility - Modern Reverb Only.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Utility - Reverb Only.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Utility - Vocal Slap Only.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Air Throw.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Chamber Air.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Chorus Lift.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Clean Plate.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Clear Lead.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Dotted Throw.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Ducked Quarter.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Fixed Air.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Glint Lift.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Studio Slap.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Tape Double.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "Factory-Presets/Vocal - Warm Slap.wolftide",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/INSTALLER-LOCATION.txt",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/VALIDATION-1.0.0.md",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/asan-ubsan-1.1.0.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/asan-ubsan-boundaries.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/audio-examples-1.1.0.json",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/audio-examples.json",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/linux-benchmark-1.1.0.json",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/linux-ctest-1.1.0.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/linux-ctest.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/linux-editor-1.1.0.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/linux-host-editor.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/linux-pluginval-1.1.0.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/linux-pluginval-audio.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-auval-1.2.0.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-benchmark-1.1.0.json",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-ctest-1.2.0.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-performance-1.1.csv",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-performance-1.2.csv",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/shimmer-long-tail.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.1-baseline-performance.csv",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-auval.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-build.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-editor.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-final-build.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-host-recheck.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-install.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-package.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-performance.csv",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-release-build.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-release-tests.log",
+      "home_paths_redacted": true
+    },
+    {
+      "path": "docs/test-logs/mac-1.2-tests.log",
+      "home_paths_redacted": true
+    }
+  ],
+  "excluded": [
+    "build intermediates",
+    "installation backups",
+    "large installer binary",
+    "vendored JUCE tar archive"
+  ],
+  "notes": [
+    "No DSP changes or new validation runs are claimed.",
+    "Hashes of retained local binary artifacts are recorded; these binaries are not GitHub release assets."
+  ]
+}

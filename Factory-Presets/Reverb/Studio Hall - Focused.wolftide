@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WolfTidePreset version="2" scope="2" name="Studio Hall - Focused" presetId="0ec2dd87f3c847cdb11e06778792c319"
+                delayModel="3" reverbModel="6" delayVersion="1" reverbVersion="1">
+  <p id="rDecay" value="4.5"/>
+  <p id="rPredelay" value="18.0"/>
+  <p id="rTone" value="6500.0"/>
+  <p id="rAmount" value="0.2400000095367432"/>
+  <p id="rMotion" value="0.1800000071525574"/>
+  <p id="rWidth" value="1.0"/>
+  <p id="rLowcut" value="180.0"/>
+  <p id="rDuck" value="0.1500000059604645"/>
+  <p id="shimmer" value="0.0"/>
+  <p id="bass" value="0.800000011920929"/>
+  <p id="rSense" value="1.0"/>
+  <p id="rRelease" value="280.0"/>
+  <p id="rType" value="2.0"/>
+  <p id="rInterval" value="3.0"/>
+  <p id="rOn" value="1.0"/>
+  <p id="rDiffusion" value="0.7000000476837158"/>
+  <p id="rSize" value="1.0"/>
+  <p id="rAttack" value="0.1800000071525574"/>
+  <p id="rRegeneration" value="0.300000011920929"/>
+  <p id="rModel" value="6.0"/>
+  <p id="rVersion" value="1.0"/>
+</WolfTidePreset>

@@ -1,0 +1,8 @@
+Wolf Tide 1.1.0
+Mac installer: ~/Downloads/WolfTide-1.1.0/dist/Wolf-Tide-1.1.0-unsigned.pkg
+AU: ~/Library/Audio/Plug-Ins/Components/Wolf Tide.component
+VST3: ~/Library/Audio/Plug-Ins/VST3/Wolf Tide.vst3
+Standalone: ~/Applications/Wolf Audio/Wolf Tide.app
+Previous installed bundles are preserved in ~/Downloads/WolfTide-1.1.0/install-backups/.
+The installer is unsigned/not notarized because no Developer ID signing identities are available.
+This source/preview archive does not contain a Mac binary installer.

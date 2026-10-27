@@ -1,0 +1,35 @@
+{
+  "Rhythmic-Sky.wav": {
+    "rate": 48000,
+    "channels": 2,
+    "frames": 864000,
+    "bytes": 3456044,
+    "peak_dBFS": -13.95,
+    "last_samples": [
+      0,
+      0
+    ]
+  },
+  "Reverse-Halo.wav": {
+    "rate": 48000,
+    "channels": 2,
+    "frames": 864000,
+    "bytes": 3456044,
+    "peak_dBFS": -15.97,
+    "last_samples": [
+      0,
+      0
+    ]
+  },
+  "Crystal-Pad.wav": {
+    "rate": 48000,
+    "channels": 2,
+    "frames": 864000,
+    "bytes": 3456044,
+    "peak_dBFS": -15.33,
+    "last_samples": [
+      0,
+      0
+    ]
+  }
+}

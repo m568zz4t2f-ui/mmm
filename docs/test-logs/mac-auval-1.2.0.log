@@ -1,0 +1,752 @@
+
+    AU Validation Tool
+    Version: 1.10.0 
+    Copyright 2003-2019, Apple Inc. All Rights Reserved.
+    Specify -h (-help) for command options
+
+--------------------------------------------------
+VALIDATING AUDIO UNIT: 'aufx' - 'Wtid' - 'Wolf'
+--------------------------------------------------
+Manufacturer String: Wolf Audio
+AudioUnit Name: Wolf Tide
+Component Version: 1.1.0 (0x10100)
+
+* * PASS
+--------------------------------------------------
+TESTING OPEN TIMES:
+COLD:
+Time to open AudioUnit:         526.064 ms
+WARM:
+Time to open AudioUnit:         2.907  ms
+This AudioUnit is a version 2 implementation.
+FIRST TIME:
+Time for initialization:        0.087 ms
+
+* * PASS
+--------------------------------------------------
+VERIFYING DEFAULT SCOPE FORMATS:
+Input Scope Bus Configuration:
+ Default Bus Count:1
+    Bus Name: Input
+    Default Format: AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+    Has Channel Layouts: 0x640001 0x650002 0x660002 0x670002 0x6A0002 
+    Default Layout:
+	Tag=0x650002, Num Chan Descs=0
+
+Output Scope Bus Configuration:
+ Default Bus Count:1
+    Bus Name: Output
+    Default Format: AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+    Has Channel Layouts: 0x640001 0x650002 0x660002 0x670002 0x6A0002 
+    Default Layout:
+	Tag=0x650002, Num Chan Descs=0
+
+* * PASS
+--------------------------------------------------
+VERIFYING REQUIRED PROPERTIES:
+
+* * PASS
+--------------------------------------------------
+VERIFYING RECOMMENDED PROPERTIES:
+  VERIFYING PROPERTY: Latency
+    PASS
+  VERIFYING PROPERTY: Tail Time
+    PASS
+  VERIFYING PROPERTY: Bypass Effect
+    PASS
+
+* * PASS
+--------------------------------------------------
+VERIFYING OPTIONAL PROPERTIES:
+
+* * PASS
+--------------------------------------------------
+VERIFYING SPECIAL PROPERTIES:
+
+VERIFYING CUSTOM UI
+Cocoa Views Available: 1
+  JUCE_AUCocoaViewClass_9b8e230ec3a92b07
+    PASS
+
+HAS FACTORY PRESETS
+    ID:   0    Name: Guitar / Rhythmic Sky
+    ID:   1    Name: Guitar / Warm Lead
+    ID:   2    Name: Guitar / Slow Horizon
+    ID:   3    Name: Guitar / Reverse Halo
+    ID:   4    Name: Vocal / Clear Lead
+    ID:   5    Name: Vocal / Warm Slap
+    ID:   6    Name: Vocal / Chorus Lift
+    ID:   7    Name: Vocal / Air Throw
+    ID:   8    Name: Piano / Natural Room
+    ID:   9    Name: Piano / Concert Horizon
+    ID:  10    Name: Keys / Electric Velvet
+    ID:  11    Name: Keys / Crystal Pad
+    ID:  12    Name: Ambient / Lunar Drift
+    ID:  13    Name: Ambient / Submerged
+    ID:  14    Name: Utility / Delay Only
+    ID:  15    Name: Utility / Reverb Only
+    ID:  16    Name: Guitar / Digital Quarter
+    ID:  17    Name: Guitar / Dotted Eighth
+    ID:  18    Name: Guitar / Warm Tape
+    ID:  19    Name: Guitar / Analog Lead
+    ID:  20    Name: Guitar / Stereo Dual
+    ID:  21    Name: Guitar / Plate Solo
+    ID:  22    Name: Guitar / Cloud Horizon
+    ID:  23    Name: Guitar / Halo Lift
+    ID:  24    Name: Vocal / Studio Slap
+    ID:  25    Name: Vocal / Ducked Quarter
+    ID:  26    Name: Vocal / Tape Double
+    ID:  27    Name: Vocal / Dotted Throw
+    ID:  28    Name: Vocal / Clean Plate
+    ID:  29    Name: Vocal / Chamber Air
+    ID:  30    Name: Vocal / Glint Lift
+    ID:  31    Name: Vocal / Fixed Air
+    ID:  32    Name: Keys / Natural Chamber
+    ID:  33    Name: Keys / Concert Hall
+    ID:  34    Name: Keys / Electric Tape
+    ID:  35    Name: Keys / Analog Velvet
+    ID:  36    Name: Keys / Stereo Pattern
+    ID:  37    Name: Keys / Cloud Ensemble
+    ID:  38    Name: Keys / Halo Pad
+    ID:  39    Name: Keys / Glint Piano
+    ID:  40    Name: Ambient / Cloud Coast
+    ID:  41    Name: Ambient / Halo Ascent
+    ID:  42    Name: Ambient / Glint Bloom
+    ID:  43    Name: Ambient / Slow Bloom
+    ID:  44    Name: Ambient / Diffused Echo
+    ID:  45    Name: Ambient / Grain Lantern
+    ID:  46    Name: Ambient / Lo-Fi Shore
+    ID:  47    Name: Ambient / Reverse Tide
+    ID:  48    Name: Utility / Modern Delay Only
+    ID:  49    Name: Utility / Modern Reverb Only
+    ID:  50    Name: Utility / Vocal Slap Only
+    ID:  51    Name: Utility / Cloud Only
+
+VERIFYING CLASS INFO
+    PASS
+
+TESTING HOST CALLBACKS
+    PASS
+
+* * PASS
+--------------------------------------------------
+PUBLISHED PARAMETER INFO:
+
+# # # 60 Global Scope Parameters:
+Parameter ID:97759
+Name: Fallback tempo
+Parameter Type: Generic
+Values: Minimum = 30.0, Default = 120.0, Maximum = 240.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:98659
+Name: Delay active
+Parameter Type: Boolean
+Values: Minimum = Off, Default = On, Maximum = On
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:108124
+Name: Mix
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 38.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:112113
+Name: Reverb active
+Parameter Type: Boolean
+Values: Minimum = Off, Default = On, Maximum = On
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:3016415
+Name: Reverb Bass weight
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 80.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:3138974
+Name: Delay to reverb
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 65.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:3526536
+Name: Send mode
+Parameter Type: Boolean
+Values: Minimum = Off, Default = Off, Maximum = On
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:3545755
+Name: Tempo sync
+Parameter Type: Boolean
+Values: Minimum = Off, Default = On, Maximum = On
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:61185898
+Name: Reverb Amount
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 24.0, Maximum = 80.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:67779930
+Name: Reverb Bloom attack
+Parameter Type: Generic
+Values: Minimum = 0.010, Default = 0.180, Maximum = 2.000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:93832707
+Name: Bloom
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 0.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:94493440
+Name: Dual configuration
+Parameter Type: Indexed
+Values: Minimum = Linked ratio, Default = Linked ratio, Maximum = Independent A / B
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 2
+Value: 0,  String: Linked ratio
+Value: 1,  String: Independent A / B
+  -parameter PASS
+
+Parameter ID:94493501
+Name: Delay Duck
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 15.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:94891876
+Name: Delay Motion rate
+Parameter Type: Generic
+Values: Minimum = 0.05, Default = 0.40, Maximum = 5.00
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:94958929
+Name: Delay Time
+Parameter Type: Generic
+Values: Minimum = 20.0, Default = 375.0, Maximum = 8000.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:94964726
+Name: Delay Tone
+Parameter Type: Generic
+Values: Minimum = 800, Default = 6500, Maximum = 16000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:94974398
+Name: Delay engine
+Parameter Type: Indexed
+Values: Minimum = Digital, Default = Digital, Maximum = Pitch
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 6
+Value: 0,  String: Digital
+Value: 1,  String: Tape
+Value: 2,  String: Bucket
+Value: 3,  String: Multitap
+Value: 4,  String: Reverse
+Value: 5,  String: Pitch
+  -parameter PASS
+
+Parameter ID:95852938
+Name: Delay Drive
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 18.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:107422795
+Name: Reverb Duck
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 15.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:107858835
+Name: Reverb Size
+Parameter Type: Generic
+Values: Minimum = 0.500, Default = 1.000, Maximum = 1.700
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:107894020
+Name: Reverb Tone
+Parameter Type: Generic
+Values: Minimum = 1000, Default = 6500, Maximum = 16000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:107903692
+Name: Reverb engine
+Parameter Type: Indexed
+Values: Minimum = Room, Default = Hall, Maximum = Bloom
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 4
+Value: 0,  String: Room
+Value: 1,  String: Plate
+Value: 2,  String: Hall
+Value: 3,  String: Bloom
+  -parameter PASS
+
+Parameter ID:108285963
+Name: Reverb B / A ratio
+Parameter Type: Generic
+Values: Minimum = 0.250, Default = 0.750, Maximum = 2.000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:203635668
+Name: Delay sound version
+Parameter Type: Indexed
+Values: Minimum = Legacy 1.1, Default = Legacy 1.1, Maximum = Modern 1.2
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 2
+Value: 0,  String: Legacy 1.1
+Value: 1,  String: Modern 1.2
+  -parameter PASS
+
+Parameter ID:246270835
+Name: Reverb Diffusion
+Parameter Type: Generic
+Values: Minimum = 0.000, Default = 0.700, Maximum = 1.000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:378174848
+Name: Reverb Low cut
+Parameter Type: Generic
+Values: Minimum = 20, Default = 180, Maximum = 1000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:406720200
+Name: Reverb Motion
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 22.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:516234755
+Name: Delay B repeats
+Parameter Type: Generic
+Values: Minimum = 0.000, Default = 0.320, Maximum = 0.880
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:518891974
+Name: Delay B level
+Parameter Type: Generic
+Values: Minimum = 0.000, Default = 1.000, Maximum = 1.000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:521036252
+Name: Delay Amount
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 24.0, Maximum = 80.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:544002307
+Name: Delay pitch routing
+Parameter Type: Indexed
+Values: Minimum = Climbing repeats, Default = Climbing repeats, Maximum = Fixed harmony
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 2
+Value: 0,  String: Climbing repeats
+Value: 1,  String: Fixed harmony
+  -parameter PASS
+
+Parameter ID:570418373
+Name: Delay pitch interval
+Parameter Type: Indexed
+Values: Minimum = -12 st, Default = +12 st, Maximum = +24 st
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 6
+Value: 0,  String: -12 st
+Value: 1,  String: -7 st
+Value: 2,  String: +7 st
+Value: 3,  String: +12 st
+Value: 4,  String: +19 st
+Value: 5,  String: +24 st
+  -parameter PASS
+
+Parameter ID:743683927
+Name: Shimmer interval
+Parameter Type: Indexed
+Values: Minimum = -12 st, Default = +12 st, Maximum = +24 st
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 6
+Value: 0,  String: -12 st
+Value: 1,  String: -7 st
+Value: 2,  String: +7 st
+Value: 3,  String: +12 st
+Value: 4,  String: +19 st
+Value: 5,  String: +24 st
+  -parameter PASS
+
+Parameter ID:778990667
+Name: Delay B time
+Parameter Type: Generic
+Values: Minimum = 20.0, Default = 500.0, Maximum = 8000.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:789948709
+Name: Delay extension
+Parameter Type: Indexed
+Values: Minimum = Original, Default = Original, Maximum = Lo-Fi
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 4
+Value: 0,  String: Original
+Value: 1,  String: Diffusion
+Value: 2,  String: Granular Pitch
+Value: 3,  String: Lo-Fi
+  -parameter PASS
+
+Parameter ID:795201962
+Name: Delay Duck sensitivity
+Parameter Type: Generic
+Values: Minimum = 0.25, Default = 1.00, Maximum = 4.00
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:795729341
+Name: Delay Swell
+Parameter Type: Generic
+Values: Minimum = 0.000, Default = 0.000, Maximum = 1.000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:799005634
+Name: Delay Width
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 100.0, Maximum = 150.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:815897577
+Name: Direct to reverb
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 100.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:838025202
+Name: Delay Low cut
+Parameter Type: Generic
+Values: Minimum = 20, Default = 150, Maximum = 1000
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:866570554
+Name: Delay Motion
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 15.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:881080983
+Name: Hold reverb
+Parameter Type: Boolean
+Values: Minimum = Off, Default = Off, Maximum = On
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:942622467
+Name: Delay Duck release
+Parameter Type: Generic
+Values: Minimum = 50, Default = 280, Maximum = 1500
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:980660230
+Name: Reverb sound version
+Parameter Type: Indexed
+Values: Minimum = Legacy 1.1, Default = Legacy 1.1, Maximum = Modern 1.2
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 2
+Value: 0,  String: Legacy 1.1
+Value: 1,  String: Modern 1.2
+  -parameter PASS
+
+Parameter ID:1030227794
+Name: Reverb Pre-delay
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 28.0, Maximum = 200.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1141971201
+Name: Output
+Parameter Type: Generic
+Values: Minimum = -24.0, Default = 0.0, Maximum = 6.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1182146152
+Name: Reverb Decay
+Parameter Type: Generic
+Values: Minimum = 0.25, Default = 4.00, Maximum = 20.00
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1190756823
+Name: Reverb extension
+Parameter Type: Indexed
+Values: Minimum = Original, Default = Original, Maximum = Studio Bloom
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 8
+Value: 0,  String: Original
+Value: 1,  String: Chamber
+Value: 2,  String: Cloud Ensemble
+Value: 3,  String: Halo Shimmer
+Value: 4,  String: Glint
+Value: 5,  String: Studio Plate
+Value: 6,  String: Studio Hall
+Value: 7,  String: Studio Bloom
+  -parameter PASS
+
+Parameter ID:1196010076
+Name: Reverb Duck sensitivity
+Parameter Type: Generic
+Values: Minimum = 0.25, Default = 1.00, Maximum = 4.00
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1199813748
+Name: Reverb Width
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 100.0, Maximum = 150.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1208421004
+Name: Pattern taps
+Parameter Type: Indexed
+Values: Minimum = 2 taps, Default = 4 taps, Maximum = 8 taps
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 3
+Value: 0,  String: 2 taps
+Value: 1,  String: 4 taps
+Value: 2,  String: 8 taps
+  -parameter PASS
+
+Parameter ID:1216005270
+Name: Delay rhythm
+Parameter Type: Indexed
+Values: Minimum = 1/16, Default = 1/8 dotted, Maximum = 1 bar
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 9
+Value: 0,  String: 1/16
+Value: 1,  String: 1/8 triplet
+Value: 2,  String: 1/8
+Value: 3,  String: 1/8 dotted
+Value: 4,  String: 1/4
+Value: 5,  String: 1/4 dotted
+Value: 6,  String: 1/2
+Value: 7,  String: 1/2 dotted
+Value: 8,  String: 1 bar
+  -parameter PASS
+
+Parameter ID:1227914900
+Name: B subdivision
+Parameter Type: Indexed
+Values: Minimum = 1/16, Default = 1/4, Maximum = 1 bar
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 9
+Value: 0,  String: 1/16
+Value: 1,  String: 1/8 triplet
+Value: 2,  String: 1/8
+Value: 3,  String: 1/8 dotted
+Value: 4,  String: 1/4
+Value: 5,  String: 1/4 dotted
+Value: 6,  String: 1/2
+Value: 7,  String: 1/2 dotted
+Value: 8,  String: 1 bar
+  -parameter PASS
+
+Parameter ID:1255118840
+Name: Delay stereo
+Parameter Type: Indexed
+Values: Minimum = Stereo, Default = Dual, Maximum = Ping-pong
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 3
+Value: 0,  String: Stereo
+Value: 1,  String: Dual
+Value: 2,  String: Ping-pong
+  -parameter PASS
+
+Parameter ID:1385652422
+Name: Routing
+Parameter Type: Indexed
+Values: Minimum = Delay > Reverb, Default = Delay > Reverb, Maximum = Parallel
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+Parameter has Value Strings
+Num Strings = 2
+Value: 0,  String: Delay > Reverb
+Value: 1,  String: Parallel
+  -parameter PASS
+
+Parameter ID:1663806473
+Name: Delay Feedback
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 32.0, Maximum = 88.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1719647029
+Name: Reverb Duck release
+Parameter Type: Generic
+Values: Minimum = 50, Default = 280, Maximum = 1500
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:1826376437
+Name: Manual tempo
+Parameter Type: Boolean
+Values: Minimum = Off, Default = Off, Maximum = On
+Flags: Values Have Strings, High Resolution, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:2061464833
+Name: Reverb Shimmer
+Parameter Type: Generic
+Values: Minimum = 0.0, Default = 0.0, Maximum = 100.0
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Parameter ID:2108886301
+Name: Reverb Pitch regeneration
+Parameter Type: Generic
+Values: Minimum = 0.000, Default = 0.300, Maximum = 0.700
+Flags: Values Have Strings, High Resolution, Can Ramp, Readable, Writable 
+  -parameter PASS
+
+Testing that parameters retain value across reset and initialization
+  PASS
+
+* * PASS
+--------------------------------------------------
+FORMAT TESTS:
+
+Reported Channel Capabilities (explicit):
+      [1, 1]  [1, 2]  [2, 2]  
+
+Input/Output Channel Handling:
+1-1   1-2   1-4   1-5   1-6   1-7   1-8   2-2   2-4   2-5   2-6   2-7   2-8   4-4   4-5   5-5   6-6   7-7   8-8
+X     X                                   X                                                                       
+
+# # AudioChannelLayouts (5), Input Scope:
+ChannelLayout is Writable: T
+The Unit publishes the following Channel Layouts:
+  0x640001, 0x650002, 0x660002, 0x670002, 0x6A0002, 
+
+Is Audio Channel Layout Available:
+Mono    Stereo  Binau.  AU_4    Ambi.   AU_5    AU_5_0  AU_6    AU_6_0  AU_7_0  AU_7_0F AU_8    AU_5_1  AU_6_1  AU_7_1  AU_7_1F 
+X       X       X                                                                                                               
+
+Current Format:AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Current Format Tag = 0x650002, New Format Tag = 0x640001, Success - did not reset format with mis-matched layout
+
+Current Format:AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Current Format Tag = 0x650002, New Format Tag = 0x650002, Successsful
+
+Current Format:AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Current Format Tag = 0x650002, New Format Tag = 0x6A0002, Successsful
+
+# # AudioChannelLayouts (5), Output Scope:
+ChannelLayout is Writable: T
+The Unit publishes the following Channel Layouts:
+  0x640001, 0x650002, 0x660002, 0x670002, 0x6A0002, 
+
+Is Audio Channel Layout Available:
+Mono    Stereo  Binau.  AU_4    Ambi.   AU_5    AU_5_0  AU_6    AU_6_0  AU_7_0  AU_7_0F AU_8    AU_5_1  AU_6_1  AU_7_1  AU_7_1F 
+X       X       X                                                                                                               
+
+Current Format:AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Current Format Tag = 0x650002, New Format Tag = 0x640001, Success - did not reset format with mis-matched layout
+
+Current Format:AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Current Format Tag = 0x650002, New Format Tag = 0x650002, Successsful
+
+Current Format:AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Current Format Tag = 0x650002, New Format Tag = 0x6A0002, Successsful
+
+* * PASS
+--------------------------------------------------
+RENDER TESTS:
+
+Input Format: AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Output Format: AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+Render Test at 512 frames
+Slicing Render Test at 64 frames
+  PASS
+
+
+Render Test at 64 frames, sample rate: 22050 Hz
+Render Test at 137 frames, sample rate: 96000 Hz
+Render Test at 4096 frames, sample rate: 48000 Hz
+Render Test at 4096 frames, sample rate: 192000 Hz
+Render Test at 4096 frames, sample rate: 11025 Hz
+Render Test at 512 frames, sample rate: 44100 Hz
+  PASS
+
+1 Channel Test:
+Render Test at 512 frames
+  PASS
+
+1 to 2 Channel Render Test at 256 frames
+  PASS
+
+Checking connection semantics:
+Connection format:
+AudioStreamBasicDescription:  2 ch,  44100 Hz, Float32, deinterleaved
+  PASS
+
+Bad Max Frames - Render should fail
+  PASS
+
+Checking parameter setting
+Using AudioUnitSetParameter
+Using AudioUnitScheduleParameter
+  PASS
+
+Checking ramped parameter scheduling
+  PASS
+
+Test MIDI
+  PASS
+
+* * PASS
+--------------------------------------------------
+AU VALIDATION SUCCEEDED.
+--------------------------------------------------

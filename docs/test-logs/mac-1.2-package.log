@@ -1,0 +1,12 @@
+/var/folders/hh/70t_wb9s0kzbjszrj6qx1cjw0000gn/T//wolf-tide-package.u5X14D/root/Library/Audio/Plug-Ins/Components/Wolf Tide.component: replacing existing signature
+/var/folders/hh/70t_wb9s0kzbjszrj6qx1cjw0000gn/T//wolf-tide-package.u5X14D/root/Library/Audio/Plug-Ins/VST3/Wolf Tide.vst3: replacing existing signature
+/var/folders/hh/70t_wb9s0kzbjszrj6qx1cjw0000gn/T//wolf-tide-package.u5X14D/root/Applications/Wolf Audio/Wolf Tide.app: replacing existing signature
+/private/var/folders/hh/70t_wb9s0kzbjszrj6qx1cjw0000gn/T/wolf-tide-package.u5X14D/root/Library/Application Support/Wolf Audio/Wolf Tide/Source.zip
+pkgbuild: Inferring bundle components from contents of /var/folders/hh/70t_wb9s0kzbjszrj6qx1cjw0000gn/T//wolf-tide-package.u5X14D/root
+pkgbuild: Writing new component property list to /var/folders/hh/70t_wb9s0kzbjszrj6qx1cjw0000gn/T//wolf-tide-package.u5X14D/components.plist
+pkgbuild: Reading components from /var/folders/hh/70t_wb9s0kzbjszrj6qx1cjw0000gn/T//wolf-tide-package.u5X14D/components.plist
+pkgbuild: Adding component at Library/Audio/Plug-Ins/Components/Wolf Tide.component
+pkgbuild: Adding component at Applications/Wolf Audio/Wolf Tide.app
+pkgbuild: Adding component at Library/Audio/Plug-Ins/VST3/Wolf Tide.vst3
+pkgbuild: Wrote package to dist/Wolf-Tide-1.2.0-unsigned.pkg
+Created dist/Wolf-Tide-1.2.0-unsigned.pkg (ad-hoc plugin signatures; installer NOT Developer ID signed or notarized).

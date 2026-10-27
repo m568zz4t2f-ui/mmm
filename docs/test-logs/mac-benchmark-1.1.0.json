@@ -1,0 +1,53 @@
+{
+  "method": "48 kHz stereo, 3 seconds audio; median of three trials per invocation; three alternating before/after invocations; C++17 O3. DSP only, excluding GUI, allocation/preparation and DAW overhead.",
+  "results": [
+    {
+      "scenario": "Tape + Room",
+      "before_seconds": 0.157491,
+      "after_seconds": 0.0435679,
+      "reduction_percent": 72.3
+    },
+    {
+      "scenario": "Tape + Plate",
+      "before_seconds": 0.158985,
+      "after_seconds": 0.0393827,
+      "reduction_percent": 75.2
+    },
+    {
+      "scenario": "Tape + Hall",
+      "before_seconds": 0.157371,
+      "after_seconds": 0.0593599,
+      "reduction_percent": 62.3
+    },
+    {
+      "scenario": "Tape + Bloom",
+      "before_seconds": 0.152614,
+      "after_seconds": 0.0600156,
+      "reduction_percent": 60.7
+    },
+    {
+      "scenario": "Tape + Hall + Shimmer",
+      "before_seconds": 0.162413,
+      "after_seconds": 0.0815657,
+      "reduction_percent": 49.8
+    },
+    {
+      "scenario": "Reverse + Hall",
+      "before_seconds": 0.159378,
+      "after_seconds": 0.0571156,
+      "reduction_percent": 64.2
+    },
+    {
+      "scenario": "Pitch + Hall + Shimmer",
+      "before_seconds": 0.157854,
+      "after_seconds": 0.0900811,
+      "reduction_percent": 42.9
+    },
+    {
+      "scenario": "Both effects off, silence",
+      "before_seconds": 0.148865,
+      "after_seconds": 0.00468057,
+      "reduction_percent": 96.9
+    }
+  ]
+}

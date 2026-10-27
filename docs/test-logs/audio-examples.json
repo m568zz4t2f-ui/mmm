@@ -1,0 +1,20 @@
+{
+  "Rhythmic-Sky.wav": {
+    "seconds": 18.0,
+    "peak_dBFS": -14.05,
+    "rms_dBFS": -33.32,
+    "last_sample": 0
+  },
+  "Reverse-Halo.wav": {
+    "seconds": 18.0,
+    "peak_dBFS": -16.94,
+    "rms_dBFS": -33.57,
+    "last_sample": 0
+  },
+  "Crystal-Pad.wav": {
+    "seconds": 18.0,
+    "peak_dBFS": -15.22,
+    "rms_dBFS": -32.8,
+    "last_sample": 0
+  }
+}
