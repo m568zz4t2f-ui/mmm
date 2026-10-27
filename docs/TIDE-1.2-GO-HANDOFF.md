@@ -42,6 +42,8 @@ Each checkpoint must compile and pass relevant checks before continuing; preserv
 5. Presets and UI.
    - Source/Parameters.h + PluginProcessor.h/.cpp: explicit complete recipes, stable IDs/schema, scoped validation, direct user save, undo and locks.
    - Source/PluginEditor.h/.cpp: one shared browser in three scopes, search/tags, Favorites/Recent, edited/partial state. Keep grey/blue boutique design and cached graphics.
+   - Boutique redesign is required: follow section I of docs/TIDE-1.2-UPDATE-SPEC.md (Boutique Coastal). Graphite delay/ocean-blue reverb, tactile black/brushed-metal knobs, warm ivory typography, subtle static texture/engraving, distinctive Tide wordmark, cleaner spacing and recessed displays. Supplied BigSky MX/TimeLine MX photos are material/layout references; use Tide's own identity.
+   - Prioritize four primary knobs per side with model-specific advanced controls, direct readable values and an integrated preset drawer. Cache decorative graphics, retain Static mode and verify supported sizes/HiDPI plus UI open/closed cost. No decorative audio analysis or new audio-thread work.
    - Curate 32 combined musical +4 utility presets and two side starters per shipped engine; these numbers are targets, not existing curated assets.
 6. Optimize, validate and package.
    - Benchmark the same fixture/rate/block settings before and after each consequential DSP change. Capture typical AND peak block time, allocations, memory, and UI open/closed cost. Do not call elapsed test runtime a DSP benchmark.
