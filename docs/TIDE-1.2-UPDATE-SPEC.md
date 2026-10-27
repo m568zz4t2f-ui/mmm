@@ -100,3 +100,31 @@ Each stage ends with measurable pass criteria, not simply a list of visible cont
 - Signalsmith Stretch: https://github.com/Signalsmith-Audio/signalsmith-stretch — evaluate polyphonic pitch, explicit latency and CPU peaks.
 - Cosmos code and Graphify lessons are internal references, not evidence of exact Microcosm behavior.
 Reverse engineering continues as a separate research track; no firmware recovery or commercial cloning claim is required for this release.
+
+## I. Boutique appearance — added from the user's hardware references
+Requirement: a noticeably more boutique and cleaner Tide interface, with the tactile restraint of the supplied blue BigSky MX and charcoal TimeLine MX photographs. This is part of the next-update scope, not a request to begin implementation yet.
+
+### Art direction: Boutique Coastal
+- One cohesive pedal-like faceplate: graphite/charcoal grey on the delay side, deep ocean blue/teal on the reverb side, with a narrow understated seam. Warm ivory labels, black knobs with brushed-metal centers, restrained silver trim and small sea-glass status lights.
+- Use subtle powder-coat texture, shallow engraved rules and soft edge highlights. Texture stays low contrast so labels remain easy to read. A quiet wave/contour engraving can give Tide a memorable identity.
+- Give TIDE a distinctive compact wordmark with character; use a clear companion sans-serif for control labels and values. Avoid mixing many fonts. Numeric readouts use stable-width digits; preset names remain readable without hardware-style pixel lettering.
+- Make the product feel like a carefully finished boutique instrument: consistent radii, alignment and lighting; generous empty space; deliberate scale hierarchy; a few characterful details rather than filling every gap.
+- Interpret the materials, balance and tactile controls in the references through Tide's own branding and layout. The photos guide appearance only, not an expansion into every engine printed on those pedals.
+
+### Layout and interaction
+- Retain left Delay, right Reverb, separate enable controls and side presets, plus the combined preset strip along the bottom.
+- Each side gets a compact recessed display for the selected algorithm and preset, readable value feedback and a restrained status light. Keep type selection distinct from preset selection.
+- Establish four primary knobs per side: delay Time / Repeats / Tone / Amount; reverb Decay / Pre-delay / Tone / Amount. Keep global Mix and Output clearly separate. Secondary controls and the model-specific Advanced drawer provide the remaining parameters without a crowded faceplate.
+- Primary controls have clear white pointers and subtle tick marks. Show units and exact values on focus/adjustment, with direct entry, fine drag, reset and keyboard focus where supported. Do not require hover to discover an important control.
+- Display informative names such as Diffusion or Pitch Blend instead of generic PARAM 1/PARAM 2. Keep labels and positions stable whenever their meaning is shared.
+- Design the preset browser as a clean integrated drawer: scope heading, search, tags and readable list; keep the main controls visible when space permits. Show partial recall and locks clearly.
+- Enable, freeze, tap and favorite controls use a restrained tactile treatment. State must be recognizable by label/shape as well as color. Software control behavior stays direct; avoid adding hardware hold gestures for common operations.
+
+### Rendering and acceptance
+- Cache the faceplate texture, engraving, shadows and other static artwork at the appropriate display scale. Rebuild caches on relevant size/scale/theme changes, not every timer tick.
+- Repaint moving pointers, values and state indicators only as needed. Retain Static/Activity/Motion preferences; Static must have no decorative animation. Stop unneeded UI timers when hidden/closed.
+- No new audio analysis or audio-thread work solely for decoration. Measure actual UI/main-thread and audio-callback costs separately; do not promise a graphics overhaul has zero CPU cost.
+- Verify the normal editor size and supported resized/HiDPI layouts: legible labels, sufficient contrast, no clipped names, accurate knob hit areas, visible focus and consistent disabled/locked states.
+- Capture a representative finished panel and browser screenshot, compare the new UI open/closed performance against the baseline, and confirm identical audio behavior for the same state.
+- Deliver this visual pass with the release, preserving control IDs, automation, recall, routing and all agreed advanced options. This adds a design requirement; it does not claim new artwork or editor code has already been made.
+
