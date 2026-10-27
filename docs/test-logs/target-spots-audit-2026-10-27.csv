@@ -1,0 +1,9 @@
+rate,model,control,relative_difference
+48000,Halo,Motion,0
+48000,Halo,Size,0
+48000,StudioPlate,Motion,0
+48000,StudioPlate,Size,0
+192000,Halo,Motion,0
+192000,Halo,Size,0
+192000,StudioPlate,Motion,0
+192000,StudioPlate,Size,0
