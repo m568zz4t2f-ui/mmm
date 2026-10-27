@@ -26,7 +26,7 @@ try:
     for source, target in targets:
         with (source/'Contents/Info.plist').open('rb') as stream:
             version = plistlib.load(stream)['CFBundleShortVersionString']
-        if version != '1.1.0':
+        if version != '1.2.0':
             raise RuntimeError('Unexpected version: '+str(source))
         subprocess.run(['codesign','--force','--sign','-',str(source)], check=True)
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -44,7 +44,7 @@ try:
         os.rename(temp/target.name, target)
     for _, target in targets:
         subprocess.run(['codesign','--verify','--strict',str(target)], check=True)
-        print('Installed 1.1.0:', target)
+        print('Installed 1.2.0:', target)
     print('Previous versions:', backup)
 except Exception:
     for target, old in reversed(changed):

@@ -6,6 +6,12 @@
 static void check(bool ok,const char* why){if(!ok){std::cerr<<"FAIL: "<<why<<'\n';std::exit(1);}}
 static double pitchEnergy(float hz){tide::Pitch p;p.prepare(48000);p.set(24);p.clear();double sum=0;for(int n=0;n<48000;++n){auto y=p.tick({.25f*std::sin(2*tide::pi*hz*float(n)/48000),0});if(n>12000)sum+=double(y.l)*y.l;check(y.r==0,"linked stereo pitch does not leak channels");}return sum;}
 int main(){
+ // Requests arriving inside an existing tap fade must eventually reach the latest time.
+ {tide::Parameters p;p.sync=false;p.time=100;p.stereo=0;p.feedback=0;p.delayMotion=0;p.delayLowcut=20;p.delayTone=16000;
+  tide::Echo e;e.prepare(8000,p);e.set(p);p.time=200;e.set(p);for(int n=0;n<80;++n)e.tick({},p);
+  p.time=300;e.set(p);for(int n=0;n<1200;++n)e.tick({},p);e.clear();int first=-1;
+  for(int n=0;n<3000;++n){auto y=e.tick({n==0?.5f:0,0},p);if(first<0&&std::abs(y.l)>.001f)first=n;}
+  check(first>=2398&&first<=2402,"latest delay time survives an in-flight crossfade");}
  // Generation clearing must hide old samples across blocks and wrap boundaries.
  {wolf::Delay d;d.prepare(139);for(int n=0;n<900;++n)d.push(float(n+1));d.clear();for(int n=0;n<137;++n)check(d.readInt(std::size_t(n))==0,"logical clear hides all history");d.push(.5f);check(d.readInt(0)==.5f,"first write after clear");for(int n=1;n<137;++n)check(d.readInt(std::size_t(n))==0,"first lazy block does not reveal stale samples");for(int n=0;n<500;++n)d.push(0);check(d.read(5.5f)==0&&d.readCubic(7.2f)==0,"interpolation after wrap and clear");}
  // An enabled but silent shimmer must not run. Only the selected tank runs on audio.

@@ -5,7 +5,7 @@
 static void check(bool b,const char* m){if(!b){std::cerr<<"FAIL: "<<m<<'\n';std::exit(1);}}
 int main(int argc,char** argv){
  juce::ScopedJuceInitialiser_GUI init;TideProcessor p;
- check(p.getParameters().size()==44,"all 44 parameters exposed");
+ check(p.getParameters().size()==60,"all legacy and extension parameters exposed");
  juce::StringArray names;for(auto* parameter:p.getParameters()){auto name=parameter->getName(100);check(!names.contains(name),"host parameter names are unique");names.add(name);}
  for(int i=0;i<tide::numPresets;++i){p.setCurrentProgram(i);check(p.factoryMatches(),"all factory presets match complete parameter state");}p.setCurrentProgram(0);
  for(int mode=0;mode<3;++mode){juce::AudioProcessor::BusesLayout layout;
@@ -13,8 +13,11 @@ int main(int argc,char** argv){
   check(p.setBusesLayout(layout),"supported channel layout");p.prepareToPlay(48000,512);juce::AudioBuffer<float> b(p.getTotalNumOutputChannels(),512);juce::MidiBuffer midi;
   b.clear();b.setSample(0,0,.5f);p.processBlock(b,midi);p.reset();double energy=0;
   for(int n=0;n<120;++n){b.clear();p.processBlock(b,midi);for(int c=0;c<b.getNumChannels();++c)for(int i=0;i<512;++i){const float v=b.getSample(c,i);check(std::isfinite(v),"finite host audio");energy+=double(v)*v;}}
-  check(energy>1e-8,"host reset preserves tails");p.prepareToPlay(48000,512);b.clear();p.processBlock(b,midi);check(b.getMagnitude(0,512)<1e-10,"reinitialization clears");
+  check(energy>1e-8,"host reset preserves tails");p.prepareToPlay(48000,512);b.clear();p.processBlock(b,midi);check(b.getMagnitude(0,512)>0,"same-rate preparation preserves tails");
  }
+ {constexpr const char* ids[]={"dType","rhythm","stereo","rType","routing","rInterval","interval","dOn","rOn","sync","send","freeze","pitchMode"};for(int i=0;i<13;++i){auto* param=dynamic_cast<juce::RangedAudioParameter*>(p.getParameters()[31+i]);check(param&&param->paramID==ids[i],"legacy parameter ordering unchanged");}
+  check(p.state.getParameter("dType")->convertFrom0to1(1)==5&&p.state.getParameter("rType")->convertFrom0to1(1)==3,"legacy normalized selector ranges unchanged");
+  juce::MemoryBlock block;p.setCurrentProgram(0);p.getStateInformation(block);auto xml=p.getXmlFromBinary(block.getData(),int(block.getSize()));auto old=juce::ValueTree::fromXml(*xml);for(int i=44;i<p.getParameters().size();++i){auto* param=dynamic_cast<juce::RangedAudioParameter*>(p.getParameters()[i]);old.removeChild(old.getChildWithProperty("id",param->paramID),nullptr);}auto oldXml=old.createXml();juce::MemoryBlock legacy;p.copyXmlToBinary(*oldXml,legacy);p.setValue("dModel",3);p.setValue("rModel",3);p.setValue("dVersion",1);p.setValue("rVersion",1);p.setStateInformation(legacy.getData(),int(legacy.getSize()));check(p.value("dModel")==0&&p.value("rModel")==0&&p.value("dVersion")==0&&p.value("rVersion")==0,"old state resets modern extensions");}
  p.setCurrentProgram(4);p.setValue("rDecay",2.713f);p.lockMix.store(true);p.setValue("send",1);
  juce::MemoryBlock saved;p.getStateInformation(saved);p.setCurrentProgram(0);p.setValue("send",0);p.setStateInformation(saved.getData(),int(saved.getSize()));
  check(std::abs(p.value("rDecay")-2.71f)<.02f&&p.value("send")>.5f&&p.lockMix.load(),"session recall includes edits and locks");
@@ -23,6 +26,7 @@ int main(int argc,char** argv){
  const auto file=juce::File::getSpecialLocation(juce::File::tempDirectory).getNonexistentChildFile("wolf-tide-test",".wolftide");
  check(p.savePreset(file,1).wasOk(),"save delay preset");const auto old=p.value("dFeedback");p.setValue("dFeedback",.01f);p.setValue("rDecay",3.14f);
  check(p.loadPreset(file,1).wasOk(),"load delay preset");check(std::abs(p.value("dFeedback")-old)<.002f&&std::abs(p.value("rDecay")-3.14f)<.02f,"side preset scope");
+ p.setValue("rhythm",7);p.setValue("ratio",1.2f);check(p.savePreset(file,2).wasOk(),"save reverb scope");p.setValue("rhythm",2);p.setValue("ratio",.8f);check(p.loadPreset(file,2).wasOk()&&p.value("rhythm")==2&&std::abs(p.value("ratio")-.8f)<.01f,"reverb recall preserves delay rhythm and ratio");check(p.savePreset(file,1).wasOk(),"restore delay file");
  check(p.loadPreset(file,2).failed(),"wrong preset scope rejected");file.replaceWithText("<WolfTidePreset version=\"1\" scope=\"1\"><p id=\"dFeedback\" value=\"nan\"/></WolfTidePreset>");check(p.loadPreset(file,1).failed(),"nonfinite preset rejected");file.deleteFile();
  p.visualMode.store(2);{juce::MemoryBlock uiState;p.getStateInformation(uiState);p.visualMode.store(0);p.setStateInformation(uiState.getData(),int(uiState.getSize()));check(p.visualMode.load()==2,"visual preference recalls without adding an audio parameter");}
  p.setValue("pitchMode",1);check(p.savePreset(file,1).wasOk(),"save pitch routing");p.setValue("pitchMode",0);check(p.loadPreset(file,1).wasOk()&&p.value("pitchMode")==1,"pitch routing belongs to delay presets");file.deleteFile();
@@ -38,12 +42,13 @@ int main(int argc,char** argv){
   if(argc>1){snapshot(argv[1]);
    for(const juce::String name:{"EDIT DELAY","EDIT REVERB","ROUTING"}){
     bool found=false;for(auto* child:editor->getChildren())if(auto* button=dynamic_cast<juce::TextButton*>(child))if(button->getButtonText()==name){button->onClick();found=true;break;}
-    check(found&&editor->getHeight()==930,"deep editor opens");snapshot(juce::String(argv[1]).upToLastOccurrenceOf(".",false,false)+"-"+name.toLowerCase().replace(" ","-")+".png");
+    check(found&&editor->getHeight()==1130,"deep editor opens");snapshot(juce::String(argv[1]).upToLastOccurrenceOf(".",false,false)+"-"+name.toLowerCase().replace(" ","-")+".png");
    }
   }
   editor->setSize(900,600);editor->setSize(1620,1395);
   if(argc>2){juce::File factoryDir=juce::File::getCurrentWorkingDirectory().getChildFile(argv[2]);factoryDir.createDirectory();
    for(int i=0;i<tide::numPresets;++i){p.setCurrentProgram(i);auto name=p.getProgramName(i).replace(" / "," - ");check(p.savePreset(factoryDir.getChildFile(name+".wolftide"),0).wasOk(),"export factory files");}
+   for(int scope=1;scope<=2;++scope){auto dir=factoryDir.getChildFile(scope==1?"Delay":"Reverb");dir.createDirectory();const int count=scope==1?9:11;for(int model=0;model<count;++model)for(int variant=0;variant<2;++variant){if(scope==1)p.applyDelayPreset(model,variant!=0);else p.applyReverbPreset(model,variant!=0);const char* modelName=scope==1?(model<6?tide::delayNames[model]:tide::newDelayNames[model-6]):(model<4?tide::reverbNames[model]:tide::newReverbNames[model-4]);auto name=juce::String(modelName)+(variant?" - Wide":" - Focused");check(p.savePreset(dir.getChildFile(name+".wolftide"),scope).wasOk(),"export side starters");}}
   }
 
  }

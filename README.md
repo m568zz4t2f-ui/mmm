@@ -1,4 +1,8 @@
-# Wolf Tide
+# Wolf Tide 1.2.0
+
+See [release notes](docs/RELEASE-1.2.0.md) for models, browser, compatibility and known limits. See [current validation](docs/VALIDATION-1.2.0.md) for checks actually performed.
+
+# Original project guide
 
 **Wolf Tide 1.1.0 · Echoes into atmosphere.** Stereo delay + reverb by Wolf Audio.
 

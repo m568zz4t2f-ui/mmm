@@ -34,32 +34,79 @@ inline constexpr Spec specs[]={
  {"dSense","Duck sensitivity",.25f,4,.01f,.7f,1,"x"},
  {"dRelease","Duck release",50,1500,1,.5f,280,"ms"},
  {"rSense","Duck sensitivity",.25f,4,.01f,.7f,1,"x"},
- {"rRelease","Duck release",50,1500,1,.5f,280,"ms"}
+ {"rRelease","Duck release",50,1500,1,.5f,280,"ms"},
+ {"dBTime","B time",20,8000,.1f,.45f,500,"ms"},
+ {"dBFeedback","B repeats",0,.88f,.001f,1,.32f,"%"},
+ {"dBLevel","B level",0,1,.001f,1,1,"%"},
+ {"dSwell","Swell",0,1,.001f,1,0,"%"},
+ {"rDiffusion","Diffusion",0,1,.001f,1,.7f,"%"},
+ {"rSize","Size",.5f,1.7f,.001f,1,1,"x"},
+ {"rAttack","Bloom attack",.01f,2,.001f,.5f,.18f,"s"},
+ {"rRegeneration","Pitch regeneration",0,.7f,.001f,1,.3f,"%"}
 };
 constexpr int numFloats=int(sizeof(specs)/sizeof(Spec));
 inline constexpr const char* delayNames[]={"Digital","Tape","Bucket","Multitap","Reverse","Pitch"};
+inline constexpr const char* newDelayNames[]={"Diffusion","Granular Pitch","Lo-Fi"};
+inline constexpr const char* newReverbNames[]={"Chamber","Cloud Ensemble","Halo Shimmer","Glint","Studio Plate","Studio Hall","Studio Bloom"};
 inline constexpr const char* reverbNames[]={"Room","Plate","Hall","Bloom"};
 inline constexpr const char* rhythmNames[]={"1/16","1/8 triplet","1/8","1/8 dotted","1/4","1/4 dotted","1/2","1/2 dotted","1 bar"};
 inline constexpr const char* stereoNames[]={"Stereo","Dual","Ping-pong"};
 inline constexpr const char* intervalNames[]={"-12 st","-7 st","+7 st","+12 st","+19 st","+24 st"};
-struct Preset {const char* name;int delay,reverb,rhythm,stereo;float feedback,delayAmount,decay,pre,tone,reverbAmount,feed,duck,shimmer,motion,mix;};
+struct Preset {const char* name;int delay,reverb,rhythm,stereo;float feedback,delayAmount,decay,pre,tone,reverbAmount,feed,duck,shimmer,motion,mix;
+ int pitchMode=0;bool sync=true,delayOn=true,reverbOn=true;float time=375;int dModel=0,rModel=0,version=0;float drive=.18f,delayTone=6500;int pattern=1;};
 inline constexpr Preset presets[]={
  {"Guitar / Rhythmic Sky",0,2,4,1,.34f,.30f,4.2f,32,6500,.23f,.45f,.15f,0,.18f,.38f},
  {"Guitar / Warm Lead",1,1,4,0,.29f,.27f,2.6f,24,5200,.23f,.55f,.12f,0,.25f,.34f},
  {"Guitar / Slow Horizon",1,3,5,1,.48f,.30f,10,65,4700,.38f,.8f,.18f,.20f,.5f,.46f},
  {"Guitar / Reverse Halo",4,3,4,1,.35f,.28f,7,38,6000,.30f,.7f,.1f,.24f,.3f,.43f},
  {"Vocal / Clear Lead",0,1,2,0,.22f,.17f,1.7f,42,6800,.24f,.35f,.65f,0,.08f,.30f},
- {"Vocal / Warm Slap",1,0,2,0,.12f,.24f,.75f,12,5800,.16f,.30f,.3f,0,.10f,.28f},
+ {"Vocal / Warm Slap",1,0,2,0,.12f,.24f,.75f,12,5800,.16f,.30f,.3f,0,.10f,.28f,0,false,true,true,105},
  {"Vocal / Chorus Lift",0,2,4,2,.30f,.24f,3.1f,55,6200,.26f,.45f,.6f,0,.15f,.36f},
- {"Vocal / Air Throw",5,2,4,2,.28f,.20f,4.8f,60,7400,.28f,.7f,.55f,.12f,.2f,.38f},
+ {"Vocal / Air Throw",5,2,4,2,.28f,.20f,4.8f,60,7400,.28f,.7f,.55f,.12f,.2f,.38f,1},
  {"Piano / Natural Room",0,0,2,0,.16f,.10f,1.4f,18,7400,.23f,.25f,.25f,0,.05f,.27f},
  {"Piano / Concert Horizon",0,2,4,1,.20f,.13f,3.2f,28,7100,.28f,.35f,.3f,0,.12f,.33f},
  {"Keys / Electric Velvet",2,1,2,1,.32f,.25f,2.5f,18,4900,.25f,.6f,.2f,0,.38f,.35f},
  {"Keys / Crystal Pad",5,3,5,1,.43f,.27f,11,70,5800,.34f,.8f,.12f,.32f,.45f,.48f},
  {"Ambient / Lunar Drift",3,3,5,2,.55f,.32f,14,85,4200,.38f,.85f,.1f,.28f,.6f,.5f},
  {"Ambient / Submerged",2,2,4,2,.52f,.33f,8.5f,45,2800,.32f,.8f,.15f,0,.55f,.45f},
- {"Utility / Delay Only",0,2,4,0,.32f,.36f,4,28,6500,.24f,.65f,0,0,.1f,.35f},
- {"Utility / Reverb Only",0,2,4,0,.32f,.24f,4,28,6500,.36f,.65f,0,0,.2f,.35f}
+ {"Utility / Delay Only",0,2,4,0,.32f,.36f,4,28,6500,.24f,.65f,0,0,.1f,.35f,0,true,true,false},
+ {"Utility / Reverb Only",0,2,4,0,.32f,.24f,4,28,6500,.36f,.65f,0,0,.2f,.35f,0,true,false,true},
+ {"Guitar / Digital Quarter",0,2,4,0,0.32f,0.24f,8.f,28,6500,0.23f,.55f,0.f,0.f,0.f,.36f,1,true,true,true,375, 0,3,1,0.f,11000,1},
+ {"Guitar / Dotted Eighth",0,2,3,2,0.38f,0.24f,8.f,28,6500,0.23f,.55f,0.f,0.f,0.f,.36f,1,true,true,true,375, 0,3,1,0.f,11000,1},
+ {"Guitar / Warm Tape",1,2,4,0,0.3f,0.24f,2.6f,28,6500,0.23f,.55f,0.2f,0.f,0.18f,.36f,1,true,true,true,375, 0,5,1,0.2f,5000,1},
+ {"Guitar / Analog Lead",2,2,4,0,0.34f,0.24f,2.6f,28,6500,0.23f,.55f,0.18f,0.f,0.25f,.36f,1,true,true,true,375, 0,5,1,0.2f,3800,1},
+ {"Guitar / Stereo Dual",0,2,4,1,0.32f,0.24f,4.2f,28,6500,0.23f,.55f,0.f,0.f,0.1f,.36f,1,true,true,true,375, 0,6,1,0.f,11000,1},
+ {"Guitar / Plate Solo",1,2,4,0,0.28f,0.24f,2.6f,28,6500,0.23f,.55f,0.15f,0.f,0.16f,.36f,1,true,true,true,375, 0,5,1,0.2f,5000,1},
+ {"Guitar / Cloud Horizon",1,2,5,1,0.42f,0.24f,8.f,28,6500,0.23f,.55f,0.12f,0.f,0.25f,.36f,1,true,true,true,375, 0,2,1,0.2f,5000,1},
+ {"Guitar / Halo Lift",0,2,4,1,0.32f,0.24f,8.f,28,6500,0.23f,.55f,0.15f,0.35f,0.18f,.36f,1,true,true,true,375, 0,3,1,0.f,11000,1},
+ {"Vocal / Studio Slap",0,2,2,0,0.08f,0.24f,1.1f,28,6500,0.23f,.55f,0.4f,0.f,0.f,.36f,1,false,true,true,95, 0,1,1,0.f,11000,1},
+ {"Vocal / Ducked Quarter",0,2,4,0,0.27f,0.24f,2.6f,28,6500,0.23f,.55f,0.65f,0.f,0.f,.36f,1,true,true,true,375, 0,5,1,0.f,11000,1},
+ {"Vocal / Tape Double",1,2,2,0,0.13f,0.24f,1.1f,28,6500,0.23f,.55f,0.25f,0.f,0.08f,.36f,1,false,true,true,120, 0,1,1,0.2f,5000,1},
+ {"Vocal / Dotted Throw",0,2,3,2,0.38f,0.24f,4.2f,28,6500,0.23f,.55f,0.6f,0.f,0.f,.36f,1,true,true,true,375, 0,6,1,0.f,11000,1},
+ {"Vocal / Clean Plate",0,2,2,0,0.12f,0.24f,2.6f,28,6500,0.23f,.55f,0.55f,0.f,0.f,.36f,1,true,true,true,375, 0,5,1,0.f,11000,1},
+ {"Vocal / Chamber Air",0,2,2,0,0.12f,0.24f,1.1f,28,6500,0.23f,.55f,0.4f,0.f,0.05f,.36f,1,true,true,true,375, 0,1,1,0.f,11000,1},
+ {"Vocal / Glint Lift",0,2,4,0,0.22f,0.24f,8.f,28,6500,0.23f,.55f,0.6f,0.18f,0.14f,.36f,1,true,true,true,375, 0,4,1,0.f,11000,1},
+ {"Vocal / Fixed Air",5,2,4,2,0.25f,0.24f,4.2f,28,6500,0.23f,.55f,0.55f,0.f,0.1f,.36f,1,true,true,true,375, 0,6,1,0.f,11000,1},
+ {"Keys / Natural Chamber",0,2,2,0,0.12f,0.24f,1.1f,28,6500,0.23f,.55f,0.15f,0.f,0.f,.36f,1,true,true,true,375, 0,1,1,0.f,11000,1},
+ {"Keys / Concert Hall",0,2,4,0,0.18f,0.24f,4.2f,28,6500,0.23f,.55f,0.2f,0.f,0.12f,.36f,1,true,true,true,375, 0,6,1,0.f,11000,1},
+ {"Keys / Electric Tape",1,2,3,1,0.32f,0.24f,2.6f,28,6500,0.23f,.55f,0.15f,0.f,0.25f,.36f,1,true,true,true,375, 0,5,1,0.2f,5000,1},
+ {"Keys / Analog Velvet",2,2,4,1,0.32f,0.24f,2.6f,28,6500,0.23f,.55f,0.15f,0.f,0.3f,.36f,1,true,true,true,375, 0,5,1,0.2f,3800,1},
+ {"Keys / Stereo Pattern",3,2,4,2,0.32f,0.24f,4.2f,28,6500,0.23f,.55f,0.2f,0.f,0.12f,.36f,1,true,true,true,375, 0,6,1,0.f,11000,2},
+ {"Keys / Cloud Ensemble",0,2,4,1,0.25f,0.24f,8.f,28,6500,0.23f,.55f,0.15f,0.f,0.35f,.36f,1,true,true,true,375, 0,2,1,0.f,11000,1},
+ {"Keys / Halo Pad",5,2,5,1,0.3f,0.24f,8.f,28,6500,0.23f,.55f,0.12f,0.4f,0.25f,.36f,1,true,true,true,375, 0,3,1,0.f,11000,1},
+ {"Keys / Glint Piano",0,2,4,0,0.18f,0.24f,8.f,28,6500,0.23f,.55f,0.3f,0.2f,0.18f,.36f,1,true,true,true,375, 0,4,1,0.f,11000,1},
+ {"Ambient / Cloud Coast",1,2,5,1,0.5f,0.29f,8.f,28,6500,0.3f,.55f,0.12f,0.f,0.45f,.36f,1,true,true,true,375, 0,2,1,0.2f,5000,1},
+ {"Ambient / Halo Ascent",5,2,5,1,0.38f,0.29f,8.f,28,6500,0.3f,.55f,0.1f,0.45f,0.35f,.36f,1,true,true,true,375, 0,3,1,0.f,11000,1},
+ {"Ambient / Glint Bloom",0,2,5,1,0.45f,0.29f,8.f,28,6500,0.3f,.55f,0.1f,0.3f,0.35f,.36f,1,true,true,true,375, 0,4,1,0.f,11000,1},
+ {"Ambient / Slow Bloom",3,2,5,2,0.48f,0.29f,8.f,28,6500,0.3f,.55f,0.15f,0.f,0.4f,.36f,1,true,true,true,375, 0,7,1,0.f,11000,1},
+ {"Ambient / Diffused Echo",0,2,5,1,0.48f,0.29f,8.f,28,6500,0.3f,.55f,0.15f,0.f,0.25f,.36f,1,true,true,true,375, 1,2,1,0.f,11000,1},
+ {"Ambient / Grain Lantern",0,2,4,1,0.35f,0.29f,8.f,28,6500,0.3f,.55f,0.15f,0.2f,0.15f,.36f,1,true,true,true,375, 2,4,1,0.f,11000,1},
+ {"Ambient / Lo-Fi Shore",0,2,4,2,0.4f,0.29f,2.6f,28,6500,0.3f,.55f,0.15f,0.f,0.1f,.36f,1,true,true,true,375, 3,5,1,0.f,11000,1},
+ {"Ambient / Reverse Tide",4,2,5,1,0.35f,0.29f,8.f,28,6500,0.3f,.55f,0.12f,0.f,0.3f,.36f,1,true,true,true,375, 0,2,1,0.f,11000,1},
+ {"Utility / Modern Delay Only",0,2,4,0,0.32f,0.36f,4.2f,28,6500,0.3f,.55f,0.f,0.f,0.f,.36f,1,true,true,false,375, 0,6,1,0.f,11000,1},
+ {"Utility / Modern Reverb Only",0,2,4,0,0.2f,0.29f,4.2f,28,6500,0.36f,.55f,0.f,0.f,0.2f,.36f,1,true,false,true,375, 0,6,1,0.f,11000,1},
+ {"Utility / Vocal Slap Only",0,2,2,0,0.08f,0.36f,1.1f,28,6500,0.3f,.55f,0.25f,0.f,0.f,.36f,1,false,true,false,95, 0,1,1,0.f,11000,1},
+ {"Utility / Cloud Only",0,2,4,1,0.2f,0.29f,8.f,28,6500,0.36f,.55f,0.1f,0.f,0.4f,.36f,1,true,false,true,375, 0,2,1,0.f,11000,1}
 };
 constexpr int numPresets=int(sizeof(presets)/sizeof(Preset));
 } // namespace tide

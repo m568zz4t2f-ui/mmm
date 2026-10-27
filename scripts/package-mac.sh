@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 [ "$(uname -s)" = Darwin ] || { echo 'A macOS build host is required.' >&2; exit 1; }
 TIDE_BUILD_DIR="${TIDE_BUILD_DIR:-build-mac}"
-TIDE_VERSION=1.1.0
+TIDE_VERSION=1.2.0
 if [ "${TIDE_PACKAGE_ONLY:-0}" != 1 ]; then
 cmake -S . -B "$TIDE_BUILD_DIR" -DCMAKE_BUILD_TYPE=Release '-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64' -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0
 cmake --build "$TIDE_BUILD_DIR" --config Release --parallel 2
