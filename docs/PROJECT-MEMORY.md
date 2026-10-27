@@ -12,16 +12,22 @@ Snapshot: 2026-10-27. This repository contains a source/documentation snapshot o
 - Grey delay and blue reverb interface, cached boutique artwork, Static/Activity/Motion graphics, mix and engine locks, A/B snapshots and scoped portable presets.
 
 ## Confirmed source issue, not yet fixed
-PluginProcessor.cpp applyFactory sets pitchMode=Fixed Harmony for Vocal / Air Throw, then the defaults loop resets it to Climbing. Correct initialization order and validate factory preset intentions.
+A focused standalone Echo test reproduced a pending delay-target bug: requesting 300 ms during an active transition to 200 ms leaves the first repeat at 200 ms. Echo::set starts transitions only when fade>=1, while Engine::set skips identical settings afterward. Coalesce requests and apply the latest pending target at a processing transition boundary.
+
+## Corrected finding
+The earlier claim that Air Throw's Fixed Harmony is reset by the defaults loop was incorrect. Parameters.h specs contains float parameters only; pitchMode is a separate choice. applyFactory therefore preserves Fixed Harmony. Do not implement a fix for this nonexistent reset; keep intent-based preset validation.
 
 ## Proposed next update, not implemented
 1. Measure and improve pitch accuracy, high-interval aliasing, transient quality and repeat timing; preserve legacy sessions. Evaluate Signalsmith Stretch as an explicit Studio option only after latency/CPU comparison.
-2. Dedicated original reverbs: Halo (coupled allpass shimmer tank), Prism (spectral pitch plus dedicated FDN), Glint (bloom envelope/diffusion/modulated tank), Cloud Ensemble (dense diffuse tank and ensemble modulation).
-3. Delay expansion: Diffusion and Pattern first; Granular and Resonator after performance/stability validation.
+2. Dedicated original reverbs: Halo (coupled allpass shimmer tank), Aurora Shimmer (working name for spectral pitch plus dedicated FDN, previously proposed as Prism), Glint (bloom envelope/diffusion/modulated tank), Cloud Ensemble (dense diffuse tank and ensemble modulation).
+3. Everyday delay priority: clean Digital, Tape and Analog/Bucket; independent Dual A/B configuration; curated Pattern taps; reusable duck/swell options and slapback/musical recipes. Then Diffusion and bounded Granular; Resonator is conditional.
 4. Preset browser: Delay/Reverb/Combined scopes, direct Factory/User browsing, previous/next, Favorites/Recent, instrument tags, accurate Edited and partial-recall indicators, routing lock, Undo Last Load distinct from A/B.
 5. Profile grouped coefficient updates, safe activity horizons, buffer reuse, unnecessary per-sample work, bounded transition tails and UI polling. Do not lose long buffered repeats, freeze or audible tails.
 6. Preserve parameter IDs and old algorithm mappings. Test choice-parameter migrations before extending lists.
 7. Validate audio, stability and CPU, then build a versioned AU/VST3 Mac installer with rollback support.
+
+## Next-update specification
+See docs/TIDE-1.2-UPDATE-SPEC.md for the consolidated proposed 1.2 scope, research, compatibility strategy, preset counts and validation gates. It is a specification, not a compiled release. Cloud/Halo/Glint are core additions; spectral Aurora, Spring and Resonator remain gated. Proposed presets: 32 combined musical plus 4 utility and two side starters per shipped engine; these are not yet curated.
 
 ## Research and evidence boundaries
 - Official BigSky plugin and firmware are research targets. Strymon's public preset librarian and preset-byte maps do not expose reverb DSP.
