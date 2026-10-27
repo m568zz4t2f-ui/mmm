@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #include "../Source/PluginProcessor.h"
+#include "../Source/PresetBrowser.h"
 #include <iostream>
 #include <cstdlib>
 static void check(bool b,const char* m){if(!b){std::cerr<<"FAIL: "<<m<<'\n';std::exit(1);}}
@@ -33,6 +34,7 @@ int main(int argc,char** argv){
  file.replaceWithText("<WolfTidePreset version=\"1\" scope=\"1\"><p id=\"interval\" value=\"3\"/></WolfTidePreset>");check(p.loadPreset(file,1).wasOk()&&p.value("pitchMode")==0,"1.0 presets retain climbing pitch behavior");file.deleteFile();
  {TideProcessor a,b;a.prepareToPlay(48000,512);b.prepareToPlay(48000,512);a.visualMode.store(0);b.visualMode.store(2);b.editorVisible.store(true);juce::MidiBuffer midi;juce::AudioBuffer<float> x(2,512),y(2,512);
   for(int block=0;block<110;++block){x.clear();if(block<6)x.setSample(0,block,.2f);y.makeCopyOf(x);a.processBlock(x,midi);b.processBlock(y,midi);for(int c=0;c<2;++c)for(int n=0;n<512;++n)check(x.getSample(c,n)==y.getSample(c,n),"visual mode and metering do not change audio");}}
+ {TidePresetBrowser browser(p,0,[]{});juce::ListBox* list=nullptr;juce::TextEditor* search=nullptr;for(auto* child:browser.getChildren()){if(auto* box=dynamic_cast<juce::ListBox*>(child))list=box;if(!search)search=dynamic_cast<juce::TextEditor*>(child);}check(list&&search&&list->getListBoxModel()->getNumRows()==52,"factory browser inventory");search->setText("Cloud");search->onTextChange();check(list->getListBoxModel()->getNumRows()==4,"browser search filters cloud presets");}
  p.setCurrentProgram(-5);check(p.getCurrentProgram()>=0,"invalid factory index ignored");
  p.setValue("send",0);p.setCurrentProgram(0);
  check(p.factoryMatches(),"factory detector matches complete initial state");p.setValue("dWidth",.33f);check(!p.factoryMatches(),"advanced edit marks preset modified");p.setCurrentProgram(0);

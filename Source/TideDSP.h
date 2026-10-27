@@ -246,16 +246,16 @@ class Engine {
     float feed=.65f,direct=1,verbAmount=.24f,verbWidth=1,shimmerAmount=0,freeze=0,bypass=1;
     float predelayOld=0,predelayNew=0,predelayFade=1,lowA=0,duckAttack=0,duckRelease=0,delayRelease=0;
     float smooth=0,gainTarget=1,pitchHP=0,pitchLP=0;std::array<float,11> weights{};std::array<float,11> tailGain{};
-    std::array<bool,11> live{};std::array<unsigned,11> quiet{};bool echoLive=false,shimmerLive=false,settingsReady=false;unsigned echoQuiet=0,echoUnused=0,shimmerQuiet=0,reverbUnused=0,idleFrames=0;
+    int reverbCount=0,tankLimit=4;std::array<bool,11> live{};std::array<unsigned,11> quiet{};bool echoLive=false,shimmerLive=false,settingsReady=false;unsigned echoQuiet=0,echoUnused=0,shimmerQuiet=0,reverbUnused=0,idleFrames=0;
     static float peak(Stereo x) noexcept {return std::max(std::abs(x.l),std::abs(x.r));}
     void clearTank(int i) noexcept {if(i>=4)boutique[std::size_t(i-4)].clear();else if(i==0)room.clear();else if(i==1)plate.clear();else if(i==2){hall.reset();for(auto& early:hallEarly)early.clear();}else{bloomTank.reset();for(auto& row:cloud)for(auto& a:row)a.line.clear();}}
 public:
     float delayPeak=0,reverbPeak=0,outputPeak=0;
-    int activeReverbs() const noexcept {int count=0;for(bool value:live)count+=int(value);return count;}
+    int activeReverbs() const noexcept {return reverbCount;}
     bool activeEcho() const noexcept {return echoLive;}
     bool activeShimmer() const noexcept {return shimmerLive;}
     void prepare(double rate,const Parameters& initial={}){
-        sr=float(std::clamp(rate,8000.,192000.));p=initial;for(std::size_t i=0;i<boutique.size();++i)boutique[i].prepare(sr,int(i)+1);echo.prepare(sr,p);room.prepare(sr);plate.prepare(sr);
+        sr=float(std::clamp(rate,8000.,192000.));tankLimit=4;p=initial;for(std::size_t i=0;i<boutique.size();++i)boutique[i].prepare(sr,int(i)+1);echo.prepare(sr,p);room.prepare(sr);plate.prepare(sr);
         wolf::Settings hs;hs.mix=1;hs.decay=p.decay;hs.predelay=0;hall.prepare(sr,hs);hs.motion=.6f;bloomTank.prepare(sr,hs,true);
         for(std::size_t c=0;c<2;++c){pre[c].prepare(std::size_t(sr*.21f)+8);low[c].z=0;
             hallEarly[c].prepare(std::size_t(sr*.065f)+8);
@@ -265,14 +265,14 @@ public:
         verbAmount=p.reverbAmount;verbWidth=p.reverbWidth;shimmerAmount=p.shimmer;freeze=0;bloom=p.bloom;bypass=1;
         predelayOld=predelayNew=p.predelay*.001f*sr;predelayFade=1;weights={};weights[std::size_t(p.reverbModel?std::clamp(p.reverbModel,1,7)+3:std::clamp(p.reverbType,0,3))]=1;tailGain.fill(1);
         smooth=1-std::exp(-1.f/(sr*.03f));duckAttack=pole(1.f/(2*pi*.008f),sr);duckRelease=pole(1.f/(2*pi*.28f),sr);
-        live={};quiet={};echoLive=shimmerLive=false;echoQuiet=echoUnused=shimmerQuiet=reverbUnused=0;settingsReady=false;set(p);
+        live={};reverbCount=0;quiet={};echoLive=shimmerLive=false;echoQuiet=echoUnused=shimmerQuiet=reverbUnused=0;settingsReady=false;set(p);
     }
-    void clear(){for(auto& model:boutique)model.clear();echo.clear();room.clear();plate.clear();hall.reset();bloomTank.reset();for(auto& d:pre)d.clear();for(auto& row:cloud)for(auto& a:row)a.line.clear();shimmer.clear();pitchFeedback={};low={};shimmerBass={};shimmerTreble={};env=delayEnv=0;for(auto& early:hallEarly)early.clear();idleFrames=0;live={};quiet={};echoLive=shimmerLive=false;echoQuiet=echoUnused=shimmerQuiet=reverbUnused=0;delayPeak=reverbPeak=outputPeak=0;}
+    void clear(){for(auto& model:boutique)model.clear();echo.clear();room.clear();plate.clear();hall.reset();bloomTank.reset();for(auto& d:pre)d.clear();for(auto& row:cloud)for(auto& a:row)a.line.clear();shimmer.clear();pitchFeedback={};low={};shimmerBass={};shimmerTreble={};env=delayEnv=0;for(auto& early:hallEarly)early.clear();idleFrames=0;live={};reverbCount=0;quiet={};echoLive=shimmerLive=false;echoQuiet=echoUnused=shimmerQuiet=reverbUnused=0;delayPeak=reverbPeak=outputPeak=0;}
     void set(const Parameters& next){
         if(settingsReady&&p.values()==next.values())return;
         const bool updateDelay=!settingsReady||p.delayValues()!=next.delayValues();const bool updateReverb=!settingsReady||p.reverbValues()!=next.reverbValues();
         settingsReady=true;idleFrames=0;
-        p=next;duckRelease=std::exp(-1.f/(sr*p.reverbRelease*.001f));delayRelease=std::exp(-1.f/(sr*p.delayRelease*.001f));p.feedback=std::clamp(p.feedback,0.f,.88f);p.decay=std::clamp(p.decay,.25f,20.f);p.bpm=std::clamp(p.bpm,20.f,400.f);
+        p=next;tankLimit=std::max(tankLimit,p.reverbModel?std::clamp(p.reverbModel,1,7)+4:4);duckRelease=std::exp(-1.f/(sr*p.reverbRelease*.001f));delayRelease=std::exp(-1.f/(sr*p.delayRelease*.001f));p.feedback=std::clamp(p.feedback,0.f,.88f);p.decay=std::clamp(p.decay,.25f,20.f);p.bpm=std::clamp(p.bpm,20.f,400.f);
         gainTarget=std::pow(10.f,p.output/20.f);if(updateReverb){shimmer.setModern(p.reverbVersion!=0);shimmer.set(semitones[std::clamp(p.reverbInterval,0,5)]);
         }if(updateDelay)echo.set(p);if(updateReverb){const float decay=std::min(24.f,p.decay*(1+p.bloom*.6f));
         room.set(std::min(8.f,decay),p.reverbTone,p.freeze);plate.set(decay,p.reverbTone,p.freeze);
@@ -312,7 +312,7 @@ public:
         delayPeak=std::max(std::abs(d.l),std::abs(d.r));
         Stereo input{(dry.l*direct+echo.feedOut.l*dd*feed)*reverbActive*bypass,(dry.r*direct+echo.feedOut.r*dd*feed)*reverbActive*bypass};
         reverbUnused=(p.reverbAmount>1e-7f||p.freeze)?0:std::min(reverbUnused+1,unsigned(sr)+2);
-        if(reverbUnused>unsigned(sr)){input={};pitchFeedback={};if(reverbUnused==unsigned(sr)+1){for(std::size_t i=0;i<live.size();++i)if(live[i]){clearTank(int(i));live[i]=false;quiet[i]=0;weights[i]=0;}for(auto& preLine:pre)preLine.clear();low={};}}
+        if(reverbUnused>unsigned(sr)){input={};pitchFeedback={};if(reverbUnused==unsigned(sr)+1){for(std::size_t i=0;i<live.size();++i)if(live[i]){clearTank(int(i));live[i]=false;--reverbCount;quiet[i]=0;weights[i]=0;}for(auto& preLine:pre)preLine.clear();low={};}}
         // Freeze holds tank feedback while removing fresh excitation; modulation may slowly dissipate energy.
         input.l=input.l*(1-freeze)+pitchFeedback.l*shimmerAmount*.025f*(1-freeze);
         input.r=input.r*(1-freeze)+pitchFeedback.r*shimmerAmount*.025f*(1-freeze);
@@ -323,11 +323,11 @@ public:
         for(std::size_t c=0;c<2;++c){const float bass=low[c].tick(raw[c],lowA);raw[c]-=bass*(1-std::clamp(p.bassDecay,0.f,1.f));
             pre[c].push(raw[c]);raw[c]=(1-predelayFade)*pre[c].read(predelayOld)+predelayFade*pre[c].read(predelayNew);}
         const int selected=p.reverbModel?std::clamp(p.reverbModel,1,7)+3:std::clamp(p.reverbType,0,3);
-        for(std::size_t i=0;i<weights.size();++i)if(live[i]||selected==int(i)||weights[i]>0)follow(weights[i],selected==int(i)?1.f:0.f);
+        for(std::size_t i=0;i<std::size_t(tankLimit);++i)if(live[i]||selected==int(i)||weights[i]>0)follow(weights[i],selected==int(i)?1.f:0.f);
         // Allocation is retained; DSP runs only for excitation or an existing tail.
         Stereo wet{};
-        for(std::size_t i=0;i<weights.size();++i){if(!live[i]&&weights[i]==0)continue;Stereo excitation{raw[0]*weights[i],raw[1]*weights[i]};
-            if(peak(excitation)>1e-9f){if(!live[i])tailGain[i]=1;live[i]=true;}
+        for(std::size_t i=0;i<std::size_t(tankLimit);++i){if(!live[i]&&weights[i]==0)continue;Stereo excitation{raw[0]*weights[i],raw[1]*weights[i]};
+            if(peak(excitation)>1e-9f){if(!live[i]){tailGain[i]=1;++reverbCount;}live[i]=true;}
             if(!live[i])continue;
             Stereo tail{};
             if(i>=4)tail=boutique[i-4].tick(excitation);else if(i==0)tail=room.tick(excitation);else if(i==1)tail=plate.tick(excitation);else if(i==2){tail=excitation;hall.process(&tail.l,&tail.r,1,true);
@@ -337,8 +337,9 @@ public:
             if(i>=4&&int(i)!=selected)tailGain[i]=std::max(0.f,tailGain[i]-1.f/(sr*(activeReverbs()>3?.04f:2.f)));
             wet.l+=tail.l*tailGain[i];wet.r+=tail.r*tailGain[i];
             quiet[i]=peak(excitation)>1e-9f||peak(tail)>1e-9f?0:quiet[i]+1;
-            if(quiet[i]>unsigned(sr*.75f)||tailGain[i]<=0){clearTank(int(i));live[i]=false;quiet[i]=0;weights[i]=0;}
+            if(quiet[i]>unsigned(sr*.75f)||tailGain[i]<=0){clearTank(int(i));live[i]=false;--reverbCount;quiet[i]=0;weights[i]=0;}
         }
+        while(tankLimit>4&&tankLimit>selected+1&&!live[std::size_t(tankLimit-1)]&&weights[std::size_t(tankLimit-1)]==0)--tankLimit;
         wet={finite(wet.l),finite(wet.r)};
         if(p.reverbModel!=3&&p.reverbModel!=4&&shimmerAmount>1e-7f&&(peak(wet)>1e-9f||shimmerLive)){shimmerLive=true;auto shifted=shimmer.tick(wet);float shiftedChannels[]={shifted.l,shifted.r};
             for(std::size_t c=0;c<2;++c){shiftedChannels[c]-=shimmerBass[c].tick(shiftedChannels[c],pitchHP);shiftedChannels[c]=shimmerTreble[c].tick(shiftedChannels[c],pitchLP);}
