@@ -18,17 +18,17 @@ test 1
 1: Test timeout computed to be: 1500
 1: ............
 1: ----------------------------------------------------------------------
-1: Ran 12 tests in 1.488s
+1: Ran 12 tests in 1.577s
 1:
 1: OK
- 1/11 Test  #1: installer ........................   Passed    1.61 sec
+ 1/11 Test  #1: installer ........................   Passed    1.76 sec
 test 2
       Start  2: dsp
 
 2: Test command: /workspace/tide-build/full-update/tide_dsp_tests
 2: Working Directory: /workspace/tide-build/full-update
 2: Test timeout computed to be: 1500
-2: PASS: timing, six delays, four reverbs, stereo, shimmer, bypass tails, independent feed, send mode, clear, automation. 3.72761 s
+2: PASS: timing, six delays, four reverbs, stereo, shimmer, bypass tails, independent feed, send mode, clear, automation. 3.72335 s
  2/11 Test  #2: dsp ..............................   Passed    3.73 sec
 test 3
       Start  3: update
@@ -37,7 +37,7 @@ test 3
 3: Working Directory: /workspace/tide-build/full-update
 3: Test timeout computed to be: 1500
 3: PASS: logical clear, conditional DSP, wake-up, 16-second echoes, muted routing, tail transitions, +24 pitch alias rejection (-26.5702 dB).
- 3/11 Test  #3: update ...........................   Passed    0.09 sec
+ 3/11 Test  #3: update ...........................   Passed    0.11 sec
 test 4
       Start  4: models
 
@@ -45,7 +45,7 @@ test 4
 4: Working Directory: /workspace/tide-build/full-update
 4: Test timeout computed to be: 1500
 4: PASS: recipe inventory, dedicated reverb IRs at 3 rates, finite gain, clear, extension delays, independent Dual.
- 4/11 Test  #4: models ...........................   Passed    2.92 sec
+ 4/11 Test  #4: models ...........................   Passed    2.83 sec
 test 5
       Start  5: repairs
 
@@ -53,7 +53,7 @@ test 5
 5: Working Directory: /workspace/tide-build/full-update
 5: Test timeout computed to be: 1500
 5: PASS: ping-pong, independent timing, model isolation, diffusion ownership, plate controls, tail continuity and swell.
- 5/11 Test  #5: repairs ..........................   Passed    0.64 sec
+ 5/11 Test  #5: repairs ..........................   Passed    0.61 sec
 test 6
       Start  6: modern_dsp_lab
 
@@ -61,7 +61,7 @@ test 6
 6: Working Directory: /workspace/tide-build/full-update
 6: Test timeout computed to be: 1500
 6: PASS: 25 experimental machines at five rates, distinct numerical responses, reset, capture freeze and four-slot routing. No musical-equivalence claim.
- 6/11 Test  #6: modern_dsp_lab ...................   Passed   12.77 sec
+ 6/11 Test  #6: modern_dsp_lab ...................   Passed   14.85 sec
 test 7
       Start  7: modern_stress_lab
 
@@ -77,7 +77,7 @@ test 7
 7: prepared,192000,173938528,448
 7: processing,192000,0,0
 7: PASS: allocation instrumentation, bounded automation fixtures, slot sleep, dry identity and invalid-control checks. Not realtime certification.
- 7/11 Test  #7: modern_stress_lab ................   Passed    1.58 sec
+ 7/11 Test  #7: modern_stress_lab ................   Passed    1.69 sec
 test 8
       Start  8: modern_controls
 
@@ -85,7 +85,7 @@ test 8
 8: Working Directory: /workspace/tide-build/full-update
 8: Test timeout computed to be: 1500
 8: PASS: 337 exposed machine/control contracts respond at their extrema. Numerical response, not an audition score.
- 8/11 Test  #8: modern_controls ..................   Passed    8.49 sec
+ 8/11 Test  #8: modern_controls ..................   Passed    9.57 sec
 test 9
       Start  9: host
 
@@ -93,7 +93,7 @@ test 9
 9: Working Directory: /workspace/tide-build/full-update
 9: Test timeout computed to be: 1500
 9: PASS: processor channels, host reset, state, locks, send, scoped files, input rejection, editor.
- 9/11 Test  #9: host .............................   Passed    0.80 sec
+ 9/11 Test  #9: host .............................   Passed    0.70 sec
 test 10
       Start 10: ui
 
@@ -101,7 +101,7 @@ test 10
 10: Working Directory: /workspace/tide-build/full-update
 10: Test timeout computed to be: 1500
 10: PASS: 64 combined, 50 side starters, 206 portable files, independent user names, project recall, automation, 1024 lock combinations, browser refresh and compiled release label.
-10/11 Test #10: ui ...............................   Passed    3.49 sec
+10/11 Test #10: ui ...............................   Passed    3.43 sec
 test 11
       Start 11: modern_host
 
@@ -113,4 +113,4 @@ test 11
 
 100% tests passed, 0 tests failed out of 11
 
-Total Test time (real) =  38.27 sec
+Total Test time (real) =  41.41 sec

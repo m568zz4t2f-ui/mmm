@@ -1,6 +1,6 @@
 # Wolf Tide 1.3.0 — source and Mac installer handoff
 
-Status: **integrated source build candidate**, October 28, 2026. Compiled source build identifier: `866d3cc79c34`. This delivery has no macOS binaries, completed native Mac acceptance or human listening approval. It does not claim completion of those release gates.
+Status: **integrated source build candidate**, October 28, 2026. Compiled source build identifier: `9f5a60bd15aa`. This delivery has no macOS binaries, completed native Mac acceptance or human listening approval. It does not claim completion of those release gates.
 
 ## Included
 

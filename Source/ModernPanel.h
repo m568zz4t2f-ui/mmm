@@ -39,7 +39,7 @@ class TideModernPanel final:public juce::Component,private juce::Timer {
    if(selected==0&&id=="dDiffusion"&&model!=6)continue;if(selected==1&&id=="d2Diffusion"&&model!=6)continue;
    if((id=="dFreeze"||id=="d2Freeze")&&model!=7)continue;
    if(id=="pitchMode"&&model!=5)continue;if(id=="d2PitchMode"&&model!=5)continue;
-   auto text=std::make_unique<juce::Label>();text->setText(parameter->getName(64),juce::dontSendNotification);text->setColour(juce::Label::textColourId,juce::Colour(0xffdce8e9));add(std::move(text),10,300);
+   auto text=std::make_unique<juce::Label>();text->setText(parameter->getName(64)+(parameter->getLabel().isNotEmpty()?" ("+parameter->getLabel()+")":""),juce::dontSendNotification);text->setColour(juce::Label::textColourId,juce::Colour(0xffdce8e9));add(std::move(text),10,300);
    const bool isModel=id=="d13Model"||id=="r13Model"||id=="d2Model"||id=="r2Model";
    if(auto* choice=dynamic_cast<juce::AudioParameterChoice*>(parameter)){auto box=std::make_unique<juce::ComboBox>();auto* raw=box.get();raw->setName(id);raw->addItemList(choice->choices,1);add(std::move(box),320,480);combos.push_back(std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(processor.state,id,*raw));if(isModel)raw->onChange=[this]{queueRebuild();};}
    else if(dynamic_cast<juce::AudioParameterBool*>(parameter)){auto button=std::make_unique<juce::ToggleButton>("Enabled");auto* raw=button.get();raw->setName(id);raw->setClickingTogglesState(true);add(std::move(button),320,180);buttons.push_back(std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(processor.state,id,*raw));}

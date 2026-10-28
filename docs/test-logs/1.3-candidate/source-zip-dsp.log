@@ -1,0 +1,22 @@
+Internal ctest changing into directory: /workspace/tide-build/source-candidate-verify
+Test project /workspace/tide-build/source-candidate-verify
+    Start 1: installer
+1/8 Test #1: installer ........................   Passed    1.91 sec
+    Start 2: dsp
+2/8 Test #2: dsp ..............................   Passed    4.02 sec
+    Start 3: update
+3/8 Test #3: update ...........................   Passed    0.10 sec
+    Start 4: models
+4/8 Test #4: models ...........................   Passed    2.94 sec
+    Start 5: repairs
+5/8 Test #5: repairs ..........................   Passed    0.65 sec
+    Start 6: modern_dsp_lab
+6/8 Test #6: modern_dsp_lab ...................   Passed   20.13 sec
+    Start 7: modern_stress_lab
+7/8 Test #7: modern_stress_lab ................   Passed    3.73 sec
+    Start 8: modern_controls
+8/8 Test #8: modern_controls ..................   Passed   12.77 sec
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =  46.26 sec
