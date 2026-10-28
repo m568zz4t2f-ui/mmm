@@ -1,0 +1,42 @@
+#!/bin/sh
+set -eu
+lock=/var/tmp/audio.wolf.tide-install.lock
+backup=$(/bin/cat "$lock/backup")
+scripts=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+version=$(/bin/cat "$scripts/version.txt")
+rollback() {
+ code=$?
+ trap - 0 1 2 15
+ echo "Tide validation failed; restoring verified backups from $backup" >&2
+ for index in 0 1 2; do
+  record="$backup/$index"; bundle=$(/bin/cat "$record/path")
+  if [ -e "$bundle" ]; then /bin/mv "$bundle" "$record/rejected-update" || exit 1; fi
+  if [ -d "$record/bundle" ]; then
+   /usr/bin/ditto --rsrc --extattr "$record/bundle" "$bundle" || exit 1
+   /usr/bin/diff -qr "$record/bundle" "$bundle" >/dev/null || exit 1
+  fi
+ done
+ printf '%s\n' rolled-back > "$backup/status"
+ /bin/rm -f "$lock/backup"; /bin/rmdir "$lock"
+ exit "$code"
+}
+trap rollback 0
+trap 'exit 1' 1 2 15
+index=0
+for bundle in '/Library/Audio/Plug-Ins/Components/Wolf Tide.component' '/Library/Audio/Plug-Ins/VST3/Wolf Tide.vst3' '/Applications/Wolf Audio/Wolf Tide.app'; do
+ actual=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$bundle/Contents/Info.plist")
+ [ "$actual" = "$version" ]
+ executable=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$bundle/Contents/Info.plist")
+ case "$executable" in ''|*/*) exit 1;; esac
+ /usr/bin/codesign --verify --strict "$bundle"
+ /usr/bin/lipo -verify_arch arm64 x86_64 "$bundle/Contents/MacOS/$executable"
+ expected=$(/usr/bin/sed -n "$((index+1))p" "$scripts/hashes.txt")
+ actual=$(/usr/bin/shasum -a 256 "$bundle/Contents/MacOS/$executable" | /usr/bin/awk '{print $1}')
+ [ "$actual" = "$expected" ]
+ index=$((index+1))
+done
+printf '%s\n' complete > "$backup/status"
+echo "Verified Wolf Tide $version in all system locations. Rollback copies: $backup"
+echo 'Rescan/reopen your host when convenient; no DAW session was closed. Run AU validation in the logged-in user session.'
+trap - 0 1 2 15
+/bin/rm -f "$lock/backup"; /bin/rmdir "$lock"

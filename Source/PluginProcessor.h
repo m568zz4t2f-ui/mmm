@@ -2,7 +2,8 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "Parameters.h"
-class TideProcessor final: public juce::AudioProcessor,private juce::AudioProcessorValueTreeState::Listener {
+#include "TideBuild.h"
+class TideProcessor final: public juce::AudioProcessor {
 public:
     TideProcessor();
     ~TideProcessor()override;
@@ -36,6 +37,11 @@ public:
     juce::Result savePreset(const juce::File&,int scope);
     juce::Result loadPreset(const juce::File&,int scope);
     bool factoryMatches()const;
+    struct PresetDisplay {juce::String name;bool factory=false,modified=false;int index=-1;bool user=false;};
+    PresetDisplay presetDisplay(int scope)const;
+    static juce::String sidePresetName(int scope,int index);
+    juce::String releaseLabel()const {return "Wolf Tide v"+juce::String(JucePlugin_VersionString)+" / "+TIDE_BUILD_ID;}
+
     juce::AudioProcessorValueTreeState state;
     std::atomic<float> delayMeter{0},reverbMeter{0},outputMeter{0},tempo{120};
     std::atomic<bool> tempoFromHost{false},lockDelay{false},lockReverb{false},lockMix{false},lockRouting{false},reducedMotion{false};
@@ -44,8 +50,10 @@ public:
     std::atomic<int> visualMode{1}; // 0 static, 1 activity, 2 continuous
     std::atomic<int> delayPreset{-1},reverbPreset{-1};
 private:
-    void parameterChanged(const juce::String&,float)override{revision.fetch_add(1,std::memory_order_relaxed);}
-    std::atomic<unsigned> revision{0};mutable unsigned cachedRevision=~0u;mutable int cachedProgram=-2;mutable bool cachedMatch=false;
+    struct PresetIdentity {juce::String name;bool factory=false;int index=-1;juce::NamedValueSet values;};
+    std::array<std::shared_ptr<const PresetIdentity>,3> presetIdentities;
+    void rememberPreset(int scope,const juce::String&,bool factory,int index,const juce::NamedValueSet* expected=nullptr);
+    void restorePresetIdentities(const juce::ValueTree&);
     juce::MemoryBlock lastLoad;double preparedRate=0;
     static juce::AudioProcessorValueTreeState::ParameterLayout layout();
     tide::Parameters read()const;

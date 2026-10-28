@@ -1,0 +1,20 @@
+Internal ctest changing into directory: $BUILD
+Test project $BUILD
+    Start 1: installer
+1/7 Test #1: installer ........................   Passed    2.18 sec
+    Start 2: dsp
+2/7 Test #2: dsp ..............................   Passed    4.21 sec
+    Start 3: update
+3/7 Test #3: update ...........................   Passed    0.11 sec
+    Start 4: models
+4/7 Test #4: models ...........................   Passed    3.92 sec
+    Start 5: repairs
+5/7 Test #5: repairs ..........................   Passed    0.73 sec
+    Start 6: host
+6/7 Test #6: host .............................   Passed    0.43 sec
+    Start 7: ui
+7/7 Test #7: ui ...............................   Passed    1.36 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) =  12.95 sec

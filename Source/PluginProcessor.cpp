@@ -1,7 +1,12 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include <cstdlib>
 namespace {
+bool numericValue(const juce::var& raw,float& value){
+    const auto text=raw.toString();const char* begin=text.toRawUTF8();char* end=nullptr;
+    value=float(std::strtod(begin,&end));return end!=begin&&*end==0&&std::isfinite(value);
+}
 constexpr const char* choiceIds[]={"dType","rhythm","stereo","rType","routing","interval","dOn","rOn","sync","send","freeze","rInterval","pitchMode","dModel","rModel","dVersion","dPattern","dDual","dBRhythm","manualTempo","rVersion"};
 // Side preset scope deliberately excludes shared routing, pitch interval and global balance.
 bool inScope(const juce::String& id,int scope){
@@ -29,7 +34,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout TideProcessor::layout(){
     flag("dOn","Delay active",true);flag("rOn","Reverb active",true);flag("sync","Tempo sync",true);flag("send","Send mode",false);flag("freeze","Hold reverb",false);
     choice("pitchMode","Delay pitch routing",{"Climbing repeats","Fixed harmony"},0);
     // Append extensions after every legacy parameter; keep old IDs, order and choice domains.
-    for(int n=31;n<tide::numFloats;++n){const auto& spec=tide::specs[n];result.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{spec.id,1},juce::String(spec.id[0]=='d'?"Delay ":"Reverb ")+spec.name,juce::NormalisableRange<float>{spec.lo,spec.hi,spec.step,spec.skew},spec.initial));}
+    for(int n=31;n<39;++n){const auto& spec=tide::specs[n];result.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{spec.id,1},juce::String(spec.id[0]=='d'?"Delay ":"Reverb ")+spec.name,juce::NormalisableRange<float>{spec.lo,spec.hi,spec.step,spec.skew},spec.initial));}
     choice("dModel","Delay extension",{"Original","Diffusion","Granular Pitch","Lo-Fi"},0);
     choice("rModel","Reverb extension",{"Original","Chamber","Cloud Ensemble","Halo Shimmer","Glint","Studio Plate","Studio Hall","Studio Bloom"},0);
     choice("dVersion","Delay sound version",{"Legacy 1.1","Modern 1.2"},0);
@@ -38,15 +43,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout TideProcessor::layout(){
     choice("dBRhythm","B subdivision",{"1/16","1/8 triplet","1/8","1/8 dotted","1/4","1/4 dotted","1/2","1/2 dotted","1 bar"},4);
     flag("manualTempo","Manual tempo",false);
     choice("rVersion","Reverb sound version",{"Legacy 1.1","Modern 1.2"},0);
+    const auto& spec=tide::specs[39];
+    result.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{spec.id,1},"Delay Diffusion amount",juce::NormalisableRange<float>{spec.lo,spec.hi,spec.step,spec.skew},spec.initial));
     return result;
 }
 TideProcessor::TideProcessor():AudioProcessor(BusesProperties().withInput("Input",juce::AudioChannelSet::stereo(),true).withOutput("Output",juce::AudioChannelSet::stereo(),true)),state(*this,nullptr,"WolfTideState",layout()){
     for(int i=0;i<tide::numFloats;++i)floats[std::size_t(i)]=state.getRawParameterValue(tide::specs[i].id);
     for(int i=0;i<21;++i)choices[std::size_t(i)]=state.getRawParameterValue(choiceIds[i]);
     applyFactory(16,false);
-    for(auto* parameter:getParameters())if(auto* param=dynamic_cast<juce::RangedAudioParameter*>(parameter))state.addParameterListener(param->paramID,this);
 }
-TideProcessor::~TideProcessor(){for(auto* parameter:getParameters())if(auto* param=dynamic_cast<juce::RangedAudioParameter*>(parameter))state.removeParameterListener(param->paramID,this);}
+TideProcessor::~TideProcessor()=default;
 float TideProcessor::value(const juce::String& id)const{if(auto* p=state.getRawParameterValue(id))return p->load();return 0;}
 void TideProcessor::setValue(const juce::String& id,float v){if(auto* p=state.getParameter(id)){p->beginChangeGesture();p->setValueNotifyingHost(p->convertTo0to1(v));p->endChangeGesture();}}
 tide::Parameters TideProcessor::read()const{
@@ -57,7 +63,7 @@ tide::Parameters TideProcessor::read()const{
     auto c=[&](int i){return int(choices[std::size_t(i)]->load());};
     p.delayType=c(0);p.rhythm=c(1);p.stereo=c(2);p.reverbType=c(3);p.routing=c(4);p.interval=c(5);
     p.delayOn=c(6)!=0;p.reverbOn=c(7)!=0;p.sync=c(8)!=0;p.send=c(9)!=0;p.freeze=c(10)!=0;p.reverbInterval=c(11);p.pitchMode=c(12);p.delayModel=c(13);p.reverbModel=c(14);p.soundVersion=c(15);p.pattern=c(16);p.dualMode=c(17);p.bRhythm=c(18);p.manualTempo=c(19)!=0;p.reverbVersion=c(20);
-    p.bTime=f(31);p.bFeedback=f(32);p.bLevel=f(33);p.swell=f(34);p.diffusion=f(35);p.size=f(36);p.attack=f(37);p.regeneration=f(38);return p;
+    p.bTime=f(31);p.bFeedback=f(32);p.bLevel=f(33);p.swell=f(34);p.diffusion=f(35);p.size=f(36);p.attack=f(37);p.regeneration=f(38);p.delayDiffusion=f(39);return p;
 }
 void TideProcessor::prepareToPlay(double sr,int){if(preparedRate!=sr){engine.prepare(sr,read());preparedRate=sr;clearFade=1;clearing=false;}else engine.set(read());setLatencySamples(0);}
 bool TideProcessor::isBusesLayoutSupported(const BusesLayout& b)const{
@@ -99,6 +105,51 @@ juce::NamedValueSet recipe(const tide::Preset& p){
 }
 bool routingControl(const juce::String& id){return id=="routing"||id=="feed"||id=="direct";}
 }
+namespace {
+bool identityParameter(const juce::String& id,int scope){return inScope(id,scope)&&id!="output"&&id!="bpm"&&id!="send"&&id!="manualTempo";}
+}
+juce::String TideProcessor::sidePresetName(int scope,int index){
+    const int model=index/2;
+    const auto name=scope==1?(model<6?tide::delayNames[model]:tide::newDelayNames[model-6]):(model<4?tide::reverbNames[model]:tide::newReverbNames[model-4]);
+    return juce::String(name)+(index%2?" / Wide":" / Focused");
+}
+void TideProcessor::rememberPreset(int scope,const juce::String& name,bool factory,int index,const juce::NamedValueSet* expected){
+    auto identity=std::make_shared<PresetIdentity>();identity->name=name.substring(0,256);identity->factory=factory;identity->index=index;
+    for(auto* parameter:getParameters())if(auto* param=dynamic_cast<juce::RangedAudioParameter*>(parameter))if(identityParameter(param->paramID,scope)){
+        const auto id=param->paramID;float v=value(id);
+        if(expected&&expected->contains(id))v=param->getNormalisableRange().snapToLegalValue(float((*expected)[id]));
+        identity->values.set(id,v);
+    }
+    std::atomic_store(&presetIdentities[std::size_t(scope)],std::shared_ptr<const PresetIdentity>(identity));
+}
+TideProcessor::PresetDisplay TideProcessor::presetDisplay(int scope)const{
+    if(scope<0||scope>2)return {};
+    auto identity=std::atomic_load(&presetIdentities[std::size_t(scope)]);
+    if(!identity)return {scope==0?"Custom combination":scope==1?"Custom delay":"Custom reverb",false,false,-1};
+    bool modified=false;
+    for(int i=0;i<identity->values.size();++i){const float expected=float(identity->values.getValueAt(i));if(std::abs(value(identity->values.getName(i).toString())-expected)>std::max(1e-6f,std::abs(expected)*1e-7f)){modified=true;break;}}
+    return {identity->name,identity->factory,modified,identity->index,!identity->factory};
+}
+void TideProcessor::restorePresetIdentities(const juce::ValueTree& tree){
+    for(auto& identity:presetIdentities)std::atomic_store(&identity,std::shared_ptr<const PresetIdentity>{});
+    const int selected=program.load();
+    if(selected>=0&&selected<tide::numPresets){const auto expected=recipe(tide::presets[selected]);for(int scope=0;scope<3;++scope)rememberPreset(scope,tide::presets[selected].name,true,scope==0?selected:-1,&expected);}
+    else if(loadedName.isNotEmpty()&&loadedName!="Custom combination")rememberPreset(0,loadedName,false,-1);
+    std::array<bool,3> restored{};
+    for(const auto& child:tree)if(child.hasType("TidePresetIdentity")){
+        const int scope=int(child.getProperty("scope",-1));if(scope<0||scope>2||restored[std::size_t(scope)])continue;
+        auto identity=std::make_shared<PresetIdentity>();identity->name=child.getProperty("name").toString().substring(0,256);identity->factory=bool(child.getProperty("factory",false));identity->index=int(child.getProperty("index",-1));
+        if(identity->name.isEmpty()||identity->index < -1||identity->index>=(scope==0?tide::numPresets:scope==1?18:22))continue;
+        bool valid=true;
+        for(const auto& item:child){const auto id=item.getProperty("id").toString();auto* param=state.getParameter(id);float v=0;
+            if(!param||!identityParameter(id,scope)||identity->values.contains(id)||!numericValue(item.getProperty("value"),v)||v<param->getNormalisableRange().start||v>param->getNormalisableRange().end){valid=false;break;}
+            identity->values.set(id,v);
+        }
+        for(auto* parameter:getParameters())if(auto* param=dynamic_cast<juce::RangedAudioParameter*>(parameter))if(identityParameter(param->paramID,scope)&&!identity->values.contains(param->paramID))valid=false;
+        if(valid){std::atomic_store(&presetIdentities[std::size_t(scope)],std::shared_ptr<const PresetIdentity>(identity));restored[std::size_t(scope)]=true;}
+    }
+    delayPreset.store(presetDisplay(1).index);reverbPreset.store(presetDisplay(2).index);
+}
 void TideProcessor::captureUndo(){getStateInformation(lastLoad);undoReady=true;}
 void TideProcessor::undoLastLoad(){if(!undoReady)return;juce::MemoryBlock now;getStateInformation(now);setStateInformation(lastLoad.getData(),int(lastLoad.getSize()));lastLoad=now;}
 void TideProcessor::applyFactory(int i,bool respect){
@@ -108,40 +159,66 @@ void TideProcessor::applyFactory(int i,bool respect){
         if(id=="output"||id=="bpm"||id=="send"||id=="manualTempo")continue;
         if(respect&&((lockDelay.load()&&inScope(id,1))||(lockReverb.load()&&inScope(id,2))||(lockMix.load()&&(id=="mix"||id=="dAmount"||id=="rAmount"))||(lockRouting.load()&&routingControl(id))))continue;
         setValue(id,float(values.getValueAt(n)));}
-    program.store(i);loadedName=tide::presets[i].name;loadedScope=0;delayPreset.store(-1);reverbPreset.store(-1);
+    program.store(i);loadedName=tide::presets[i].name;loadedScope=0;
+    rememberPreset(0,loadedName,true,i,&values);
+    if(!respect||!lockDelay.load()){rememberPreset(1,loadedName,true,-1,&values);delayPreset.store(-1);}
+    if(!respect||!lockReverb.load()){rememberPreset(2,loadedName,true,-1,&values);reverbPreset.store(-1);}
 }
 void TideProcessor::setCurrentProgram(int i){applyFactory(i,true);}
 void TideProcessor::applyDelayPreset(int i,bool alternate){if(i<0||i>8)return;captureUndo();
     const float amt=value("dAmount");for(const auto& spec:tide::specs)if(inScope(spec.id,1))setValue(spec.id,spec.initial);
     setValue("dModel",float(i>=6?i-5:0));setValue("dType",float(i<6?i:0));setValue("dVersion",1);setValue("dOn",1);setValue("sync",1);setValue("rhythm",alternate?3.f:4.f);setValue("stereo",alternate?2.f:0.f);setValue("interval",3);setValue("pitchMode",1);setValue("drive",i==1||i==2?.2f:0.f);setValue("dMotion",i==1?.2f:i==2?.25f:0.f);setValue("dTone",i==1?5200.f:i==2?3800.f:11000.f);setValue("dDual",0);setValue("dPattern",alternate?2.f:1.f);setValue("dBRhythm",3);
     if(lockMix.load())setValue("dAmount",amt);loadedScope=1;delayPreset.store(i*2+int(alternate));program.store(-1);loadedName="Custom combination";
+    juce::NamedValueSet expected;expected.set(loadedScope==1?"dAmount":"rAmount",loadedScope==1?tide::specs[3].initial:tide::specs[14].initial);
+    rememberPreset(loadedScope,sidePresetName(loadedScope,i*2+int(alternate)),true,i*2+int(alternate),&expected);
 }
 void TideProcessor::applyReverbPreset(int i,bool alternate){if(i<0||i>10)return;captureUndo();
     const float amt=value("rAmount");for(const auto& spec:tide::specs)if(inScope(spec.id,2))setValue(spec.id,spec.initial);
     setValue("rModel",float(i>=4?i-3:0));setValue("rType",float(i<4?i:2));setValue("rVersion",1);setValue("rInterval",3);setValue("rOn",1);setValue("rDecay",i==0?1.2f:i==1?2.4f:i==4?1.1f:alternate?8.f:4.5f);setValue("rPredelay",alternate?45.f:18.f);setValue("rMotion",alternate?.35f:.18f);
     if(i==6||i==7)setValue("shimmer",alternate?.45f:.25f);if(i==3||i==10)setValue("rAttack",alternate?.9f:.3f);
     if(lockMix.load())setValue("rAmount",amt);loadedScope=2;reverbPreset.store(i*2+int(alternate));program.store(-1);loadedName="Custom combination";
+    juce::NamedValueSet expected;expected.set(loadedScope==1?"dAmount":"rAmount",loadedScope==1?tide::specs[3].initial:tide::specs[14].initial);
+    rememberPreset(loadedScope,sidePresetName(loadedScope,i*2+int(alternate)),true,i*2+int(alternate),&expected);
 }
 bool TideProcessor::factoryMatches()const{
-    const int i=program.load();if(i<0||i>=tide::numPresets)return false;
-    const auto current=revision.load();if(current==cachedRevision&&i==cachedProgram)return cachedMatch;
-    cachedRevision=current;cachedProgram=i;cachedMatch=true;const auto expected=recipe(tide::presets[i]);
-    for(int n=0;n<expected.size();++n){auto id=expected.getName(n).toString();if(id=="output"||id=="bpm"||id=="send"||id=="manualTempo")continue;
-        if(std::abs(value(id)-float(expected.getValueAt(n)))>.011f){cachedMatch=false;break;}}
-    return cachedMatch;
+    const auto display=presetDisplay(0);
+    return display.factory&&!display.modified&&display.index==program.load();
 }
 void TideProcessor::getStateInformation(juce::MemoryBlock& out){
-    auto tree=state.copyState();tree.setProperty("version",2,nullptr);tree.setProperty("loadedName",loadedName,nullptr);tree.setProperty("lockRouting",lockRouting.load(),nullptr);tree.setProperty("program",program.load(),nullptr);
+    auto tree=state.copyState();tree.setProperty("version",3,nullptr);tree.setProperty("loadedName",loadedName,nullptr);tree.setProperty("lockRouting",lockRouting.load(),nullptr);tree.setProperty("program",program.load(),nullptr);
     tree.setProperty("lockDelay",lockDelay.load(),nullptr);tree.setProperty("lockReverb",lockReverb.load(),nullptr);tree.setProperty("lockMix",lockMix.load(),nullptr);tree.setProperty("reducedMotion",reducedMotion.load(),nullptr);tree.setProperty("visualMode",visualMode.load(),nullptr);
+    tree.setProperty("loadedScope",loadedScope,nullptr);
+    for(int scope=0;scope<3;++scope)if(auto identity=std::atomic_load(&presetIdentities[std::size_t(scope)])){
+        juce::ValueTree node("TidePresetIdentity");node.setProperty("scope",scope,nullptr);node.setProperty("name",identity->name,nullptr);node.setProperty("factory",identity->factory,nullptr);node.setProperty("index",identity->index,nullptr);
+        for(int i=0;i<identity->values.size();++i){juce::ValueTree item("PresetValue");item.setProperty("id",identity->values.getName(i).toString(),nullptr);item.setProperty("value",identity->values.getValueAt(i),nullptr);node.addChild(item,-1,nullptr);}
+        tree.addChild(node,-1,nullptr);
+    }
     if(auto xml=tree.createXml())copyXmlToBinary(*xml,out);
 }
 void TideProcessor::setStateInformation(const void* data,int size){
+    if(size<=0||size>1024*1024)return;
     if(auto xml=getXmlFromBinary(data,size))if(xml->hasTagName("WolfTideState")){
-        auto tree=juce::ValueTree::fromXml(*xml);if(!tree.isValid())return;
+        auto tree=juce::ValueTree::fromXml(*xml);if(!tree.isValid()||int(tree.getProperty("version",1))<1||int(tree.getProperty("version",1))>3)return;
+        juce::StringArray seen;
+        for(const auto& child:tree){const auto id=child.getProperty("id").toString();if(auto* param=state.getParameter(id)){
+            if(!child.hasProperty("value")||seen.contains(id))return;
+            float v=0;if(!numericValue(child.getProperty("value"),v))return;const auto& range=param->getNormalisableRange();
+            if(!std::isfinite(v)||v<range.start||v>range.end)return;
+            if(dynamic_cast<juce::AudioParameterChoice*>(param)||dynamic_cast<juce::AudioParameterBool*>(param))if(std::abs(v-std::round(v))>1e-5f)return;
+            seen.add(id);
+        }}
+        const int schema=int(tree.getProperty("version",1));
+        const int required=schema>=3?61:schema==2?60:43;
+        for(int n=0;n<required;++n){auto* param=dynamic_cast<juce::RangedAudioParameter*>(getParameters()[n]);if(param&&!seen.contains(param->paramID))return;}
         // Extension defaults belong to old states, never to the last modern preset played.
         for(int i=31;i<tide::numFloats;++i)if(!tree.getChildWithProperty("id",tide::specs[i].id).isValid())setValue(tide::specs[i].id,tide::specs[i].initial);
         constexpr const char* added[]={"dModel","rModel","dVersion","dPattern","dDual","dBRhythm","manualTempo","rVersion"};
         for(const auto* id:added)if(!tree.getChildWithProperty("id",id).isValid())if(auto* param=state.getParameter(id))param->setValueNotifyingHost(param->getDefaultValue());
+        if(!tree.getChildWithProperty("id","dDiffusion").isValid()){
+            auto reverbDiffusion=tree.getChildWithProperty("id","rDiffusion");
+            const float migrated=float(reverbDiffusion.getProperty("value",.7f));
+            setValue("dDiffusion",std::isfinite(migrated)?migrated:.7f);
+        }
         loadedName=tree.getProperty("loadedName","Custom combination").toString();lockRouting.store(bool(tree.getProperty("lockRouting",false)));
         if(!tree.getChildWithProperty("id","pitchMode").isValid())setValue("pitchMode",0); // 1.0 sessions used climbing feedback.
         // Merge only known, finite parameters. Never replace the tree with malformed/missing values.
@@ -150,27 +227,36 @@ void TideProcessor::setStateInformation(const void* data,int size){
             if(std::isfinite(v))param->setValueNotifyingHost(param->convertTo0to1(v));}}
         program.store(juce::jlimit(-1,tide::numPresets-1,int(tree.getProperty("program",-1))));
         lockDelay.store(bool(tree.getProperty("lockDelay",false)));lockReverb.store(bool(tree.getProperty("lockReverb",false)));lockMix.store(bool(tree.getProperty("lockMix",false)));reducedMotion.store(bool(tree.getProperty("reducedMotion",false)));
+        loadedScope=juce::jlimit(0,2,int(tree.getProperty("loadedScope",0)));restorePresetIdentities(tree);
         visualMode.store(juce::jlimit(0,2,int(tree.getProperty("visualMode",reducedMotion.load()?0:1))));
     }
 }
 juce::Result TideProcessor::savePreset(const juce::File& file,int scope){
-    juce::XmlElement root("WolfTidePreset");root.setAttribute("version",2);root.setAttribute("scope",scope);root.setAttribute("name",file.getFileNameWithoutExtension());root.setAttribute("presetId",scope==0&&factoryMatches()?"factory.tide."+juce::String(program.load()):juce::Uuid().toString());root.setAttribute("delayModel",int(value("dModel")));root.setAttribute("reverbModel",int(value("rModel")));root.setAttribute("delayVersion",int(value("dVersion")));root.setAttribute("reverbVersion",int(value("rVersion")));
+    juce::XmlElement root("WolfTidePreset");root.setAttribute("version",3);root.setAttribute("scope",scope);root.setAttribute("name",file.getFileNameWithoutExtension());root.setAttribute("presetId",scope==0&&factoryMatches()?"factory.tide."+juce::String(program.load()):juce::Uuid().toString());root.setAttribute("delayModel",int(value("dModel")));root.setAttribute("reverbModel",int(value("rModel")));root.setAttribute("delayVersion",int(value("dVersion")));root.setAttribute("reverbVersion",int(value("rVersion")));
     for(auto* p:getParameters())if(auto* param=dynamic_cast<juce::RangedAudioParameter*>(p))if(inScope(param->paramID,scope)){
         auto* child=root.createNewChildElement("p");child->setAttribute("id",param->paramID);child->setAttribute("value",double(param->convertFrom0to1(param->getValue())));}
-    return file.replaceWithText(root.toString())?juce::Result::ok():juce::Result::fail("Could not write preset. Choose a writable folder.");
+    if(!file.replaceWithText(root.toString()))return juce::Result::fail("Could not write preset. Choose a writable folder.");
+    rememberPreset(scope,file.getFileNameWithoutExtension(),false,-1);
+    return juce::Result::ok();
 }
 juce::Result TideProcessor::loadPreset(const juce::File& file,int scope){
     if(file.getSize()>1024*1024)return juce::Result::fail("Preset exceeds 1 MB limit.");
-    auto xml=juce::XmlDocument::parse(file);if(!xml||!xml->hasTagName("WolfTidePreset")||(xml->getIntAttribute("version")<1||xml->getIntAttribute("version")>2)||xml->getIntAttribute("scope",-1)!=scope)return juce::Result::fail("Choose a Wolf Tide preset saved for this section.");
+    auto xml=juce::XmlDocument::parse(file);if(!xml||!xml->hasTagName("WolfTidePreset")||(xml->getIntAttribute("version")<1||xml->getIntAttribute("version")>3)||xml->getIntAttribute("scope",-1)!=scope)return juce::Result::fail("Choose a Wolf Tide preset saved for this section.");
     bool hasPitchMode=false;int valid=0;juce::StringArray seen;for(auto* child:xml->getChildIterator()){
-        auto id=child->getStringAttribute("id");auto* param=state.getParameter(id);const float v=float(child->getDoubleAttribute("value",std::numeric_limits<double>::quiet_NaN()));
+        auto id=child->getStringAttribute("id");auto* param=state.getParameter(id);float v=0;if(!numericValue(child->getStringAttribute("value"),v))return juce::Result::fail("Invalid preset number.");
         if(xml->getIntAttribute("version")==1&&scope==2&&(id=="rhythm"||id=="ratio"))continue;
         if(!param||!inScope(id,scope)||!std::isfinite(v)||seen.contains(id)||v<param->getNormalisableRange().start||v>param->getNormalisableRange().end)return juce::Result::fail("Invalid preset parameter.");
+        if(dynamic_cast<juce::AudioParameterChoice*>(param)||dynamic_cast<juce::AudioParameterBool*>(param))if(std::abs(v-std::round(v))>1e-5f)return juce::Result::fail("Invalid preset choice.");
         seen.add(id);if(id=="pitchMode")hasPitchMode=true;
         ++valid;}
     if(valid==0)return juce::Result::fail("Preset contains no parameters.");
-    if(xml->getIntAttribute("version")==2){int required=0;for(auto* parameter:getParameters())if(auto* param=dynamic_cast<juce::RangedAudioParameter*>(parameter))if(inScope(param->paramID,scope))++required;if(valid!=required)return juce::Result::fail("Preset is incomplete for this version.");}
+    if(xml->getIntAttribute("version")>=2)for(auto* parameter:getParameters())if(auto* param=dynamic_cast<juce::RangedAudioParameter*>(parameter))if(inScope(param->paramID,scope)&&(xml->getIntAttribute("version")>=3||param->paramID!="dDiffusion")&&!seen.contains(param->paramID))return juce::Result::fail("Preset is incomplete for this version.");
     captureUndo();
+    if(scope!=2&&!seen.contains("dDiffusion")&&!(scope==0&&lockDelay.load())){
+        float migrated=.7f;
+        for(auto* child:xml->getChildIterator())if(child->getStringAttribute("id")=="rDiffusion")migrated=float(child->getDoubleAttribute("value",.7));
+        setValue("dDiffusion",migrated);
+    }
     if(xml->getIntAttribute("version")==1){for(int n=31;n<tide::numFloats;++n)if(inScope(tide::specs[n].id,scope)&&!(scope==0&&((lockDelay.load()&&inScope(tide::specs[n].id,1))||(lockReverb.load()&&inScope(tide::specs[n].id,2)))))setValue(tide::specs[n].id,tide::specs[n].initial);
       for(const auto* id:{"dModel","rModel","dVersion","dPattern","dDual","dBRhythm","manualTempo","rVersion"})if(inScope(id,scope)&&!(scope==0&&((lockDelay.load()&&inScope(id,1))||(lockReverb.load()&&inScope(id,2)))))if(auto* param=state.getParameter(id))param->setValueNotifyingHost(param->getDefaultValue());}
     if(scope!=2&&!hasPitchMode&&!(scope==0&&lockDelay.load()))setValue("pitchMode",0);
@@ -179,7 +265,12 @@ juce::Result TideProcessor::loadPreset(const juce::File& file,int scope){
         if(lockRouting.load()&&routingControl(id))continue;
         if(lockMix.load()&&(id=="mix"||id=="dAmount"||id=="rAmount"))continue;
         setValue(id,float(child->getDoubleAttribute("value")));}
-    program.store(-1);loadedName=xml->getStringAttribute("name",file.getFileNameWithoutExtension());loadedScope=scope;return juce::Result::ok();
+    program.store(-1);loadedName=xml->getStringAttribute("name",file.getFileNameWithoutExtension());loadedScope=scope;
+    juce::NamedValueSet expected;for(auto* child:xml->getChildIterator())if(auto* param=state.getParameter(child->getStringAttribute("id")))expected.set(param->paramID,float(child->getDoubleAttribute("value")));
+    rememberPreset(scope,loadedName,false,-1,&expected);
+    if(scope==0){if(!lockDelay.load())rememberPreset(1,loadedName,false,-1,&expected);if(!lockReverb.load())rememberPreset(2,loadedName,false,-1,&expected);}
+    else if(scope==1)delayPreset.store(-1);else reverbPreset.store(-1);
+    return juce::Result::ok();
 }
 juce::AudioProcessorEditor* TideProcessor::createEditor(){return new TideEditor(*this);}
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter(){return new TideProcessor();}

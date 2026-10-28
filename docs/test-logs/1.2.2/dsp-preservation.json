@@ -1,0 +1,9 @@
+{
+  "source_1_2_1_sha256": "0b4811e46325b3478a7ea69b24cc329ba9d8505e90ccb43aec6a0d16820473c0",
+  "unchanged_files": {
+    "Source/TideDSP.h": "7a6eb0c10e65b8db7ff6d7d767a057474a27a6be889a8d192684e3379a4a7a93",
+    "Source/BloomDSP.h": "011d2da47069e8f6003e73082ea086bfb55c9be69d57712ec53a76626cff91fb",
+    "Source/Parameters.h": "8172a2a4602da61872a6f4e7501c65d8bdb4c72cee089842a16d6a8d91661675"
+  },
+  "unchanged_processor_audio_path": true
+}

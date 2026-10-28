@@ -42,7 +42,8 @@ inline constexpr Spec specs[]={
  {"rDiffusion","Diffusion",0,1,.001f,1,.7f,"%"},
  {"rSize","Size",.5f,1.7f,.001f,1,1,"x"},
  {"rAttack","Bloom attack",.01f,2,.001f,.5f,.18f,"s"},
- {"rRegeneration","Pitch regeneration",0,.7f,.001f,1,.3f,"%"}
+ {"rRegeneration","Pitch regeneration",0,.7f,.001f,1,.3f,"%"},
+ {"dDiffusion","Delay diffusion",0,1,.001f,1,.7f,"%"}
 };
 constexpr int numFloats=int(sizeof(specs)/sizeof(Spec));
 inline constexpr const char* delayNames[]={"Digital","Tape","Bucket","Multitap","Reverse","Pitch"};

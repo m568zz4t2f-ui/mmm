@@ -4,7 +4,12 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 [ "$(uname -s)" = Darwin ] || { echo 'A macOS build host is required.' >&2; exit 1; }
 TIDE_BUILD_DIR="${TIDE_BUILD_DIR:-build-mac}"
-TIDE_VERSION=1.2.0
+TIDE_VERSION=$(python3 - <<'PYVERSION'
+import re
+from pathlib import Path
+print(re.search(r'project\(WolfTide VERSION ([0-9.]+)',Path('CMakeLists.txt').read_text()).group(1))
+PYVERSION
+)
 if [ "${TIDE_PACKAGE_ONLY:-0}" != 1 ]; then
 cmake -S . -B "$TIDE_BUILD_DIR" -DCMAKE_BUILD_TYPE=Release '-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64' -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0
 cmake --build "$TIDE_BUILD_DIR" --config Release --parallel 2
@@ -32,6 +37,26 @@ cp LICENSE "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/LI
 if [ -d Factory-Presets ]; then
  ditto Factory-Presets "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Factory Presets"
 fi
+# Version and executable digests come from the signed payload, never a display label.
+mkdir -p "$TIDE_STAGE/hooks"
+cp scripts/mac-package-hooks/preinstall scripts/mac-package-hooks/postinstall "$TIDE_STAGE/hooks/"
+chmod 755 "$TIDE_STAGE/hooks/preinstall" "$TIDE_STAGE/hooks/postinstall"
+printf '%s\n' "$TIDE_VERSION" > "$TIDE_STAGE/hooks/version.txt"
+python3 - "$TIDE_STAGE/root" "$TIDE_STAGE/hooks/hashes.txt" "$TIDE_VERSION" <<'PYHASH'
+import hashlib,plistlib,subprocess,sys
+from pathlib import Path
+root=Path(sys.argv[1]);hashes=[]
+for relative in ['Library/Audio/Plug-Ins/Components/Wolf Tide.component','Library/Audio/Plug-Ins/VST3/Wolf Tide.vst3','Applications/Wolf Audio/Wolf Tide.app']:
+ bundle=root/relative
+ with (bundle/'Contents/Info.plist').open('rb') as stream: info=plistlib.load(stream)
+ if info['CFBundleShortVersionString']!=sys.argv[3]:raise SystemExit('Payload version mismatch: '+str(bundle))
+ executable=info['CFBundleExecutable']
+ if Path(executable).name!=executable:raise SystemExit('Invalid payload executable')
+ binary=bundle/'Contents/MacOS'/executable
+ subprocess.run(['lipo','-verify_arch','arm64','x86_64',str(binary)],check=True)
+ hashes.append(hashlib.sha256(binary.read_bytes()).hexdigest())
+Path(sys.argv[2]).write_text('\n'.join(hashes)+'\n')
+PYHASH
 mkdir -p dist
 TIDE_UNSIGNED="dist/Wolf-Tide-$TIDE_VERSION-unsigned.pkg"
 pkgbuild --analyze --root "$TIDE_STAGE/root" "$TIDE_STAGE/components.plist"
@@ -45,7 +70,7 @@ for component in components:
  component['BundleOverwriteAction']='upgrade'
 path.write_bytes(plistlib.dumps(components))
 PYCOMP
-pkgbuild --component-plist "$TIDE_STAGE/components.plist" --root "$TIDE_STAGE/root" --identifier audio.wolf.tide.pkg --version "$TIDE_VERSION" --install-location / "$TIDE_UNSIGNED"
+pkgbuild --scripts "$TIDE_STAGE/hooks" --component-plist "$TIDE_STAGE/components.plist" --root "$TIDE_STAGE/root" --identifier audio.wolf.tide.pkg --version "$TIDE_VERSION" --install-location / "$TIDE_UNSIGNED"
 pkgutil --payload-files "$TIDE_UNSIGNED" > dist/mac-payload.txt
 if [ -n "${TIDE_INSTALLER_IDENTITY:-}" ]; then
  [ -n "${TIDE_APP_IDENTITY:-}" ] || { echo 'Developer ID Application identity required for signed release.' >&2; exit 1; }

@@ -1,3 +1,15 @@
+# Current update: Tide 1.2.2 maintenance source
+
+See [RELEASE-1.2.2.md](RELEASE-1.2.2.md) for independent preset identity/Modified tracking, shared selector refresh, compiled version/source-build label, native installation migration and package conflict detection. DSP and parameter declarations remain identical to the delivered 1.2.1 archive. The user reported system 1.2.1 plus user 1.2.0 bundles; those live Mac files were not inspected or modified here. New native Mac/AU/package gates are still pending. Preserve the previous source ZIP and installations until the native migration succeeds. Cosmos/Prism and environment configuration are unchanged. Graphify was not updated.
+
+---
+
+# Current update: Tide 1.2.1
+
+The current workspace contains the 1.2.1 repair update. See [RELEASE-1.2.1.md](RELEASE-1.2.1.md) and `docs/test-logs/1.2.1/` for implemented repairs, migration rules, Linux validation and remaining Mac/listening work. The installed Mac version described below remains 1.2.0; no new Mac build or install was performed. Do not treat historical 1.2 audit failures as current test results or this Linux update as native Mac validation. Cosmos and Prism are unchanged. Graphify was not updated in this session.
+
+---
+
 # Wolf Tide project memory
 
 Updated October 27, 2026. The default branch now consolidates **Tide 1.2.0**, its effect audit and available project assets. Historical 1.1/planning claims are superseded by the release source and audit. Tide is separate from Cosmos and Prism.

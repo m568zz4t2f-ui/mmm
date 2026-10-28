@@ -14,6 +14,7 @@ public:
  void paint(juce::Graphics&)override;
  void resized()override;
  void visibilityChanged()override;
+ void refreshSelectors();
 private:
  void timerCallback()override;
  void showEdit(int);
@@ -35,7 +36,7 @@ private:
  juce::TextButton lockDelay{"LOCK"},lockReverb{"LOCK"},lockMix{"LOCK MIX"},motion{"MOTION"};
  juce::TextButton undo{"A / B"},undoLoad{"UNDO LOAD"},tap{"TAP"},lockRoute{"LOCK ROUTE"},help{"?"};
  double lastTap=0;
- juce::Label status,tempoLabel;
+ juce::Label status,tempoLabel,buildLabel;
  juce::TooltipWindow tips{this,650};
  std::unique_ptr<juce::FileChooser> chooser;juce::MemoryBlock alternate;
  int editing=0;float phase=0,dLevel=0,rLevel=0,oLevel=0;bool alternateReady=false;

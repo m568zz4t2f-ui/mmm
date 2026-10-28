@@ -1,8 +1,8 @@
-# Wolf Tide 1.2.0
+# Wolf Tide 1.2.2
 
 Stereo delay into reverb by Wolf Audio: grey delay, blue reverb, independent engines and presets, and combined instrument presets.
 
-**Current status:** native Mac universal AU/VST3/Standalone 1.2.0 is installed and builds successfully, but the effect audit found reproducible functional defects. Read the [effect audit and repair order](docs/TIDE-1.2.0-EFFECT-AUDIT.md) before treating this as a finished release. This archive adds documentation/assets, not fixes to those defects.
+**Current status:** 1.2.2 maintenance source update for independent preset identities, synchronized UI and safer installation. The 1.2.1 DSP is unchanged. See [1.2.2 release notes, migration and validation limits](docs/RELEASE-1.2.2.md). Mac build/AU/installer validation and cleanup of the reported live user/system conflict remain pending; this cloud session has no Mac control tools.
 
 ![Tide interface](preview/Wolf-Tide-1.2.0.png)
 
@@ -34,7 +34,7 @@ cmake --build build-dsp --parallel 2
 ctest --test-dir build-dsp --output-on-failure
 ```
 
-AU requires macOS; Windows is not validated. Passing these suites does not override the audit's known behavioral failures.
+AU requires macOS; Windows is not validated. On headless Linux use `xvfb-run -a ctest --test-dir build --output-on-failure`. Required Linux development packages include ALSA, X11/Xext/Xinerama/Xrandr/Xcursor, FreeType/fontconfig and OpenGL. The versioned release notes distinguish repaired defects from remaining musical/platform work.
 
 ## Install and distribute
 
