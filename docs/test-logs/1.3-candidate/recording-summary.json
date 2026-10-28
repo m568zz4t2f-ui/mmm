@@ -1,0 +1,14 @@
+{
+  "delay": {
+    "renders": 24,
+    "calibrated_energy_db_min": -3.594534247384584,
+    "calibrated_energy_db_max": -0.4699372006371033,
+    "calibrated_peak_max": 1.25094
+  },
+  "reverb": {
+    "renders": 26,
+    "calibrated_energy_db_min": -11.689912399158,
+    "calibrated_energy_db_max": -0.33667419462781895,
+    "calibrated_peak_max": 0.948148
+  }
+}

@@ -24,6 +24,7 @@ int main(int argc,char** argv){
  juce::ScopedJuceInitialiser_GUI init;TideProcessor p;TideEditor editor(p);
  bool version=false;for(auto* child:editor.getChildren())if(child->getName()=="releaseBuild")if(auto* label=dynamic_cast<juce::Label*>(child))version=label->getText().contains("Wolf Tide v"+juce::String(JucePlugin_VersionString))&&label->getText().contains(TIDE_BUILD_ID);
  check(version,"prominent release label follows compiled version and source build identifier");
+ p.setValue("sync",0);p.setValue("dTime",375);editor.refreshSelectors();p.setValue("sync",1);p.setValue("rhythm",4);editor.refreshSelectors();bool syncText=false;for(auto* child:editor.getChildren())if(auto* slider=dynamic_cast<juce::Slider*>(child))if(slider->getName()=="Time")for(auto* field:slider->getChildren())if(auto* value=dynamic_cast<juce::Label*>(field))syncText|=value->getText().contains("500.0");check(syncText,"sync toggle updates actual time even when BPM and stored milliseconds are unchanged");
  for(int i=0;i<tide::numPresets;++i){
   auto& box=combo(editor,"combinedPreset");box.setSelectedId(i+1,juce::sendNotificationSync);refresh(p,editor);
   check(p.presetDisplay(0).index==i&&!p.presetDisplay(0).modified,"all 52 combined dropdown paths have correct unmodified identities");

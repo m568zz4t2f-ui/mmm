@@ -1,26 +1,23 @@
-# Wolf Tide 1.2.2
+# Wolf Tide 1.3.0 — source build candidate
 
-**Development branch:** the unified 1.3 backend lab is opt-in and is not connected to this plugin. See [1.3 work and open acceptance gates](docs/TIDE-1.3-DEVELOPMENT.md). No 1.3 release has been produced.
+Integrated stereo delay/reverb plugin: twelve delay machines, thirteen reverbs, independent delay A/B and reverb A/B, Series/Parallel/Frequency split routing, advanced native controls and versioned project compatibility.
 
-Stereo delay into reverb by Wolf Audio: grey delay, blue reverb, independent engines and presets, and combined instrument presets.
+**Mac installer handoff:** unzip the self-contained Source ZIP and run `bash scripts/Build-Mac.command` on your Mac. It includes pinned JUCE source, builds universal AU/VST3/standalone, runs the tests and creates the package. Read [the Mac build guide](docs/BUILD-MAC-1.3.md) for prerequisites, the existing duplicate-install migration, signing, notarization and rollback.
 
-**Current status:** 1.2.2 maintenance source update for independent preset identities, synchronized UI and safer installation. The 1.2.1 DSP is unchanged. See [1.2.2 release notes, migration and validation limits](docs/RELEASE-1.2.2.md). Mac build/AU/installer validation and cleanup of the reported live user/system conflict remain pending; this cloud session has no Mac control tools.
+The source is integrated and Linux-tested. This is a candidate for native build and musical acceptance, not a claim of a validated macOS release. No Mac binaries are supplied. Native AU/host/Installer.app validation and human listening acceptance remain required before distribution.
 
-![Tide interface](preview/Wolf-Tide-1.2.0.png)
+- [Quick Start](docs/QUICK-START.md)
+- [All 25 algorithms, controls and routing](docs/ALGORITHMS-1.3.md)
+- [Implementation and validation status](docs/TIDE-1.3-DEVELOPMENT.md)
+- [Unified user brief](docs/TIDE-1.3-UNIFIED-BRIEF.md)
+- [Release handoff and evidence](docs/RELEASE-1.3.0.md)
+- [New portable presets](Factory-Presets/1.3): 64 combinations and 50 side starters. The 92 earlier files remain in their original locations for compatibility.
 
-## Start here
+Existing sessions retain the legacy engine. The first 61 parameter IDs, order and normalized ranges remain unchanged; new parameters are appended. Each section has an explicit Legacy / Tide 1.3 processing choice. Factory/User/Modified identity, locks, A/B, undo-load, scoped user presets, search and favorites remain supported.
 
-- [Backup and project index](docs/BACKUP-INDEX.md): source, research, measurements, screenshots and remaining local artifacts.
-- [Current project memory](docs/PROJECT-MEMORY.md): verified state, compatibility requirements and next work.
-- [1.2 release notes](docs/RELEASE-1.2.0.md) and [validation actually performed](docs/VALIDATION-1.2.0.md).
-- [Complete effect audit](docs/TIDE-1.2.0-EFFECT-AUDIT.md): all nine delay and eleven reverb choices, primary-source comparisons and reproducible diagnostics.
-- [Original design research](docs/RESEARCH-AND-DESIGN.md), [update specification](docs/TIDE-1.2-UPDATE-SPEC.md) and [implementation handoff](docs/TIDE-1.2-GO-HANDOFF.md). The latter two are historical planning documents; the audit records later findings.
-- [92 exported presets](Factory-Presets): 52 combined programs and 40 independent side starters, not a claim that every sound has been optimized on instrument recordings.
-- [Test logs](docs/test-logs) include historical failed attempts and final passing checks. Use the versioned validation document to interpret them.
+## Build and test
 
-## Build
-
-CMake 3.22+ and a C++17 compiler are required. CMake uses the local JUCE archive if supplied, otherwise fetches JUCE at pinned commit `29396c22c93392d6738e021b83196283d6e4d850`. The 22.8 MB vendor archive is retained on the build Mac, not included in this GitHub text/source backup. See [artifact checksums](docs/ARTIFACT-MANIFEST-2026-10-27.json).
+CMake 3.22+ and a C++17 compiler are required. Source ZIPs include the JUCE 8.0.12 archive; a Git checkout without it fetches pinned commit `29396c22c93392d6738e021b83196283d6e4d850`.
 
 ```sh
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
@@ -36,14 +33,8 @@ cmake --build build-dsp --parallel 2
 ctest --test-dir build-dsp --output-on-failure
 ```
 
-AU requires macOS; Windows is not validated. On headless Linux use `xvfb-run -a ctest --test-dir build --output-on-failure`. Required Linux development packages include ALSA, X11/Xext/Xinerama/Xrandr/Xcursor, FreeType/fontconfig and OpenGL. The versioned release notes distinguish repaired defects from remaining musical/platform work.
+The extended 1.3 checks are enabled by default (`TIDE_BUILD_13_LAB=ON`). On headless Linux use an X server/Xvfb for native UI/host tests. Linux development dependencies include ALSA, X11/Xext/Xinerama/Xrandr/Xcursor, FreeType/fontconfig and OpenGL. AU builds only on macOS. Windows is not validated.
 
-## Install and distribute
+The preset recipes and return trims have numerical and limited recording-based measurements. They are not a substitute for auditioning varied instruments in the target DAW. Prepared transition pools retain memory to keep allocations out of processing; see the measured memory/CPU budget in the handoff.
 
-The built unsigned installer remains at `~/Downloads/Wolf-Tide-1.2.0-unsigned.pkg` on the build Mac; it is not a GitHub release asset. SHA-256: `a4f18801e38b6bfea769db42120b15eae1cd7f20ce214c58b313a52cd1dff983`.
-
-`bash scripts/package-mac.sh` builds/tests universal arm64/x86_64 bundles and creates a versioned installer. Bundles are ad hoc signed; Developer ID signing/notarization requires configured Apple identities and a notary profile. The package installs system-wide while the current automatic installation uses per-user locations; verify/retire shadowing older copies before distribution.
-
-## License
-
-AGPL-3.0-or-later. Preserve corresponding source and notices when redistributing. JUCE retains its own terms; see [JUCE licensing](docs/JUCE-LICENSE.md). No proprietary Strymon/Eventide/Hologram DSP was recovered or imported. Referenced third-party code is research, not automatically incorporated or relicensed.
+AGPL-3.0-or-later. Distribution must retain the license and corresponding source, including the pinned dependency sources. Historical release/audit documents remain under `docs`; use the 1.3 handoff for current status.

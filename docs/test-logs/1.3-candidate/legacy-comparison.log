@@ -1,0 +1,7 @@
+Baseline commit: 06d92fb8ef321996b786b04a805206daf342e428
+Toolchain: g++ -std=c++17 -O2, same Linux host
+Fixture: tests/legacy_compat_render.cpp
+99 model pairs at 44100/48000/96000/192000 Hz, 0.13 seconds per pair/rate, time changes and bypass
+Both raw streams: 39135096 bytes
+Both SHA256: f00d597829046b1260473ad1ce7792b8114799fcca5967365d2c80cfd5483974
+cmp exit status: 0

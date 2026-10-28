@@ -1,0 +1,30 @@
+{
+  "version": "1.3.0",
+  "status": "integrated source candidate; native Mac and human listening acceptance pending",
+  "source_build_id": "866d3cc79c34",
+  "juce_commit": "29396c22c93392d6738e021b83196283d6e4d850",
+  "legacy_baseline": "06d92fb8ef321996b786b04a805206daf342e428",
+  "parameters": 165,
+  "preserved_parameter_ids": 61,
+  "combined_programs": 64,
+  "side_starters": 50,
+  "new_portable_presets": 114,
+  "preserved_portable_presets": 92,
+  "mac_binaries_included": false,
+  "completed": [
+    "11 CTest suites",
+    "pluginval 1.0.4 strictness 5 GUI, seed 0x1300",
+    "ASan/UBSan DSP harness, leak detection disabled",
+    "50 recording renders",
+    "same-toolchain frozen-legacy byte comparison"
+  ],
+  "required_native": [
+    "universal build and tests",
+    "AU validation confirming 1.3.0",
+    "Mac VST3 and standalone/DAW validation",
+    "both architecture runtimes",
+    "Installer.app migration/rollback",
+    "signing/notarization for public distribution",
+    "varied-material human audition"
+  ]
+}

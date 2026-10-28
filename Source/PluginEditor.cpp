@@ -102,6 +102,7 @@ void TideEditor::chooseFile(int scope,bool save){
    if(result.failed())juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::WarningIcon,"Preset",result.getErrorMessage());});
 }
 void TideEditor::refreshSelectors(){
+ knobs[0].updateText(); // Sync/rhythm changes can leave the stored millisecond parameter unchanged.
  delayType.setSelectedId((processor.value("dRevision")>.5f?int(processor.value("d13Model")):tide::delayModel(int(processor.value("dType")),int(processor.value("dModel"))))+1,juce::dontSendNotification);
  reverbType.setSelectedId((processor.value("rRevision")>.5f?int(processor.value("r13Model")):tide::reverbModel(int(processor.value("rType")),int(processor.value("rModel"))))+1,juce::dontSendNotification);
  juce::ComboBox* boxes[]={&presetCombined,&presetDelay,&presetReverb};

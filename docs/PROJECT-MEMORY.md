@@ -2,7 +2,7 @@
 
 The 1.3 backend is now connected to the processor, host state and native advanced UI. The first 61 parameter identities remain; 104 controls are appended. Both sections can select Legacy or Tide 1.3 independently. All 25 paths and four slots are implemented; 64 programs and 50 side starters are exported under Factory-Presets/1.3, with the 92 previous files retained.
 
-Read docs/TIDE-1.3-DEVELOPMENT.md and docs/BUILD-MAC-1.3.md for current scope, evidence and installer handoff. Final package checks are being completed; native Mac and human musical acceptance remain open. This is not a validated Mac release. Main is unchanged. No Graphify indexing or Mac installation occurred.
+Read docs/TIDE-1.3-DEVELOPMENT.md and docs/BUILD-MAC-1.3.md for current scope, evidence and installer handoff. Candidate source build 866d3cc79c34 passes the completed Linux verification recorded in docs/RELEASE-1.3.0.md; native Mac and human musical acceptance remain open. This is not a validated Mac release. Main is unchanged. No Graphify indexing or Mac installation occurred.
 
 The notes below are historical checkpoints, including the earlier disconnected lab. They must not override the current implementation/status above.
 
