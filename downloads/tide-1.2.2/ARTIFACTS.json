@@ -1,0 +1,12 @@
+{
+  "version": "1.2.2",
+  "build_id": "40f5c8b033a9",
+  "bytes": 23059826,
+  "sha256": "2107052dcbdf22600b6a784df7bfdf50aee1271f7bf0b1555827446358e6ff5b",
+  "linux_ctest": "7/7 passed",
+  "installer_tests": "12/12 portable cases passed",
+  "pluginval": "1.0.4 strictness 5 GUI included passed",
+  "native_mac_build": false,
+  "native_au_validation": false,
+  "live_mac_migration": false
+}
