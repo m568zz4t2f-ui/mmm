@@ -1,0 +1,9 @@
+{
+  "file": "Wolf-Tide-1.3.0-Source-Candidate.zip",
+  "bytes": 24263727,
+  "sha256": "aef93d9a632497618e45c830d0c18c889a16308dc0f9f0f971c26f392b9f14a3",
+  "source_commit": "bbfbedda125c65357c5d07cc907ff0a46c598ce4",
+  "source_build_id": "9f5a60bd15aa",
+  "status": "source candidate; native Mac and musical acceptance required",
+  "mac_binaries_included": false
+}
