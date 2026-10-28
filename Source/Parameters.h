@@ -54,8 +54,8 @@ inline constexpr const char* rhythmNames[]={"1/16","1/8 triplet","1/8","1/8 dott
 inline constexpr const char* stereoNames[]={"Stereo","Dual","Ping-pong"};
 inline constexpr const char* intervalNames[]={"-12 st","-7 st","+7 st","+12 st","+19 st","+24 st"};
 struct Preset {const char* name;int delay,reverb,rhythm,stereo;float feedback,delayAmount,decay,pre,tone,reverbAmount,feed,duck,shimmer,motion,mix;
- int pitchMode=0;bool sync=true,delayOn=true,reverbOn=true;float time=375;int dModel=0,rModel=0,version=0;float drive=.18f,delayTone=6500;int pattern=1;};
-inline constexpr Preset presets[]={
+ int pitchMode=0;bool sync=true,delayOn=true,reverbOn=true;float time=375;int dModel=0,rModel=0,version=0;float drive=.18f,delayTone=6500;int pattern=1;int modernDelay=-1,modernReverb=-1,delayB=-1,reverbB=-1,route13=0;};
+inline constexpr Preset originalPresets[]={
  {"Guitar / Rhythmic Sky",0,2,4,1,.34f,.30f,4.2f,32,6500,.23f,.45f,.15f,0,.18f,.38f},
  {"Guitar / Warm Lead",1,1,4,0,.29f,.27f,2.6f,24,5200,.23f,.55f,.12f,0,.25f,.34f},
  {"Guitar / Slow Horizon",1,3,5,1,.48f,.30f,10,65,4700,.38f,.8f,.18f,.20f,.5f,.46f},
@@ -109,5 +109,15 @@ inline constexpr Preset presets[]={
  {"Utility / Vocal Slap Only",0,2,2,0,0.08f,0.36f,1.1f,28,6500,0.3f,.55f,0.25f,0.f,0.f,.36f,1,false,true,false,95, 0,1,1,0.f,11000,1},
  {"Utility / Cloud Only",0,2,4,1,0.2f,0.29f,8.f,28,6500,0.36f,.55f,0.1f,0.f,0.4f,.36f,1,true,false,true,375, 0,2,1,0.f,11000,1}
 };
-constexpr int numPresets=int(sizeof(presets)/sizeof(Preset));
+constexpr int numPresets=64;
+inline const std::array<Preset,numPresets> presets=[] {
+ std::array<Preset,numPresets> result{};std::copy(std::begin(originalPresets),std::end(originalPresets),result.begin());
+ for(int i=16;i<52;++i){auto& p=result[std::size_t(i)];p.modernDelay=p.dModel?p.dModel+5:p.delay;p.modernReverb=p.rModel?p.rModel+3:p.reverb;
+  p.delayAmount=p.delayOn?.28f:0;p.reverbAmount=p.reverbOn?.28f:0;p.decay=std::min(p.decay,p.modernReverb==0?2.5f:p.modernReverb==1||p.modernReverb==8?3.8f:12.f);p.drive=std::min(p.drive,.16f);p.mix=std::min(p.mix,.42f);}
+ constexpr const char* names[]={"Guitar / Oil Can Current","Keys / Spectral Steps","Guitar / Magnetic Drum","Vocal / Gated Chamber","Keys / Tuned Resonance","Ambient / Four Tides","Guitar / Parallel Horizons","Ambient / Frequency Coast","Keys / Double Plate","Ambient / Grains and Halo","Vocal / Split Air","Utility / Four Slot Template"};
+ constexpr int d[]={9,10,11,0,0,1,0,2,0,7,0,0},r[]={4,9,8,11,12,5,2,10,8,6,7,2};
+ for(int n=0;n<12;++n){auto p=result[std::size_t(16+n%12)];p.name=names[n];p.modernDelay=d[n];p.modernReverb=r[n];p.delayAmount=.25f;p.reverbAmount=.25f;p.feedback=.28f;p.decay=n==3?1.2f:n==4?3.f:4.5f;p.shimmer=n==9?.3f:0;p.pitchMode=1;p.motion=.18f;p.mix=.36f;
+  if(n>=5){p.delayB=n==8?-1:n==9?5:n%12;p.reverbB=n==6?-1:n==8?1:n%13;p.route13=n==7||n==10?2:1;}result[std::size_t(52+n)]=p;}
+ return result;
+}();
 } // namespace tide

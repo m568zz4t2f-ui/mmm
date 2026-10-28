@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WolfTidePreset version="4" scope="2" name="Cloud Ensemble - Focused" presetId="96ecfb18e2bb4f919eddb60d933b764c"
+                delayModel="0" reverbModel="2" delayVersion="1" reverbVersion="1">
+  <p id="rDecay" value="4.5"/>
+  <p id="rPredelay" value="18.0"/>
+  <p id="rTone" value="6500.0"/>
+  <p id="rAmount" value="0.2400000095367432"/>
+  <p id="rMotion" value="0.1800000071525574"/>
+  <p id="rWidth" value="1.0"/>
+  <p id="rLowcut" value="180.0"/>
+  <p id="rDuck" value="0.1500000059604645"/>
+  <p id="shimmer" value="0.0"/>
+  <p id="bass" value="0.800000011920929"/>
+  <p id="rSense" value="1.0"/>
+  <p id="rRelease" value="280.0"/>
+  <p id="rType" value="2.0"/>
+  <p id="rInterval" value="3.0"/>
+  <p id="rOn" value="1.0"/>
+  <p id="rDiffusion" value="0.7000000476837158"/>
+  <p id="rSize" value="1.0"/>
+  <p id="rAttack" value="0.1800000071525574"/>
+  <p id="rRegeneration" value="0.300000011920929"/>
+  <p id="rModel" value="2.0"/>
+  <p id="rVersion" value="1.0"/>
+  <p id="rEarly" value="0.3500000238418579"/>
+  <p id="rDamping" value="0.5"/>
+  <p id="rTexture" value="0.5"/>
+  <p id="rTune" value="110.0"/>
+  <p id="rShape" value="0.5"/>
+  <p id="r2Decay" value="3.0"/>
+  <p id="r2Predelay" value="18.0"/>
+  <p id="r2Tone" value="6500.0"/>
+  <p id="r2Amount" value="0.2400000095367432"/>
+  <p id="r2Motion" value="0.1800000071525574"/>
+  <p id="r2Width" value="1.0"/>
+  <p id="r2Lowcut" value="180.0"/>
+  <p id="r2Diffusion" value="0.7000000476837158"/>
+  <p id="r2Size" value="1.0"/>
+  <p id="r2Attack" value="0.1800000071525574"/>
+  <p id="r2Regeneration" value="0.300000011920929"/>
+  <p id="r2Shimmer" value="0.0"/>
+  <p id="r2Bass" value="0.800000011920929"/>
+  <p id="r2Early" value="0.3500000238418579"/>
+  <p id="r2Damping" value="0.5"/>
+  <p id="r2Texture" value="0.5"/>
+  <p id="r2Tune" value="110.0"/>
+  <p id="r2Shape" value="0.5"/>
+  <p id="rRevision" value="1.0"/>
+  <p id="r13Model" value="5.0"/>
+  <p id="r2Model" value="1.0"/>
+  <p id="r2Interval" value="3.0"/>
+  <p id="r2On" value="0.0"/>
+  <p id="r2Freeze" value="0.0"/>
+</WolfTidePreset>

@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "Parameters.h"
+#include "ModernParameters.h"
+#include "VersionedDSP.h"
+#include <unordered_map>
 #include "TideBuild.h"
 class TideProcessor final: public juce::AudioProcessor {
 public:
@@ -59,7 +61,9 @@ private:
     tide::Parameters read()const;
     void render(juce::AudioBuffer<float>&,bool);
     void applyFactory(int,bool respectLocks);
-    tide::Engine engine;
+    tide::v13::VersionedEngine engine;
+    std::unordered_map<std::string_view,std::atomic<float>*> modernValues;
+    tide::v13::Settings readModern(const tide::Parameters&)const;
     std::array<std::atomic<float>*,tide::numFloats> floats{};
     std::array<std::atomic<float>*,21> choices{};
     std::atomic<int> program{0};

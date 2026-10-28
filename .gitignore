@@ -4,3 +4,5 @@ install-backups/
 .DS_Store
 *.o
 *.a
+
+__pycache__/

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #include "PluginEditor.h"
 #include "PresetBrowser.h"
+#include "ModernPanel.h"
 namespace {
 const juce::Colour ink(0xffeee6d7),muted(0xffb4b4ab),silver(0xffcec9bd),blue(0xff8cd1e5),bg(0xff141e24);
 using SA=juce::AudioProcessorValueTreeState::SliderAttachment;
@@ -48,10 +49,11 @@ TideEditor::TideEditor(TideProcessor& p):AudioProcessorEditor(&p),processor(p){
   k.valueFromTextFunction=[unit](const juce::String& text){return text.getDoubleValue()/(unit=="%"?100.:1.);};k.updateText();
  }
  auto setupCombo=[&](juce::ComboBox& c,const char* id,int index,juce::StringArray items){show(c);c.addItemList(items,1);combos[std::size_t(index)]=std::make_unique<CA>(p.state,id,c);};
- show(delayType);delayType.addItemList({"Digital","Tape","Analog / Bucket","Pattern / Multitap","Reverse","Pitch","Diffusion","Granular Pitch","Lo-Fi"},1);
- delayType.onChange=[this]{int n=delayType.getSelectedId()-1;if(n<0)return;processor.setValue("dVersion",1);processor.setValue("dModel",n>=6?float(n-5):0.f);if(n<6)processor.setValue("dType",float(n));refreshSelectors();};
- show(reverbType);reverbType.addItemList({"Room / Classic","Plate / Classic","Hall / Classic","Bloom / Classic","Chamber","Cloud Ensemble","Halo Shimmer","Glint","Studio Plate","Studio Hall","Studio Bloom"},1);
- reverbType.onChange=[this]{int n=reverbType.getSelectedId()-1;if(n<0)return;processor.setValue("rVersion",1);processor.setValue("rModel",n>=4?float(n-3):0.f);if(n<4)processor.setValue("rType",float(n));refreshSelectors();};
+ show(delayType);delayType.addItemList({"Digital","Tape","Analog / Bucket","Pattern / Multitap","Reverse","Pitch","Diffusion","Granular Pitch","Lo-Fi","Oil Can","Spectral","Magnetic Drum"},1);
+ delayType.onChange=[this]{int n=delayType.getSelectedId()-1;if(n<0)return;processor.setValue("dRevision",1);processor.setValue("d13Model",float(n));processor.setValue("dVersion",1);processor.setValue("dModel",n>=6&&n<=8?float(n-5):0.f);if(n<6)processor.setValue("dType",float(n));refreshSelectors();};
+ show(reverbType);reverbType.addItemList({"Room / Classic","Plate / Classic","Hall / Classic","Bloom / Classic","Chamber","Cloud Ensemble","Halo Shimmer","Glint","Studio Plate","Studio Hall","Studio Bloom","Nonlinear","Resonator"},1);
+ reverbType.onChange=[this]{int n=reverbType.getSelectedId()-1;if(n<0)return;processor.setValue("rRevision",1);processor.setValue("r13Model",float(n));processor.setValue("rVersion",1);processor.setValue("rModel",n>=4&&n<=10?float(n-3):0.f);if(n<4)processor.setValue("rType",float(n));refreshSelectors();};
+ setupCombo(delayRevision,"dRevision",0,{"Legacy processing","Tide 1.3 processing"});setupCombo(reverbRevision,"rRevision",1,{"Legacy processing","Tide 1.3 processing"});
  setupCombo(rhythm,"rhythm",2,{"1/16","1/8 triplet","1/8","1/8 dotted","1/4","1/4 dotted","1/2","1/2 dotted","1 bar"});
  setupCombo(stereo,"stereo",3,{"Stereo","Dual","Ping-pong"});
  setupCombo(routing,"routing",4,{"Delay > Reverb","Parallel"});
@@ -66,11 +68,11 @@ TideEditor::TideEditor(TideProcessor& p):AudioProcessorEditor(&p),processor(p){
  delayOn.setTooltip("Stop new delay input; let existing repeats decay.");reverbOn.setTooltip("Stop new reverb input, including delay repeats; let the existing tail decay.");send.setTooltip("Use on a DAW return/aux: removes the dry signal. This setting survives factory preset changes.");hold.setTooltip("Hold the reverb tank and stop new excitation. Modulation can slowly soften the held sound.");
  for(auto* c:{&presetDelay,&presetReverb,&presetCombined})show(*c);
  delayType.setName("delayModel");reverbType.setName("reverbModel");presetDelay.setName("delayPreset");presetReverb.setName("reverbPreset");presetCombined.setName("combinedPreset");
- presetDelay.onChange=[this]{const int id=presetDelay.getSelectedId();if(id>0&&id<=18){processor.applyDelayPreset((id-1)/2,(id-1)%2!=0);refreshSelectors();}};
- presetReverb.onChange=[this]{const int id=presetReverb.getSelectedId();if(id>0&&id<=22){processor.applyReverbPreset((id-1)/2,(id-1)%2!=0);refreshSelectors();}};
+ presetDelay.onChange=[this]{const int id=presetDelay.getSelectedId();if(id>0&&id<=24){processor.applyDelayPreset((id-1)/2,(id-1)%2!=0);refreshSelectors();}};
+ presetReverb.onChange=[this]{const int id=presetReverb.getSelectedId();if(id>0&&id<=26){processor.applyReverbPreset((id-1)/2,(id-1)%2!=0);refreshSelectors();}};
  presetCombined.onChange=[this]{const int id=presetCombined.getSelectedId();if(id>0&&id<=tide::numPresets){processor.setCurrentProgram(id-1);refreshSelectors();}};
  for(auto* b:{&editDelay,&editReverb,&editRoute,&clear,&saveDelay,&saveReverb,&saveCombined,&lockDelay,&lockReverb,&lockMix,&motion,&undo,&undoLoad,&tap,&lockRoute,&help})show(*b);
- editDelay.onClick=[this]{showEdit(editing==1?0:1);};editReverb.onClick=[this]{showEdit(editing==2?0:2);};editRoute.onClick=[this]{showEdit(editing==3?0:3);};
+ editDelay.onClick=[this]{if(processor.value("dRevision")>.5f)showModern(0);else showEdit(editing==1?0:1);};editReverb.onClick=[this]{if(processor.value("rRevision")>.5f)showModern(2);else showEdit(editing==2?0:2);};editRoute.onClick=[this]{if(processor.value("dRevision")>.5f||processor.value("rRevision")>.5f)showModern(4);else showEdit(editing==3?0:3);};
  clear.onClick=[this]{processor.clearRequested.store(true);};clear.setTooltip("Fade out, empty stored echoes and tails, then fade in. Does not change settings.");
  saveDelay.onClick=[this]{showBrowser(1);};saveReverb.onClick=[this]{showBrowser(2);};saveCombined.onClick=[this]{showBrowser(0);};saveCombined.setButtonText("BROWSE");saveDelay.setTooltip("Search delay presets, favorites and user sounds.");saveReverb.setTooltip("Search reverb presets, favorites and user sounds.");
  undoLoad.onClick=[this]{processor.undoLastLoad();refreshSelectors();};lockRoute.setClickingTogglesState(true);lockRoute.onClick=[this]{processor.lockRouting.store(lockRoute.getToggleState());};tap.onClick=[this]{const double now=juce::Time::getMillisecondCounterHiRes();if(lastTap>0&&now-lastTap>=250&&now-lastTap<=2000){processor.setValue("bpm",float(60000/(now-lastTap)));processor.setValue("manualTempo",1);processor.setValue("sync",1);}lastTap=now;};
@@ -80,7 +82,7 @@ TideEditor::TideEditor(TideProcessor& p):AudioProcessorEditor(&p),processor(p){
  motion.onClick=[this]{const int mode=(processor.visualMode.load()+1)%3;processor.visualMode.store(mode);processor.reducedMotion.store(mode==0);timerCallback();};motion.setTooltip("Cycle STATIC / ACTIVITY / MOTION. Activity animates only while sound is present. Visuals never change the audio.");
  undo.setTooltip("First click stores A. Later clicks swap the current sound with the stored version.");
  undo.onClick=[this]{juce::MemoryBlock current;processor.getStateInformation(current);if(alternateReady)processor.setStateInformation(alternate.getData(),int(alternate.getSize()));alternate=current;alternateReady=true;undo.setButtonText("SWAP A / B");refreshSelectors();};
- help.onClick=[]{juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::InfoIcon,"Wolf Tide / Quick guide","Grey = stereo delay. Blue = stereo reverb. Each side has its own presets and on/off button.\n\nBottom presets recall a complete sound. LOCK protects a side; LOCK MIX protects all three blend controls. SEND removes dry audio for return tracks.\n\nEDIT opens deeper controls. ROUTING adjusts what enters the reverb. Double-click resets a knob; click its value to type precisely.\n\nHOLD sustains the reverb; CLEAR TAILS deliberately empties both effects. DAW Stop can preserve tails only while the host keeps processing.\n\nFactory sounds are designed starting points, not measured copies of other products. Version "+juce::String(JucePlugin_VersionString)+".");};
+ help.onClick=[]{juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::InfoIcon,"Wolf Tide / Quick guide","Grey = stereo delay. Blue = stereo reverb. Each side has its own presets and on/off button.\n\nBottom presets recall a complete sound. LOCK protects a side; LOCK MIX protects all three blend controls. SEND removes dry audio for return tracks.\n\nEDIT opens machine controls, including independent slots A/B. ROUTING opens Series / Parallel / Frequency split. Legacy processing preserves old sessions. Switching a side to Tide 1.3 explicitly upgrades its sound. Double-click resets a knob; click its value to type precisely.\n\nHOLD sustains the reverb; CLEAR TAILS deliberately empties both effects. DAW Stop can preserve tails only while the host keeps processing.\n\nFactory sounds are designed starting points, not measured copies of other products. Version "+juce::String(JucePlugin_VersionString)+".");};
  show(buildLabel);buildLabel.setName("releaseBuild");buildLabel.setTooltip("Compiled release and source build ID. Legacy / Modern refers to sound generation, not this release version.");buildLabel.setText(p.releaseLabel(),juce::dontSendNotification);buildLabel.setFont(juce::FontOptions(11));
  show(status);status.setName("presetStatus");show(tempoLabel);status.setFont(juce::FontOptions(11));tempoLabel.setFont(juce::FontOptions(11));tempoLabel.setJustificationType(juce::Justification::centredRight);
  setSize(1080,720);resized();timerCallback();if(isShowing())startTimerHz(12);
@@ -100,8 +102,8 @@ void TideEditor::chooseFile(int scope,bool save){
    if(result.failed())juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::WarningIcon,"Preset",result.getErrorMessage());});
 }
 void TideEditor::refreshSelectors(){
- delayType.setSelectedId(tide::delayModel(int(processor.value("dType")),int(processor.value("dModel")))+1,juce::dontSendNotification);
- reverbType.setSelectedId(tide::reverbModel(int(processor.value("rType")),int(processor.value("rModel")))+1,juce::dontSendNotification);
+ delayType.setSelectedId((processor.value("dRevision")>.5f?int(processor.value("d13Model")):tide::delayModel(int(processor.value("dType")),int(processor.value("dModel"))))+1,juce::dontSendNotification);
+ reverbType.setSelectedId((processor.value("rRevision")>.5f?int(processor.value("r13Model")):tide::reverbModel(int(processor.value("rType")),int(processor.value("rModel"))))+1,juce::dontSendNotification);
  juce::ComboBox* boxes[]={&presetCombined,&presetDelay,&presetReverb};
  for(int scope=0;scope<3;++scope){auto& box=*boxes[scope];const auto display=processor.presetDisplay(scope);
   const auto title=(display.modified?"Modified: ":display.factory?"Factory: ":display.user?"User: ":"")+display.name;
@@ -109,7 +111,7 @@ void TideEditor::refreshSelectors(){
   if(box.getText()==title&&box.getSelectedId()==id)continue;
   box.clear(juce::dontSendNotification);
   if(scope==0){for(int pass=0;pass<2;++pass)for(int i=pass==0?16:0;i<(pass==0?tide::numPresets:16);++i)box.addItem("Factory: "+processor.getProgramName(i),i+1);}
-  else for(int i=0;i<(scope==1?18:22);++i)box.addItem("Factory: "+TideProcessor::sidePresetName(scope,i),i+1);
+  else for(int i=0;i<(scope==1?24:26);++i)box.addItem("Factory: "+TideProcessor::sidePresetName(scope,i),i+1);
   if(id==10000){box.addItem(title,10000);box.setItemEnabled(10000,false);}
   box.setSelectedId(id,juce::dontSendNotification);
  }
@@ -135,7 +137,7 @@ void TideEditor::timerCallback(){
  const int verb=tide::reverbModel(int(processor.value("rType")),int(processor.value("rModel")));
  knobs[15].setEnabled(verb>=2);knobs[35].setEnabled(verb>=4);knobs[36].setEnabled(verb>=4);knobs[37].setEnabled(verb==7||verb==10);knobs[38].setEnabled(verb==6||verb==7);
  knobs[4].setEnabled(mode!=4);knobs[9].setEnabled(mode!=4);pattern.setEnabled(mode==3&&processor.value("dVersion")>.5f);
- knobs[4].setTooltip(mode==7?"Grain overlap and source-position spread.":"Delay modulation depth.");knobs[9].setTooltip(mode==7?"Grain duration: higher rates shorten the grains.":"Rate of delay modulation.");
+ knobs[4].setTooltip(mode==7&&processor.value("dRevision")<.5f?"Grain overlap and source-position spread.":"Delay modulation depth.");knobs[9].setTooltip(mode==7&&processor.value("dRevision")<.5f?"Grain duration: higher rates shorten the grains.":"Rate of delay modulation.");
  const bool independent=processor.value("dDual")>.5f;
  knobs[10].setEnabled(!independent&&processor.value("stereo")>.5f&&processor.value("stereo")<1.5f);
  knobs[31].setEnabled(independent&&!synced);bRhythm.setEnabled(independent&&synced);knobs[32].setEnabled(independent);knobs[33].setEnabled(independent);knobs[39].setEnabled(mode==6);knobs[23].setEnabled(processor.value("send")<.5f);
@@ -211,7 +213,7 @@ void TideEditor::resized(){
  presetReverb.setBounds(rect(565,157,365,28));saveReverb.setBounds(rect(936,157,42,28));lockReverb.setBounds(rect(984,157,52,28));
  delayType.setBounds(rect(137,188,180,29));reverbType.setBounds(rect(659,188,180,29));
  sync.setBounds(rect(324,188,64,29));rhythm.setBounds(rect(394,188,120,29));hold.setBounds(rect(960,188,76,29));
- editDelay.setBounds(rect(43,531,155,26));editReverb.setBounds(rect(565,531,155,26));
+ editDelay.setBounds(rect(43,531,155,26));editReverb.setBounds(rect(565,531,155,26));delayRevision.setBounds(rect(209,531,305,26));reverbRevision.setBounds(rect(731,531,305,26));
  presetCombined.setBounds(rect(43,620,376,34));saveCombined.setBounds(rect(428,620,108,34));
  editRoute.setBounds(rect(546,620,94,34));send.setBounds(rect(649,620,66,34));lockMix.setBounds(rect(725,620,92,34));
  knob(23,828,613,105,73,true);knob(25,938,613,101,73,true);labels[23].setVisible(false);labels[25].setVisible(false);
@@ -223,5 +225,7 @@ void TideEditor::resized(){
  if(editing==2){constexpr int extended[]={35,36,37,38};for(int i=0;i<4;++i)knob(extended[i],43+i*245,951,180,132);reverbInterval.setBounds(rect(900,713,135,27));constexpr int ids[]={15,16,17,18,19,20,29,30};for(int i=0;i<8;++i)knob(ids[i],43+i*124,752,115,132);}
  if(editing==3){manualTempo.setBounds(rect(43,914,190,30));tap.setBounds(rect(245,914,80,30));lockRoute.setBounds(rect(340,914,120,30));routing.setBounds(rect(774,713,261,27));constexpr int ids[]={21,22,24,26};for(int i=0;i<4;++i)knob(ids[i],80+i*245,752,180,132);}
 }
+
+void TideEditor::showModern(int tab){auto panel=std::make_unique<TideModernPanel>(processor,tab);juce::CallOutBox::launchAsynchronously(std::move(panel),(tab<2?editDelay:tab<4?editReverb:editRoute).getScreenBounds(),nullptr);}
 
 void TideEditor::showBrowser(int scope){auto safe=juce::Component::SafePointer<TideEditor>(this);auto browser=std::make_unique<TidePresetBrowser>(processor,scope,[safe,scope]{if(safe)safe->fileMenu(scope);},[safe]{if(safe)safe->refreshSelectors();});juce::CallOutBox::launchAsynchronously(std::move(browser),(scope==0?saveCombined:scope==1?saveDelay:saveReverb).getScreenBounds(),nullptr);}

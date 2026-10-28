@@ -6,7 +6,7 @@
 static void check(bool b,const char* m){if(!b){std::cerr<<"FAIL: "<<m<<'\n';std::exit(1);}}
 int main(int argc,char** argv){
  juce::ScopedJuceInitialiser_GUI init;TideProcessor p;
- check(p.getParameters().size()==61,"all legacy and extension parameters exposed");
+ check(p.getParameters().size()==61+tide::v13::numModernFloats+18,"all legacy and extension parameters exposed");
  juce::StringArray names;for(auto* parameter:p.getParameters()){auto name=parameter->getName(100);check(!names.contains(name),"host parameter names are unique");names.add(name);}
  for(int i=0;i<tide::numPresets;++i){p.setCurrentProgram(i);check(p.factoryMatches(),"all factory presets match complete parameter state");}p.setCurrentProgram(0);
  for(int mode=0;mode<3;++mode){juce::AudioProcessor::BusesLayout layout;
@@ -51,7 +51,7 @@ int main(int argc,char** argv){
  file.replaceWithText("<WolfTidePreset version=\"1\" scope=\"1\"><p id=\"interval\" value=\"3\"/></WolfTidePreset>");check(p.loadPreset(file,1).wasOk()&&p.value("pitchMode")==0,"1.0 presets retain climbing pitch behavior");file.deleteFile();
  {TideProcessor a,b;a.prepareToPlay(48000,512);b.prepareToPlay(48000,512);a.visualMode.store(0);b.visualMode.store(2);b.editorVisible.store(true);juce::MidiBuffer midi;juce::AudioBuffer<float> x(2,512),y(2,512);
   for(int block=0;block<110;++block){x.clear();if(block<6)x.setSample(0,block,.2f);y.makeCopyOf(x);a.processBlock(x,midi);b.processBlock(y,midi);for(int c=0;c<2;++c)for(int n=0;n<512;++n)check(x.getSample(c,n)==y.getSample(c,n),"visual mode and metering do not change audio");}}
- {TidePresetBrowser browser(p,0,[]{});juce::ListBox* list=nullptr;juce::TextEditor* search=nullptr;for(auto* child:browser.getChildren()){if(auto* box=dynamic_cast<juce::ListBox*>(child))list=box;if(!search)search=dynamic_cast<juce::TextEditor*>(child);}check(list&&search&&list->getListBoxModel()->getNumRows()==52,"factory browser inventory");search->setText("Cloud");search->onTextChange();check(list->getListBoxModel()->getNumRows()==4,"browser search filters cloud presets");}
+ {TidePresetBrowser browser(p,0,[]{});juce::ListBox* list=nullptr;juce::TextEditor* search=nullptr;for(auto* child:browser.getChildren()){if(auto* box=dynamic_cast<juce::ListBox*>(child))list=box;if(!search)search=dynamic_cast<juce::TextEditor*>(child);}check(list&&search&&list->getListBoxModel()->getNumRows()==tide::numPresets,"factory browser inventory");search->setText("Cloud");search->onTextChange();check(list->getListBoxModel()->getNumRows()>=4,"browser search filters cloud presets");}
  p.setCurrentProgram(-5);check(p.getCurrentProgram()>=0,"invalid factory index ignored");
  p.setValue("send",0);p.setCurrentProgram(0);
  check(p.factoryMatches(),"factory detector matches complete initial state");p.setValue("dWidth",.33f);check(!p.factoryMatches(),"advanced edit marks preset modified");p.setCurrentProgram(0);
@@ -67,7 +67,7 @@ int main(int argc,char** argv){
   editor->setSize(900,600);editor->setSize(1620,1395);
   if(argc>2){juce::File factoryDir=juce::File::getCurrentWorkingDirectory().getChildFile(argv[2]);factoryDir.createDirectory();
    for(int i=0;i<tide::numPresets;++i){p.setCurrentProgram(i);auto name=p.getProgramName(i).replace(" / "," - ");check(p.savePreset(factoryDir.getChildFile(name+".wolftide"),0).wasOk(),"export factory files");}
-   for(int scope=1;scope<=2;++scope){auto dir=factoryDir.getChildFile(scope==1?"Delay":"Reverb");dir.createDirectory();const int count=scope==1?9:11;for(int model=0;model<count;++model)for(int variant=0;variant<2;++variant){if(scope==1)p.applyDelayPreset(model,variant!=0);else p.applyReverbPreset(model,variant!=0);const char* modelName=scope==1?(model<6?tide::delayNames[model]:tide::newDelayNames[model-6]):(model<4?tide::reverbNames[model]:tide::newReverbNames[model-4]);auto name=juce::String(modelName)+(variant?" - Wide":" - Focused");check(p.savePreset(dir.getChildFile(name+".wolftide"),scope).wasOk(),"export side starters");}}
+   for(int scope=1;scope<=2;++scope){auto dir=factoryDir.getChildFile(scope==1?"Delay":"Reverb");dir.createDirectory();const int count=scope==1?12:13;for(int model=0;model<count;++model)for(int variant=0;variant<2;++variant){if(scope==1)p.applyDelayPreset(model,variant!=0);else p.applyReverbPreset(model,variant!=0);const char* modelName=scope==1?tide::v13::delayNames[model]:tide::v13::reverbNames[model];auto name=juce::String(modelName)+(variant?" - Wide":" - Focused");check(p.savePreset(dir.getChildFile(name+".wolftide"),scope).wasOk(),"export side starters");}}
   }
 
  }

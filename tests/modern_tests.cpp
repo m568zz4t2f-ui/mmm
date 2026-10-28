@@ -28,5 +28,8 @@ int main(){
  {tide::Parameters p;p.soundVersion=1;p.reverbModel=2;p.sync=false;p.time=100;tide::Engine frozen;Settings modern;VersionedEngine bridge;frozen.prepare(48000,p);bridge.prepare(48000,p,modern,0);
   for(int n=0;n<48000;++n){if(n%1024==0){p.time=70+float(n%7)*30;frozen.set(p);bridge.set(p,modern,0);}tide::Stereo input{.04f*std::sin(n*.07f),.025f*std::sin(n*.113f)};auto a=frozen.tick(input),b=bridge.tick(input);check(a.l==b.l&&a.r==b.r,"legacy revision is sample-identical to frozen 1.2.2 engine");}
   bridge.set(p,modern,1);for(int n=0;n<8000;++n){auto y=bridge.tick({.01f,-.02f});check(std::isfinite(y.l)&&std::isfinite(y.r),"revision transition remains finite");}}
+ {Slot<DelayMachine,DelaySettings> switched,reference;switched.prepare(8000);reference.prepare(8000);DelaySettings p;p.time=p.rightTime=50;p.feedback=p.rightFeedback=.3f;switched.set(p);reference.set(p);
+  for(int n=0;n<2000;++n){tide::Stereo input{n<400?.1f*std::sin(n*.1f):0,0};switched.tick(input);reference.tick(input);}p.on=false;reference.set(p);p.model=10;switched.set(p);
+  double energy=0;for(int n=0;n<2000;++n){switched.tick({});reference.tick({});check(switched.calibrated.l==reference.calibrated.l&&switched.calibrated.r==reference.calibrated.r,"outgoing tail retains its own model return calibration");energy+=switched.calibrated.l*switched.calibrated.l;}check(energy>1e-10,"calibration transition fixture includes an audible outgoing tail");}
  std::cout<<"PASS: 25 experimental machines at five rates, distinct numerical responses, reset, capture freeze and four-slot routing. No musical-equivalence claim.\n";
 }

@@ -1,3 +1,13 @@
+# Current work — integrated Wolf Tide 1.3.0 candidate
+
+The 1.3 backend is now connected to the processor, host state and native advanced UI. The first 61 parameter identities remain; 104 controls are appended. Both sections can select Legacy or Tide 1.3 independently. All 25 paths and four slots are implemented; 64 programs and 50 side starters are exported under Factory-Presets/1.3, with the 92 previous files retained.
+
+Read docs/TIDE-1.3-DEVELOPMENT.md and docs/BUILD-MAC-1.3.md for current scope, evidence and installer handoff. Final package checks are being completed; native Mac and human musical acceptance remain open. This is not a validated Mac release. Main is unchanged. No Graphify indexing or Mac installation occurred.
+
+The notes below are historical checkpoints, including the earlier disconnected lab. They must not override the current implementation/status above.
+
+---
+
 # Unified 1.3 development checkpoint
 
 The verified 1.2.2 source is frozen at `06d92fb8ef321996b786b04a805206daf342e428`. `ModernDSP.h` and the optional numerical lab prototype 25 paths and four-slot routing. They are not integrated into the plugin, host parameters or presets. Do not describe them as a completed 1.3 update. The public plugin remains 1.2.2; main and the live Mac are unchanged. See TIDE-1.3-DEVELOPMENT.md for measured results, missing controls, calibration, integration, musical and Mac gates. Graphify intake/indexing has not occurred because no tools are exposed.

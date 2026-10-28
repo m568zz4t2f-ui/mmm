@@ -4,17 +4,17 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 [ "$(uname -s)" = Darwin ] || { echo 'A macOS build host is required.' >&2; exit 1; }
 TIDE_BUILD_DIR="${TIDE_BUILD_DIR:-build-mac}"
+# Always bring the binaries up to date before packaging corresponding source.
+# Incremental builds are cheap; a stale same-version payload is not acceptable.
 TIDE_VERSION=$(python3 - <<'PYVERSION'
 import re
 from pathlib import Path
 print(re.search(r'project\(WolfTide VERSION ([0-9.]+)',Path('CMakeLists.txt').read_text()).group(1))
 PYVERSION
 )
-if [ "${TIDE_PACKAGE_ONLY:-0}" != 1 ]; then
 cmake -S . -B "$TIDE_BUILD_DIR" -DCMAKE_BUILD_TYPE=Release '-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64' -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0
 cmake --build "$TIDE_BUILD_DIR" --config Release --parallel 2
 ctest --test-dir "$TIDE_BUILD_DIR" -C Release --output-on-failure
-fi
 TIDE_ART="$TIDE_BUILD_DIR/WolfTide_artefacts/Release"
 TIDE_STAGE="$(mktemp -d "${TMPDIR:-/tmp}/wolf-tide-package.XXXXXX")"
 trap 'rm -rf "$TIDE_STAGE"' EXIT
@@ -34,6 +34,7 @@ done
 python3 scripts/source-archive.py "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Source.zip"
 cp docs/QUICK-START.md "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Quick Start.md"
 cp LICENSE "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/LICENSE.txt"
+cp docs/ALGORITHMS-1.3.md "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Algorithms.md"
 if [ -d Factory-Presets ]; then
  ditto Factory-Presets "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Factory Presets"
 fi

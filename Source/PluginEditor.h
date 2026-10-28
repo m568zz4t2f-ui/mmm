@@ -17,7 +17,7 @@ public:
  void refreshSelectors();
 private:
  void timerCallback()override;
- void showEdit(int);
+ void showEdit(int);void showModern(int);
  void fileMenu(int);
  void chooseFile(int,bool);
  void drawEchoes(juce::Graphics&);
@@ -27,7 +27,7 @@ private:
  std::array<juce::Slider,tide::numFloats> knobs;
  std::array<juce::Label,tide::numFloats> labels;
  std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>,tide::numFloats> sliders;
- juce::ComboBox delayType,reverbType,rhythm,stereo,routing,interval,reverbInterval,pitchMode,pattern,dualMode,bRhythm,manualTempo,presetDelay,presetReverb,presetCombined;
+ juce::ComboBox delayRevision,reverbRevision,delayType,reverbType,rhythm,stereo,routing,interval,reverbInterval,pitchMode,pattern,dualMode,bRhythm,manualTempo,presetDelay,presetReverb,presetCombined;
  std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment>,12> combos;
  juce::TextButton delayOn{"ON"},reverbOn{"ON"},sync{"SYNC"},send{"SEND"},hold{"HOLD"};
  std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment>,5> buttons;

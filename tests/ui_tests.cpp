@@ -7,8 +7,8 @@ static void check(bool ok,const char* message){if(!ok){std::cerr<<"FAIL: "<<mess
 static juce::ComboBox& combo(TideEditor& editor,const char* name){for(auto* child:editor.getChildren())if(child->getName()==name)if(auto* box=dynamic_cast<juce::ComboBox*>(child))return *box;std::cerr<<"Missing combo "<<name;std::exit(1);}
 static void refresh(TideProcessor& p,TideEditor& editor){
  editor.refreshSelectors();
- check(combo(editor,"delayModel").getSelectedId()==(p.value("dModel")>0?int(p.value("dModel"))+6:int(p.value("dType"))+1),"delay selector follows active processing");
- check(combo(editor,"reverbModel").getSelectedId()==(p.value("rModel")>0?int(p.value("rModel"))+4:int(p.value("rType"))+1),"reverb selector follows active processing");
+ check(combo(editor,"delayModel").getSelectedId()==(p.value("dRevision")>.5f?int(p.value("d13Model"))+1:p.value("dModel")>0?int(p.value("dModel"))+6:int(p.value("dType"))+1),"delay selector follows active processing");
+ check(combo(editor,"reverbModel").getSelectedId()==(p.value("rRevision")>.5f?int(p.value("r13Model"))+1:p.value("rModel")>0?int(p.value("rModel"))+4:int(p.value("rType"))+1),"reverb selector follows active processing");
  const char* names[]={"combinedPreset","delayPreset","reverbPreset"};
  for(int scope=0;scope<3;++scope){const auto display=p.presetDisplay(scope);auto& box=combo(editor,names[scope]);
   check(box.getText().contains(display.name),"scope label preserves selected identity");
@@ -22,13 +22,13 @@ static void refresh(TideProcessor& p,TideEditor& editor){
 }
 int main(int argc,char** argv){
  juce::ScopedJuceInitialiser_GUI init;TideProcessor p;TideEditor editor(p);
- bool version=false;for(auto* child:editor.getChildren())if(child->getName()=="releaseBuild")if(auto* label=dynamic_cast<juce::Label*>(child))version=label->getText().contains("Wolf Tide v1.2.2")&&label->getText().contains(TIDE_BUILD_ID);
+ bool version=false;for(auto* child:editor.getChildren())if(child->getName()=="releaseBuild")if(auto* label=dynamic_cast<juce::Label*>(child))version=label->getText().contains("Wolf Tide v"+juce::String(JucePlugin_VersionString))&&label->getText().contains(TIDE_BUILD_ID);
  check(version,"prominent release label follows compiled version and source build identifier");
  for(int i=0;i<tide::numPresets;++i){
   auto& box=combo(editor,"combinedPreset");box.setSelectedId(i+1,juce::sendNotificationSync);refresh(p,editor);
   check(p.presetDisplay(0).index==i&&!p.presetDisplay(0).modified,"all 52 combined dropdown paths have correct unmodified identities");
  }
- for(int scope=1;scope<=2;++scope)for(int i=0;i<(scope==1?18:22);++i){
+ for(int scope=1;scope<=2;++scope)for(int i=0;i<(scope==1?24:26);++i){
   auto& box=combo(editor,scope==1?"delayPreset":"reverbPreset");box.setSelectedId(i+1,juce::sendNotificationSync);refresh(p,editor);
   check(p.presetDisplay(scope).index==i&&!p.presetDisplay(scope).modified,"all 40 side starter dropdown paths synchronize");
  }
@@ -40,8 +40,8 @@ int main(int argc,char** argv){
  p.loadPreset(folder.getChildFile("Scope-2.wolftide"),2);check(p.presetDisplay(1).name==delayName,"loading another scope preserves delay user identity");
  juce::MemoryBlock state;p.getStateInformation(state);p.setCurrentProgram(20);p.setStateInformation(state.getData(),int(state.getSize()));refresh(p,editor);
  check(p.presetDisplay(1).name==delayName&&p.presetDisplay(2).name=="Scope-2","project reopen restores independent identities");
- p.setCurrentProgram(16);p.setValue("dModel",2);refresh(p,editor);check(p.presetDisplay(0).modified&&p.presetDisplay(1).modified,"manual/automated effect change marks factory identities modified");
- p.setValue("dModel",0);refresh(p,editor);check(!p.presetDisplay(0).modified,"returning to saved parameters clears Modified");
+ p.setCurrentProgram(16);p.setValue("d13Model",2);refresh(p,editor);check(p.presetDisplay(0).modified&&p.presetDisplay(1).modified,"manual/automated effect change marks factory identities modified");
+ p.setValue("d13Model",0);refresh(p,editor);check(!p.presetDisplay(0).modified,"returning to saved parameters clears Modified");
  for(int mask=0;mask<16;++mask)for(int i=0;i<tide::numPresets;++i){
   p.lockDelay.store(false);p.lockReverb.store(false);p.lockMix.store(false);p.lockRouting.store(false);p.setCurrentProgram(16);
   const auto beforeDelay=p.presetDisplay(1).name;const auto beforeReverb=p.presetDisplay(2).name;
@@ -52,7 +52,7 @@ int main(int argc,char** argv){
  }
  p.lockDelay.store(false);p.lockReverb.store(false);p.lockMix.store(false);p.lockRouting.store(false);
  const auto presets=juce::File(__FILE__).getParentDirectory().getParentDirectory().getChildFile("Factory-Presets");
- auto portable=presets.findChildFiles(juce::File::findFiles,true,"*.wolftide");check(portable.size()==92,"all preserved portable preset files found");
+ auto portable=presets.findChildFiles(juce::File::findFiles,true,"*.wolftide");check(portable.size()==206,"all preserved portable preset files found");
  for(const auto& file:portable){const auto parent=file.getParentDirectory().getFileName();const int scope=parent=="Delay"?1:parent=="Reverb"?2:0;
   check(p.loadPreset(file,scope).wasOk(),"every preserved portable preset migrates");refresh(p,editor);
  }
@@ -81,5 +81,5 @@ int main(int argc,char** argv){
  check(refreshed&&p.presetDisplay(0).name=="Browser saved","browser user load refreshes identity immediately");refresh(p,editor);
  if(argc>1){editor.setSize(1080,720);auto picture=editor.createComponentSnapshot(editor.getLocalBounds());auto output=juce::File(argv[1]).createOutputStream();check(bool(output),"UI snapshot output");output->setPosition(0);output->truncate();juce::PNGImageFormat png;check(png.writeImageToStream(picture,*output),"UI snapshot rendered");}
  folder.deleteRecursively();
- std::cout<<"PASS: 52 combined, 40 side starters, independent user names, project recall, automation, 832 lock combinations, browser refresh and compiled release label.\n";
+ std::cout<<"PASS: 64 combined, 50 side starters, 206 portable files, independent user names, project recall, automation, 1024 lock combinations, browser refresh and compiled release label.\n";
 }

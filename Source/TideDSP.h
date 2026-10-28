@@ -334,6 +334,8 @@ class Engine {
     void clearTank(int i) noexcept {if(i>=4)boutique[std::size_t(i-4)].clear();else if(i==0)room.clear();else if(i==1)plate.clear();else if(i==2){hall.reset();for(auto& early:hallEarly)early.clear();}else{bloomTank.reset();for(auto& row:cloud)for(auto& a:row)a.line.clear();}}
 public:
     float delayPeak=0,reverbPeak=0,outputPeak=0;
+    // Optional stems for the 1.3 per-section compatibility bridge. Default tick arithmetic is unchanged.
+    Stereo delayStem{},delayFeed{},reverbStem{};
     int activeReverbs() const noexcept {return reverbCount;}
     bool activeEcho() const noexcept {return echoLive;}
     bool activeShimmer() const noexcept {return shimmerLive;}
@@ -367,12 +369,12 @@ public:
         if(predelayFade>=1&&std::abs(nextDelay-predelayNew)>.5f){predelayOld=predelayNew;predelayNew=nextDelay;predelayFade=0;}
     }
     // No allocation or file operations in processing. Internal bypass stops excitation and retains tails.
-    Stereo tick(Stereo dry,bool hostBypass=false) noexcept {
+    Stereo tick(Stereo dry,bool hostBypass=false,const Stereo* externalDelay=nullptr,const Stereo* externalFeed=nullptr) noexcept {
         dry={finite(dry.l),finite(dry.r)};
         const bool excitationPossible=!hostBypass&&((p.delayOn&&(p.delayAmount>1e-7f||(p.reverbOn&&p.feed>1e-7f&&p.reverbAmount>1e-7f)))||(p.reverbOn&&p.reverbAmount>1e-7f&&p.direct>1e-7f));
-        if(!echoLive&&!shimmerLive&&activeReverbs()==0&&!(excitationPossible&&peak(dry)>0.f)&&idleFrames>unsigned(sr)){
+        if(!externalDelay&&!echoLive&&!shimmerLive&&activeReverbs()==0&&!(excitationPossible&&peak(dry)>0.f)&&idleFrames>unsigned(sr)){
             const float dryLevel=p.send?0.f:(1-(hostBypass?0.f:float(p.delayOn||p.reverbOn))*(p.send?1.f:p.mix))*gainTarget;
-            delayPeak=reverbPeak=0;Stereo result{finite(dry.l*dryLevel),finite(dry.r*dryLevel)};outputPeak=peak(result);return result;
+            delayStem=delayFeed=reverbStem={};delayPeak=reverbPeak=0;Stereo result{finite(dry.l*dryLevel),finite(dry.r*dryLevel)};outputPeak=peak(result);return result;
         }
         auto follow=[&](float& x,float t){x+=smooth*(t-x);};
         follow(bypass,hostBypass?0.f:1.f);follow(reverbActive,p.reverbOn?1.f:0.f);follow(delayActive,p.delayOn?1.f:0.f);
@@ -385,15 +387,17 @@ public:
         const bool echoNeeded=p.delayAmount>1e-7f||(p.reverbOn&&p.reverbAmount>1e-7f&&feed>1e-7f);
         const bool echoExcited=p.delayOn&&!hostBypass&&echoNeeded;
         Stereo echoInput{dry.l*bypass,dry.r*bypass};
-        if(echoExcited&&peak(echoInput)>1e-9f)echoLive=true;
+        if(!externalDelay&&echoExcited&&peak(echoInput)>1e-9f)echoLive=true;
         Stereo d{};
-        if(echoLive){d=echo.tick(echoInput,p,echoExcited);echoUnused=echoNeeded?0:echoUnused+1;
+        if(!externalDelay&&echoLive){d=echo.tick(echoInput,p,echoExcited);echoUnused=echoNeeded?0:echoUnused+1;
             echoQuiet=(echoExcited&&peak(echoInput)>1e-9f)||peak(echo.feedOut)>1e-9f?0:echoQuiet+1;
             // A full 16-second gap is possible in Dual/Reverse; output silence alone is insufficient.
             if(echoQuiet>unsigned(sr*16.25f)||echoUnused>unsigned(sr)){echo.clear();echoLive=false;echoQuiet=echoUnused=0;}}
-        d.l*=dd;d.r*=dd;
+        if(externalDelay)d=*externalDelay;
+        d.l*=dd;d.r*=dd;delayStem=d;
+        const auto echoFeed=externalFeed?*externalFeed:echo.feedOut;delayFeed={echoFeed.l*dd,echoFeed.r*dd};
         delayPeak=std::max(std::abs(d.l),std::abs(d.r));
-        Stereo input{(dry.l*direct+echo.feedOut.l*dd*feed)*reverbActive*bypass,(dry.r*direct+echo.feedOut.r*dd*feed)*reverbActive*bypass};
+        Stereo input{(dry.l*direct+echoFeed.l*dd*feed)*reverbActive*bypass,(dry.r*direct+echoFeed.r*dd*feed)*reverbActive*bypass};
         reverbUnused=(p.reverbAmount>1e-7f||p.freeze)?0:std::min(reverbUnused+1,unsigned(sr)+2);
         if(reverbUnused>unsigned(sr)){input={};pitchFeedback={};if(reverbUnused==unsigned(sr)+1){for(std::size_t i=0;i<live.size();++i)if(live[i]){clearTank(int(i));live[i]=false;--reverbCount;quiet[i]=0;weights[i]=0;}for(auto& preLine:pre)preLine.clear();low={};}}
         // Freeze holds tank feedback while removing fresh excitation; modulation may slowly dissipate energy.
@@ -433,7 +437,7 @@ public:
         }else if(shimmerLive){shimmer.clear();shimmerBass={};shimmerTreble={};pitchFeedback={};shimmerLive=false;shimmerQuiet=0;}
         const float mid=(wet.l+wet.r)*.5f,side=(wet.l-wet.r)*.5f*verbWidth;
         wet={(mid+side)*verbAmount*duck,(mid-side)*verbAmount*duck};
-        reverbPeak=std::max(std::abs(wet.l),std::abs(wet.r));
+        reverbStem=wet;reverbPeak=std::max(std::abs(wet.l),std::abs(wet.r));
         follow(mix,p.send?1.f:p.mix);follow(gain,gainTarget);
         // Wet amounts are calibrated around .30; overall mix remains a true dry/wet control.
         const float active=std::max(delayActive,reverbActive)*bypass;

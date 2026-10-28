@@ -5,7 +5,7 @@
 int main(int argc,char** argv){
  if(argc<2){std::cerr<<"Supply reference audio paths. Input audio is analysed, never redistributed.\n";return 2;}
  juce::AudioFormatManager formats;formats.registerBasicFormats();
- std::cout<<"fixture,rate,family,model,input_energy,wet_energy,wet_peak,stereo_correlation\n";
+ std::cout<<"fixture,rate,family,model,input_energy,wet_energy,wet_peak,stereo_correlation,return_trim,calibrated_energy,calibrated_peak\n";
  for(int file=1;file<argc;++file){const auto path=juce::File(argv[file]);std::unique_ptr<juce::AudioFormatReader> reader(formats.createReaderFor(path));if(!reader){std::cerr<<"Cannot decode "<<path.getFileName()<<'\n';return 1;}
   const float sr=float(reader->sampleRate);if(!std::isfinite(sr)||sr<8000||sr>192000||reader->lengthInSamples<=0||reader->numChannels==0){std::cerr<<"Unsupported fixture rate\n";return 1;}
   const int frames=int(std::min(reader->lengthInSamples,juce::int64(sr*4)));juce::AudioBuffer<float> input(2,frames);input.clear();if(!reader->read(&input,0,frames,0,true,true))return 1;
@@ -18,7 +18,7 @@ int main(int argc,char** argv){
     if(!std::isfinite(y.l)||!std::isfinite(y.r)){std::cerr<<"Nonfinite fixture output\n";return 1;}
     dry+=double(x.l)*x.l+double(x.r)*x.r;energy+=double(y.l)*y.l+double(y.r)*y.r;peak=std::max(peak,std::max(std::abs(y.l),std::abs(y.r)));ll+=double(y.l)*y.l;rr+=double(y.r)*y.r;lr+=double(y.l)*y.r;}
    if(dry<=1e-12||energy<=1e-12){std::cerr<<"Empty fixture or wet response\n";return 1;}
-   std::cout<<path.getFileName().toStdString()<<','<<sr<<','<<(family?"reverb":"delay")<<','<<model<<','<<dry<<','<<energy<<','<<peak<<','<<lr/std::sqrt(std::max(1e-30,ll*rr))<<'\n';
+   std::cout<<path.getFileName().toStdString()<<','<<sr<<','<<(family?"reverb":"delay")<<','<<model<<','<<dry<<','<<energy<<','<<peak<<','<<lr/std::sqrt(std::max(1e-30,ll*rr))<<','<<(family?tide::v13::reverbTrim[model]:tide::v13::delayTrim[model])<<','<<energy*std::pow(family?tide::v13::reverbTrim[model]:tide::v13::delayTrim[model],2)<<','<<peak*(family?tide::v13::reverbTrim[model]:tide::v13::delayTrim[model])<<'\n';
   }
  }
 }
