@@ -1,0 +1,9 @@
+Test project /Users/isaiahwersky/Downloads/WolfPrism/build-mac
+    Start 1: dsp
+1/2 Test #1: dsp ..............................   Passed    2.71 sec
+    Start 2: host
+2/2 Test #2: host .............................   Passed    0.23 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   2.95 sec

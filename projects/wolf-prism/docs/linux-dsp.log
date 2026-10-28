@@ -1,0 +1,5 @@
+PASS 20 modes at 44100 Hz
+PASS 20 modes at 48000 Hz
+PASS 20 modes at 96000 Hz
+PASS 20 modes at 192000 Hz
+PASS dry identity, 20 modes, sample rates, true wet Space, trails, capture, undo, Gesture, 24 routes, invalid input, no core heap allocations.

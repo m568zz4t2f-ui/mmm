@@ -1,0 +1,4 @@
+case=0 avg_us=192.833 p99_us=342.427 max_us=498.18 deadline_us=5333.33 realtime_percent=3.61702
+case=1 avg_us=218.394 p99_us=365.15 max_us=763.299 deadline_us=5333.33 realtime_percent=4.09593
+case=2 avg_us=151.078 p99_us=265.179 max_us=474.092 deadline_us=5333.33 realtime_percent=2.83377
+Core only, includes synthetic input generation/timing, 48kHz stereo/256 samples, all 4 modules enabled. No GUI/DAW overhead; not a DAW CPU meter. Checksum=-28.326
