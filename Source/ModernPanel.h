@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #pragma once
 #include "PluginProcessor.h"
+#include "TideLook.h"
 // Native, scrollable advanced editing. Attachments share the same APVTS as host automation.
 class TideModernPanel final:public juce::Component,private juce::Timer {
- TideProcessor& processor;juce::LookAndFeel_V4 theme;juce::ComboBox page;juce::Label heading;juce::Viewport viewport;juce::Component content;
+ TideProcessor& processor;TideLook theme;juce::ComboBox page;juce::Label heading;juce::Viewport viewport;juce::Component content;
  std::vector<std::unique_ptr<juce::Component>> controls;
  std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> sliders;
  std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment>> combos;
@@ -39,7 +40,7 @@ class TideModernPanel final:public juce::Component,private juce::Timer {
    if(selected==0&&id=="dDiffusion"&&model!=6)continue;if(selected==1&&id=="d2Diffusion"&&model!=6)continue;
    if((id=="dFreeze"||id=="d2Freeze")&&model!=7)continue;
    if(id=="pitchMode"&&model!=5)continue;if(id=="d2PitchMode"&&model!=5)continue;
-   auto text=std::make_unique<juce::Label>();text->setText(parameter->getName(64)+(parameter->getLabel().isNotEmpty()?" ("+parameter->getLabel()+")":""),juce::dontSendNotification);text->setColour(juce::Label::textColourId,juce::Colour(0xffdce8e9));add(std::move(text),10,300);
+   auto text=std::make_unique<juce::Label>();text->setText(parameter->getName(64)+(parameter->getLabel().isNotEmpty()?" ("+parameter->getLabel()+")":""),juce::dontSendNotification);text->setColour(juce::Label::textColourId,tide::ui::ink);text->setFont(tide::ui::font(13));add(std::move(text),10,300);
    const bool isModel=id=="d13Model"||id=="r13Model"||id=="d2Model"||id=="r2Model";
    if(auto* choice=dynamic_cast<juce::AudioParameterChoice*>(parameter)){auto box=std::make_unique<juce::ComboBox>();auto* raw=box.get();raw->setName(id);raw->addItemList(choice->choices,1);add(std::move(box),320,480);combos.push_back(std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(processor.state,id,*raw));if(isModel)raw->onChange=[this]{queueRebuild();};}
    else if(dynamic_cast<juce::AudioParameterBool*>(parameter)){auto button=std::make_unique<juce::ToggleButton>("Enabled");auto* raw=button.get();raw->setName(id);raw->setClickingTogglesState(true);add(std::move(button),320,180);buttons.push_back(std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(processor.state,id,*raw));}
@@ -50,8 +51,9 @@ class TideModernPanel final:public juce::Component,private juce::Timer {
  }
 public:
  TideModernPanel(TideProcessor& p,int tab):processor(p){
-  const juce::Colour ink(0xffdce8e9),blue(0xff8cd1e5);theme.setColour(juce::ComboBox::backgroundColourId,juce::Colour(0xff203c48));theme.setColour(juce::ComboBox::textColourId,ink);theme.setColour(juce::PopupMenu::backgroundColourId,juce::Colour(0xff203c48));theme.setColour(juce::PopupMenu::textColourId,ink);theme.setColour(juce::Slider::textBoxTextColourId,ink);theme.setColour(juce::Slider::textBoxBackgroundColourId,juce::Colour(0xff142832));theme.setColour(juce::Slider::trackColourId,blue);theme.setColour(juce::Slider::thumbColourId,blue);theme.setColour(juce::ToggleButton::textColourId,ink);setLookAndFeel(&theme);addAndMakeVisible(page);addAndMakeVisible(heading);addAndMakeVisible(viewport);viewport.setViewedComponent(&content,false);heading.setText("TIDE 1.3 / INDEPENDENT MACHINES",juce::dontSendNotification);heading.setColour(juce::Label::textColourId,juce::Colour(0xffdce8e9));page.addItemList({"Delay A","Delay B","Reverb A","Reverb B","Routing / global"},1);page.setSelectedId(tab+1,juce::dontSendNotification);page.onChange=[this]{queueRebuild();};setSize(850,600);rebuild();startTimerHz(8);}
+  setLookAndFeel(&theme);addAndMakeVisible(page);addAndMakeVisible(heading);addAndMakeVisible(viewport);viewport.setViewedComponent(&content,false);heading.setText("TIDE 1.3 / INDEPENDENT MACHINES",juce::dontSendNotification);heading.setColour(juce::Label::textColourId,tide::ui::ink);page.addItemList({"Delay A","Delay B","Reverb A","Reverb B","Routing / global"},1);page.setSelectedId(tab+1,juce::dontSendNotification);page.onChange=[this]{queueRebuild();};setSize(850,600);rebuild();if(isShowing())startTimerHz(8);}
  ~TideModernPanel()override{setLookAndFeel(nullptr);stopTimer();viewport.setViewedComponent(nullptr,false);}
+ void visibilityChanged()override{if(isShowing()){refreshEnabled();startTimerHz(8);}else stopTimer();}
  void paint(juce::Graphics& g)override{g.fillAll(juce::Colour(0xff142832));}
  void resized()override{heading.setBounds(18,12,800,28);page.setBounds(18,48,800,30);viewport.setBounds(8,90,getWidth()-16,getHeight()-98);}
 };

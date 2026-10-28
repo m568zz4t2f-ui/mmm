@@ -1,0 +1,31 @@
+{
+  "plugin_version": "1.3.0",
+  "ui_revision": "UI Refresh 1.0",
+  "source_build_id": "327e76352705",
+  "baseline_commit": "bbfbedda125c65357c5d07cc907ff0a46c598ce4",
+  "juce_commit": "29396c22c93392d6738e021b83196283d6e4d850",
+  "date_utc": "2026-10-28",
+  "status": "Linux-tested source candidate; native Mac and DAW acceptance pending",
+  "parameters": 165,
+  "combined_programs": 64,
+  "portable_presets": 206,
+  "mac_binaries_included": false,
+  "completed": [
+    "Release Linux VST3 and standalone build",
+    "11 CTest suites",
+    "pluginval 1.0.4 strictness 5 with GUI, seed 0x1301",
+    "all-64-program byte-identical audio fixture",
+    "eight protected processor/parameter/DSP files unchanged",
+    "206 portable presets unchanged",
+    "scaled main/advanced/browser screenshots",
+    "interleaved 1/4/8/16-instance open/closed benchmarks, three trials per cell"
+  ],
+  "pending": [
+    "Mac universal build and AU validation",
+    "target DAW UI/automation/project recall",
+    "native display-scale and animation acceptance",
+    "native multi-instance CPU and audio deadline acceptance",
+    "Installer.app migration and rollback",
+    "signing/notarization and original 1.3 musical acceptance"
+  ]
+}

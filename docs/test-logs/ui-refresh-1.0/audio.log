@@ -1,0 +1,3 @@
+COMMAND: ['/workspace/tide-build/full-update/tide_ui_refresh_checks', '--audio', '/workspace/tide-ui-refresh/final-audio.raw']
+
+EXIT: 0

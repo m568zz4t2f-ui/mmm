@@ -1,12 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #pragma once
 #include "PluginProcessor.h"
-class TideLook final:public juce::LookAndFeel_V4 {
-public:
- TideLook();
- void drawRotarySlider(juce::Graphics&,int,int,int,int,float,float,float,juce::Slider&)override;
- void drawButtonBackground(juce::Graphics&,juce::Button&,const juce::Colour&,bool,bool)override;
-};
+#include "TideLook.h"
 class TideEditor final:public juce::AudioProcessorEditor,private juce::Timer {
 public:
  explicit TideEditor(TideProcessor&);
@@ -40,6 +35,7 @@ private:
  juce::TooltipWindow tips{this,650};
  std::unique_ptr<juce::FileChooser> chooser;juce::MemoryBlock alternate;
  int editing=0;float phase=0,dLevel=0,rLevel=0,oLevel=0;bool alternateReady=false;
- juce::Image backdrop;std::array<float,8> visualValues{};
+ juce::Image backdrop;std::array<juce::Path,9> oceanCurves;float curvePhase=-100,curveActivity=-1,curveMovement=-1;
+ std::array<float,101> waveEnvelope{},waveSinA{},waveCosA{},waveSinB{},waveCosB{};std::array<float,32> visualValues{};
  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TideEditor)
 };

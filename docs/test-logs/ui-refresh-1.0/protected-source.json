@@ -1,0 +1,10 @@
+{
+  "Source/PluginProcessor.cpp": "f52f6852d7bf9ba831dd3e617a3e357fa7dadd2ee0fa4beb3b7be8a8030417da",
+  "Source/PluginProcessor.h": "9608d91c7969c9e486067eab75f5796888c003aa72882038e53f45d307f43e15",
+  "Source/Parameters.h": "03270a3b7ba6de8ec68d3c9da6e8694fdf62f843ada0a8fe3d09529de4a34c9e",
+  "Source/ModernParameters.h": "5725a2b5169acda3aaac55cf935ab894913f749c20f743ddb0d4284b265e90ce",
+  "Source/ModernDSP.h": "5102de63f25384e240ca463534aec63732c3d9df391164d3245a94ea35522e77",
+  "Source/VersionedDSP.h": "a76b8f4b55471b2db05f613ae8ab6673147506a83ced5f28cc2ad50dd816fdf8",
+  "Source/TideDSP.h": "c23db43b5fc4f045a86de95a9f86b81da37450fd19d73fe9354dae799b6de522",
+  "Source/BloomDSP.h": "011d2da47069e8f6003e73082ea086bfb55c9be69d57712ec53a76626cff91fb"
+}

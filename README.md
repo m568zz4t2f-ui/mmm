@@ -1,5 +1,7 @@
 # Wolf Tide 1.3.0 — source build candidate
 
+**UI Refresh 1.0:** coordinated typography, original metallic controls, warm gray/teal panels and refined animated displays. See [implementation, benchmarks and acceptance status](docs/UI-REFRESH-1.0.md). Sound, parameter identities and project formats remain unchanged from the integrated 1.3 candidate.
+
 Integrated stereo delay/reverb plugin: twelve delay machines, thirteen reverbs, independent delay A/B and reverb A/B, Series/Parallel/Frequency split routing, advanced native controls and versioned project compatibility.
 
 **Mac installer handoff:** unzip the self-contained Source ZIP and run `bash scripts/Build-Mac.command` on your Mac. It includes pinned JUCE source, builds universal AU/VST3/standalone, runs the tests and creates the package. Read [the Mac build guide](docs/BUILD-MAC-1.3.md) for prerequisites, the existing duplicate-install migration, signing, notarization and rollback.

@@ -1,3 +1,11 @@
+# Current work — UI Refresh 1.0 for Tide 1.3.0
+
+The UI refresh is implemented on development/tide-ui-refresh. See UI-REFRESH-1.0.md for current validation and native acceptance limits. Shared styling, cached custom knobs, gray/teal materials and refined displays preserve the existing workflow. Processor, DSP and parameter source files are byte-identical to bbfbedda125c65357c5d07cc907ff0a46c598ce4. Version and plugin identity remain 1.3.0. No cloud environment configuration, default branch or live Mac install changed.
+
+The 1.3 notes below describe the source baseline; their build IDs are historical.
+
+---
+
 # Current work — integrated Wolf Tide 1.3.0 candidate
 
 The 1.3 backend is now connected to the processor, host state and native advanced UI. The first 61 parameter identities remain; 104 controls are appended. Both sections can select Legacy or Tide 1.3 independently. All 25 paths and four slots are implemented; 64 programs and 50 side starters are exported under Factory-Presets/1.3, with the 92 previous files retained.

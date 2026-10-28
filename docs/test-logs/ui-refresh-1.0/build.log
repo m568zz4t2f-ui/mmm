@@ -1,0 +1,619 @@
+-- Checking for modules 'webkit2gtk-4.0;gtk+-x11-3.0'
+--   Package 'webkit2gtk-4.0', required by 'virtual:world', not found
+--   Package 'gtk+-x11-3.0', required by 'virtual:world', not found
+-- Configuring juceaide
+-- Building juceaide
+-- Exporting juceaide
+-- Testing juceaide
+-- Finished setting up juceaide
+-- Configuring done (1.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: /workspace/tide-build/full-update
+[  2%] Built target tide_update_tests
+[  5%] Built target tide_dsp_tests
+[  8%] Built target tide_models_tests
+[ 11%] Built target tide_render
+[ 14%] Built target tide_repair_tests
+[ 17%] Built target tide_modern_tests
+[ 20%] Built target tide_modern_profile
+[ 23%] Built target tide_modern_stress
+[ 26%] Built target tide_modern_controls
+[ 29%] Built target WolfTide_vst3_helper
+[ 30%] Building CXX object CMakeFiles/WolfTide.dir/Source/PluginProcessor.cpp.o
+[ 32%] Building CXX object CMakeFiles/WolfTide.dir/Source/PluginEditor.cpp.o
+In file included from /workspace/mmm/Source/Parameters.h:3,
+                 from /workspace/mmm/Source/ModernParameters.h:3,
+                 from /workspace/mmm/Source/PluginProcessor.h:4,
+                 from /workspace/mmm/Source/PluginProcessor.cpp:2:
+/workspace/mmm/Source/TideDSP.h: In member function ‘void tide::Pitch::set(float)’:
+/workspace/mmm/Source/TideDSP.h:49:43: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi) noexcept {if(semi==lastSemi)return;lastSemi=semi;targetRatio=std::pow(2.f,semi/12.f);targetWindow=modern?sr*.105f:sr*.07f*(1+.5f*std::clamp(semi/12-1.f,0.f,1.f));
+      |                                       ~~~~^~~~~~~~~~
+/workspace/mmm/Source/TideDSP.h: In member function ‘tide::Stereo tide::Granular::tick(tide::Stereo, const tide::Parameters&)’:
+/workspace/mmm/Source/TideDSP.h:78:16: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   78 |         if(semi!=lastSemi){lastSemi=semi;rate=std::pow(2.f,semi/12);companion=std::pow(2.f,(semi>17?semi-12:semi+7)/12);
+      |            ~~~~^~~~~~~~~~
+/workspace/mmm/Source/TideDSP.h: In member function ‘void tide::BoutiqueTank::set(const tide::Parameters&)’:
+/workspace/mmm/Source/TideDSP.h:282:89: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  282 |         for(std::size_t i=0;i<8;++i){wantedLengths[i]=sr*.001f*ms[i]*scale;if(lengths[i]==0)lengths[i]=wantedLengths[i];target[i]=frozen?1.f:std::pow(10.f,-3*wantedLengths[i]/sr/std::clamp(p.decay,.25f,20.f));}
+/workspace/mmm/Source/TideDSP.h: In member function ‘tide::Stereo tide::Engine::tick(tide::Stereo, bool, const tide::Stereo*, const tide::Stereo*)’:
+/workspace/mmm/Source/TideDSP.h:416:82: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  416 |         for(std::size_t i=0;i<std::size_t(tankLimit);++i){if(!live[i]&&weights[i]==0)continue;Stereo excitation{raw[0]*weights[i],raw[1]*weights[i]};
+/workspace/mmm/Source/TideDSP.h:429:116: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  429 |         while(tankLimit>4&&tankLimit>selected+1&&!live[std::size_t(tankLimit-1)]&&weights[std::size_t(tankLimit-1)]==0)--tankLimit;
+In file included from /workspace/mmm/Source/ModernParameters.h:4:
+/workspace/mmm/Source/ModernDSP.h: In member function ‘void tide::v13::Pitch::set(float, float)’:
+/workspace/mmm/Source/ModernDSP.h:49:104: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi,float texture){wantedWindow=sr*(.035f+.12f*std::clamp(texture,0.f,1.f));if(semi==last)return;last=semi;target=std::pow(2.f,std::clamp(semi,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,target);for(auto& row:filter){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |                                                                                                    ~~~~^~~~~~
+/workspace/mmm/Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::CaptureGrains::tick(tide::Stereo, const tide::v13::DelaySettings&)’:
+/workspace/mmm/Source/ModernDSP.h:77:24: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   77 |         if(lastInterval!=p.interval){lastInterval=p.interval;ratio=std::pow(2.f,std::clamp(p.interval,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,ratio*1.5f);for(auto& row:filters){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |            ~~~~~~~~~~~~^~~~~~~~~~~~
+/workspace/mmm/Source/ModernDSP.h:79:22: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   79 |         if(lastSpread!=p.spread){lastSpread=p.spread;harmony=std::pow(1.5f,p.spread);}
+      |            ~~~~~~~~~~^~~~~~~~~~
+/workspace/mmm/Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::Slot<Machine, Settings>::tick(tide::Stereo, float)’:
+/workspace/mmm/Source/ModernDSP.h:299:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |             ^~
+/workspace/mmm/Source/ModernDSP.h:299:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |                                                                                    ^~~
+In file included from /workspace/mmm/Source/PluginProcessor.h:5:
+/workspace/mmm/Source/VersionedDSP.h: In member function ‘tide::Stereo tide::v13::VersionedEngine::tick(tide::Stereo, bool)’:
+/workspace/mmm/Source/VersionedDSP.h:21:28: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |         if(revision==0&&mix==0){result=legacy.tick(input,bypass);delayPeak=legacy.delayPeak;reverbPeak=legacy.reverbPeak;return result;}
+      |                         ~~~^~~
+/workspace/mmm/Source/PluginProcessor.cpp: In member function ‘virtual void TideProcessor::prepareToPlay(double, int)’:
+/workspace/mmm/Source/PluginProcessor.cpp:77:165: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   77 | void TideProcessor::prepareToPlay(double sr,int){auto old=read();auto next=readModern(old);const int selected=!(next.legacyDelay&&next.legacyReverb);if(preparedRate!=sr){engine.prepare(float(sr),old,next,selected);preparedRate=sr;clearFade=1;clearing=false;}else engine.set(old,next,selected);setLatencySamples(0);}
+      |                                                                                                                                                         ~~~~~~~~~~~~^~~~
+/workspace/mmm/Source/PluginProcessor.cpp: In member function ‘void TideProcessor::render(juce::AudioBuffer<float>&, bool)’:
+/workspace/mmm/Source/PluginProcessor.cpp:93:25: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   93 |             if(clearFade==0){engine.clear();clearing=false;}}
+      |                ~~~~~~~~~^~~
+/workspace/mmm/Source/PluginProcessor.cpp: In member function ‘virtual const juce::String TideProcessor::getProgramName(int)’:
+/workspace/mmm/Source/PluginProcessor.cpp:103:103: warning: conversion to ‘std::array<tide::Preset, 64>::size_type’ {aka ‘long unsigned int’} from ‘int’ may change the sign of the result [-Wsign-conversion]
+  103 | const juce::String TideProcessor::getProgramName(int i){return i>=0&&i<tide::numPresets?tide::presets[i].name:"";}
+      |                                                                                                       ^
+/workspace/mmm/Source/PluginProcessor.cpp: In function ‘juce::NamedValueSet {anonymous}::recipe(const tide::Preset&)’:
+/workspace/mmm/Source/PluginProcessor.cpp:120:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  120 |     if(p.delayB>=0)put("d2Model",float(p.delayB));if(p.reverbB>=0)put("r2Model",float(p.reverbB));put("routing13",float(p.route13));
+      |     ^~
+/workspace/mmm/Source/PluginProcessor.cpp:120:51: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  120 |     if(p.delayB>=0)put("d2Model",float(p.delayB));if(p.reverbB>=0)put("r2Model",float(p.reverbB));put("routing13",float(p.route13));
+      |                                                   ^~
+/workspace/mmm/Source/PluginProcessor.cpp: In member function ‘void TideProcessor::restorePresetIdentities(const juce::ValueTree&)’:
+/workspace/mmm/Source/PluginProcessor.cpp:155:262: warning: conversion to ‘std::array<tide::Preset, 64>::size_type’ {aka ‘long unsigned int’} from ‘int’ may change the sign of the result [-Wsign-conversion]
+  155 |     if(selected>=0&&selected<tide::numPresets){const auto expected=recipe(int(tree.getProperty("version",1))<4&&selected<52?tide::originalPresets[selected]:tide::presets[std::size_t(selected)]);for(int scope=0;scope<3;++scope)rememberPreset(scope,tide::presets[selected].name,true,scope==0?selected:-1,&expected);}
+      |                                                                                                                                                                                                                                                                      ^~~~~~~~
+/workspace/mmm/Source/PluginProcessor.cpp: In member function ‘void TideProcessor::applyFactory(int, bool)’:
+/workspace/mmm/Source/PluginProcessor.cpp:178:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  178 |     if(respect)captureUndo();const auto values=recipe(tide::presets[i]);
+      |     ^~
+/workspace/mmm/Source/PluginProcessor.cpp:178:30: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  178 |     if(respect)captureUndo();const auto values=recipe(tide::presets[i]);
+      |                              ^~~~~
+/workspace/mmm/Source/PluginProcessor.cpp:178:69: warning: conversion to ‘std::array<tide::Preset, 64>::size_type’ {aka ‘long unsigned int’} from ‘int’ may change the sign of the result [-Wsign-conversion]
+  178 |     if(respect)captureUndo();const auto values=recipe(tide::presets[i]);
+      |                                                                     ^
+/workspace/mmm/Source/PluginProcessor.cpp:183:47: warning: conversion to ‘std::array<tide::Preset, 64>::size_type’ {aka ‘long unsigned int’} from ‘int’ may change the sign of the result [-Wsign-conversion]
+  183 |     program.store(i);loadedName=tide::presets[i].name;loadedScope=0;
+      |                                               ^
+/workspace/mmm/Source/PluginProcessor.cpp: In member function ‘void TideProcessor::applyReverbPreset(int, bool)’:
+/workspace/mmm/Source/PluginProcessor.cpp:205:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  205 |     if(i==6||i==7)setValue("shimmer",alternate?.45f:.25f);if(i==3||i==10)setValue("rAttack",alternate?.9f:.3f);
+      |     ^~
+/workspace/mmm/Source/PluginProcessor.cpp:205:59: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  205 |     if(i==6||i==7)setValue("shimmer",alternate?.45f:.25f);if(i==3||i==10)setValue("rAttack",alternate?.9f:.3f);
+      |                                                           ^~
+In file included from /workspace/mmm/Source/Parameters.h:3,
+                 from /workspace/mmm/Source/ModernParameters.h:3,
+                 from /workspace/mmm/Source/PluginProcessor.h:4,
+                 from /workspace/mmm/Source/PluginEditor.h:3,
+                 from /workspace/mmm/Source/PluginEditor.cpp:2:
+/workspace/mmm/Source/TideDSP.h: In member function ‘void tide::Pitch::set(float)’:
+/workspace/mmm/Source/TideDSP.h:49:43: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi) noexcept {if(semi==lastSemi)return;lastSemi=semi;targetRatio=std::pow(2.f,semi/12.f);targetWindow=modern?sr*.105f:sr*.07f*(1+.5f*std::clamp(semi/12-1.f,0.f,1.f));
+      |                                       ~~~~^~~~~~~~~~
+/workspace/mmm/Source/TideDSP.h: In member function ‘tide::Stereo tide::Granular::tick(tide::Stereo, const tide::Parameters&)’:
+/workspace/mmm/Source/TideDSP.h:78:16: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   78 |         if(semi!=lastSemi){lastSemi=semi;rate=std::pow(2.f,semi/12);companion=std::pow(2.f,(semi>17?semi-12:semi+7)/12);
+      |            ~~~~^~~~~~~~~~
+/workspace/mmm/Source/TideDSP.h: In member function ‘void tide::BoutiqueTank::set(const tide::Parameters&)’:
+/workspace/mmm/Source/TideDSP.h:282:89: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  282 |         for(std::size_t i=0;i<8;++i){wantedLengths[i]=sr*.001f*ms[i]*scale;if(lengths[i]==0)lengths[i]=wantedLengths[i];target[i]=frozen?1.f:std::pow(10.f,-3*wantedLengths[i]/sr/std::clamp(p.decay,.25f,20.f));}
+/workspace/mmm/Source/TideDSP.h: In member function ‘tide::Stereo tide::Engine::tick(tide::Stereo, bool, const tide::Stereo*, const tide::Stereo*)’:
+/workspace/mmm/Source/TideDSP.h:416:82: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  416 |         for(std::size_t i=0;i<std::size_t(tankLimit);++i){if(!live[i]&&weights[i]==0)continue;Stereo excitation{raw[0]*weights[i],raw[1]*weights[i]};
+/workspace/mmm/Source/TideDSP.h:429:116: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  429 |         while(tankLimit>4&&tankLimit>selected+1&&!live[std::size_t(tankLimit-1)]&&weights[std::size_t(tankLimit-1)]==0)--tankLimit;
+In file included from /workspace/mmm/Source/ModernParameters.h:4:
+/workspace/mmm/Source/ModernDSP.h: In member function ‘void tide::v13::Pitch::set(float, float)’:
+/workspace/mmm/Source/ModernDSP.h:49:104: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi,float texture){wantedWindow=sr*(.035f+.12f*std::clamp(texture,0.f,1.f));if(semi==last)return;last=semi;target=std::pow(2.f,std::clamp(semi,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,target);for(auto& row:filter){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |                                                                                                    ~~~~^~~~~~
+/workspace/mmm/Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::CaptureGrains::tick(tide::Stereo, const tide::v13::DelaySettings&)’:
+/workspace/mmm/Source/ModernDSP.h:77:24: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   77 |         if(lastInterval!=p.interval){lastInterval=p.interval;ratio=std::pow(2.f,std::clamp(p.interval,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,ratio*1.5f);for(auto& row:filters){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |            ~~~~~~~~~~~~^~~~~~~~~~~~
+/workspace/mmm/Source/ModernDSP.h:79:22: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   79 |         if(lastSpread!=p.spread){lastSpread=p.spread;harmony=std::pow(1.5f,p.spread);}
+      |            ~~~~~~~~~~^~~~~~~~~~
+/workspace/mmm/Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::Slot<Machine, Settings>::tick(tide::Stereo, float)’:
+/workspace/mmm/Source/ModernDSP.h:299:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |             ^~
+/workspace/mmm/Source/ModernDSP.h:299:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |                                                                                    ^~~
+In file included from /workspace/mmm/Source/PluginProcessor.h:5:
+/workspace/mmm/Source/VersionedDSP.h: In member function ‘tide::Stereo tide::v13::VersionedEngine::tick(tide::Stereo, bool)’:
+/workspace/mmm/Source/VersionedDSP.h:21:28: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |         if(revision==0&&mix==0){result=legacy.tick(input,bypass);delayPeak=legacy.delayPeak;reverbPeak=legacy.reverbPeak;return result;}
+      |                         ~~~^~~
+In file included from /workspace/mmm/Source/PluginEditor.cpp:3:
+/workspace/mmm/Source/PresetBrowser.h: In member function ‘void TidePresetBrowser::filter()’:
+/workspace/mmm/Source/PresetBrowser.h:21:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |    if(!e.name.containsIgnoreCase(search.getText()))continue;const auto tag=tags.getText();if(tags.getSelectedId()>1&&!e.name.containsIgnoreCase(tag))continue;shown.push_back(e);}
+      |    ^~
+/workspace/mmm/Source/PresetBrowser.h:21:61: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |    if(!e.name.containsIgnoreCase(search.getText()))continue;const auto tag=tags.getText();if(tags.getSelectedId()>1&&!e.name.containsIgnoreCase(tag))continue;shown.push_back(e);}
+      |                                                             ^~~~~
+/workspace/mmm/Source/PresetBrowser.h:22:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   22 |   if(collection.getSelectedId()==4)std::stable_sort(shown.begin(),shown.end(),[&](const Entry& a,const Entry& b){return recent.indexOf(a.key)<recent.indexOf(b.key);});list.updateContent();list.selectRow(shown.empty()?-1:0);list.repaint();}
+      |   ^~
+/workspace/mmm/Source/PresetBrowser.h:22:168: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   22 |   if(collection.getSelectedId()==4)std::stable_sort(shown.begin(),shown.end(),[&](const Entry& a,const Entry& b){return recent.indexOf(a.key)<recent.indexOf(b.key);});list.updateContent();list.selectRow(shown.empty()?-1:0);list.repaint();}
+      |                                                                                                                                                                        ^~~~
+In file included from /workspace/mmm/Source/PluginEditor.cpp:4:
+/workspace/mmm/Source/ModernPanel.h: In member function ‘void TideModernPanel::refreshEnabled()’:
+/workspace/mmm/Source/ModernPanel.h:19:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |    if(id=="dTime"||id=="d2Time")enabled&=!sync;if(id=="rhythm"||id=="d2Rhythm")enabled&=sync;
+      |    ^~
+/workspace/mmm/Source/ModernPanel.h:19:48: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |    if(id=="dTime"||id=="d2Time")enabled&=!sync;if(id=="rhythm"||id=="d2Rhythm")enabled&=sync;
+      |                                                ^~
+/workspace/mmm/Source/ModernPanel.h:20:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   20 |    if(id=="dDual")enabled&=dual;if(id=="ratio")enabled&=dual&&!independent;if(id=="dBTime")enabled&=dual&&independent&&!sync;if(id=="dBRhythm")enabled&=dual&&independent&&sync;if(id=="dBFeedback"||id=="dBLevel")enabled&=dual&&independent;if(id=="d2Ratio")enabled&=int(processor.value("d2Stereo"))==1;
+      |    ^~
+/workspace/mmm/Source/ModernPanel.h:20:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   20 |    if(id=="dDual")enabled&=dual;if(id=="ratio")enabled&=dual&&!independent;if(id=="dBTime")enabled&=dual&&independent&&!sync;if(id=="dBRhythm")enabled&=dual&&independent&&sync;if(id=="dBFeedback"||id=="dBLevel")enabled&=dual&&independent;if(id=="d2Ratio")enabled&=int(processor.value("d2Stereo"))==1;
+      |                                 ^~
+/workspace/mmm/Source/ModernPanel.h:21:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |    if(id=="splitHz")enabled&=processor.value("routing13")>1.5f;if(id=="feed")enabled&=int(processor.value("routing13"))!=1;
+      |    ^~
+/workspace/mmm/Source/ModernPanel.h:21:64: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |    if(id=="splitHz")enabled&=processor.value("routing13")>1.5f;if(id=="feed")enabled&=int(processor.value("routing13"))!=1;
+      |                                                                ^~
+/workspace/mmm/Source/ModernPanel.h: In member function ‘void TideModernPanel::rebuild()’:
+/workspace/mmm/Source/ModernPanel.h:40:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   40 |    if(selected==0&&id=="dDiffusion"&&model!=6)continue;if(selected==1&&id=="d2Diffusion"&&model!=6)continue;
+      |    ^~
+/workspace/mmm/Source/ModernPanel.h:40:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   40 |    if(selected==0&&id=="dDiffusion"&&model!=6)continue;if(selected==1&&id=="d2Diffusion"&&model!=6)continue;
+      |                                                        ^~
+/workspace/mmm/Source/ModernPanel.h:42:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   42 |    if(id=="pitchMode"&&model!=5)continue;if(id=="d2PitchMode"&&model!=5)continue;
+      |    ^~
+/workspace/mmm/Source/ModernPanel.h:42:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   42 |    if(id=="pitchMode"&&model!=5)continue;if(id=="d2PitchMode"&&model!=5)continue;
+      |                                          ^~
+/workspace/mmm/Source/PluginEditor.cpp: In member function ‘void TideEditor::drawOcean(juce::Graphics&)’:
+/workspace/mmm/Source/PluginEditor.cpp:226:10: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  226 |  if(phase!=curvePhase||activity!=curveActivity||movement!=curveMovement){
+      |     ~~~~~^~~~~~~~~~~~
+/workspace/mmm/Source/PluginEditor.cpp:226:32: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  226 |  if(phase!=curvePhase||activity!=curveActivity||movement!=curveMovement){
+      |                        ~~~~~~~~^~~~~~~~~~~~~~~
+/workspace/mmm/Source/PluginEditor.cpp:226:57: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  226 |  if(phase!=curvePhase||activity!=curveActivity||movement!=curveMovement){
+      |                                                 ~~~~~~~~^~~~~~~~~~~~~~~
+[ 33%] Linking CXX static library "WolfTide_artefacts/Release/libWolf Tide_SharedCode.a"
+[ 58%] Built target WolfTide
+[ 60%] Building CXX object CMakeFiles/tide_host_tests.dir/tests/host_tests.cpp.o
+[ 61%] Linking CXX shared module "WolfTide_artefacts/Release/VST3/Wolf Tide.vst3/Contents/x86_64-linux/Wolf Tide.so"
+[ 63%] Linking CXX executable "WolfTide_artefacts/Release/Standalone/Wolf Tide"
+removing moduleinfo.json
+creating /workspace/tide-build/full-update/WolfTide_artefacts/Release/VST3/Wolf Tide.vst3
+[ 75%] Built target WolfTide_VST3
+[ 76%] Building CXX object CMakeFiles/tide_ui_tests.dir/tests/ui_tests.cpp.o
+[ 88%] Built target WolfTide_Standalone
+[ 89%] Linking CXX executable tide_modern_audio
+[ 91%] Built target tide_modern_audio
+[ 92%] Building CXX object CMakeFiles/tide_modern_host_tests.dir/tests/modern_host_tests.cpp.o
+In file included from /workspace/mmm/tests/../Source/Parameters.h:3,
+                 from /workspace/mmm/tests/../Source/ModernParameters.h:3,
+                 from /workspace/mmm/tests/../Source/PluginProcessor.h:4,
+                 from /workspace/mmm/tests/host_tests.cpp:2:
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘void tide::Pitch::set(float)’:
+/workspace/mmm/tests/../Source/TideDSP.h:49:43: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi) noexcept {if(semi==lastSemi)return;lastSemi=semi;targetRatio=std::pow(2.f,semi/12.f);targetWindow=modern?sr*.105f:sr*.07f*(1+.5f*std::clamp(semi/12-1.f,0.f,1.f));
+      |                                       ~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘tide::Stereo tide::Granular::tick(tide::Stereo, const tide::Parameters&)’:
+/workspace/mmm/tests/../Source/TideDSP.h:78:16: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   78 |         if(semi!=lastSemi){lastSemi=semi;rate=std::pow(2.f,semi/12);companion=std::pow(2.f,(semi>17?semi-12:semi+7)/12);
+      |            ~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘void tide::BoutiqueTank::set(const tide::Parameters&)’:
+/workspace/mmm/tests/../Source/TideDSP.h:282:89: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  282 |         for(std::size_t i=0;i<8;++i){wantedLengths[i]=sr*.001f*ms[i]*scale;if(lengths[i]==0)lengths[i]=wantedLengths[i];target[i]=frozen?1.f:std::pow(10.f,-3*wantedLengths[i]/sr/std::clamp(p.decay,.25f,20.f));}
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘tide::Stereo tide::Engine::tick(tide::Stereo, bool, const tide::Stereo*, const tide::Stereo*)’:
+/workspace/mmm/tests/../Source/TideDSP.h:416:82: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  416 |         for(std::size_t i=0;i<std::size_t(tankLimit);++i){if(!live[i]&&weights[i]==0)continue;Stereo excitation{raw[0]*weights[i],raw[1]*weights[i]};
+/workspace/mmm/tests/../Source/TideDSP.h:429:116: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  429 |         while(tankLimit>4&&tankLimit>selected+1&&!live[std::size_t(tankLimit-1)]&&weights[std::size_t(tankLimit-1)]==0)--tankLimit;
+In file included from /workspace/mmm/tests/../Source/ModernParameters.h:4:
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘void tide::v13::Pitch::set(float, float)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:49:104: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi,float texture){wantedWindow=sr*(.035f+.12f*std::clamp(texture,0.f,1.f));if(semi==last)return;last=semi;target=std::pow(2.f,std::clamp(semi,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,target);for(auto& row:filter){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |                                                                                                    ~~~~^~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::CaptureGrains::tick(tide::Stereo, const tide::v13::DelaySettings&)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:77:24: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   77 |         if(lastInterval!=p.interval){lastInterval=p.interval;ratio=std::pow(2.f,std::clamp(p.interval,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,ratio*1.5f);for(auto& row:filters){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |            ~~~~~~~~~~~~^~~~~~~~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h:79:22: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   79 |         if(lastSpread!=p.spread){lastSpread=p.spread;harmony=std::pow(1.5f,p.spread);}
+      |            ~~~~~~~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::Slot<Machine, Settings>::tick(tide::Stereo, float)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:299:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |             ^~
+/workspace/mmm/tests/../Source/ModernDSP.h:299:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |                                                                                    ^~~
+In file included from /workspace/mmm/tests/../Source/PluginProcessor.h:5:
+/workspace/mmm/tests/../Source/VersionedDSP.h: In member function ‘tide::Stereo tide::v13::VersionedEngine::tick(tide::Stereo, bool)’:
+/workspace/mmm/tests/../Source/VersionedDSP.h:21:28: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |         if(revision==0&&mix==0){result=legacy.tick(input,bypass);delayPeak=legacy.delayPeak;reverbPeak=legacy.reverbPeak;return result;}
+      |                         ~~~^~~
+In file included from /workspace/mmm/tests/host_tests.cpp:3:
+/workspace/mmm/tests/../Source/PresetBrowser.h: In member function ‘void TidePresetBrowser::filter()’:
+/workspace/mmm/tests/../Source/PresetBrowser.h:21:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |    if(!e.name.containsIgnoreCase(search.getText()))continue;const auto tag=tags.getText();if(tags.getSelectedId()>1&&!e.name.containsIgnoreCase(tag))continue;shown.push_back(e);}
+      |    ^~
+/workspace/mmm/tests/../Source/PresetBrowser.h:21:61: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |    if(!e.name.containsIgnoreCase(search.getText()))continue;const auto tag=tags.getText();if(tags.getSelectedId()>1&&!e.name.containsIgnoreCase(tag))continue;shown.push_back(e);}
+      |                                                             ^~~~~
+/workspace/mmm/tests/../Source/PresetBrowser.h:22:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   22 |   if(collection.getSelectedId()==4)std::stable_sort(shown.begin(),shown.end(),[&](const Entry& a,const Entry& b){return recent.indexOf(a.key)<recent.indexOf(b.key);});list.updateContent();list.selectRow(shown.empty()?-1:0);list.repaint();}
+      |   ^~
+/workspace/mmm/tests/../Source/PresetBrowser.h:22:168: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   22 |   if(collection.getSelectedId()==4)std::stable_sort(shown.begin(),shown.end(),[&](const Entry& a,const Entry& b){return recent.indexOf(a.key)<recent.indexOf(b.key);});list.updateContent();list.selectRow(shown.empty()?-1:0);list.repaint();}
+      |                                                                                                                                                                        ^~~~
+/workspace/mmm/tests/host_tests.cpp: In function ‘int main(int, char**)’:
+/workspace/mmm/tests/host_tests.cpp:20:58: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   20 |   check(p.state.getParameter("dType")->convertFrom0to1(1)==5&&p.state.getParameter("rType")->convertFrom0to1(1)==3,"legacy normalized selector ranges unchanged");
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:20:112: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   20 |   check(p.state.getParameter("dType")->convertFrom0to1(1)==5&&p.state.getParameter("rType")->convertFrom0to1(1)==3,"legacy normalized selector ranges unchanged");
+      |                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:21:683: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |   juce::MemoryBlock block;p.setCurrentProgram(0);p.getStateInformation(block);auto xml=p.getXmlFromBinary(block.getData(),int(block.getSize()));auto old=juce::ValueTree::fromXml(*xml);for(int i=44;i<p.getParameters().size();++i){auto* param=dynamic_cast<juce::RangedAudioParameter*>(p.getParameters()[i]);old.removeChild(old.getChildWithProperty("id",param->paramID),nullptr);}old.setProperty("version",1,nullptr);auto oldXml=old.createXml();juce::MemoryBlock legacy;p.copyXmlToBinary(*oldXml,legacy);p.setValue("dModel",3);p.setValue("rModel",3);p.setValue("dVersion",1);p.setValue("rVersion",1);p.setStateInformation(legacy.getData(),int(legacy.getSize()));check(p.value("dModel")==0&&p.value("rModel")==0&&p.value("dVersion")==0&&p.value("rVersion")==0,"old state resets modern extensions");}
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:21:705: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |   juce::MemoryBlock block;p.setCurrentProgram(0);p.getStateInformation(block);auto xml=p.getXmlFromBinary(block.getData(),int(block.getSize()));auto old=juce::ValueTree::fromXml(*xml);for(int i=44;i<p.getParameters().size();++i){auto* param=dynamic_cast<juce::RangedAudioParameter*>(p.getParameters()[i]);old.removeChild(old.getChildWithProperty("id",param->paramID),nullptr);}old.setProperty("version",1,nullptr);auto oldXml=old.createXml();juce::MemoryBlock legacy;p.copyXmlToBinary(*oldXml,legacy);p.setValue("dModel",3);p.setValue("rModel",3);p.setValue("dVersion",1);p.setValue("rVersion",1);p.setStateInformation(legacy.getData(),int(legacy.getSize()));check(p.value("dModel")==0&&p.value("rModel")==0&&p.value("dVersion")==0&&p.value("rVersion")==0,"old state resets modern extensions");}
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:21:729: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |   juce::MemoryBlock block;p.setCurrentProgram(0);p.getStateInformation(block);auto xml=p.getXmlFromBinary(block.getData(),int(block.getSize()));auto old=juce::ValueTree::fromXml(*xml);for(int i=44;i<p.getParameters().size();++i){auto* param=dynamic_cast<juce::RangedAudioParameter*>(p.getParameters()[i]);old.removeChild(old.getChildWithProperty("id",param->paramID),nullptr);}old.setProperty("version",1,nullptr);auto oldXml=old.createXml();juce::MemoryBlock legacy;p.copyXmlToBinary(*oldXml,legacy);p.setValue("dModel",3);p.setValue("rModel",3);p.setValue("dVersion",1);p.setValue("rVersion",1);p.setStateInformation(legacy.getData(),int(legacy.getSize()));check(p.value("dModel")==0&&p.value("rModel")==0&&p.value("dVersion")==0&&p.value("rVersion")==0,"old state resets modern extensions");}
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:21:753: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |   juce::MemoryBlock block;p.setCurrentProgram(0);p.getStateInformation(block);auto xml=p.getXmlFromBinary(block.getData(),int(block.getSize()));auto old=juce::ValueTree::fromXml(*xml);for(int i=44;i<p.getParameters().size();++i){auto* param=dynamic_cast<juce::RangedAudioParameter*>(p.getParameters()[i]);old.removeChild(old.getChildWithProperty("id",param->paramID),nullptr);}old.setProperty("version",1,nullptr);auto oldXml=old.createXml();juce::MemoryBlock legacy;p.copyXmlToBinary(*oldXml,legacy);p.setValue("dModel",3);p.setValue("rModel",3);p.setValue("dVersion",1);p.setValue("rVersion",1);p.setStateInformation(legacy.getData(),int(legacy.getSize()));check(p.value("dModel")==0&&p.value("rModel")==0&&p.value("dVersion")==0&&p.value("rVersion")==0,"old state resets modern extensions");}
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:32:153: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   32 |   const float before=p.value("dTime");p.setValue("dDiffusion",.91f);p.setStateInformation(broken.getData(),int(broken.getSize()));check(p.value("dTime")==before&&std::abs(p.value("dDiffusion")-.91f)<.002f,"invalid state rejected before applying defaults");
+      |                                                                                                                                         ~~~~~~~~~~~~~~~~^~~~~~~~
+/workspace/mmm/tests/host_tests.cpp:38:317: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   38 |  p.lockDelay.store(false);p.setValue("dAmount",.123f);p.setValue("rAmount",.456f);p.setCurrentProgram(3);check(std::abs(p.value("dAmount")-.123f)<.002f&&std::abs(p.value("rAmount")-.456f)<.002f,"mix lock protects both amounts");p.lockMix.store(false);p.setValue("send",1);p.setCurrentProgram(2);check(p.value("send")==1,"send survives factory changes");
+      |                                                                                                                                                                                                                                                                                                              ~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:42:206: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   42 |  p.setValue("rhythm",7);p.setValue("ratio",1.2f);check(p.savePreset(file,2).wasOk(),"save reverb scope");p.setValue("rhythm",2);p.setValue("ratio",.8f);check(p.loadPreset(file,2).wasOk()&&p.value("rhythm")==2&&std::abs(p.value("ratio")-.8f)<.01f,"reverb recall preserves delay rhythm and ratio");check(p.savePreset(file,1).wasOk(),"restore delay file");
+      |                                                                                                                                                                                             ~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:50:167: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   50 |  p.setValue("pitchMode",1);check(p.savePreset(file,1).wasOk(),"save pitch routing");p.setValue("pitchMode",0);check(p.loadPreset(file,1).wasOk()&&p.value("pitchMode")==1,"pitch routing belongs to delay presets");file.deleteFile();
+      |                                                                                                                                                   ~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:51:174: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   51 |  file.replaceWithText("<WolfTidePreset version=\"1\" scope=\"1\"><p id=\"interval\" value=\"3\"/></WolfTidePreset>");check(p.loadPreset(file,1).wasOk()&&p.value("pitchMode")==0,"1.0 presets retain climbing pitch behavior");file.deleteFile();
+      |                                                                                                                                                          ~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/host_tests.cpp:53:210: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   53 |   for(int block=0;block<110;++block){x.clear();if(block<6)x.setSample(0,block,.2f);y.makeCopyOf(x);a.processBlock(x,midi);b.processBlock(y,midi);for(int c=0;c<2;++c)for(int n=0;n<512;++n)check(x.getSample(c,n)==y.getSample(c,n),"visual mode and metering do not change audio");}}
+      |                                                                                                                                                                                                  ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+In file included from /workspace/mmm/tests/../Source/Parameters.h:3,
+                 from /workspace/mmm/tests/../Source/ModernParameters.h:3,
+                 from /workspace/mmm/tests/../Source/PluginProcessor.h:4,
+                 from /workspace/mmm/tests/../Source/PluginEditor.h:3,
+                 from /workspace/mmm/tests/ui_tests.cpp:2:
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘void tide::Pitch::set(float)’:
+/workspace/mmm/tests/../Source/TideDSP.h:49:43: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi) noexcept {if(semi==lastSemi)return;lastSemi=semi;targetRatio=std::pow(2.f,semi/12.f);targetWindow=modern?sr*.105f:sr*.07f*(1+.5f*std::clamp(semi/12-1.f,0.f,1.f));
+      |                                       ~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘tide::Stereo tide::Granular::tick(tide::Stereo, const tide::Parameters&)’:
+/workspace/mmm/tests/../Source/TideDSP.h:78:16: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   78 |         if(semi!=lastSemi){lastSemi=semi;rate=std::pow(2.f,semi/12);companion=std::pow(2.f,(semi>17?semi-12:semi+7)/12);
+      |            ~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘void tide::BoutiqueTank::set(const tide::Parameters&)’:
+/workspace/mmm/tests/../Source/TideDSP.h:282:89: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  282 |         for(std::size_t i=0;i<8;++i){wantedLengths[i]=sr*.001f*ms[i]*scale;if(lengths[i]==0)lengths[i]=wantedLengths[i];target[i]=frozen?1.f:std::pow(10.f,-3*wantedLengths[i]/sr/std::clamp(p.decay,.25f,20.f));}
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘tide::Stereo tide::Engine::tick(tide::Stereo, bool, const tide::Stereo*, const tide::Stereo*)’:
+/workspace/mmm/tests/../Source/TideDSP.h:416:82: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  416 |         for(std::size_t i=0;i<std::size_t(tankLimit);++i){if(!live[i]&&weights[i]==0)continue;Stereo excitation{raw[0]*weights[i],raw[1]*weights[i]};
+/workspace/mmm/tests/../Source/TideDSP.h:429:116: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  429 |         while(tankLimit>4&&tankLimit>selected+1&&!live[std::size_t(tankLimit-1)]&&weights[std::size_t(tankLimit-1)]==0)--tankLimit;
+In file included from /workspace/mmm/tests/../Source/ModernParameters.h:4:
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘void tide::v13::Pitch::set(float, float)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:49:104: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi,float texture){wantedWindow=sr*(.035f+.12f*std::clamp(texture,0.f,1.f));if(semi==last)return;last=semi;target=std::pow(2.f,std::clamp(semi,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,target);for(auto& row:filter){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |                                                                                                    ~~~~^~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::CaptureGrains::tick(tide::Stereo, const tide::v13::DelaySettings&)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:77:24: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   77 |         if(lastInterval!=p.interval){lastInterval=p.interval;ratio=std::pow(2.f,std::clamp(p.interval,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,ratio*1.5f);for(auto& row:filters){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |            ~~~~~~~~~~~~^~~~~~~~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h:79:22: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   79 |         if(lastSpread!=p.spread){lastSpread=p.spread;harmony=std::pow(1.5f,p.spread);}
+      |            ~~~~~~~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::Slot<Machine, Settings>::tick(tide::Stereo, float)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:299:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |             ^~
+/workspace/mmm/tests/../Source/ModernDSP.h:299:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |                                                                                    ^~~
+In file included from /workspace/mmm/tests/../Source/PluginProcessor.h:5:
+/workspace/mmm/tests/../Source/VersionedDSP.h: In member function ‘tide::Stereo tide::v13::VersionedEngine::tick(tide::Stereo, bool)’:
+/workspace/mmm/tests/../Source/VersionedDSP.h:21:28: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |         if(revision==0&&mix==0){result=legacy.tick(input,bypass);delayPeak=legacy.delayPeak;reverbPeak=legacy.reverbPeak;return result;}
+      |                         ~~~^~~
+In file included from /workspace/mmm/tests/ui_tests.cpp:3:
+/workspace/mmm/tests/../Source/PresetBrowser.h: In member function ‘void TidePresetBrowser::filter()’:
+/workspace/mmm/tests/../Source/PresetBrowser.h:21:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |    if(!e.name.containsIgnoreCase(search.getText()))continue;const auto tag=tags.getText();if(tags.getSelectedId()>1&&!e.name.containsIgnoreCase(tag))continue;shown.push_back(e);}
+      |    ^~
+/workspace/mmm/tests/../Source/PresetBrowser.h:21:61: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |    if(!e.name.containsIgnoreCase(search.getText()))continue;const auto tag=tags.getText();if(tags.getSelectedId()>1&&!e.name.containsIgnoreCase(tag))continue;shown.push_back(e);}
+      |                                                             ^~~~~
+/workspace/mmm/tests/../Source/PresetBrowser.h:22:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   22 |   if(collection.getSelectedId()==4)std::stable_sort(shown.begin(),shown.end(),[&](const Entry& a,const Entry& b){return recent.indexOf(a.key)<recent.indexOf(b.key);});list.updateContent();list.selectRow(shown.empty()?-1:0);list.repaint();}
+      |   ^~
+/workspace/mmm/tests/../Source/PresetBrowser.h:22:168: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   22 |   if(collection.getSelectedId()==4)std::stable_sort(shown.begin(),shown.end(),[&](const Entry& a,const Entry& b){return recent.indexOf(a.key)<recent.indexOf(b.key);});list.updateContent();list.selectRow(shown.empty()?-1:0);list.repaint();}
+      |                                                                                                                                                                        ^~~~
+In file included from /workspace/mmm/tests/../Source/Parameters.h:3,
+                 from /workspace/mmm/tests/../Source/ModernParameters.h:3,
+                 from /workspace/mmm/tests/../Source/PluginProcessor.h:4,
+                 from /workspace/mmm/tests/../Source/PluginEditor.h:3,
+                 from /workspace/mmm/tests/modern_host_tests.cpp:2:
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘void tide::Pitch::set(float)’:
+/workspace/mmm/tests/../Source/TideDSP.h:49:43: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi) noexcept {if(semi==lastSemi)return;lastSemi=semi;targetRatio=std::pow(2.f,semi/12.f);targetWindow=modern?sr*.105f:sr*.07f*(1+.5f*std::clamp(semi/12-1.f,0.f,1.f));
+      |                                       ~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘tide::Stereo tide::Granular::tick(tide::Stereo, const tide::Parameters&)’:
+/workspace/mmm/tests/../Source/TideDSP.h:78:16: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   78 |         if(semi!=lastSemi){lastSemi=semi;rate=std::pow(2.f,semi/12);companion=std::pow(2.f,(semi>17?semi-12:semi+7)/12);
+      |            ~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘void tide::BoutiqueTank::set(const tide::Parameters&)’:
+/workspace/mmm/tests/../Source/TideDSP.h:282:89: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  282 |         for(std::size_t i=0;i<8;++i){wantedLengths[i]=sr*.001f*ms[i]*scale;if(lengths[i]==0)lengths[i]=wantedLengths[i];target[i]=frozen?1.f:std::pow(10.f,-3*wantedLengths[i]/sr/std::clamp(p.decay,.25f,20.f));}
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘tide::Stereo tide::Engine::tick(tide::Stereo, bool, const tide::Stereo*, const tide::Stereo*)’:
+/workspace/mmm/tests/../Source/TideDSP.h:416:82: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  416 |         for(std::size_t i=0;i<std::size_t(tankLimit);++i){if(!live[i]&&weights[i]==0)continue;Stereo excitation{raw[0]*weights[i],raw[1]*weights[i]};
+/workspace/mmm/tests/../Source/TideDSP.h:429:116: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  429 |         while(tankLimit>4&&tankLimit>selected+1&&!live[std::size_t(tankLimit-1)]&&weights[std::size_t(tankLimit-1)]==0)--tankLimit;
+In file included from /workspace/mmm/tests/../Source/ModernParameters.h:4:
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘void tide::v13::Pitch::set(float, float)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:49:104: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi,float texture){wantedWindow=sr*(.035f+.12f*std::clamp(texture,0.f,1.f));if(semi==last)return;last=semi;target=std::pow(2.f,std::clamp(semi,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,target);for(auto& row:filter){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |                                                                                                    ~~~~^~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::CaptureGrains::tick(tide::Stereo, const tide::v13::DelaySettings&)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:77:24: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   77 |         if(lastInterval!=p.interval){lastInterval=p.interval;ratio=std::pow(2.f,std::clamp(p.interval,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,ratio*1.5f);for(auto& row:filters){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |            ~~~~~~~~~~~~^~~~~~~~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h:79:22: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   79 |         if(lastSpread!=p.spread){lastSpread=p.spread;harmony=std::pow(1.5f,p.spread);}
+      |            ~~~~~~~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::Slot<Machine, Settings>::tick(tide::Stereo, float)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:299:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |             ^~
+/workspace/mmm/tests/../Source/ModernDSP.h:299:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |                                                                                    ^~~
+In file included from /workspace/mmm/tests/../Source/PluginProcessor.h:5:
+/workspace/mmm/tests/../Source/VersionedDSP.h: In member function ‘tide::Stereo tide::v13::VersionedEngine::tick(tide::Stereo, bool)’:
+/workspace/mmm/tests/../Source/VersionedDSP.h:21:28: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |         if(revision==0&&mix==0){result=legacy.tick(input,bypass);delayPeak=legacy.delayPeak;reverbPeak=legacy.reverbPeak;return result;}
+      |                         ~~~^~~
+In file included from /workspace/mmm/tests/modern_host_tests.cpp:3:
+/workspace/mmm/tests/../Source/ModernPanel.h: In member function ‘void TideModernPanel::refreshEnabled()’:
+/workspace/mmm/tests/../Source/ModernPanel.h:19:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |    if(id=="dTime"||id=="d2Time")enabled&=!sync;if(id=="rhythm"||id=="d2Rhythm")enabled&=sync;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:19:48: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |    if(id=="dTime"||id=="d2Time")enabled&=!sync;if(id=="rhythm"||id=="d2Rhythm")enabled&=sync;
+      |                                                ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:20:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   20 |    if(id=="dDual")enabled&=dual;if(id=="ratio")enabled&=dual&&!independent;if(id=="dBTime")enabled&=dual&&independent&&!sync;if(id=="dBRhythm")enabled&=dual&&independent&&sync;if(id=="dBFeedback"||id=="dBLevel")enabled&=dual&&independent;if(id=="d2Ratio")enabled&=int(processor.value("d2Stereo"))==1;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:20:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   20 |    if(id=="dDual")enabled&=dual;if(id=="ratio")enabled&=dual&&!independent;if(id=="dBTime")enabled&=dual&&independent&&!sync;if(id=="dBRhythm")enabled&=dual&&independent&&sync;if(id=="dBFeedback"||id=="dBLevel")enabled&=dual&&independent;if(id=="d2Ratio")enabled&=int(processor.value("d2Stereo"))==1;
+      |                                 ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:21:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |    if(id=="splitHz")enabled&=processor.value("routing13")>1.5f;if(id=="feed")enabled&=int(processor.value("routing13"))!=1;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:21:64: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |    if(id=="splitHz")enabled&=processor.value("routing13")>1.5f;if(id=="feed")enabled&=int(processor.value("routing13"))!=1;
+      |                                                                ^~
+/workspace/mmm/tests/../Source/ModernPanel.h: In member function ‘void TideModernPanel::rebuild()’:
+/workspace/mmm/tests/../Source/ModernPanel.h:40:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   40 |    if(selected==0&&id=="dDiffusion"&&model!=6)continue;if(selected==1&&id=="d2Diffusion"&&model!=6)continue;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:40:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   40 |    if(selected==0&&id=="dDiffusion"&&model!=6)continue;if(selected==1&&id=="d2Diffusion"&&model!=6)continue;
+      |                                                        ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:42:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   42 |    if(id=="pitchMode"&&model!=5)continue;if(id=="d2PitchMode"&&model!=5)continue;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:42:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   42 |    if(id=="pitchMode"&&model!=5)continue;if(id=="d2PitchMode"&&model!=5)continue;
+      |                                          ^~
+/workspace/mmm/tests/modern_host_tests.cpp: In function ‘int main(int, char**)’:
+/workspace/mmm/tests/modern_host_tests.cpp:8:52: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+    8 |  p.setCurrentProgram(16);check(p.value("dRevision")==1&&p.value("rRevision")==1,"new default uses 1.3");
+      |                                ~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:8:77: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+    8 |  p.setCurrentProgram(16);check(p.value("dRevision")==1&&p.value("rRevision")==1,"new default uses 1.3");
+      |                                                         ~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:14:28: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   14 |  check(p.value("dRevision")==0&&p.value("rRevision")==0&&p.value("d2On")==0&&p.value("r2On")==0,"1.2.2 state resets new engine and slots");
+      |        ~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:14:53: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   14 |  check(p.value("dRevision")==0&&p.value("rRevision")==0&&p.value("d2On")==0&&p.value("r2On")==0,"1.2.2 state resets new engine and slots");
+      |                                 ~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:14:73: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   14 |  check(p.value("dRevision")==0&&p.value("rRevision")==0&&p.value("d2On")==0&&p.value("r2On")==0,"1.2.2 state resets new engine and slots");
+      |                                                          ~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:14:93: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   14 |  check(p.value("dRevision")==0&&p.value("rRevision")==0&&p.value("d2On")==0&&p.value("r2On")==0,"1.2.2 state resets new engine and slots");
+      |                                                                              ~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:15:50: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   15 |  p.applyDelayPreset(9);check(p.value("dRevision")==1&&p.value("rRevision")==0,"delay-only upgrade preserves legacy reverb revision");p.applyReverbPreset(12);check(p.value("d13Model")==9&&p.value("r13Model")==12,"new machine selectors independent");
+      |                              ~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:15:75: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   15 |  p.applyDelayPreset(9);check(p.value("dRevision")==1&&p.value("rRevision")==0,"delay-only upgrade preserves legacy reverb revision");p.applyReverbPreset(12);check(p.value("d13Model")==9&&p.value("r13Model")==12,"new machine selectors independent");
+      |                                                       ~~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:15:183: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   15 |  p.applyDelayPreset(9);check(p.value("dRevision")==1&&p.value("rRevision")==0,"delay-only upgrade preserves legacy reverb revision");p.applyReverbPreset(12);check(p.value("d13Model")==9&&p.value("r13Model")==12,"new machine selectors independent");
+      |                                                                                                                                                                    ~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:15:207: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   15 |  p.applyDelayPreset(9);check(p.value("dRevision")==1&&p.value("rRevision")==0,"delay-only upgrade preserves legacy reverb revision");p.applyReverbPreset(12);check(p.value("d13Model")==9&&p.value("r13Model")==12,"new machine selectors independent");
+      |                                                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/mmm/tests/modern_host_tests.cpp:17:38: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   17 |   if(mask&1)check(p.value("d13Model")==d&&p.value("d2Model")==dB,"lock delay protects both 1.3 slots");if(mask&2)check(p.value("r13Model")==r&&p.value("r2Model")==rB,"lock reverb protects both 1.3 slots");if(mask&8)check(p.value("routing13")==route,"routing lock protects new topology");}
+      |                   ~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:17:61: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   17 |   if(mask&1)check(p.value("d13Model")==d&&p.value("d2Model")==dB,"lock delay protects both 1.3 slots");if(mask&2)check(p.value("r13Model")==r&&p.value("r2Model")==rB,"lock reverb protects both 1.3 slots");if(mask&8)check(p.value("routing13")==route,"routing lock protects new topology");}
+      |                                           ~~~~~~~~~~~~~~~~~~^~~~
+/workspace/mmm/tests/modern_host_tests.cpp:17:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   17 |   if(mask&1)check(p.value("d13Model")==d&&p.value("d2Model")==dB,"lock delay protects both 1.3 slots");if(mask&2)check(p.value("r13Model")==r&&p.value("r2Model")==rB,"lock reverb protects both 1.3 slots");if(mask&8)check(p.value("routing13")==route,"routing lock protects new topology");}
+      |   ^~
+/workspace/mmm/tests/modern_host_tests.cpp:17:104: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   17 |   if(mask&1)check(p.value("d13Model")==d&&p.value("d2Model")==dB,"lock delay protects both 1.3 slots");if(mask&2)check(p.value("r13Model")==r&&p.value("r2Model")==rB,"lock reverb protects both 1.3 slots");if(mask&8)check(p.value("routing13")==route,"routing lock protects new topology");}
+      |                                                                                                        ^~
+/workspace/mmm/tests/modern_host_tests.cpp:17:139: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   17 |   if(mask&1)check(p.value("d13Model")==d&&p.value("d2Model")==dB,"lock delay protects both 1.3 slots");if(mask&2)check(p.value("r13Model")==r&&p.value("r2Model")==rB,"lock reverb protects both 1.3 slots");if(mask&8)check(p.value("routing13")==route,"routing lock protects new topology");}
+      |                                                                                                                        ~~~~~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:17:162: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   17 |   if(mask&1)check(p.value("d13Model")==d&&p.value("d2Model")==dB,"lock delay protects both 1.3 slots");if(mask&2)check(p.value("r13Model")==r&&p.value("r2Model")==rB,"lock reverb protects both 1.3 slots");if(mask&8)check(p.value("routing13")==route,"routing lock protects new topology");}
+      |                                                                                                                                                ~~~~~~~~~~~~~~~~~~^~~~
+/workspace/mmm/tests/modern_host_tests.cpp:17:242: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   17 |   if(mask&1)check(p.value("d13Model")==d&&p.value("d2Model")==dB,"lock delay protects both 1.3 slots");if(mask&2)check(p.value("r13Model")==r&&p.value("r2Model")==rB,"lock reverb protects both 1.3 slots");if(mask&8)check(p.value("routing13")==route,"routing lock protects new topology");}
+      |                                                                                                                                                                                                                              ~~~~~~~~~~~~~~~~~~~~^~~~~~~
+/workspace/mmm/tests/modern_host_tests.cpp:21:227: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |  for(int scope=0;scope<3;++scope){p.setCurrentProgram(57);check(p.savePreset(file,scope).wasOk(),"save schema 4");p.setCurrentProgram(54);check(p.loadPreset(file,scope).wasOk(),"load schema 4");if(scope<2)check(p.value("d2On")==1,"delay B state recalled");if(scope!=1)check(p.value("r2On")==1,"reverb B state recalled");}file.deleteFile();
+      |                                                                                                                                                                                                                    ~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:21:290: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |  for(int scope=0;scope<3;++scope){p.setCurrentProgram(57);check(p.savePreset(file,scope).wasOk(),"save schema 4");p.setCurrentProgram(54);check(p.loadPreset(file,scope).wasOk(),"load schema 4");if(scope<2)check(p.value("d2On")==1,"delay B state recalled");if(scope!=1)check(p.value("r2On")==1,"reverb B state recalled");}file.deleteFile();
+      |                                                                                                                                                                                                                                                                                   ~~~~~~~~~~~~~~~^~~
+/workspace/mmm/tests/modern_host_tests.cpp:22:315: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   22 |  file.replaceWithText("<WolfTidePreset version=\"1\" scope=\"0\" name=\"Old\"><p id=\"dTime\" value=\"120\"/></WolfTidePreset>");p.setValue("routing13",2);p.setValue("d2Amount",.123f);p.lockRouting=true;p.lockMix=true;check(p.loadPreset(file,0).wasOk(),"legacy fixture loads with locks");check(p.value("routing13")==2&&std::abs(p.value("d2Amount")-.123f)<.002f,"old preset defaults preserve routing and B-return locks");check(p.presetDisplay(0).modified,"partial legacy load reports protected new parameters as modified");p.lockRouting=false;p.lockMix=false;file.deleteFile();
+      |                                                                                                                                                                                                                                                                                                       ~~~~~~~~~~~~~~~~~~~~^~~
+[ 94%] Linking CXX executable tide_host_tests
+[ 94%] Built target tide_host_tests
+[ 95%] Building CXX object CMakeFiles/tide_ui_refresh_checks.dir/tests/ui_refresh_checks.cpp.o
+[ 97%] Linking CXX executable tide_ui_tests
+[ 97%] Built target tide_ui_tests
+[ 98%] Linking CXX executable tide_modern_host_tests
+[ 98%] Built target tide_modern_host_tests
+In file included from /workspace/mmm/tests/../Source/Parameters.h:3,
+                 from /workspace/mmm/tests/../Source/ModernParameters.h:3,
+                 from /workspace/mmm/tests/../Source/PluginProcessor.h:4,
+                 from /workspace/mmm/tests/../Source/PluginEditor.h:3,
+                 from /workspace/mmm/tests/ui_refresh_checks.cpp:2:
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘void tide::Pitch::set(float)’:
+/workspace/mmm/tests/../Source/TideDSP.h:49:43: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi) noexcept {if(semi==lastSemi)return;lastSemi=semi;targetRatio=std::pow(2.f,semi/12.f);targetWindow=modern?sr*.105f:sr*.07f*(1+.5f*std::clamp(semi/12-1.f,0.f,1.f));
+      |                                       ~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘tide::Stereo tide::Granular::tick(tide::Stereo, const tide::Parameters&)’:
+/workspace/mmm/tests/../Source/TideDSP.h:78:16: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   78 |         if(semi!=lastSemi){lastSemi=semi;rate=std::pow(2.f,semi/12);companion=std::pow(2.f,(semi>17?semi-12:semi+7)/12);
+      |            ~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘void tide::BoutiqueTank::set(const tide::Parameters&)’:
+/workspace/mmm/tests/../Source/TideDSP.h:282:89: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  282 |         for(std::size_t i=0;i<8;++i){wantedLengths[i]=sr*.001f*ms[i]*scale;if(lengths[i]==0)lengths[i]=wantedLengths[i];target[i]=frozen?1.f:std::pow(10.f,-3*wantedLengths[i]/sr/std::clamp(p.decay,.25f,20.f));}
+/workspace/mmm/tests/../Source/TideDSP.h: In member function ‘tide::Stereo tide::Engine::tick(tide::Stereo, bool, const tide::Stereo*, const tide::Stereo*)’:
+/workspace/mmm/tests/../Source/TideDSP.h:416:82: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  416 |         for(std::size_t i=0;i<std::size_t(tankLimit);++i){if(!live[i]&&weights[i]==0)continue;Stereo excitation{raw[0]*weights[i],raw[1]*weights[i]};
+/workspace/mmm/tests/../Source/TideDSP.h:429:116: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+  429 |         while(tankLimit>4&&tankLimit>selected+1&&!live[std::size_t(tankLimit-1)]&&weights[std::size_t(tankLimit-1)]==0)--tankLimit;
+In file included from /workspace/mmm/tests/../Source/ModernParameters.h:4:
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘void tide::v13::Pitch::set(float, float)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:49:104: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   49 |     void set(float semi,float texture){wantedWindow=sr*(.035f+.12f*std::clamp(texture,0.f,1.f));if(semi==last)return;last=semi;target=std::pow(2.f,std::clamp(semi,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,target);for(auto& row:filter){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |                                                                                                    ~~~~^~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::CaptureGrains::tick(tide::Stereo, const tide::v13::DelaySettings&)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:77:24: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   77 |         if(lastInterval!=p.interval){lastInterval=p.interval;ratio=std::pow(2.f,std::clamp(p.interval,-24.f,24.f)/12);const float cutoff=sr*.43f/std::max(1.f,ratio*1.5f);for(auto& row:filters){row[0].set(cutoff,sr,.5411961f);row[1].set(cutoff,sr,1.306563f);}}
+      |            ~~~~~~~~~~~~^~~~~~~~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h:79:22: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   79 |         if(lastSpread!=p.spread){lastSpread=p.spread;harmony=std::pow(1.5f,p.spread);}
+      |            ~~~~~~~~~~^~~~~~~~~~
+/workspace/mmm/tests/../Source/ModernDSP.h: In member function ‘tide::Stereo tide::v13::Slot<Machine, Settings>::tick(tide::Stereo, float)’:
+/workspace/mmm/tests/../Source/ModernDSP.h:299:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |             ^~
+/workspace/mmm/tests/../Source/ModernDSP.h:299:84: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  299 |             if(retire&&int(i)!=current)gains[i]=std::max(0.f,gains[i]-1/(sr*.04f));sum=sum+wet*gains[i];
+      |                                                                                    ^~~
+In file included from /workspace/mmm/tests/../Source/PluginProcessor.h:5:
+/workspace/mmm/tests/../Source/VersionedDSP.h: In member function ‘tide::Stereo tide::v13::VersionedEngine::tick(tide::Stereo, bool)’:
+/workspace/mmm/tests/../Source/VersionedDSP.h:21:28: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   21 |         if(revision==0&&mix==0){result=legacy.tick(input,bypass);delayPeak=legacy.delayPeak;reverbPeak=legacy.reverbPeak;return result;}
+      |                         ~~~^~~
+In file included from /workspace/mmm/tests/ui_refresh_checks.cpp:3:
+/workspace/mmm/tests/../Source/ModernPanel.h: In member function ‘void TideModernPanel::refreshEnabled()’:
+/workspace/mmm/tests/../Source/ModernPanel.h:19:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |    if(id=="dTime"||id=="d2Time")enabled&=!sync;if(id=="rhythm"||id=="d2Rhythm")enabled&=sync;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:19:48: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |    if(id=="dTime"||id=="d2Time")enabled&=!sync;if(id=="rhythm"||id=="d2Rhythm")enabled&=sync;
+      |                                                ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:20:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   20 |    if(id=="dDual")enabled&=dual;if(id=="ratio")enabled&=dual&&!independent;if(id=="dBTime")enabled&=dual&&independent&&!sync;if(id=="dBRhythm")enabled&=dual&&independent&&sync;if(id=="dBFeedback"||id=="dBLevel")enabled&=dual&&independent;if(id=="d2Ratio")enabled&=int(processor.value("d2Stereo"))==1;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:20:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   20 |    if(id=="dDual")enabled&=dual;if(id=="ratio")enabled&=dual&&!independent;if(id=="dBTime")enabled&=dual&&independent&&!sync;if(id=="dBRhythm")enabled&=dual&&independent&&sync;if(id=="dBFeedback"||id=="dBLevel")enabled&=dual&&independent;if(id=="d2Ratio")enabled&=int(processor.value("d2Stereo"))==1;
+      |                                 ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:21:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |    if(id=="splitHz")enabled&=processor.value("routing13")>1.5f;if(id=="feed")enabled&=int(processor.value("routing13"))!=1;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:21:64: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |    if(id=="splitHz")enabled&=processor.value("routing13")>1.5f;if(id=="feed")enabled&=int(processor.value("routing13"))!=1;
+      |                                                                ^~
+/workspace/mmm/tests/../Source/ModernPanel.h: In member function ‘void TideModernPanel::rebuild()’:
+/workspace/mmm/tests/../Source/ModernPanel.h:40:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   40 |    if(selected==0&&id=="dDiffusion"&&model!=6)continue;if(selected==1&&id=="d2Diffusion"&&model!=6)continue;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:40:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   40 |    if(selected==0&&id=="dDiffusion"&&model!=6)continue;if(selected==1&&id=="d2Diffusion"&&model!=6)continue;
+      |                                                        ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:42:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   42 |    if(id=="pitchMode"&&model!=5)continue;if(id=="d2PitchMode"&&model!=5)continue;
+      |    ^~
+/workspace/mmm/tests/../Source/ModernPanel.h:42:42: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   42 |    if(id=="pitchMode"&&model!=5)continue;if(id=="d2PitchMode"&&model!=5)continue;
+      |                                          ^~
+In file included from /workspace/mmm/tests/ui_refresh_checks.cpp:4:
+/workspace/mmm/tests/../Source/PresetBrowser.h: In member function ‘void TidePresetBrowser::filter()’:
+/workspace/mmm/tests/../Source/PresetBrowser.h:21:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |    if(!e.name.containsIgnoreCase(search.getText()))continue;const auto tag=tags.getText();if(tags.getSelectedId()>1&&!e.name.containsIgnoreCase(tag))continue;shown.push_back(e);}
+      |    ^~
+/workspace/mmm/tests/../Source/PresetBrowser.h:21:61: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |    if(!e.name.containsIgnoreCase(search.getText()))continue;const auto tag=tags.getText();if(tags.getSelectedId()>1&&!e.name.containsIgnoreCase(tag))continue;shown.push_back(e);}
+      |                                                             ^~~~~
+/workspace/mmm/tests/../Source/PresetBrowser.h:22:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   22 |   if(collection.getSelectedId()==4)std::stable_sort(shown.begin(),shown.end(),[&](const Entry& a,const Entry& b){return recent.indexOf(a.key)<recent.indexOf(b.key);});list.updateContent();list.selectRow(shown.empty()?-1:0);list.repaint();}
+      |   ^~
+/workspace/mmm/tests/../Source/PresetBrowser.h:22:168: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   22 |   if(collection.getSelectedId()==4)std::stable_sort(shown.begin(),shown.end(),[&](const Entry& a,const Entry& b){return recent.indexOf(a.key)<recent.indexOf(b.key);});list.updateContent();list.selectRow(shown.empty()?-1:0);list.repaint();}
+      |                                                                                                                                                                        ^~~~
+[100%] Linking CXX executable tide_ui_refresh_checks
+[100%] Built target tide_ui_refresh_checks

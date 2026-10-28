@@ -1,0 +1,3 @@
+COMMAND: ['cmp', '/workspace/tide-ui-refresh/baseline-audio.raw', '/workspace/tide-ui-refresh/final-audio.raw']
+
+EXIT: 0

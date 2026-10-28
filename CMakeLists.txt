@@ -62,7 +62,7 @@ juce_add_plugin(WolfTide COMPANY_NAME "Wolf Audio" BUNDLE_ID "audio.wolf.tide"
  VST3_CATEGORIES Fx Delay Reverb AU_MAIN_TYPE kAudioUnitType_Effect FORMATS ${tide_formats})
 # Build identity follows the compiled source, including local changes.
 set(tide_source_hashes "")
-foreach(tide_source Source/PluginProcessor.cpp Source/PluginProcessor.h Source/PluginEditor.cpp Source/PluginEditor.h Source/PresetBrowser.h Source/Parameters.h Source/ModernParameters.h Source/ModernDSP.h Source/VersionedDSP.h Source/ModernPanel.h Source/TideDSP.h Source/BloomDSP.h)
+foreach(tide_source Source/PluginProcessor.cpp Source/PluginProcessor.h Source/PluginEditor.cpp Source/PluginEditor.h Source/TideLook.h Source/PresetBrowser.h Source/Parameters.h Source/ModernParameters.h Source/ModernDSP.h Source/VersionedDSP.h Source/ModernPanel.h Source/TideDSP.h Source/BloomDSP.h)
  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/${tide_source}" tide_hash)
  string(APPEND tide_source_hashes "${tide_hash}")
  set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/${tide_source}")
@@ -99,3 +99,8 @@ target_link_libraries(tide_modern_host_tests PRIVATE WolfTide)
 target_include_directories(tide_modern_host_tests PRIVATE ${tide_includes})
 target_compile_definitions(tide_modern_host_tests PRIVATE JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1)
 add_test(NAME modern_host COMMAND tide_modern_host_tests)
+
+add_executable(tide_ui_refresh_checks tests/ui_refresh_checks.cpp)
+target_link_libraries(tide_ui_refresh_checks PRIVATE WolfTide)
+target_include_directories(tide_ui_refresh_checks PRIVATE ${tide_includes})
+target_compile_definitions(tide_ui_refresh_checks PRIVATE JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1)
