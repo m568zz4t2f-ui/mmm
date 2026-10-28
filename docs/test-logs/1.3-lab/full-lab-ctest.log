@@ -1,0 +1,24 @@
+Internal ctest changing into directory: $PLUGIN_BUILD
+Test project $PLUGIN_BUILD
+    Start 1: installer
+1/9 Test #1: installer ........................   Passed    1.96 sec
+    Start 2: dsp
+2/9 Test #2: dsp ..............................   Passed    4.86 sec
+    Start 3: update
+3/9 Test #3: update ...........................   Passed    0.10 sec
+    Start 4: models
+4/9 Test #4: models ...........................   Passed    3.41 sec
+    Start 5: repairs
+5/9 Test #5: repairs ..........................   Passed    0.76 sec
+    Start 6: modern_dsp_lab
+6/9 Test #6: modern_dsp_lab ...................   Passed    5.53 sec
+    Start 7: modern_stress_lab
+7/9 Test #7: modern_stress_lab ................   Passed    2.26 sec
+    Start 8: host
+8/9 Test #8: host .............................   Passed    0.46 sec
+    Start 9: ui
+9/9 Test #9: ui ...............................   Passed    1.39 sec
+
+100% tests passed, 0 tests failed out of 9
+
+Total Test time (real) =  20.75 sec

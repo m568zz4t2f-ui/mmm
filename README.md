@@ -1,5 +1,7 @@
 # Wolf Tide 1.2.2
 
+**Development branch:** the unified 1.3 backend lab is opt-in and is not connected to this plugin. See [1.3 work and open acceptance gates](docs/TIDE-1.3-DEVELOPMENT.md). No 1.3 release has been produced.
+
 Stereo delay into reverb by Wolf Audio: grey delay, blue reverb, independent engines and presets, and combined instrument presets.
 
 **Current status:** 1.2.2 maintenance source update for independent preset identities, synchronized UI and safer installation. The 1.2.1 DSP is unchanged. See [1.2.2 release notes, migration and validation limits](docs/RELEASE-1.2.2.md). Mac build/AU/installer validation and cleanup of the reported live user/system conflict remain pending; this cloud session has no Mac control tools.

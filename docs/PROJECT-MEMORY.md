@@ -1,3 +1,9 @@
+# Unified 1.3 development checkpoint
+
+The verified 1.2.2 source is frozen at `06d92fb8ef321996b786b04a805206daf342e428`. `ModernDSP.h` and the optional numerical lab prototype 25 paths and four-slot routing. They are not integrated into the plugin, host parameters or presets. Do not describe them as a completed 1.3 update. The public plugin remains 1.2.2; main and the live Mac are unchanged. See TIDE-1.3-DEVELOPMENT.md for measured results, missing controls, calibration, integration, musical and Mac gates. Graphify intake/indexing has not occurred because no tools are exposed.
+
+---
+
 # Current update: Tide 1.2.2 maintenance source
 
 See [RELEASE-1.2.2.md](RELEASE-1.2.2.md) for independent preset identity/Modified tracking, shared selector refresh, compiled version/source-build label, native installation migration and package conflict detection. DSP and parameter declarations remain identical to the delivered 1.2.1 archive. The user reported system 1.2.1 plus user 1.2.0 bundles; those live Mac files were not inspected or modified here. New native Mac/AU/package gates are still pending. Preserve the previous source ZIP and installations until the native migration succeeds. Cosmos/Prism and environment configuration are unchanged. Graphify was not updated.
