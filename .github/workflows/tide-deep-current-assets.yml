@@ -1,0 +1,81 @@
+name: Import Tide Deep Current design-reference images
+
+on:
+  push:
+    branches: [design/tide-deep-current]
+    paths:
+      - ".github/workflows/tide-deep-current-assets.yml"
+      - "docs/deep-current/ASSET_MANIFEST.csv"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-assets:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: design/tide-deep-current
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image optimizer
+        run: python -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Download and optimize design references
+        run: |
+          python - <<'PY'
+          import csv, io, pathlib, time, urllib.request
+          from PIL import Image, ImageOps
+          manifest=pathlib.Path("docs/deep-current/ASSET_MANIFEST.csv")
+          out=pathlib.Path("assets/tide/deep-current/previews")
+          out.mkdir(parents=True,exist_ok=True)
+          rows=list(csv.DictReader(manifest.open(newline="",encoding="utf-8")))
+          assert len(rows)==15, f"Expected 15 sources, found {len(rows)}"
+          for row in rows:
+              idx=row["asset_number"]
+              assert idx in [f"{i:02d}" for i in range(15)]
+              url=row["source_url"]
+              assert url.startswith("https://d8j0ntlcm91z4.cloudfront.net/"), "Unexpected asset host"
+              last=None
+              for attempt in range(3):
+                  try:
+                      req=urllib.request.Request(url, headers={"User-Agent":"WolfTideDesignAssetImporter/1.0"})
+                      with urllib.request.urlopen(req,timeout=45) as r:
+                          data=r.read(16*1024*1024+1)
+                      if len(data)>16*1024*1024: raise ValueError("Source image too large")
+                      im=Image.open(io.BytesIO(data))
+                      im.load()
+                      assert im.width<=4096 and im.height<=4096
+                      im=ImageOps.exif_transpose(im)
+                      im.thumbnail((1200,1200),Image.Resampling.LANCZOS)
+                      if idx in ("00","01"):
+                          dst=out/f"Tide_{idx}.jpg"
+                          im.convert("RGB").save(dst,"JPEG",quality=86,optimize=True,progressive=True)
+                      else:
+                          dst=out/f"Tide_{idx}.png"
+                          im.convert("RGBA").save(dst,"PNG",optimize=True,compress_level=9)
+                      print(idx,im.size,dst,dst.stat().st_size)
+                      break
+                  except Exception as exc:
+                      last=exc
+                      print("Retry",idx,attempt+1,str(exc)[:150],flush=True)
+                      if attempt<2: time.sleep(3*(attempt+1))
+              else:
+                  raise RuntimeError(f"Failed downloading asset {idx}: {last}")
+          PY
+      - name: Verify staged outputs and commit
+        run: |
+          set -euo pipefail
+          test "$(find assets/tide/deep-current/previews -maxdepth 1 -type f | wc -l)" -eq 15
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/tide/deep-current/previews/
+          if ! git diff --cached --quiet; then
+            git commit -m "Add optimized Deep Current Higgsfield design references [skip ci]"
+            git push origin HEAD:design/tide-deep-current
+          fi
