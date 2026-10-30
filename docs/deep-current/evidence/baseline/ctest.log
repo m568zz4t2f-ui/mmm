@@ -1,0 +1,28 @@
+Internal ctest changing into directory: /workspace/scratch/41acab91be40/baseline-build
+Test project /workspace/scratch/41acab91be40/baseline-build
+      Start  1: installer
+ 1/11 Test  #1: installer ........................   Passed    5.54 sec
+      Start  2: dsp
+ 2/11 Test  #2: dsp ..............................   Passed    5.15 sec
+      Start  3: update
+ 3/11 Test  #3: update ...........................   Passed    0.11 sec
+      Start  4: models
+ 4/11 Test  #4: models ...........................   Passed    3.97 sec
+      Start  5: repairs
+ 5/11 Test  #5: repairs ..........................   Passed    1.12 sec
+      Start  6: modern_dsp_lab
+ 6/11 Test  #6: modern_dsp_lab ...................   Passed   16.74 sec
+      Start  7: modern_stress_lab
+ 7/11 Test  #7: modern_stress_lab ................   Passed    2.18 sec
+      Start  8: modern_controls
+ 8/11 Test  #8: modern_controls ..................   Passed   10.01 sec
+      Start  9: host
+ 9/11 Test  #9: host .............................   Passed    1.12 sec
+      Start 10: ui
+10/11 Test #10: ui ...............................   Passed    3.82 sec
+      Start 11: modern_host
+11/11 Test #11: modern_host ......................   Passed    4.31 sec
+
+100% tests passed, 0 tests failed out of 11
+
+Total Test time (real) =  54.08 sec

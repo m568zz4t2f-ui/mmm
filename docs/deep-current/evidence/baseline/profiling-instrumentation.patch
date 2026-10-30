@@ -1,0 +1,38 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8c607b0..8c82e31 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -104,3 +104,9 @@ add_executable(tide_ui_refresh_checks tests/ui_refresh_checks.cpp)
+ target_link_libraries(tide_ui_refresh_checks PRIVATE WolfTide)
+ target_include_directories(tide_ui_refresh_checks PRIVATE ${tide_includes})
+ target_compile_definitions(tide_ui_refresh_checks PRIVATE JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1)
++
++set_property(SOURCE Source/PluginEditor.cpp APPEND PROPERTY COMPILE_DEFINITIONS TIDE_PROFILE_UI=1)
++add_executable(tide_deep_current_probe tests/deep_current_probe.cpp)
++target_link_libraries(tide_deep_current_probe PRIVATE WolfTide)
++target_include_directories(tide_deep_current_probe PRIVATE ${tide_includes})
++target_compile_definitions(tide_deep_current_probe PRIVATE JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1)
+diff --git a/Source/PluginEditor.cpp b/Source/PluginEditor.cpp
+index dec30d6..5b352c8 100644
+--- a/Source/PluginEditor.cpp
++++ b/Source/PluginEditor.cpp
+@@ -2,6 +2,9 @@
+ #include "PluginEditor.h"
+ #include "PresetBrowser.h"
+ #include "ModernPanel.h"
++#if TIDE_PROFILE_UI
++#include "../tests/paint_probe.h"
++#endif
+ namespace {
+ const auto ink=tide::ui::ink,muted=tide::ui::muted,silver=tide::ui::delay,blue=tide::ui::reverb,bg=tide::ui::chassis;
+ using SA=juce::AudioProcessorValueTreeState::SliderAttachment;
+@@ -260,6 +263,9 @@ void TideEditor::buildBackdrop(){
+  if(editing){g.setColour(juce::Colour(0xff1c2c32));g.fillRoundedRectangle(24,704,1032,397,12);label(g,editing==1?"DELAY / DEEP EDIT":editing==2?"REVERB / DEEP EDIT":"ROUTING / MIX & OUTPUT",43,713,500,24,12,editing==1?silver:blue);}
+ }
+ void TideEditor::paint(juce::Graphics& g){
++#if TIDE_PROFILE_UI
++ tide::probe::PaintSample sample;
++#endif
+  const float baseH=editing?1130.f:720.f;g.addTransform(juce::AffineTransform::scale(float(getWidth())/1080,float(getHeight())/baseH));
+  if(backdrop.isValid())g.drawImage(backdrop,0,0,1080,int(baseH),0,0,backdrop.getWidth(),backdrop.getHeight());
+  if(g.clipRegionIntersects(juce::Rectangle<int>(42,235,474,145)))drawEchoes(g);

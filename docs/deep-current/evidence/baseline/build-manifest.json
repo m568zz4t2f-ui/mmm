@@ -1,0 +1,16 @@
+{
+  "source_revision": "e1aea64e373a537584d6c60222fc63aa7d52859d",
+  "original_source_build_id": "327e76352705",
+  "profiled_baseline_build_id": "ea3da6b2e95e",
+  "audio_fixture": {
+    "bytes": 12582912,
+    "sha256": "f46423498435e36a445d53ebe7d7a53ba243e8d1b021d391326c41463a359917",
+    "programs": 64,
+    "sample_rate": 48000,
+    "block": 256
+  },
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "juce": "29396c22c93392d6738e021b83196283d6e4d850",
+  "notes": "Normal baseline binaries and screenshots were frozen before adding the optional paint timing scope; profiling patch and test helper build are separate."
+}

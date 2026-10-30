@@ -1,0 +1,239 @@
+{
+  "commit": "e1aea64e373a537584d6c60222fc63aa7d52859d",
+  "previous_ui_commit": "464e0c3f7047c2a50198a824b1cbaf61caed4bee",
+  "branch": "development/tide-deep-current",
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "bindings": {
+    "sliders": "all tide::specs via APVTS SliderAttachment",
+    "combos": [
+      "delayRevision,\"dRevision\",0,{\"Legacy processing\",\"Tide 1.3 processing\"}",
+      "reverbRevision,\"rRevision\",1,{\"Legacy processing\",\"Tide 1.3 processing\"}",
+      "rhythm,\"rhythm\",2,{\"1/16\",\"1/8 triplet\",\"1/8\",\"1/8 dotted\",\"1/4\",\"1/4 dotted\",\"1/2\",\"1/2 dotted\",\"1 bar\"}",
+      "stereo,\"stereo\",3,{\"Stereo\",\"Dual\",\"Ping-pong\"}",
+      "routing,\"routing\",4,{\"Delay > Reverb\",\"Parallel\"}",
+      "interval,\"interval\",5,{\"-12 st\",\"-7 st\",\"+7 st\",\"+12 st\",\"+19 st\",\"+24 st\"}",
+      "reverbInterval,\"rInterval\",6,{\"-12 st\",\"-7 st\",\"+7 st\",\"+12 st\",\"+19 st\",\"+24 st\"}",
+      "pitchMode,\"pitchMode\",7,{\"Climbing repeats\",\"Fixed harmony\"}",
+      "pattern,\"dPattern\",8,{\"2 taps\",\"4 taps\",\"8 taps\"}",
+      "dualMode,\"dDual\",9,{\"Linked ratio\",\"Independent A / B\"}",
+      "bRhythm,\"dBRhythm\",10,{\"B: 1/16\",\"B: 1/8 triplet\",\"B: 1/8\",\"B: dotted eighth\",\"B: quarter\",\"B: dotted quarter\",\"B: half\",\"B: dotted half\",\"B: bar\"}",
+      "manualTempo,\"manualTempo\",11,{\"Host tempo\",\"Manual tempo\"}"
+    ],
+    "buttons": [
+      "dOn",
+      "rOn",
+      "sync",
+      "send",
+      "freeze"
+    ]
+  },
+  "main_controls": [
+    [
+      "l",
+      "x,y,w,19"
+    ],
+    [
+      "k",
+      "x,y+20,w,h-20"
+    ],
+    [
+      "delayOn",
+      "438,118,76,28"
+    ],
+    [
+      "reverbOn",
+      "960,118,76,28"
+    ],
+    [
+      "presetDelay",
+      "43,157,365,28"
+    ],
+    [
+      "saveDelay",
+      "414,157,42,28"
+    ],
+    [
+      "lockDelay",
+      "462,157,52,28"
+    ],
+    [
+      "presetReverb",
+      "565,157,365,28"
+    ],
+    [
+      "saveReverb",
+      "936,157,42,28"
+    ],
+    [
+      "lockReverb",
+      "984,157,52,28"
+    ],
+    [
+      "delayType",
+      "137,188,180,29"
+    ],
+    [
+      "reverbType",
+      "659,188,180,29"
+    ],
+    [
+      "sync",
+      "324,188,64,29"
+    ],
+    [
+      "rhythm",
+      "394,188,120,29"
+    ],
+    [
+      "hold",
+      "960,188,76,29"
+    ],
+    [
+      "editDelay",
+      "43,531,155,26"
+    ],
+    [
+      "editReverb",
+      "565,531,155,26"
+    ],
+    [
+      "delayRevision",
+      "209,531,305,26"
+    ],
+    [
+      "reverbRevision",
+      "731,531,305,26"
+    ],
+    [
+      "presetCombined",
+      "43,620,376,34"
+    ],
+    [
+      "saveCombined",
+      "428,620,108,34"
+    ],
+    [
+      "editRoute",
+      "546,620,94,34"
+    ],
+    [
+      "send",
+      "649,620,66,34"
+    ],
+    [
+      "lockMix",
+      "725,620,92,34"
+    ],
+    [
+      "clear",
+      "678,42,115,29"
+    ],
+    [
+      "undo",
+      "804,42,105,29"
+    ],
+    [
+      "undoLoad",
+      "678,79,115,24"
+    ],
+    [
+      "motion",
+      "918,42,87,29"
+    ],
+    [
+      "help",
+      "1014,42,40,29"
+    ],
+    [
+      "buildLabel",
+      "176,73,390,18"
+    ],
+    [
+      "status",
+      "31,696,780,20"
+    ],
+    [
+      "tempoLabel",
+      "771,79,274,19"
+    ],
+    [
+      "pattern",
+      "43,907,150,27"
+    ],
+    [
+      "dualMode",
+      "209,907,190,27"
+    ],
+    [
+      "bRhythm",
+      "416,907,190,27"
+    ],
+    [
+      "pitchMode",
+      "500,713,240,27"
+    ],
+    [
+      "stereo",
+      "755,713,135,27"
+    ],
+    [
+      "interval",
+      "900,713,135,27"
+    ],
+    [
+      "reverbInterval",
+      "900,713,135,27"
+    ],
+    [
+      "manualTempo",
+      "43,914,190,30"
+    ],
+    [
+      "tap",
+      "245,914,80,30"
+    ],
+    [
+      "lockRoute",
+      "340,914,120,30"
+    ],
+    [
+      "routing",
+      "774,713,261,27"
+    ]
+  ],
+  "source_inventory": {
+    "Source/PluginEditor.cpp": 40883,
+    "Source/TideDSP.h": 41661,
+    "Source/PluginProcessor.cpp": 33371,
+    "Source/ModernParameters.h": 14005,
+    "Source/TideLook.h": 1615,
+    "Source/ModernPanel.h": 7614,
+    "Source/Parameters.h": 10807,
+    "Source/PresetBrowser.h": 8053,
+    "Source/ModernDSP.h": 35822,
+    "Source/PluginProcessor.h": 4054,
+    "Source/PluginEditor.h": 2289,
+    "Source/BloomDSP.h": 9054,
+    "Source/VersionedDSP.h": 2260,
+    "Source/BuildInfo.h.in": 99
+  },
+  "limits": {
+    "main": [
+      [
+        900,
+        600
+      ],
+      [
+        1080,
+        720
+      ],
+      [
+        1620,
+        1080
+      ]
+    ],
+    "expanded_height_at_1080": 1130
+  },
+  "protected_preset_count": 206,
+  "programs": 64
+}
