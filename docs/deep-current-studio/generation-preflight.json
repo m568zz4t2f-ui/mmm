@@ -1,0 +1,122 @@
+{
+  "status": "blocked_missing_Higgsfield_tools",
+  "allowance_outputs": 30,
+  "submitted_Higgsfield_outputs": 0,
+  "credits": null,
+  "master_requests": [
+    {
+      "stage": "B",
+      "id": "master-1",
+      "provider": "Higgsfield",
+      "candidate_model_to_reconfirm": "flux_3_image",
+      "model_confirmed": false,
+      "quote_credits": null,
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding. Restyle the actual UI without moving, deleting or inventing controls. Vary only low-roughness satin and very shallow recesses. Render a complete orthographic interface at actual aspect ratio; graphite Delay and teal Reverb stay distinct. Typography is a placement reference only.",
+      "references": [
+        "Actual main UI: docs/deep-current/evidence/refinement/screens/main-1080.png",
+        "Actual original Wolf Audio / italic Tide identity"
+      ],
+      "status": "not_submitted"
+    },
+    {
+      "stage": "B",
+      "id": "master-2",
+      "provider": "Higgsfield",
+      "candidate_model_to_reconfirm": "flux_3_image",
+      "model_confirmed": false,
+      "quote_credits": null,
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding. Restyle the actual UI without moving, deleting or inventing controls. Vary only medium-roughness satin and balanced shallow recesses. Render a complete orthographic interface at actual aspect ratio; graphite Delay and teal Reverb stay distinct. Typography is a placement reference only.",
+      "references": [
+        "Actual main UI: docs/deep-current/evidence/refinement/screens/main-1080.png",
+        "Actual original Wolf Audio / italic Tide identity"
+      ],
+      "status": "not_submitted"
+    },
+    {
+      "stage": "B",
+      "id": "master-3",
+      "provider": "Higgsfield",
+      "candidate_model_to_reconfirm": "flux_3_image",
+      "model_confirmed": false,
+      "quote_credits": null,
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding. Restyle the actual UI without moving, deleting or inventing controls. Vary only fine-brushed satin with slightly stronger but restrained edge depth. Render a complete orthographic interface at actual aspect ratio; graphite Delay and teal Reverb stay distinct. Typography is a placement reference only.",
+      "references": [
+        "Actual main UI: docs/deep-current/evidence/refinement/screens/main-1080.png",
+        "Actual original Wolf Audio / italic Tide identity"
+      ],
+      "status": "not_submitted"
+    }
+  ],
+  "pilot_requests": [
+    {
+      "stage": "C",
+      "id": "pilot-cap",
+      "asset_family": "H05",
+      "provider": "Higgsfield",
+      "depends_on": "approved stage B material master",
+      "candidate_model_to_reconfirm": "flux_3_image",
+      "model_confirmed": false,
+      "quote_credits": null,
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding. One isolated perfectly circular smoked titanium knob cap, centered with padding. No pointer, markings, value arc, labels, numbers or panel. Consistent upper-left light.",
+      "references": [
+        "Actual main UI: docs/deep-current/evidence/refinement/screens/main-1080.png",
+        "Actual original Wolf Audio / italic Tide identity",
+        "Approved Higgsfield material master: pending"
+      ],
+      "status": "not_submitted"
+    },
+    {
+      "stage": "C",
+      "id": "pilot-button",
+      "asset_family": "H07",
+      "provider": "Higgsfield",
+      "depends_on": "approved stage B material master",
+      "candidate_model_to_reconfirm": "flux_3_image",
+      "model_confirmed": false,
+      "quote_credits": null,
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding. One isolated blank rectangular normal-state button, approximately 120:30 ratio, shallow concave center, clean fixed end caps. No knob, lettering or glyph.",
+      "references": [
+        "Actual main UI: docs/deep-current/evidence/refinement/screens/main-1080.png",
+        "Actual original Wolf Audio / italic Tide identity",
+        "Approved Higgsfield material master: pending"
+      ],
+      "status": "not_submitted"
+    },
+    {
+      "stage": "C",
+      "id": "pilot-display",
+      "asset_family": "H06",
+      "provider": "Higgsfield",
+      "depends_on": "approved stage B material master",
+      "candidate_model_to_reconfirm": "flux_3_image",
+      "model_confirmed": false,
+      "quote_credits": null,
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding. One empty 474:145 recessed smoked glass display and thin bezel. No text, waveforms, LEDs, bars or meters.",
+      "references": [
+        "Actual main UI: docs/deep-current/evidence/refinement/screens/main-1080.png",
+        "Actual original Wolf Audio / italic Tide identity",
+        "Approved Higgsfield material master: pending"
+      ],
+      "status": "not_submitted"
+    },
+    {
+      "stage": "C",
+      "id": "pilot-selector",
+      "asset_family": "H08",
+      "provider": "Higgsfield",
+      "depends_on": "approved stage B material master",
+      "candidate_model_to_reconfirm": "flux_3_image",
+      "model_confirmed": false,
+      "quote_credits": null,
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding. One isolated blank 376:30 selector skin with quiet inset center and fixed caps. No arrow, text or ornamental control.",
+      "references": [
+        "Actual main UI: docs/deep-current/evidence/refinement/screens/main-1080.png",
+        "Actual original Wolf Audio / italic Tide identity",
+        "Approved Higgsfield material master: pending"
+      ],
+      "status": "not_submitted"
+    }
+  ],
+  "production_gate": "Do not submit production before master and four-component pilot pass review.",
+  "fallback_artwork": "One earlier non-Higgsfield exploratory concept is excluded from all production references/assets. Interrupted atlas returned no confirmed output; do not resubmit without checking status."
+}

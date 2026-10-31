@@ -1,0 +1,450 @@
+{
+  "main_size": [
+    1080,
+    720
+  ],
+  "expanded_height": 1130,
+  "panels": {
+    "delay": [
+      24,
+      105,
+      510,
+      465
+    ],
+    "reverb": [
+      546,
+      105,
+      510,
+      465
+    ],
+    "master": [
+      24,
+      585,
+      1032,
+      105
+    ]
+  },
+  "screens": {
+    "delay": [
+      42,
+      233,
+      474,
+      145
+    ],
+    "reverb": [
+      564,
+      233,
+      474,
+      145
+    ]
+  },
+  "primary_knobs": {
+    "delay": [
+      "Time",
+      "Feedback",
+      "Tone",
+      "Amount"
+    ],
+    "reverb": [
+      "Decay",
+      "Pre-delay",
+      "Tone",
+      "Amount"
+    ]
+  },
+  "main_direct_rect_calls": [
+    {
+      "component": "delayOn",
+      "bounds": [
+        438,
+        118,
+        76,
+        28
+      ]
+    },
+    {
+      "component": "reverbOn",
+      "bounds": [
+        960,
+        118,
+        76,
+        28
+      ]
+    },
+    {
+      "component": "presetDelay",
+      "bounds": [
+        43,
+        157,
+        365,
+        28
+      ]
+    },
+    {
+      "component": "saveDelay",
+      "bounds": [
+        414,
+        157,
+        42,
+        28
+      ]
+    },
+    {
+      "component": "lockDelay",
+      "bounds": [
+        462,
+        157,
+        52,
+        28
+      ]
+    },
+    {
+      "component": "presetReverb",
+      "bounds": [
+        565,
+        157,
+        365,
+        28
+      ]
+    },
+    {
+      "component": "saveReverb",
+      "bounds": [
+        936,
+        157,
+        42,
+        28
+      ]
+    },
+    {
+      "component": "lockReverb",
+      "bounds": [
+        984,
+        157,
+        52,
+        28
+      ]
+    },
+    {
+      "component": "delayType",
+      "bounds": [
+        137,
+        188,
+        180,
+        29
+      ]
+    },
+    {
+      "component": "reverbType",
+      "bounds": [
+        659,
+        188,
+        180,
+        29
+      ]
+    },
+    {
+      "component": "sync",
+      "bounds": [
+        324,
+        188,
+        64,
+        29
+      ]
+    },
+    {
+      "component": "rhythm",
+      "bounds": [
+        394,
+        188,
+        120,
+        29
+      ]
+    },
+    {
+      "component": "hold",
+      "bounds": [
+        960,
+        188,
+        76,
+        29
+      ]
+    },
+    {
+      "component": "editDelay",
+      "bounds": [
+        43,
+        531,
+        155,
+        26
+      ]
+    },
+    {
+      "component": "editReverb",
+      "bounds": [
+        565,
+        531,
+        155,
+        26
+      ]
+    },
+    {
+      "component": "delayRevision",
+      "bounds": [
+        209,
+        531,
+        305,
+        26
+      ]
+    },
+    {
+      "component": "reverbRevision",
+      "bounds": [
+        731,
+        531,
+        305,
+        26
+      ]
+    },
+    {
+      "component": "presetCombined",
+      "bounds": [
+        43,
+        620,
+        376,
+        34
+      ]
+    },
+    {
+      "component": "saveCombined",
+      "bounds": [
+        428,
+        620,
+        108,
+        34
+      ]
+    },
+    {
+      "component": "editRoute",
+      "bounds": [
+        546,
+        620,
+        94,
+        34
+      ]
+    },
+    {
+      "component": "send",
+      "bounds": [
+        649,
+        620,
+        66,
+        34
+      ]
+    },
+    {
+      "component": "lockMix",
+      "bounds": [
+        725,
+        620,
+        92,
+        34
+      ]
+    },
+    {
+      "component": "clear",
+      "bounds": [
+        678,
+        42,
+        115,
+        29
+      ]
+    },
+    {
+      "component": "undo",
+      "bounds": [
+        804,
+        42,
+        105,
+        29
+      ]
+    },
+    {
+      "component": "undoLoad",
+      "bounds": [
+        678,
+        79,
+        115,
+        24
+      ]
+    },
+    {
+      "component": "motion",
+      "bounds": [
+        918,
+        42,
+        87,
+        29
+      ]
+    },
+    {
+      "component": "help",
+      "bounds": [
+        1014,
+        42,
+        40,
+        29
+      ]
+    },
+    {
+      "component": "buildLabel",
+      "bounds": [
+        176,
+        73,
+        390,
+        18
+      ]
+    },
+    {
+      "component": "status",
+      "bounds": [
+        31,
+        696,
+        780,
+        20
+      ]
+    },
+    {
+      "component": "tempoLabel",
+      "bounds": [
+        771,
+        79,
+        274,
+        19
+      ]
+    },
+    {
+      "component": "pattern",
+      "bounds": [
+        43,
+        907,
+        150,
+        27
+      ]
+    },
+    {
+      "component": "dualMode",
+      "bounds": [
+        209,
+        907,
+        190,
+        27
+      ]
+    },
+    {
+      "component": "bRhythm",
+      "bounds": [
+        416,
+        907,
+        190,
+        27
+      ]
+    },
+    {
+      "component": "pitchMode",
+      "bounds": [
+        500,
+        713,
+        240,
+        27
+      ]
+    },
+    {
+      "component": "stereo",
+      "bounds": [
+        755,
+        713,
+        135,
+        27
+      ]
+    },
+    {
+      "component": "interval",
+      "bounds": [
+        900,
+        713,
+        135,
+        27
+      ]
+    },
+    {
+      "component": "reverbInterval",
+      "bounds": [
+        900,
+        713,
+        135,
+        27
+      ]
+    },
+    {
+      "component": "manualTempo",
+      "bounds": [
+        43,
+        914,
+        190,
+        30
+      ]
+    },
+    {
+      "component": "tap",
+      "bounds": [
+        245,
+        914,
+        80,
+        30
+      ]
+    },
+    {
+      "component": "lockRoute",
+      "bounds": [
+        340,
+        914,
+        120,
+        30
+      ]
+    },
+    {
+      "component": "routing",
+      "bounds": [
+        774,
+        713,
+        261,
+        27
+      ]
+    }
+  ],
+  "advanced_views": [
+    "Delay A",
+    "Delay B",
+    "Reverb A",
+    "Reverb B",
+    "Routing / global"
+  ],
+  "browser_scopes": [
+    "Combined",
+    "Delay",
+    "Reverb"
+  ],
+  "algorithm_counts": {
+    "delay": 12,
+    "reverb": 13
+  },
+  "must_cover": [
+    "Main 900/1080/1620 and physical 2x",
+    "All algorithm-specific controls and scrolling",
+    "Legacy Delay/Reverb/Routing",
+    "Search/filter/favorites/recent/save/load/import/export/empty/error browser states",
+    "Popup menus/value editors/tooltips/quick guide/warnings/plugin-owned dialogs"
+  ],
+  "native_file_pickers": "Preserve platform styling"
+}
