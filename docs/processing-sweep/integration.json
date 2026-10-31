@@ -5,7 +5,7 @@
   "merged_native_build_id": "9df094ca455b",
   "files": {
     "Source/ModernDSP.h": "e5106dceac1faec3b667840aeb3a5ce5dab762de52484cc8ed0d20c4bfade024",
-    "CMakeLists.txt": "50db8e7c3355131e86cb8d4811f383cb52237010a19f93203560d9917f1e326a",
+    "CMakeLists.txt": "2729e776a6640174eca1dae1b9e7d01922f28049120badb7f704884a9f88d0ab",
     "scripts/protected_source_hashes.py": "221dd64293d27fc79e2563a61a34fd14afeca7c7dfc037d2270d0580ccceef5d"
   },
   "unchanged_historical_protected_files": 213,
