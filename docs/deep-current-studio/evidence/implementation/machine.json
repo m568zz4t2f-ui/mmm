@@ -1,0 +1,29 @@
+{
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "cpu_quota": "200000 100000",
+  "memory_limit": "8589934592",
+  "display": "Xvfb :92 1920x1200x24, software rendering",
+  "sample_rate": 48000,
+  "block_size": 256,
+  "baseline_revision": "e2a6ad644573569ba130d145403466cdd410c17f",
+  "recovered_head": "46b47a90147d882ec267f83b2493a014f3d93163",
+  "baseline_build": "9c1e62f44667",
+  "candidate_build": "6df7d3b58bbf",
+  "normal_fixture": "natural window events; no forced full paint",
+  "normal_paint_duration_measured": false,
+  "gpu_telemetry": null,
+  "daw": null,
+  "helper_sha256": {
+    "baseline": "2a1fbb02bd1fb0f491f5eb05b309ae3b0ed318f08ed6da97ba4d702aa78b83f6",
+    "candidate": "df0717501247e1e30aac4895630abc914ba2a07b725da4f19bc51d2aea0142b8"
+  },
+  "baseline_helper_source_sha256": "eea4ebe29a45a692751f5ebd73e0a0746728ed911798b82c510de091a4a3041f",
+  "candidate_helper_source_sha256": "f35aeb7434612545d094743f9c6380b9ba0e9cff5338475ccd5b1431f24eef45",
+  "built_artifact_sha256": {
+    "linux_vst3": "6ad4e2b304a7933fb0f2bb5905f1f1533576ab44e402f308c35f4270ecd7b50b",
+    "linux_standalone": "8e3694f1b14557453c86f15de8206fa5163c77580c54a5eb20b6eb0795cf8e3e",
+    "pluginval_validator": "d3d342ea92293b0699a5c983937211e3faf2b0f38145b31cb8d78424a25e10ba"
+  }
+}

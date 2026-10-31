@@ -32,20 +32,22 @@ jobs:
       - run: python -m pip install --disable-pip-version-check 'Pillow>=11,<13'
       - name: Test recovery integrity guards
         run: python tests/test_studio_recovery.py
-      - name: Recover existing originals and measure integrity
-        run: python scripts/import-studio-artwork.py --verify-only --allow-visual-changes
-      - name: Verify source preservation and recovered original hashes
+      - name: Verify protected processing and unchanged recovered originals
         run: python scripts/import-studio-artwork.py --verify-only --allow-visual-changes
       - name: Import completed material corrections, preserving original bytes
         run: |
           if test -f docs/deep-current-studio/correction-jobs.json; then
             python scripts/import-studio-corrections.py
           fi
+      - name: Verify prepared skins, font licenses and protected hashes
+        run: python scripts/verify-studio-artwork.py
       - uses: actions/upload-artifact@v4
         with:
           name: tide-studio-recovery-review
           path: |
             docs/deep-current-studio/recovered-artwork-receipt.json
+            docs/deep-current-studio/correction-artwork-receipt.json
+            assets/tide/deep-current-studio/runtime/manifest.json
             assets/tide/deep-current-studio/review/
       - name: Commit recovered originals to the same branch
         run: |

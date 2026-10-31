@@ -1,0 +1,2 @@
+PASS: 214 frozen processor/DSP/parameter/preset files are byte-identical.
+PASS: 14 editor methods preserve layout, bindings, input handlers, timer and visualization semantics.

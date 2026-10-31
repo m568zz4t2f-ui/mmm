@@ -1,0 +1,247 @@
+Start testing: Oct 31 03:07 UTC
+----------------------------------------------------------
+1/12 Testing: installer
+1/12 Test: installer
+Command: "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/work/tide-deep-current/tests/test_mac_install.py"
+Directory: /workspace/work/tide-build
+"installer" start time: Oct 31 03:07 UTC
+Output:
+----------------------------------------------------------
+............
+----------------------------------------------------------------------
+Ran 12 tests in 1.501s
+
+OK
+<end of output>
+Test time =   1.64 sec
+----------------------------------------------------------
+Test Passed.
+"installer" end time: Oct 31 03:08 UTC
+"installer" time elapsed: 00:00:01
+----------------------------------------------------------
+
+2/12 Testing: studio_artwork
+2/12 Test: studio_artwork
+Command: "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/work/tide-deep-current/scripts/verify-studio-artwork.py"
+Directory: /workspace/work/tide-build
+"studio_artwork" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+{
+  "protected_files_verified": 214,
+  "originals_verified": 29,
+  "corrections_verified": 3,
+  "runtime_exports_verified": 17,
+  "font_and_license_files_verified": 3,
+  "runtime_aliases_verified": 5,
+  "immutable_artwork_bytes": 23049216,
+  "authorized_visual_build_files": {
+    "Source/PluginEditor.cpp": {
+      "baseline_sha256": "6a138b117b3f643072eac3c36647a505efdc37fa66147890ec34a49bc2734f9d",
+      "current_sha256": "444f5a683e50b4ad5a227bf8ec1eb3a2fa2d9969a72110e203fa0e6e1fffc302",
+      "changed": true
+    },
+    "Source/PluginEditor.h": {
+      "baseline_sha256": "10c6f472396a157fd2fee53ad8bb7e831a91da0eb3b7e1cd20d14845d7120822",
+      "current_sha256": "10c6f472396a157fd2fee53ad8bb7e831a91da0eb3b7e1cd20d14845d7120822",
+      "changed": false
+    },
+    "Source/TideLook.h": {
+      "baseline_sha256": "7f5557156e27c1751795b6dc2613af311993ee678fd855a6c823a9baf547a874",
+      "current_sha256": "b3ebb84a78936bd213c870e4068d4776527ff95fcdad884630389c6091cf4181",
+      "changed": true
+    },
+    "Source/ModernPanel.h": {
+      "baseline_sha256": "f710f11cb41ffc25bb032b49997d29d6794b20d10a471df05d15043d66deea44",
+      "current_sha256": "5b0b4dd9c78fc234b83b80e43ae14364a926c8abd31ded340f5b9236dae7fee6",
+      "changed": true
+    },
+    "Source/PresetBrowser.h": {
+      "baseline_sha256": "7a5b2fdeac7c8bd78dbf064ef44c7bb9078561e3efd81328389dadc23a03e18f",
+      "current_sha256": "e1bd3f216ab09bf85f5a709cde03309a759a93be87e0b19f768f7756f293a52c",
+      "changed": true
+    },
+    "CMakeLists.txt": {
+      "baseline_sha256": "b44b8f7afa42fdec61110d57fa7d58453d84b593abf828829ffd41695b38a8d4",
+      "current_sha256": "59d12930fd94d82c9cd26dded4c0c877f24c92bdad296097ab1f2dd08727428a",
+      "changed": true
+    }
+  }
+}
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"studio_artwork" end time: Oct 31 03:08 UTC
+"studio_artwork" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/12 Testing: dsp
+3/12 Test: dsp
+Command: "/workspace/work/tide-build/tide_dsp_tests"
+Directory: /workspace/work/tide-build
+"dsp" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+PASS: timing, six delays, four reverbs, stereo, shimmer, bypass tails, independent feed, send mode, clear, automation. 4.16168 s
+<end of output>
+Test time =   4.17 sec
+----------------------------------------------------------
+Test Passed.
+"dsp" end time: Oct 31 03:08 UTC
+"dsp" time elapsed: 00:00:04
+----------------------------------------------------------
+
+4/12 Testing: update
+4/12 Test: update
+Command: "/workspace/work/tide-build/tide_update_tests"
+Directory: /workspace/work/tide-build
+"update" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+PASS: logical clear, conditional DSP, wake-up, 16-second echoes, muted routing, tail transitions, +24 pitch alias rejection (-26.5702 dB).
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"update" end time: Oct 31 03:08 UTC
+"update" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/12 Testing: models
+5/12 Test: models
+Command: "/workspace/work/tide-build/tide_models_tests"
+Directory: /workspace/work/tide-build
+"models" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+PASS: recipe inventory, dedicated reverb IRs at 3 rates, finite gain, clear, extension delays, independent Dual.
+<end of output>
+Test time =   3.36 sec
+----------------------------------------------------------
+Test Passed.
+"models" end time: Oct 31 03:08 UTC
+"models" time elapsed: 00:00:03
+----------------------------------------------------------
+
+6/12 Testing: repairs
+6/12 Test: repairs
+Command: "/workspace/work/tide-build/tide_repair_tests"
+Directory: /workspace/work/tide-build
+"repairs" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+PASS: ping-pong, independent timing, model isolation, diffusion ownership, plate controls, tail continuity and swell.
+<end of output>
+Test time =   0.69 sec
+----------------------------------------------------------
+Test Passed.
+"repairs" end time: Oct 31 03:08 UTC
+"repairs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/12 Testing: modern_dsp_lab
+7/12 Test: modern_dsp_lab
+Command: "/workspace/work/tide-build/tide_modern_tests"
+Directory: /workspace/work/tide-build
+"modern_dsp_lab" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+PASS: 25 experimental machines at five rates, distinct numerical responses, reset, capture freeze and four-slot routing. No musical-equivalence claim.
+<end of output>
+Test time =  14.14 sec
+----------------------------------------------------------
+Test Passed.
+"modern_dsp_lab" end time: Oct 31 03:08 UTC
+"modern_dsp_lab" time elapsed: 00:00:14
+----------------------------------------------------------
+
+8/12 Testing: modern_stress_lab
+8/12 Test: modern_stress_lab
+Command: "/workspace/work/tide-build/tide_modern_stress"
+Directory: /workspace/work/tide-build
+"modern_stress_lab" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+prepared,44100,39963200,448
+processing,44100,0,0
+prepared,48000,43495392,448
+processing,48000,0,0
+prepared,96000,86976928,448
+processing,96000,0,0
+prepared,192000,173938528,448
+processing,192000,0,0
+PASS: allocation instrumentation, bounded automation fixtures, slot sleep, dry identity and invalid-control checks. Not realtime certification.
+<end of output>
+Test time =   1.56 sec
+----------------------------------------------------------
+Test Passed.
+"modern_stress_lab" end time: Oct 31 03:08 UTC
+"modern_stress_lab" time elapsed: 00:00:01
+----------------------------------------------------------
+
+9/12 Testing: modern_controls
+9/12 Test: modern_controls
+Command: "/workspace/work/tide-build/tide_modern_controls"
+Directory: /workspace/work/tide-build
+"modern_controls" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+PASS: 337 exposed machine/control contracts respond at their extrema. Numerical response, not an audition score.
+<end of output>
+Test time =   9.15 sec
+----------------------------------------------------------
+Test Passed.
+"modern_controls" end time: Oct 31 03:08 UTC
+"modern_controls" time elapsed: 00:00:09
+----------------------------------------------------------
+
+10/12 Testing: host
+10/12 Test: host
+Command: "/workspace/work/tide-build/tide_host_tests"
+Directory: /workspace/work/tide-build
+"host" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+PASS: processor channels, host reset, state, locks, send, scoped files, input rejection, editor.
+<end of output>
+Test time =   1.14 sec
+----------------------------------------------------------
+Test Passed.
+"host" end time: Oct 31 03:08 UTC
+"host" time elapsed: 00:00:01
+----------------------------------------------------------
+
+11/12 Testing: ui
+11/12 Test: ui
+Command: "/workspace/work/tide-build/tide_ui_tests"
+Directory: /workspace/work/tide-build
+"ui" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+PASS: 64 combined, 50 side starters, 206 portable files, independent user names, project recall, automation, 1024 lock combinations, browser refresh and compiled release label.
+<end of output>
+Test time =   4.63 sec
+----------------------------------------------------------
+Test Passed.
+"ui" end time: Oct 31 03:08 UTC
+"ui" time elapsed: 00:00:04
+----------------------------------------------------------
+
+12/12 Testing: modern_host
+12/12 Test: modern_host
+Command: "/workspace/work/tide-build/tide_modern_host_tests"
+Directory: /workspace/work/tide-build
+"modern_host" start time: Oct 31 03:08 UTC
+Output:
+----------------------------------------------------------
+PASS: schema-4 compatibility, per-section upgrades, locks, scoped four-slot recall, all 25 actual processor paths and native advanced panels.
+<end of output>
+Test time =   2.42 sec
+----------------------------------------------------------
+Test Passed.
+"modern_host" end time: Oct 31 03:08 UTC
+"modern_host" time elapsed: 00:00:02
+----------------------------------------------------------
+
+End testing: Oct 31 03:08 UTC

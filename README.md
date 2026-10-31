@@ -1,6 +1,6 @@
 # Wolf Tide 1.3.0 — source build candidate
 
-**UI Refresh 1.0:** coordinated typography, original metallic controls, warm gray/teal panels and refined animated displays. See [implementation, benchmarks and acceptance status](docs/UI-REFRESH-1.0.md). Sound, parameter identities and project formats remain unchanged from the integrated 1.3 candidate.
+**Deep Current — Studio Edition:** a complete native visual pass using the recovered Higgsfield family, shared skins and embedded functional typography. See [screenshots, measured benchmarks, preservation evidence and remaining Mac checks](docs/deep-current-studio/IMPLEMENTATION-VALIDATION.md). All 214 protected processing/parameter/preset files remain unchanged; the 64-program Linux comparison is byte-identical. Final material/color approval and Mac release validation remain pending. [UI Refresh 1.0](docs/UI-REFRESH-1.0.md) is the historical baseline.
 
 Integrated stereo delay/reverb plugin: twelve delay machines, thirteen reverbs, independent delay A/B and reverb A/B, Series/Parallel/Frequency split routing, advanced native controls and versioned project compatibility.
 

@@ -34,6 +34,7 @@ done
 python3 scripts/source-archive.py "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Source.zip"
 cp docs/QUICK-START.md "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Quick Start.md"
 cp LICENSE "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/LICENSE.txt"
+cp assets/tide/deep-current-studio/fonts/OFL.txt "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/IBM-Plex-Sans-OFL.txt"
 cp docs/ALGORITHMS-1.3.md "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Algorithms.md"
 if [ -d Factory-Presets ]; then
  ditto Factory-Presets "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Factory Presets"

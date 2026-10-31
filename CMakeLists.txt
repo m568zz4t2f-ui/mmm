@@ -63,7 +63,6 @@ juce_add_plugin(WolfTide COMPANY_NAME "Wolf Audio" BUNDLE_ID "audio.wolf.tide"
  VST3_CATEGORIES Fx Delay Reverb AU_MAIN_TYPE kAudioUnitType_Effect FORMATS ${tide_formats})
 set(tide_artwork
  assets/tide/deep-current-studio/runtime/chassis.png
- assets/tide/deep-current-studio/runtime/expanded.png
  assets/tide/deep-current-studio/runtime/delay.png
  assets/tide/deep-current-studio/runtime/reverb.png
  assets/tide/deep-current-studio/runtime/master.png
@@ -75,10 +74,6 @@ set(tide_artwork
  assets/tide/deep-current-studio/runtime/button_delay.png
  assets/tide/deep-current-studio/runtime/button_reverb.png
  assets/tide/deep-current-studio/runtime/button_disabled.png
- assets/tide/deep-current-studio/runtime/field_normal.png
- assets/tide/deep-current-studio/runtime/field_hover.png
- assets/tide/deep-current-studio/runtime/field_active.png
- assets/tide/deep-current-studio/runtime/field_disabled.png
  assets/tide/deep-current-studio/runtime/track.png
  assets/tide/deep-current-studio/runtime/thumb.png
  assets/tide/deep-current-studio/runtime/body.png

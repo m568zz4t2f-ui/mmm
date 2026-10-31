@@ -1,0 +1,41 @@
+-- Checking for modules 'webkit2gtk-4.0;gtk+-x11-3.0'
+--   Package 'webkit2gtk-4.0', required by 'virtual:world', not found
+--   Package 'gtk+-x11-3.0', required by 'virtual:world', not found
+-- Configuring juceaide
+-- Building juceaide
+-- Exporting juceaide
+-- Testing juceaide
+-- Finished setting up juceaide
+-- Configuring done (1.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: /workspace/work/tide-build
+[  4%] Built target tide_models_tests
+[  4%] Built target tide_dsp_tests
+[  6%] Built target tide_update_tests
+[  8%] Built target tide_modern_tests
+[ 11%] Built target tide_repair_tests
+[ 13%] Built target tide_render
+[ 15%] Built target tide_modern_profile
+[ 17%] Built target tide_modern_stress
+[ 20%] Built target tide_modern_controls
+[ 21%] Generating juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData1.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData2.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData3.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData4.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData5.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData6.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData7.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData8.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData9.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData10.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData11.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData12.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData13.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData14.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData15.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData16.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData17.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData18.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData19.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData.h
+[ 23%] Built target WolfTide_vst3_helper
+[ 23%] Generating juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData1.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData2.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData3.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData4.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData5.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData6.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData7.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData8.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData9.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData10.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData11.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData12.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData13.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData14.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData15.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData16.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData17.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData18.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData19.cpp, juce_binarydata_TideArtwork/JuceLibraryCode/BinaryData.h
+[ 46%] Built target TideArtwork
+[ 68%] Built target WolfTide
+[ 69%] Linking CXX shared module "WolfTide_artefacts/Release/VST3/Wolf Tide.vst3/Contents/x86_64-linux/Wolf Tide.so"
+[ 70%] Linking CXX executable tide_host_tests
+[ 71%] Linking CXX executable "WolfTide_artefacts/Release/Standalone/Wolf Tide"
+removing moduleinfo.json
+creating /workspace/work/tide-build/WolfTide_artefacts/Release/VST3/Wolf Tide.vst3
+[ 80%] Built target WolfTide_VST3
+[ 82%] Linking CXX executable tide_ui_tests
+[ 83%] Built target tide_host_tests
+[ 84%] Linking CXX executable tide_modern_audio
+[ 93%] Built target WolfTide_Standalone
+[ 94%] Linking CXX executable tide_modern_host_tests
+[ 95%] Built target tide_modern_audio
+[ 96%] Linking CXX executable tide_ui_refresh_checks
+[ 97%] Built target tide_ui_tests
+[ 98%] Built target tide_modern_host_tests
+[100%] Built target tide_ui_refresh_checks

@@ -2,10 +2,11 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 namespace tide::ui {
-inline const juce::Colour chassis(0xff19272e),surface(0xff1a282e),ink(0xfff4eadc),muted(0xffc3d0cf),delay(0xffd6cbb8),reverb(0xff77d7d5),edge(0xff6d8082);
+inline const juce::Colour chassis(0xff19272e),surface(0xff1a282e),ink(0xfffff4e4),muted(0xffc3d0cf),delay(0xffd6cbb8),reverb(0xff77d7d5),edge(0xff6d8082);
 juce::Font font(float size,int style=juce::Font::plain);
-enum class Skin {chassis,expanded,delay,reverb,master,knob,glass,button_normal,button_hover,button_pressed,button_delay,button_reverb,button_disabled,field_normal,field_hover,field_active,field_disabled,track,thumb,body,selected_row,chevron,count};
+enum class Skin {chassis,delay,reverb,master,knob,glass,button_normal,button_hover,button_pressed,button_delay,button_reverb,button_disabled,track,thumb,body,selected_row,chevron,count,expanded=chassis,field_normal=button_pressed,field_hover=button_hover,field_active=button_reverb,field_disabled=button_disabled};
 void paintSkin(juce::Graphics&,juce::Rectangle<float>,Skin,float opacity=1.f);
+std::size_t cachedSkinBytes();
 
 }
 class TideLook final:public juce::LookAndFeel_V4 {

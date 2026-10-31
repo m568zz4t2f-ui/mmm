@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Import only explicitly recorded, completed Higgsfield correction jobs."""
-import hashlib,io,json,urllib.parse,urllib.request
+import hashlib,io,json,urllib.parse,urllib.request,uuid
 from pathlib import Path
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
@@ -13,6 +13,7 @@ records=[]
 for job in manifest['jobs']:
  if job.get('status')!='completed':continue
  job_id=job['submission']['results'][0]['id'];url=urllib.parse.urlsplit(job['result_url'])
+ if job['asset'] not in {'H01','H02','H03'} or str(uuid.UUID(job_id))!=job_id:raise ValueError('Unexpected correction identity')
  if url.scheme!='https' or url.hostname!='d8j0ntlcm91z4.cloudfront.net' or url.username or url.password:raise ValueError('Unexpected correction source')
  target=ROOT/'assets/tide/deep-current-studio/originals/corrections'/(job['asset']+'-'+job_id+'.png')
  if target.is_file():data=target.read_bytes()

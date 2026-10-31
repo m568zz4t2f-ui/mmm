@@ -1,0 +1,15 @@
+{
+  "family": "IBM Plex Sans",
+  "license": "SIL Open Font License 1.1",
+  "source_repository": "https://github.com/IBM/plex",
+  "source_urls": {
+    "IBMPlexSans-Regular.ttf": "https://raw.githubusercontent.com/IBM/plex/master/packages/plex-sans/fonts/complete/ttf/IBMPlexSans-Regular.ttf",
+    "IBMPlexSans-Medium.ttf": "https://raw.githubusercontent.com/IBM/plex/master/packages/plex-sans/fonts/complete/ttf/IBMPlexSans-Medium.ttf"
+  },
+  "license_url": "https://raw.githubusercontent.com/IBM/plex/master/LICENSE.txt",
+  "sha256": {
+    "IBMPlexSans-Medium.ttf": "331c8639d7598b2cde62a911a71db195e30cb655cd6bdf2e324a7e984955f907",
+    "IBMPlexSans-Regular.ttf": "975dcda37d80f038dcd143c22e33ca2d97a0cc5a929aace1c749153b0fe1afa5",
+    "OFL.txt": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+  }
+}

@@ -81,6 +81,13 @@ int main(int argc,char** argv){
  for(auto* child:browser.getChildren())if(auto* button=dynamic_cast<juce::TextButton*>(child))if(button->getButtonText()=="LOAD")button->onClick();
  check(refreshed&&p.presetDisplay(0).name=="Browser saved","browser user load refreshes identity immediately");refresh(p,editor);
  if(argc>1){editor.setSize(1080,720);auto picture=editor.createComponentSnapshot(editor.getLocalBounds());auto output=juce::File(argv[1]).createOutputStream();check(bool(output),"UI snapshot output");output->setPosition(0);output->truncate();juce::PNGImageFormat png;check(png.writeImageToStream(picture,*output),"UI snapshot rendered");}
+ // Rendering must preserve transparent accessibility labels and visible tooltip text.
+ {TideLook theme;juce::Label accessible;accessible.setBounds(0,0,220,80);accessible.setText("Accessible only",juce::dontSendNotification);accessible.setColour(juce::Label::textColourId,juce::Colours::transparentBlack);
+  juce::Image image(juce::Image::RGB,220,80,true);juce::Graphics graphics(image);graphics.fillAll(juce::Colours::magenta);theme.drawLabel(graphics,accessible);
+  bool untouched=true;for(int y=0;y<80;++y)for(int x=0;x<220;++x)untouched&=image.getPixelAt(x,y)==juce::Colours::magenta;check(untouched,"transparent accessibility label stays invisible");
+  theme.drawTooltip(graphics,"Fine drag",220,80);bool legible=false;for(int y=10;y<68;++y)for(int x=12;x<208;++x){const auto colour=image.getPixelAt(x,y);legible|=colour.getRed()>230&&colour.getGreen()>220&&colour.getBlue()>210;}check(legible,"tooltip has visible native ivory text");}
+ // Vary actual field sizes past the byte budget; shared compositions must remain bounded.
+ {juce::Image image(juce::Image::RGB,1800,40,true);juce::Graphics g(image);for(int width=600;width<1600;width+=7)tide::ui::paintSkin(g,{0,0,float(width),30},tide::ui::Skin::field_normal);check(tide::ui::cachedSkinBytes()<=8*1024*1024,"shared skin cache stays within eight MiB");g.addTransform(juce::AffineTransform::scale(32));tide::ui::paintSkin(g,{0,0,1000,30},tide::ui::Skin::field_normal);check(tide::ui::cachedSkinBytes()<=8*1024*1024,"oversized physical scale bypasses the cache");}
  // A same-size page switch must invalidate the printed heading cache.
  {TideProcessor legacy;legacy.setValue("dRevision",0);legacy.setValue("rRevision",0);TideEditor view(legacy);
   auto press=[&](const char* title){bool found=false;for(auto* child:view.getChildren())if(auto* button=dynamic_cast<juce::TextButton*>(child))if(button->getButtonText()==title){button->onClick();found=true;break;}check(found,"legacy edit button exists");};

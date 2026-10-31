@@ -1,0 +1,1160 @@
+{
+  "baseline_build": "9c1e62f44667",
+  "candidate_build": "6df7d3b58bbf",
+  "baseline_count": 70,
+  "candidate_count": 74,
+  "captures": [
+    {
+      "path": "before/advanced-0-controls.png",
+      "dimensions": [
+        820,
+        1128
+      ],
+      "sha256": "69ca1c2e92cc91bf0f82fe3f959d2a41948a5c4ff1742c5da8849e22c7c0c33d"
+    },
+    {
+      "path": "before/advanced-0.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "4d7664ba9a8cc93a374a25d61b4ddada92ea1a0a1cd23836142c33abe49f2f20"
+    },
+    {
+      "path": "before/advanced-1-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "e0f866e7685ab915cb4b3f907ae9226c28823d7493067f518932d327bde85ac5"
+    },
+    {
+      "path": "before/advanced-1.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "04fb3158b4df6afddd9984aaf88241a44f4f2840491f32b7b7d0aa880e596e8b"
+    },
+    {
+      "path": "before/advanced-2-controls.png",
+      "dimensions": [
+        820,
+        1032
+      ],
+      "sha256": "1577105d18bd55d4bf9e7ce354802cd9af2f8c8eae8e95a3626066cde245ef12"
+    },
+    {
+      "path": "before/advanced-2.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "5d518e20331be8380ef0b43508024793e28d650c5156c734033a41041ac51bea"
+    },
+    {
+      "path": "before/advanced-3-controls.png",
+      "dimensions": [
+        820,
+        696
+      ],
+      "sha256": "37772523ac4990e327385fca76480cb534b41564f088d032233f70dbffca83e4"
+    },
+    {
+      "path": "before/advanced-3.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "36efe0e11a365073e994348204041d71dd9c381a330742af4640cba6b9789d6a"
+    },
+    {
+      "path": "before/advanced-4-controls.png",
+      "dimensions": [
+        820,
+        552
+      ],
+      "sha256": "98820c18bf82a29158b674ddaa3817b1565e19b21f084435a3d35acf84e5602d"
+    },
+    {
+      "path": "before/advanced-4.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "80cb22c01cf941deac056aa453e2d6a153fe362fc9e45619599052817511ea54"
+    },
+    {
+      "path": "before/delay-model-0-controls.png",
+      "dimensions": [
+        820,
+        1128
+      ],
+      "sha256": "69ca1c2e92cc91bf0f82fe3f959d2a41948a5c4ff1742c5da8849e22c7c0c33d"
+    },
+    {
+      "path": "before/delay-model-0.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "4d7664ba9a8cc93a374a25d61b4ddada92ea1a0a1cd23836142c33abe49f2f20"
+    },
+    {
+      "path": "before/delay-model-1-controls.png",
+      "dimensions": [
+        820,
+        1224
+      ],
+      "sha256": "82f359880f3259cd341237caa2065498fae786599bf7cc85665079de2c49c7fb"
+    },
+    {
+      "path": "before/delay-model-1.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "306bfe9e0c83cfb86efeb8e87791bf78c7a7871afa0104a78d65d5802cd489aa"
+    },
+    {
+      "path": "before/delay-model-10-controls.png",
+      "dimensions": [
+        820,
+        1176
+      ],
+      "sha256": "dc047c1fd2c7409f5aa81fccdf0d89d1ee708a727e81154f7ae78fd870ee19e7"
+    },
+    {
+      "path": "before/delay-model-10.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "fed4a58ee70aa69a4818c946e4b8b36bf842b299b4c21a843133114262ea5133"
+    },
+    {
+      "path": "before/delay-model-11-controls.png",
+      "dimensions": [
+        820,
+        1800
+      ],
+      "sha256": "36ba37cc0c1fb8eccdcedbbb3fbd0f83aed1326317a01b6c115e9ea23e28b906"
+    },
+    {
+      "path": "before/delay-model-11.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "9fd99d15a463288065a4d432cfa57542f249e22707c62d99a162e9d914a02333"
+    },
+    {
+      "path": "before/delay-model-2-controls.png",
+      "dimensions": [
+        820,
+        1224
+      ],
+      "sha256": "72fbbd25172d3c9183c0bc01dfb6a6a5b3fc1c3efd875bff8f5ec25b4892b946"
+    },
+    {
+      "path": "before/delay-model-2.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "1298e5b9b5a1c3137910bf341174018d8b74d7514f569a2b2e9f48ab9cdde864"
+    },
+    {
+      "path": "before/delay-model-3-controls.png",
+      "dimensions": [
+        820,
+        1896
+      ],
+      "sha256": "f66f665b676f994cc7dfeb8e43fb5cc2bc0bc298eba1afa0275697c8fe0d47a5"
+    },
+    {
+      "path": "before/delay-model-3.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "5137a15faf24aa231b0c30a63ca9988b45501e0bc01d5b62732e8c87c850528e"
+    },
+    {
+      "path": "before/delay-model-4-controls.png",
+      "dimensions": [
+        820,
+        1080
+      ],
+      "sha256": "dc3e1424f6acb7bb1c32874d8127c57d2421ad15f809b2927ce4fdcc18de53ce"
+    },
+    {
+      "path": "before/delay-model-4.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "5daf8eb8fd2cf5304eb7027cf301e4ddd471b9461f74926e29e06a4a452f2ded"
+    },
+    {
+      "path": "before/delay-model-5-controls.png",
+      "dimensions": [
+        820,
+        1272
+      ],
+      "sha256": "7692388f4fead5faad2f4553e3945e295d06421a7f11f309b1615fefc4674f31"
+    },
+    {
+      "path": "before/delay-model-5.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "8a5266ee4513ce72d560ca49308be9a4254b6847046a9eb7a605a5ce0f6ec36c"
+    },
+    {
+      "path": "before/delay-model-6-controls.png",
+      "dimensions": [
+        820,
+        1272
+      ],
+      "sha256": "d49ea07c29519de42f029ab658bd35da5b88c5eafaee7b950ecc828762131dec"
+    },
+    {
+      "path": "before/delay-model-6.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "2216e03271279077e050dd2ec27fc8d8280038861346e32bcdd963e3fd53bea3"
+    },
+    {
+      "path": "before/delay-model-7-controls.png",
+      "dimensions": [
+        820,
+        1416
+      ],
+      "sha256": "e3423ec1c647e9c6c43344eaeee086d88ba7660f49c6cc49f8b21316d1e417f0"
+    },
+    {
+      "path": "before/delay-model-7.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "212440f64c7f123b608847b0f9b5f3a4b12f110f3dcad1ae73d9da111660c3f9"
+    },
+    {
+      "path": "before/delay-model-8-controls.png",
+      "dimensions": [
+        820,
+        1272
+      ],
+      "sha256": "9d9a4365642c8021a4b00bcec816fdf9cdafa8b98ac3613c4127f4e961be07e1"
+    },
+    {
+      "path": "before/delay-model-8.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "4c4e5ecfd11481ddb3484aa1b884df4b0483f7a9922e185da360e57b74b23068"
+    },
+    {
+      "path": "before/delay-model-9-controls.png",
+      "dimensions": [
+        820,
+        1224
+      ],
+      "sha256": "7e7ef10d896a7543820f6941551eaaa4421d2caa5555fc97783419555d3452be"
+    },
+    {
+      "path": "before/delay-model-9.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "164d15cb25280838de2f73ec8990b1927a1ba18f343c428b4fb6d8f948215f6e"
+    },
+    {
+      "path": "before/legacy-EDIT DELAY.png",
+      "dimensions": [
+        1080,
+        1130
+      ],
+      "sha256": "d11501b4f1ec7cefd9b04374b95b604825529e8c2541dbb9e51e6640802c2af9"
+    },
+    {
+      "path": "before/legacy-EDIT REVERB.png",
+      "dimensions": [
+        1080,
+        1130
+      ],
+      "sha256": "53ab0e029b412e3d97fd22dd3f75ce7423121ff04f758161f5c944a27f217cb9"
+    },
+    {
+      "path": "before/legacy-ROUTING.png",
+      "dimensions": [
+        1080,
+        1130
+      ],
+      "sha256": "24d2e090544bf6fcae59ec58082b069cdeec353267b39dc57422e25707148e30"
+    },
+    {
+      "path": "before/main-1080.png",
+      "dimensions": [
+        1080,
+        720
+      ],
+      "sha256": "b3f29bd852f2507fff96b3a9cb9e85362ca0510687d09ffa3c7c377b279eb475"
+    },
+    {
+      "path": "before/main-1620.png",
+      "dimensions": [
+        1620,
+        1080
+      ],
+      "sha256": "64015c8cb135d9679525aa9b45a5af23a4b003fa15cc75789164d7cde973cc09"
+    },
+    {
+      "path": "before/main-900.png",
+      "dimensions": [
+        900,
+        600
+      ],
+      "sha256": "b48a831aca559f99d1f241b4581426f03d16942bea4e819ba0f2ad1c79d0579f"
+    },
+    {
+      "path": "before/main-retina.png",
+      "dimensions": [
+        2160,
+        1440
+      ],
+      "sha256": "61f5dff88a5b557526d7d1c17343e7c5fb11d94b2295b7231a27a06358375ece"
+    },
+    {
+      "path": "before/presets-1.png",
+      "dimensions": [
+        680,
+        440
+      ],
+      "sha256": "a4e49ec8f8e7e73c586b5539d3109f83c846592ab0a1572c50a89759cd172cd6"
+    },
+    {
+      "path": "before/presets-2.png",
+      "dimensions": [
+        680,
+        440
+      ],
+      "sha256": "e7ae222d1fa4a1f3384a13579f2dff94a6d08e0fade2e55edfa58f94e5d83ee6"
+    },
+    {
+      "path": "before/presets.png",
+      "dimensions": [
+        680,
+        440
+      ],
+      "sha256": "db2357cdb134b72bb07cc3360a034e364e127a8643a9d259d23e9ade70573118"
+    },
+    {
+      "path": "before/reverb-model-0-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "cd62f94972c9176dbcc962fbaa5bcbf1c95a1f1952342005dad31efeae3f9108"
+    },
+    {
+      "path": "before/reverb-model-0.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "27ff6705010572c8b7352dfa2ce15d417b2df5d6736fe4ce681834d30d5e697a"
+    },
+    {
+      "path": "before/reverb-model-1-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "3b9a119290818d501cf41d7508e1f8a88f909cf8070626d2bbf50e4b3494ca7c"
+    },
+    {
+      "path": "before/reverb-model-1.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "b5b6c81808ae863186c982c01312cb45742c20576b3a0046e6e46e6c396c2a98"
+    },
+    {
+      "path": "before/reverb-model-10-controls.png",
+      "dimensions": [
+        820,
+        936
+      ],
+      "sha256": "c9ef89d72f225c3e3a9848c6e2d0e41482349d1d02be483dd6d9f99fc8cd995e"
+    },
+    {
+      "path": "before/reverb-model-10.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "b1eb2dca021c5f7fad387fa87eb0c6fc62a485d138cdf6537e66b583e7be377c"
+    },
+    {
+      "path": "before/reverb-model-11-controls.png",
+      "dimensions": [
+        820,
+        984
+      ],
+      "sha256": "12925ce0f76413c0ef30d94ccadda66c8378ac3f91b2a8721d83961d587b20f9"
+    },
+    {
+      "path": "before/reverb-model-11.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "e99203e9689b902321af3b3ace97a2b87721e8acde386b80e7769d01d531b1cf"
+    },
+    {
+      "path": "before/reverb-model-12-controls.png",
+      "dimensions": [
+        820,
+        792
+      ],
+      "sha256": "cd01b45001a97e215d3d608e7fa1e917d2e6e7865735ea4c32e48ae501344232"
+    },
+    {
+      "path": "before/reverb-model-12.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "80a446477b25387fb0cb45e3c3ac8cfdd921d6ce9898dfde605a94b254f4a4e5"
+    },
+    {
+      "path": "before/reverb-model-2-controls.png",
+      "dimensions": [
+        820,
+        936
+      ],
+      "sha256": "af4e49173ecb228bdd0ec931d8bf20bbc0a7b4c2d0422a15d0b28e9e836cd9d1"
+    },
+    {
+      "path": "before/reverb-model-2.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "07e9b05aee90ff646103c86b8d06ff22d06d6f74a306844fd2d70d0d07044564"
+    },
+    {
+      "path": "before/reverb-model-3-controls.png",
+      "dimensions": [
+        820,
+        936
+      ],
+      "sha256": "5438ef372327c7cfb0a1f51de4bb15fd3e2ddef270065b1d7939b910b32bf8d7"
+    },
+    {
+      "path": "before/reverb-model-3.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "f47c5d54e9b5e83030d401c774d50b928109f29f203cd4aa7f2df7ef2fb9ca20"
+    },
+    {
+      "path": "before/reverb-model-4-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "574ec2e13b9f4be5d510c29698d491967fa2bfbb9f3bc7ceb3510b37ce47d318"
+    },
+    {
+      "path": "before/reverb-model-4.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "8a0fbbde49755c78c49938a9ebe0368ff8370a21579f3d02c02dbb2a796e6722"
+    },
+    {
+      "path": "before/reverb-model-5-controls.png",
+      "dimensions": [
+        820,
+        888
+      ],
+      "sha256": "3d5982b97d0dd8edc38d0f9989f1dd14354595a3e49878260fa3c597bceca1d4"
+    },
+    {
+      "path": "before/reverb-model-5.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "2c4bc23b9647ce5b2e2bd7467a8e8363d2558a75aaad9712f6ac39044e35e266"
+    },
+    {
+      "path": "before/reverb-model-6-controls.png",
+      "dimensions": [
+        820,
+        1032
+      ],
+      "sha256": "1577105d18bd55d4bf9e7ce354802cd9af2f8c8eae8e95a3626066cde245ef12"
+    },
+    {
+      "path": "before/reverb-model-6.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "5d518e20331be8380ef0b43508024793e28d650c5156c734033a41041ac51bea"
+    },
+    {
+      "path": "before/reverb-model-7-controls.png",
+      "dimensions": [
+        820,
+        1080
+      ],
+      "sha256": "a7effcb1ac3a7bd8b617de664a07e7a2689a9e9c52bbf8cd9eac37227f9850f0"
+    },
+    {
+      "path": "before/reverb-model-7.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "70e3719aa0dadc36c6d76988758162434f672bb68790f7c14ef8eabf23ea69a3"
+    },
+    {
+      "path": "before/reverb-model-8-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "0cdd7991444af80496dff167ff5fbfe3613cb26a72fabb4ea288180f29b54a66"
+    },
+    {
+      "path": "before/reverb-model-8.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "8324cb43363044a09253594b29d921cbc9604b279dea8e8240df1ba28c54f299"
+    },
+    {
+      "path": "before/reverb-model-9-controls.png",
+      "dimensions": [
+        820,
+        936
+      ],
+      "sha256": "229e73e9655540ba29af5c4dc24f9d159c542382511cea323878d5e1b5e19ec2"
+    },
+    {
+      "path": "before/reverb-model-9.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "128b6642885348fe975b8585cd96b4073bc7799bd0a6370a5f1a188eaab60ddf"
+    },
+    {
+      "path": "screens/advanced-0-controls.png",
+      "dimensions": [
+        820,
+        1128
+      ],
+      "sha256": "42d7cab6218eb99b8af98cdd01f8aebfe46f4b8d6630b2dcd1805701f5f41a11"
+    },
+    {
+      "path": "screens/advanced-0.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "06e6e58097dbc1bbe1f7ee674ff4b17e54b5d2b86633dc65fd60f0bbec54de24"
+    },
+    {
+      "path": "screens/advanced-1-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "778d44515b6b7769a4306af47272c3e3f324eb86c5ece59e67b6ce39fc37b925"
+    },
+    {
+      "path": "screens/advanced-1.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "72dc7d2e91a7466f845a4b567dfd431e02b82e87800986ef1cd7a528efb60e27"
+    },
+    {
+      "path": "screens/advanced-2-controls.png",
+      "dimensions": [
+        820,
+        1032
+      ],
+      "sha256": "5cb28da960a5dbe9f29cb2042a7401c99ac644300e3f2eca74240d3f8229291e"
+    },
+    {
+      "path": "screens/advanced-2.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "fd99d91d6259a50a35053a8e6fd177a87f20d8b0f6f981c6da8b09768d5b4ecb"
+    },
+    {
+      "path": "screens/advanced-3-controls.png",
+      "dimensions": [
+        820,
+        696
+      ],
+      "sha256": "7396033919664f2478c46f09a088a8a6beb039c541796f9e50c3b3341d9fa091"
+    },
+    {
+      "path": "screens/advanced-3.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "7ddd994e3dc846fafb482c76e04151d3007c329b12a5b1b7e8ef58a2156fbbd1"
+    },
+    {
+      "path": "screens/advanced-4-controls.png",
+      "dimensions": [
+        820,
+        552
+      ],
+      "sha256": "ab940c2a4fed98080132e1580885f4367fc341d1bdac95df75550c3c08959c90"
+    },
+    {
+      "path": "screens/advanced-4.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "45efcf9dbc750a2c9211fb9b679c63c596aa6cb3bb52cb008baa96d09cf2de8f"
+    },
+    {
+      "path": "screens/delay-model-0-controls.png",
+      "dimensions": [
+        820,
+        1128
+      ],
+      "sha256": "42d7cab6218eb99b8af98cdd01f8aebfe46f4b8d6630b2dcd1805701f5f41a11"
+    },
+    {
+      "path": "screens/delay-model-0.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "06e6e58097dbc1bbe1f7ee674ff4b17e54b5d2b86633dc65fd60f0bbec54de24"
+    },
+    {
+      "path": "screens/delay-model-1-controls.png",
+      "dimensions": [
+        820,
+        1224
+      ],
+      "sha256": "3e3f352b301d297082e9a15614f64eef5d9d84327f0174fdd410b6576ba9fed5"
+    },
+    {
+      "path": "screens/delay-model-1.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "d9dbc706f0b387ce6d2b3014d5530a228058297a522a8a8cbd7211da9b863528"
+    },
+    {
+      "path": "screens/delay-model-10-controls.png",
+      "dimensions": [
+        820,
+        1176
+      ],
+      "sha256": "c9cd7bda913dfa8ee2c2f442c0497c7d6126758a2f6ae0a64863f5298ec8a198"
+    },
+    {
+      "path": "screens/delay-model-10.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "5fed52750e5042dc07df2c1235cbccbd0f16e24337f810b21ba9770291367cf8"
+    },
+    {
+      "path": "screens/delay-model-11-controls.png",
+      "dimensions": [
+        820,
+        1800
+      ],
+      "sha256": "e53c0594b24ff4616182af51519bbfce4c98778aa961b3b3df37430d7fbbd229"
+    },
+    {
+      "path": "screens/delay-model-11.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "58a38ec83c6b91ac5fb83f9466a3a1834c548b1bf353a3968873e5a389d1a7ea"
+    },
+    {
+      "path": "screens/delay-model-2-controls.png",
+      "dimensions": [
+        820,
+        1224
+      ],
+      "sha256": "00e2a20f7369d905e04e8ec9692054d02efc1e0f0409c2806a1f32dadc20d4cb"
+    },
+    {
+      "path": "screens/delay-model-2.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "1081c7e90d75cfc2e14bb4632df1cd89d85c142e02eea1452e42c2521bc0f15d"
+    },
+    {
+      "path": "screens/delay-model-3-controls.png",
+      "dimensions": [
+        820,
+        1896
+      ],
+      "sha256": "82e864baa77d10bd97d387a61d6face8eed28c4df26c9fa83ea3467bed056072"
+    },
+    {
+      "path": "screens/delay-model-3.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "d504d1b84f96120a9a21a68fca96057823e646eaa6df4ef3cf14407ab932c0ef"
+    },
+    {
+      "path": "screens/delay-model-4-controls.png",
+      "dimensions": [
+        820,
+        1080
+      ],
+      "sha256": "9a5d2a8a5cc9c6a5ac2baa7fe8fc49a56f7a741d59a144173a2e51938f62614b"
+    },
+    {
+      "path": "screens/delay-model-4.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "79cd93c54f0df2a4ab8df4d96791f808ceff19c2610b93035690f9712a8d9465"
+    },
+    {
+      "path": "screens/delay-model-5-controls.png",
+      "dimensions": [
+        820,
+        1272
+      ],
+      "sha256": "e322075391de253efa6751af7b6c87efb80d24d61c7aef7f97dc217da9e12a30"
+    },
+    {
+      "path": "screens/delay-model-5.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "9a3a4b1549e0f5e10ced2cf450e579059f2d983fa4cb47ec2c4e3ecfd41f42ab"
+    },
+    {
+      "path": "screens/delay-model-6-controls.png",
+      "dimensions": [
+        820,
+        1272
+      ],
+      "sha256": "ca123739277533153f4e5535a6a03a18444f27680fcd93ec11268ea92904465c"
+    },
+    {
+      "path": "screens/delay-model-6.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "b3eb96bc9805e59e1cb7a9c9ed83cca04040b907b3f34b5c3fe432e8e1699372"
+    },
+    {
+      "path": "screens/delay-model-7-controls.png",
+      "dimensions": [
+        820,
+        1416
+      ],
+      "sha256": "310a73150872b7a05e5eb4981bfea3f7b01a1d6e3877cdc428d99072201dcff8"
+    },
+    {
+      "path": "screens/delay-model-7.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "17f45e449850d2afacd2fff1d7650b8f4e009d65e1b77b1c984b81d444ca2cb5"
+    },
+    {
+      "path": "screens/delay-model-8-controls.png",
+      "dimensions": [
+        820,
+        1272
+      ],
+      "sha256": "239d5fdbd613e3d99b853f33bc6a21cefe6c5a84291252fc506a5d2b2cf9c7ad"
+    },
+    {
+      "path": "screens/delay-model-8.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "9bd0fb70b61e139066a3d956dbc1319e6c7314353c876580e3af33b13e9e64af"
+    },
+    {
+      "path": "screens/delay-model-9-controls.png",
+      "dimensions": [
+        820,
+        1224
+      ],
+      "sha256": "7e5ee75f378c543d8d1a4efc535a60caa19232d5b17999d2876816b62fb8d40f"
+    },
+    {
+      "path": "screens/delay-model-9.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "f9cd9f774c5a41cc216189a1c797979f5965f631eccdeb9359661cdb81655bc3"
+    },
+    {
+      "path": "screens/legacy-EDIT DELAY.png",
+      "dimensions": [
+        1080,
+        1130
+      ],
+      "sha256": "2c104e8b49d0e9255a4259dacb9a5f4b8c8a9828b05b0d26345b3c7c3fa0d49c"
+    },
+    {
+      "path": "screens/legacy-EDIT REVERB.png",
+      "dimensions": [
+        1080,
+        1130
+      ],
+      "sha256": "dfff9e21c8e6e9888e238afb306d9e12f1c2fe7e4b4b58cba65b5602a0080d86"
+    },
+    {
+      "path": "screens/legacy-ROUTING.png",
+      "dimensions": [
+        1080,
+        1130
+      ],
+      "sha256": "8f788e079ba055583ade4cb89e45141d9486d6e9dd8a875656fa66cf9a148682"
+    },
+    {
+      "path": "screens/main-1080.png",
+      "dimensions": [
+        1080,
+        720
+      ],
+      "sha256": "682d68aff344a1d49e2843aae4bbe5706302384aadcefc13803e9b312989af49"
+    },
+    {
+      "path": "screens/main-1620.png",
+      "dimensions": [
+        1620,
+        1080
+      ],
+      "sha256": "47d259dfb6397e5704d0a84359473153328edcb825a2e0ea4ca8de042b4da575"
+    },
+    {
+      "path": "screens/main-900.png",
+      "dimensions": [
+        900,
+        600
+      ],
+      "sha256": "9f09e8e4b3518daf174f824b35be388a695352286581402e56e26282f51cea09"
+    },
+    {
+      "path": "screens/main-max-retina.png",
+      "dimensions": [
+        3240,
+        2160
+      ],
+      "sha256": "2a9d65190f84ec78f0b6929cd94b93772b431184816676c2d7f62e0b07cd3f8b"
+    },
+    {
+      "path": "screens/main-retina.png",
+      "dimensions": [
+        2160,
+        1440
+      ],
+      "sha256": "3977199deccf20bd1bf8bdcf35f259a18b6b27291a2b55eb3aed3b27ee7323ba"
+    },
+    {
+      "path": "screens/native-states.png",
+      "dimensions": [
+        900,
+        620
+      ],
+      "sha256": "efb580c5f039a8fc5c0a513a2b2b3de3735285058edeeb8b6cd17da299e8d2e5"
+    },
+    {
+      "path": "screens/presets-1.png",
+      "dimensions": [
+        680,
+        440
+      ],
+      "sha256": "b4f6a1fd6aab636721c046cbd8c0ef95094e68fd75d832ab68b72f55a0287255"
+    },
+    {
+      "path": "screens/presets-2.png",
+      "dimensions": [
+        680,
+        440
+      ],
+      "sha256": "98643f6d28164943f9e737017b6ad0afcf3e8b9dd4971af2ebb2327de3c2f293"
+    },
+    {
+      "path": "screens/presets.png",
+      "dimensions": [
+        680,
+        440
+      ],
+      "sha256": "73dbb47201b97ecada83ca026bc19b2b8858f36fa28386e3712a43803c8a7388"
+    },
+    {
+      "path": "screens/quick-guide.png",
+      "dimensions": [
+        515,
+        357
+      ],
+      "sha256": "67b9d7c083f2b9d710ff3f11806ed7b4effd5dc2749ab1aed6adf1233c903979"
+    },
+    {
+      "path": "screens/reverb-model-0-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "770f7815605eef937583927d24fc8f805e18a0621511b3fb9f5a7972273d767a"
+    },
+    {
+      "path": "screens/reverb-model-0.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "1e0f29c13477aa6c4b53c48ac6f419c383876fb21c14476f990c2eba5acabb7f"
+    },
+    {
+      "path": "screens/reverb-model-1-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "0964a8258ac650e4d2fe4b2bd5e75fddccf24bad028b83171820ef7e4dd6ea22"
+    },
+    {
+      "path": "screens/reverb-model-1.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "5b357725869b4a62094d88af62efbbd9670ad7484cc54176823e12086ab34b0c"
+    },
+    {
+      "path": "screens/reverb-model-10-controls.png",
+      "dimensions": [
+        820,
+        936
+      ],
+      "sha256": "fdcbd459867e2e441fb85350834cb958af71921d8e6c311655d4a021a08b3fc6"
+    },
+    {
+      "path": "screens/reverb-model-10.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "0faafd25874a1d4c9d5bb6266711d72f1bc7044bd6be085549f583f3acf949a1"
+    },
+    {
+      "path": "screens/reverb-model-11-controls.png",
+      "dimensions": [
+        820,
+        984
+      ],
+      "sha256": "00d8695e13c857e1603503afe94ef626947909491962c160c6fe3e274a146c43"
+    },
+    {
+      "path": "screens/reverb-model-11.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "dbd26fe6be60dfe69a8e4d393608fdf2517fca4b21baeb59764677a68d07fdbb"
+    },
+    {
+      "path": "screens/reverb-model-12-controls.png",
+      "dimensions": [
+        820,
+        792
+      ],
+      "sha256": "e72fd1cfb9984c6bb484524b6b2fc788cfca0e530def9d50c83ad556cea75b62"
+    },
+    {
+      "path": "screens/reverb-model-12.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "477422f9d2d3df47411d3b905181bc9863ce8d4064aaa59f1f30f37f0815d8a8"
+    },
+    {
+      "path": "screens/reverb-model-2-controls.png",
+      "dimensions": [
+        820,
+        936
+      ],
+      "sha256": "cc197eb99dd8b177a22514969f5b5d39ba98b9a0ea4c2d2190d215ffe456653e"
+    },
+    {
+      "path": "screens/reverb-model-2.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "847f81e8d40e42dcbecc0b5376b6abc092ff406dc421e05e1de91264b16eb695"
+    },
+    {
+      "path": "screens/reverb-model-3-controls.png",
+      "dimensions": [
+        820,
+        936
+      ],
+      "sha256": "6a0a0b52e1c13b5ede51b24e022926d33cab1a78f1445a3821f89043e8f8ea17"
+    },
+    {
+      "path": "screens/reverb-model-3.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "7be297a650a4274573c4d7f1401c8bb4cba6e5bd0edae363c8e9a8d5c3fee292"
+    },
+    {
+      "path": "screens/reverb-model-4-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "83c23ada4fad44dbf47b3a1b29b97405c0a9389a74fd2657d8d110d0dbd05740"
+    },
+    {
+      "path": "screens/reverb-model-4.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "5b7fa7820c660f55dde9108a6c454320648ce6d0e9271bf90cb5d3c60d03b974"
+    },
+    {
+      "path": "screens/reverb-model-5-controls.png",
+      "dimensions": [
+        820,
+        888
+      ],
+      "sha256": "2f5847e861e516738ca28c0c53374dfad021ae6105ed955bcabc32c76f2e3f5a"
+    },
+    {
+      "path": "screens/reverb-model-5.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "d74f1b273a983f3cb8aded056ca283c480867ee137ec9433d4d6de3d3ebe76f5"
+    },
+    {
+      "path": "screens/reverb-model-6-controls.png",
+      "dimensions": [
+        820,
+        1032
+      ],
+      "sha256": "5cb28da960a5dbe9f29cb2042a7401c99ac644300e3f2eca74240d3f8229291e"
+    },
+    {
+      "path": "screens/reverb-model-6.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "fd99d91d6259a50a35053a8e6fd177a87f20d8b0f6f981c6da8b09768d5b4ecb"
+    },
+    {
+      "path": "screens/reverb-model-7-controls.png",
+      "dimensions": [
+        820,
+        1080
+      ],
+      "sha256": "5bca215b401316b1a5cff0ad22361697c274c8fdf0f08979841f844bad7157d6"
+    },
+    {
+      "path": "screens/reverb-model-7.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "36c33be3a63759fc324b1c71dafcd5a9548fa6e31abbb28c8b3ee2fd370342f4"
+    },
+    {
+      "path": "screens/reverb-model-8-controls.png",
+      "dimensions": [
+        820,
+        840
+      ],
+      "sha256": "49a001d369e3494cefb20ea523eeb9976d65c26aefec6515903d5d3ee022ab0a"
+    },
+    {
+      "path": "screens/reverb-model-8.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "6e6998f5969626c03153a5c300c16e81fe702f441bf729f1c5f533e4db4bd3cc"
+    },
+    {
+      "path": "screens/reverb-model-9-controls.png",
+      "dimensions": [
+        820,
+        936
+      ],
+      "sha256": "f8cc98e7f8bf3408c4492e9a00790d5d1818e97d7a1c50e965a7ad086c2c648a"
+    },
+    {
+      "path": "screens/reverb-model-9.png",
+      "dimensions": [
+        850,
+        600
+      ],
+      "sha256": "f098a029961615cc110d067a811543691fb7a84b1990b722efd0efd83cc4ccab"
+    },
+    {
+      "path": "screens/warning-dialog.png",
+      "dimensions": [
+        350,
+        161
+      ],
+      "sha256": "8097fecb15dc913ab11d560cd563d3bbf55a6d043f06ca83b0fe4d90e447d312"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "protected_files_verified": 214,
+  "originals_verified": 29,
+  "corrections_verified": 3,
+  "runtime_exports_verified": 17,
+  "font_and_license_files_verified": 3,
+  "runtime_aliases_verified": 5,
+  "immutable_artwork_bytes": 23049216,
+  "authorized_visual_build_files": {
+    "Source/PluginEditor.cpp": {
+      "baseline_sha256": "6a138b117b3f643072eac3c36647a505efdc37fa66147890ec34a49bc2734f9d",
+      "current_sha256": "444f5a683e50b4ad5a227bf8ec1eb3a2fa2d9969a72110e203fa0e6e1fffc302",
+      "changed": true
+    },
+    "Source/PluginEditor.h": {
+      "baseline_sha256": "10c6f472396a157fd2fee53ad8bb7e831a91da0eb3b7e1cd20d14845d7120822",
+      "current_sha256": "10c6f472396a157fd2fee53ad8bb7e831a91da0eb3b7e1cd20d14845d7120822",
+      "changed": false
+    },
+    "Source/TideLook.h": {
+      "baseline_sha256": "7f5557156e27c1751795b6dc2613af311993ee678fd855a6c823a9baf547a874",
+      "current_sha256": "b3ebb84a78936bd213c870e4068d4776527ff95fcdad884630389c6091cf4181",
+      "changed": true
+    },
+    "Source/ModernPanel.h": {
+      "baseline_sha256": "f710f11cb41ffc25bb032b49997d29d6794b20d10a471df05d15043d66deea44",
+      "current_sha256": "5b0b4dd9c78fc234b83b80e43ae14364a926c8abd31ded340f5b9236dae7fee6",
+      "changed": true
+    },
+    "Source/PresetBrowser.h": {
+      "baseline_sha256": "7a5b2fdeac7c8bd78dbf064ef44c7bb9078561e3efd81328389dadc23a03e18f",
+      "current_sha256": "e1bd3f216ab09bf85f5a709cde03309a759a93be87e0b19f768f7756f293a52c",
+      "changed": true
+    },
+    "CMakeLists.txt": {
+      "baseline_sha256": "b44b8f7afa42fdec61110d57fa7d58453d84b593abf828829ffd41695b38a8d4",
+      "current_sha256": "59d12930fd94d82c9cd26dded4c0c877f24c92bdad296097ab1f2dd08727428a",
+      "changed": true
+    }
+  }
+}

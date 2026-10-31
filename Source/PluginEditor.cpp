@@ -23,8 +23,7 @@ namespace {
 struct SkinInfo { juce::Image image; int marginX,marginY; float corner; };
 const auto& artwork(){
  static const std::array<SkinInfo,std::size_t(Skin::count)> data={{
-  {juce::ImageFileFormat::loadFrom(BinaryData::chassis_png,BinaryData::chassis_pngSize),32,32,10.f},
-  {juce::ImageFileFormat::loadFrom(BinaryData::expanded_png,BinaryData::expanded_pngSize),32,32,10.f},
+  {juce::ImageFileFormat::loadFrom(BinaryData::chassis_png,BinaryData::chassis_pngSize),72,72,10.f},
   {juce::ImageFileFormat::loadFrom(BinaryData::delay_png,BinaryData::delay_pngSize),42,42,12.f},
   {juce::ImageFileFormat::loadFrom(BinaryData::reverb_png,BinaryData::reverb_pngSize),42,42,12.f},
   {juce::ImageFileFormat::loadFrom(BinaryData::master_png,BinaryData::master_pngSize),40,40,8.f},
@@ -36,10 +35,6 @@ const auto& artwork(){
   {juce::ImageFileFormat::loadFrom(BinaryData::button_delay_png,BinaryData::button_delay_pngSize),24,24,5.f},
   {juce::ImageFileFormat::loadFrom(BinaryData::button_reverb_png,BinaryData::button_reverb_pngSize),24,24,5.f},
   {juce::ImageFileFormat::loadFrom(BinaryData::button_disabled_png,BinaryData::button_disabled_pngSize),24,24,5.f},
-  {juce::ImageFileFormat::loadFrom(BinaryData::field_normal_png,BinaryData::field_normal_pngSize),24,24,5.f},
-  {juce::ImageFileFormat::loadFrom(BinaryData::field_hover_png,BinaryData::field_hover_pngSize),24,24,5.f},
-  {juce::ImageFileFormat::loadFrom(BinaryData::field_active_png,BinaryData::field_active_pngSize),24,24,5.f},
-  {juce::ImageFileFormat::loadFrom(BinaryData::field_disabled_png,BinaryData::field_disabled_pngSize),24,24,5.f},
   {juce::ImageFileFormat::loadFrom(BinaryData::track_png,BinaryData::track_pngSize),18,8,4.f},
   {juce::ImageFileFormat::loadFrom(BinaryData::thumb_png,BinaryData::thumb_pngSize),0,0,0.f},
   {juce::ImageFileFormat::loadFrom(BinaryData::body_png,BinaryData::body_pngSize),72,72,8.f},
@@ -47,6 +42,7 @@ const auto& artwork(){
   {juce::ImageFileFormat::loadFrom(BinaryData::chevron_png,BinaryData::chevron_pngSize),0,0,0.f},
  }};return data;
 }
+std::size_t& cacheByteCount(){static std::size_t bytes=0;return bytes;}
 // GUI thread only. Slice geometry and highlights remain fixed; only native values move.
 void nine(juce::Graphics& g,juce::Rectangle<float> r,const SkinInfo& art,float corner){
  const auto& im=art.image;
@@ -66,6 +62,7 @@ juce::Font font(float size,int style){
  static auto medium=juce::Typeface::createSystemTypefaceFor(BinaryData::IBMPlexSansMedium_ttf,BinaryData::IBMPlexSansMedium_ttfSize);
  return juce::Font(juce::FontOptions((style&juce::Font::bold)!=0?medium:regular).withHeight(size));
 }
+std::size_t cachedSkinBytes(){return cacheByteCount();}
 void paintSkin(juce::Graphics& g,juce::Rectangle<float> r,Skin skin,float opacity){
  const auto& info=artwork()[std::size_t(skin)];g.saveState();g.setOpacity(opacity);
  // Static large surfaces already live in the editor backdrop. Bound the shared small-skin cache.
@@ -75,7 +72,14 @@ void paintSkin(juce::Graphics& g,juce::Rectangle<float> r,Skin skin,float opacit
   struct Entry {Skin id=Skin::count;int w=0,h=0;juce::Image image;};
   static std::array<Entry,96> cache;static std::size_t next=0;
   Entry* found=nullptr;for(auto& e:cache)if(e.id==skin&&e.w==w&&e.h==h){found=&e;break;}
-  if(found==nullptr){found=&cache[next++%cache.size()];*found={skin,w,h,juce::Image(juce::Image::ARGB,w,h,true)};juce::Graphics cg(found->image);nine(cg,{0,0,float(w),float(h)},info,info.corner*scale);}
+  if(found==nullptr){
+   auto& bytes=cacheByteCount();const auto needed=std::size_t(w)*std::size_t(h)*4;
+   if(needed>8*1024*1024){nine(g,r,info,info.corner);g.restoreState();return;}
+   found=&cache[next++%cache.size()];bytes-=std::size_t(found->w)*std::size_t(found->h)*4;*found={};
+   while(bytes+needed>8*1024*1024){auto& old=cache[next++%cache.size()];bytes-=std::size_t(old.w)*std::size_t(old.h)*4;old={};}
+   *found={skin,w,h,juce::Image(juce::Image::ARGB,w,h,true)};bytes+=needed;
+   juce::Graphics cg(found->image);nine(cg,{0,0,float(w),float(h)},info,info.corner*scale);
+  }
   g.drawImage(found->image,r);
  }else nine(g,r,info,info.corner);
  g.restoreState();
@@ -108,11 +112,11 @@ void TideLook::drawButtonBackground(juce::Graphics& g,juce::Button& button,const
  paintSkin(g,button.getLocalBounds().toFloat().reduced(.5f),skin,button.isEnabled()?1.f:.75f);
  if(button.getToggleState()||button.hasKeyboardFocus(true))focusBorder(g,button.getLocalBounds().toFloat(),left?delay:reverb);
 }
-void TideLook::drawButtonText(juce::Graphics& g,juce::TextButton& b,bool,bool){g.setColour(tide::ui::ink.withAlpha(b.isEnabled()?1.f:.7f));g.setFont(getTextButtonFont(b,b.getHeight()));g.drawFittedText(b.getButtonText(),b.getLocalBounds().reduced(5,2),juce::Justification::centred,1,.85f);}
+void TideLook::drawButtonText(juce::Graphics& g,juce::TextButton& b,bool,bool){g.setColour(tide::ui::ink.withAlpha(b.isEnabled()?1.f:.8f));g.setFont(getTextButtonFont(b,b.getHeight()));g.drawFittedText(b.getButtonText(),b.getLocalBounds().reduced(5,2),juce::Justification::centred,1,.85f);}
 void TideLook::drawLabel(juce::Graphics& g,juce::Label& label){
  const bool value=dynamic_cast<juce::Slider*>(label.getParentComponent())!=nullptr;
  if(value)tide::ui::paintSkin(g,label.getLocalBounds().toFloat(),tide::ui::Skin::field_normal,label.isEnabled()?1.f:.65f);
- if(!label.isBeingEdited()){g.setColour((value?tide::ui::ink:label.findColour(juce::Label::textColourId)).withAlpha(label.isEnabled()?1.f:.7f));g.setFont(label.getFont());g.drawFittedText(label.getText(),label.getBorderSize().subtractedFrom(label.getLocalBounds()),label.getJustificationType(),1,.85f);}
+ if(!label.isBeingEdited()){g.setColour((value?tide::ui::ink:label.findColour(juce::Label::textColourId)).withMultipliedAlpha(label.isEnabled()?1.f:.8f));g.setFont(label.getFont());g.drawFittedText(label.getText(),label.getBorderSize().subtractedFrom(label.getLocalBounds()),label.getJustificationType(),1,.85f);}
 }
 void TideLook::drawComboBox(juce::Graphics& g,int w,int h,bool down,int,int,int,int,juce::ComboBox& box){
  using namespace tide::ui;paintSkin(g,{0,0,float(w),float(h)},!box.isEnabled()?Skin::field_disabled:box.hasKeyboardFocus(true)?Skin::field_active:box.isMouseOverOrDragging()?Skin::field_hover:Skin::field_normal);
@@ -131,7 +135,7 @@ void TideLook::drawTickBox(juce::Graphics& g,juce::Component&,float x,float y,fl
  using namespace tide::ui;paintSkin(g,{x,y,w,h},!enabled?Skin::button_disabled:down?Skin::button_pressed:ticked?Skin::button_reverb:hover?Skin::button_hover:Skin::button_normal,enabled?1.f:.7f);
  if(ticked){juce::Path tick;tick.startNewSubPath(x+w*.24f,y+h*.52f);tick.lineTo(x+w*.43f,y+h*.7f);tick.lineTo(x+w*.78f,y+h*.28f);g.setColour(ink.withAlpha(enabled?1.f:.7f));g.strokePath(tick,juce::PathStrokeType(1.7f));}
 }
-void TideLook::drawToggleButton(juce::Graphics& g,juce::ToggleButton& b,bool hover,bool down){const float y=float(b.getHeight())*.5f-9;drawTickBox(g,b,5,y,18,18,b.getToggleState(),b.isEnabled(),hover,down);g.setColour(tide::ui::ink.withAlpha(b.isEnabled()?1.f:.7f));g.setFont(tide::ui::font(13));g.drawText(b.getButtonText(),32,0,b.getWidth()-36,b.getHeight(),juce::Justification::centredLeft);if(b.hasKeyboardFocus(true))focusBorder(g,b.getLocalBounds().toFloat(),tide::ui::reverb);}
+void TideLook::drawToggleButton(juce::Graphics& g,juce::ToggleButton& b,bool hover,bool down){const float y=float(b.getHeight())*.5f-9;drawTickBox(g,b,5,y,18,18,b.getToggleState(),b.isEnabled(),hover,down);g.setColour(tide::ui::ink.withAlpha(b.isEnabled()?1.f:.8f));g.setFont(tide::ui::font(13));g.drawText(b.getButtonText(),32,0,b.getWidth()-36,b.getHeight(),juce::Justification::centredLeft);if(b.hasKeyboardFocus(true))focusBorder(g,b.getLocalBounds().toFloat(),tide::ui::reverb);}
 void TideLook::fillTextEditorBackground(juce::Graphics& g,int w,int h,juce::TextEditor& editor){tide::ui::paintSkin(g,{0,0,float(w),float(h)},editor.isEnabled()?tide::ui::Skin::field_normal:tide::ui::Skin::field_disabled);}
 void TideLook::drawTextEditorOutline(juce::Graphics& g,int w,int h,juce::TextEditor& e){if(e.hasKeyboardFocus(true))focusBorder(g,{0,0,float(w),float(h)},tide::ui::reverb);}
 void TideLook::drawPopupMenuBackground(juce::Graphics& g,int w,int h){tide::ui::paintSkin(g,{0,0,float(w),float(h)},tide::ui::Skin::body);}
@@ -140,13 +144,13 @@ void TideLook::drawPopupMenuItem(juce::Graphics& g,const juce::Rectangle<int>& a
  if(separator){g.setColour(edge.withAlpha(.45f));g.fillRect(r.getX()+8,r.getCentreY(),r.getWidth()-16,1);return;}
  if(highlighted&&active)paintSkin(g,r.toFloat(),Skin::selected_row);
  if(ticked){juce::Path tick;const float x=float(r.getX()+8),y=float(r.getCentreY());tick.startNewSubPath(x,y);tick.lineTo(x+4,y+4);tick.lineTo(x+10,y-4);g.setColour(reverb);g.strokePath(tick,juce::PathStrokeType(1.7f));}
- if(icon)icon->drawWithin(g,{float(r.getX()+4),float(r.getY()+3),18,float(r.getHeight()-6)},juce::RectanglePlacement::centred,active?1.f:.6f);
- g.setColour((colour?*colour:ink).withAlpha(active?1.f:.6f));g.setFont(getPopupMenuFont());g.drawText(text,r.withTrimmedLeft(27).withTrimmedRight(35),juce::Justification::centredLeft,true);
+ if(icon)icon->drawWithin(g,{float(r.getX()+4),float(r.getY()+3),18,float(r.getHeight()-6)},juce::RectanglePlacement::centred,active?1.f:.75f);
+ g.setColour((colour?*colour:ink).withAlpha(active?1.f:.75f));g.setFont(getPopupMenuFont());g.drawText(text,r.withTrimmedLeft(27).withTrimmedRight(35),juce::Justification::centredLeft,true);
  if(shortcut.isNotEmpty()){g.setFont(tide::ui::font(11));g.drawText(shortcut,r.withTrimmedRight(20),juce::Justification::centredRight,true);}
- if(submenu){g.saveState();const float x=float(r.getRight()-12),y=float(r.getCentreY());g.addTransform(juce::AffineTransform::rotation(-juce::MathConstants<float>::halfPi,x,y));paintSkin(g,{x-5,y-3,10,6},Skin::chevron,active?1.f:.6f);g.restoreState();}
+ if(submenu){g.saveState();const float x=float(r.getRight()-12),y=float(r.getCentreY());g.addTransform(juce::AffineTransform::rotation(-juce::MathConstants<float>::halfPi,x,y));paintSkin(g,{x-5,y-3,10,6},Skin::chevron,active?1.f:.75f);g.restoreState();}
 }
 namespace {
-juce::TextLayout tooltipText(const juce::String& text){juce::AttributedString a;a.setFont(tide::ui::font(13));a.setColour(tide::ui::ink);a.append(text);juce::TextLayout layout;layout.createLayoutWithBalancedLineLengths(a,380);return layout;}
+juce::TextLayout tooltipText(const juce::String& text){juce::AttributedString a;a.append(text);a.setFont(tide::ui::font(13));a.setColour(tide::ui::ink);juce::TextLayout layout;layout.createLayoutWithBalancedLineLengths(a,380);return layout;}
 }
 juce::Rectangle<int> TideLook::getTooltipBounds(const juce::String& text,juce::Point<int> position,juce::Rectangle<int> parent){const auto layout=tooltipText(text);return juce::Rectangle<int>(position.x+12,position.y+22,juce::roundToInt(layout.getWidth())+24,juce::roundToInt(layout.getHeight())+20).constrainedWithin(parent);}
 void TideLook::drawTooltip(juce::Graphics& g,const juce::String& text,int w,int h){tide::ui::paintSkin(g,{0,0,float(w),float(h)},tide::ui::Skin::body);tooltipText(text).draw(g,{12,10,float(w-24),float(h-20)});}
@@ -338,10 +342,10 @@ void TideEditor::buildBackdrop(){
  label(g,"W O L F   A U D I O",28,17,220,20,11,muted);g.setColour(ink);g.setFont(tide::ui::font(49,juce::Font::bold|juce::Font::italic));g.drawText("Tide",25,34,160,54,juce::Justification::centredLeft);
  label(g,"ECHO / ATMOSPHERE",176,50,350,20,12,muted);
  g.setColour(juce::Colour(0xffa9aaa0));g.drawEllipse(570,38,35,35,1.1f);g.drawLine(588,32,588,79,.7f);g.drawLine(566,56,609,56,.7f);
- label(g,"01   DELAY",43,121,220,24,18,silver);label(g,"02   REVERB",565,121,230,24,18,blue);
- label(g,"CHARACTER",45,189,90,18,10,muted);label(g,"CHARACTER",567,189,90,18,10,muted);
+ label(g,"01   DELAY",43,121,220,24,18,juce::Colour(0xff071318));label(g,"02   REVERB",565,121,230,24,18,juce::Colour(0xff071318));
+ label(g,"CHARACTER",45,189,90,18,10,juce::Colour(0xff071318));label(g,"CHARACTER",567,189,90,18,10,juce::Colour(0xff071318));
  paintSkin(g,{24,585,1032,105},Skin::master);
- label(g,"COMBINED PRESET",43,596,180,20,10,muted);label(g,"MIX",846,595,70,20,10,muted);label(g,"BLOOM",953,595,80,20,10,blue);
+ label(g,"COMBINED PRESET",43,596,180,20,10,juce::Colour(0xff071318));label(g,"MIX",846,595,70,20,10,ink);label(g,"BLOOM",953,595,80,20,10,ink);
  if(editing){paintSkin(g,{24,704,1032,397},Skin::body);label(g,editing==1?"DELAY / DEEP EDIT":editing==2?"REVERB / DEEP EDIT":"ROUTING / MIX & OUTPUT",43,713,500,24,12,editing==1?silver:blue);}
 }
 void TideEditor::paint(juce::Graphics& g){

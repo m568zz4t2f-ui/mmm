@@ -1,0 +1,14 @@
+{
+  "baseline_build": "9c1e62f44667",
+  "candidate_build": "6df7d3b58bbf",
+  "programs": 64,
+  "sample_rate": 48000,
+  "block_size": 256,
+  "bytes": 12582912,
+  "sha256": "10667ab972dc01517d67d20c9a52d37592bb79cee6177ca84d73713f9f8df728",
+  "byte_identical": true,
+  "baseline_sha256": "10667ab972dc01517d67d20c9a52d37592bb79cee6177ca84d73713f9f8df728",
+  "candidate_sha256": "10667ab972dc01517d67d20c9a52d37592bb79cee6177ca84d73713f9f8df728",
+  "blocks_per_program": 96,
+  "stimulus_blocks": 48
+}

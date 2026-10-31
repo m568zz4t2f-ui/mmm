@@ -23,16 +23,41 @@ struct Bench:juce::Timer {
  void timerCallback()override{auto now=Clock::now();lags.push_back(std::max(0.,ms(now-last)-1000./30));last=now;if(open&&forcePaint){const auto paint=Clock::now();for(std::size_t i=0;i<editors.size();++i){juce::Graphics g(frames[i]);editors[i]->paintEntireComponent(g,true);}paintTimes.push_back(ms(Clock::now()-paint));}if(finished){stopTimer();audio.join();const double elapsed=ms(Clock::now()-start),cpuMs=1000.*double(std::clock()-cpu)/CLOCKS_PER_SEC;auto mean=[](const auto& values){double sum=0;for(auto x:values)sum+=x;return sum/std::max(std::size_t(1),values.size());};auto max=[](const auto& values){return values.empty()?0.:*std::max_element(values.begin(),values.end());};std::cout<<instances<<','<<(open?"open":"closed")<<','<<elapsed<<','<<cpuMs<<','<<mean(audioTimes)<<','<<max(audioTimes)<<','<<mean(paintTimes)<<','<<max(lags)<<'\n';juce::MessageManager::getInstance()->stopDispatchLoop();}}
  ~Bench()override{stopTimer();if(audio.joinable())audio.join();for(auto& e:editors)e->removeFromDesktop();}
 };
+struct ThemeSamples final:juce::Component {
+ TideLook theme;std::array<juce::TextButton,6> buttons;std::array<juce::ComboBox,4> fields;juce::TextEditor entry;juce::Slider slider;juce::ToggleButton toggle{"Hold reverb"};
+ ThemeSamples(){setLookAndFeel(&theme);setSize(900,620);
+  const char* states[]={"NORMAL","HOVER","PRESSED","LATCHED","DISABLED","ACTIVE OUTLINE"};
+  for(int i=0;i<6;++i){auto& b=buttons[std::size_t(i)];addAndMakeVisible(b);b.setButtonText(states[i]);b.setBounds(20+i*145,38,132,32);}
+  buttons[1].setState(juce::Button::buttonOver);buttons[2].setState(juce::Button::buttonDown);buttons[3].setToggleState(true,juce::dontSendNotification);buttons[4].setEnabled(false);buttons[5].setToggleState(true,juce::dontSendNotification);
+  const char* names[]={"Pattern / Multitap","Magnetic Drum","Cloud Ensemble","Halo Shimmer"};
+  for(int i=0;i<4;++i){auto& box=fields[std::size_t(i)];addAndMakeVisible(box);box.addItem(names[i],1);box.setSelectedId(1);box.setBounds(20+i*220,100,205,31);}fields[3].setEnabled(false);
+  addAndMakeVisible(entry);entry.setFont(tide::ui::font(13));entry.setText("Native editable value / search field");entry.setBounds(20,160,420,32);
+  addAndMakeVisible(slider);slider.setSliderStyle(juce::Slider::LinearHorizontal);slider.setTextBoxStyle(juce::Slider::TextBoxRight,false,110,30);slider.setRange(0,100);slider.setValue(42);slider.setBounds(460,160,415,32);
+  addAndMakeVisible(toggle);toggle.setToggleState(true,juce::dontSendNotification);toggle.setBounds(20,210,200,32);
+ }
+ ~ThemeSamples()override{setLookAndFeel(nullptr);}
+ void paint(juce::Graphics& g)override{
+  tide::ui::paintSkin(g,getLocalBounds().toFloat(),tide::ui::Skin::body);g.setColour(tide::ui::ink);g.setFont(tide::ui::font(14,juce::Font::bold));g.drawText("STUDIO EDITION / SHARED NATIVE UI STATES",20,10,850,20,juce::Justification::centredLeft);
+  g.saveState();g.addTransform(juce::AffineTransform::translation(20,270));theme.drawPopupMenuBackground(g,390,290);
+  const char* choices[]={"Digital","Pattern / Multitap","Granular Pitch","Oil Can","Magnetic Drum","Spectral"};for(int i=0;i<6;++i)theme.drawPopupMenuItem(g,{8,14+i*37,374,35},false,i!=4,i==1,i==0,i==5,choices[i],"",nullptr,nullptr);g.restoreState();
+  g.saveState();g.addTransform(juce::AffineTransform::translation(440,270));theme.drawTooltip(g,"Double-click resets a knob; click its value to type precisely.",435,95);g.restoreState();
+ }
+};
+
 int main(int argc,char** argv){juce::ScopedJuceInitialiser_GUI init;if(argc>1&&(std::string(argv[1])=="--bench"||std::string(argv[1])=="--bench-normal")){Bench bench(std::stoi(argv[2]),std::stoi(argv[3])!=0,std::string(argv[1])=="--bench");juce::MessageManager::getInstance()->runDispatchLoop();return 0;}
  if(argc>2&&std::string(argv[1])=="--audio"){TideProcessor p;p.prepareToPlay(48000,256);TideEditor editor(p);std::ofstream out(argv[2],std::ios::binary);juce::AudioBuffer<float> block(2,256);juce::MidiBuffer midi;for(int program=0;program<tide::numPresets;++program){p.setCurrentProgram(program);p.clearRequested=true;for(int n=0;n<96;++n){for(int i=0;i<256;++i){const float x=n<48?.03f*std::sin(float(i+n*256)*.071f):0;block.setSample(0,i,x);block.setSample(1,i,x*.61f);}p.processBlock(block,midi);for(int c=0;c<2;++c)out.write(reinterpret_cast<const char*>(block.getReadPointer(c)),256*sizeof(float));}}check(bool(out),"audio fixture write");return 0;}
  if(argc>2&&std::string(argv[1])=="--screens"){juce::File folder(argv[2]);folder.createDirectory();TideProcessor p;TideEditor editor(p);auto save=[&](juce::Component& component,const juce::String& name,float scale){auto image=component.createComponentSnapshot(component.getLocalBounds(),true,scale);auto stream=folder.getChildFile(name+".png").createOutputStream();check(bool(stream),"screenshot write");stream->setPosition(0);stream->truncate();juce::PNGImageFormat png;check(png.writeImageToStream(image,*stream),"PNG write");};
   auto savePanel=[&](TideModernPanel& panel,const juce::String& name){save(panel,name,1);for(auto* child:panel.getChildren())if(auto* viewport=dynamic_cast<juce::Viewport*>(child))if(auto* content=viewport->getViewedComponent())save(*content,name+"-controls",1);};
-  for(int width:{900,1080,1620}){editor.setSize(width,width*2/3);save(editor,"main-"+juce::String(width),1);if(width==1080)save(editor,"main-retina",2);}
+  for(int width:{900,1080,1620}){editor.setSize(width,width*2/3);save(editor,"main-"+juce::String(width),1);if(width==1080)save(editor,"main-retina",2);if(width==1620)save(editor,"main-max-retina",2);}
   for(int tab=0;tab<5;++tab){TideModernPanel panel(p,tab);savePanel(panel,"advanced-"+juce::String(tab));}
   for(int scope=0;scope<3;++scope){TidePresetBrowser browser(p,scope,[]{});save(browser,scope==0?"presets":"presets-"+juce::String(scope),1);}
   for(int model=0;model<12;++model){p.setValue("d13Model",float(model));TideModernPanel panel(p,0);savePanel(panel,"delay-model-"+juce::String(model));}
   for(int model=0;model<13;++model){p.setValue("r13Model",float(model));TideModernPanel panel(p,2);savePanel(panel,"reverb-model-"+juce::String(model));}
   p.setValue("dRevision",0);p.setValue("rRevision",0);TideEditor legacy(p);
   for(const auto* title:{"EDIT DELAY","EDIT REVERB","ROUTING"}){for(auto* child:legacy.getChildren())if(auto* button=dynamic_cast<juce::TextButton*>(child))if(button->getButtonText()==title){button->onClick();break;}save(legacy,juce::String("legacy-")+title,1);}
+  {ThemeSamples samples;save(samples,"native-states",1);}
+  {TideLook theme;auto alert=std::unique_ptr<juce::AlertWindow>(theme.createAlertWindow("Preset","A preset could not be loaded. Existing sound is unchanged.","OK",{}, {},juce::MessageBoxIconType::WarningIcon,1,nullptr));save(*alert,"warning-dialog",1);}
+  for(auto* child:editor.getChildren())if(auto* button=dynamic_cast<juce::TextButton*>(child))if(button->getButtonText()=="?"){button->onClick();break;}
+  juce::MessageManager::callAsync([&]{for(int i=0;i<juce::Desktop::getInstance().getNumComponents();++i)if(auto* alert=dynamic_cast<juce::AlertWindow*>(juce::Desktop::getInstance().getComponent(i))){save(*alert,"quick-guide",1);alert->exitModalState(0);break;}juce::MessageManager::getInstance()->stopDispatchLoop();});juce::MessageManager::getInstance()->runDispatchLoop();
   return 0;}
  return 2;}

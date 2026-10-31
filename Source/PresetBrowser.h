@@ -37,7 +37,7 @@ public:
   for(auto* field:{&search,&name}){field->setFont(tide::ui::font(13));field->setColour(juce::TextEditor::backgroundColourId,juce::Colour(0xff0b1b22));field->setColour(juce::TextEditor::textColourId,juce::Colour(0xfff4eadc));}
   heading.setText(section==0?"TIDE / COMBINED PRESETS":section==1?"TIDE / DELAY PRESETS":"TIDE / REVERB PRESETS",juce::dontSendNotification);heading.setFont(tide::ui::font(17,juce::Font::bold));heading.setColour(juce::Label::textColourId,juce::Colour(0xfff4eadc));
   search.setName("presetSearch");name.setName("presetName");collection.setName("presetCollection");
-  search.setTextToShowWhenEmpty("Search sounds...",juce::Colour(0xffaabac0));name.setTextToShowWhenEmpty("Name your user preset",juce::Colour(0xffaabac0));
+  search.setTextToShowWhenEmpty("Search sounds...",tide::ui::muted);name.setTextToShowWhenEmpty("Name your user preset",tide::ui::muted);
   collection.addItemList({"Factory","User","Favorites","Recent"},1);collection.setSelectedId(1);tags.addItemList({"All instruments","Guitar","Vocal","Keys","Ambient","Utility"},1);tags.setSelectedId(1);tags.setEnabled(scope==0);
   search.onTextChange=[this]{filter();};collection.onChange=[this]{filter();};tags.onChange=[this]{filter();};load.onClick=[this]{apply();};
   previous.onClick=[this]{list.selectRow(std::max(0,list.getSelectedRow()-1));apply();};next.onClick=[this]{list.selectRow(std::min(int(shown.size())-1,list.getSelectedRow()+1));apply();};
