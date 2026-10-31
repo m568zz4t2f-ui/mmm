@@ -74,7 +74,7 @@ jobs:
           echo '3c4c533bda0c5059eea3ddaea752d757ee2025041f0f47e6bcb0e87f6082b29f  '"$RUNNER_TEMP/pluginval.zip" | shasum -a 256 -c -
           ditto -x -k "$RUNNER_TEMP/pluginval.zip" "$RUNNER_TEMP/pluginval"
           validator="$RUNNER_TEMP/pluginval/pluginval.app/Contents/MacOS/pluginval"
-          lipo -verify_arch "$(uname -m)" "$validator"
+          lipo "$validator" -verify_arch "$(uname -m)"
           "$validator" --strictness-level 5 --validate '/Library/Audio/Plug-Ins/VST3/Wolf Tide.vst3' 2>&1 | tee dist/logs/pluginval.txt
       - name: Preserve test evidence and checksums
         if: always()

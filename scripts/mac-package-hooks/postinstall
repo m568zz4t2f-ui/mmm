@@ -29,7 +29,7 @@ for bundle in '/Library/Audio/Plug-Ins/Components/Wolf Tide.component' '/Library
  executable=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$bundle/Contents/Info.plist")
  case "$executable" in ''|*/*) exit 1;; esac
  /usr/bin/codesign --verify --strict "$bundle"
- /usr/bin/lipo -verify_arch arm64 x86_64 "$bundle/Contents/MacOS/$executable"
+ /usr/bin/lipo "$bundle/Contents/MacOS/$executable" -verify_arch arm64 x86_64
  expected=$(/usr/bin/sed -n "$((index+1))p" "$scripts/hashes.txt")
  actual=$(/usr/bin/shasum -a 256 "$bundle/Contents/MacOS/$executable" | /usr/bin/awk '{print $1}')
  [ "$actual" = "$expected" ]

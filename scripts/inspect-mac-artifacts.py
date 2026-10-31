@@ -26,7 +26,7 @@ for kind, suffix in [('AU', 'component'), ('VST3', 'vst3'), ('Standalone', 'app'
     info = plistlib.loads((bundle/'Contents/Info.plist').read_bytes())
     assert info['CFBundleShortVersionString'] == version, info
     binary = bundle/'Contents/MacOS'/info['CFBundleExecutable']
-    subprocess.run(['lipo', '-verify_arch', 'arm64', 'x86_64', str(binary)], check=True)
+    subprocess.run(['lipo', str(binary), '-verify_arch', 'arm64', 'x86_64'], check=True)
     slices = {}
     for arch in ['arm64', 'x86_64']:
         load = subprocess.check_output(['otool', '-arch', arch, '-l', str(binary)], text=True)

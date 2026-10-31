@@ -56,7 +56,7 @@ for relative in ['Library/Audio/Plug-Ins/Components/Wolf Tide.component','Librar
  executable=info['CFBundleExecutable']
  if Path(executable).name!=executable:raise SystemExit('Invalid payload executable')
  binary=bundle/'Contents/MacOS'/executable
- subprocess.run(['lipo','-verify_arch','arm64','x86_64',str(binary)],check=True)
+ subprocess.run(['lipo',str(binary),'-verify_arch','arm64','x86_64'],check=True)
  hashes.append(hashlib.sha256(binary.read_bytes()).hexdigest())
 Path(sys.argv[2]).write_text('\n'.join(hashes)+'\n')
 PYHASH

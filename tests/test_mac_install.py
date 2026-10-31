@@ -137,6 +137,9 @@ class PackageHooks(unittest.TestCase):
         success = folder/'signature-and-arch-test-double'
         success.write_text('#!/bin/sh\nexit 0\n')
         success.chmod(0o755)
+        lipo = folder/'lipo'
+        lipo.write_text('#!/usr/bin/env python3\nimport sys\nfrom pathlib import Path\nassert Path(sys.argv[1]).is_file()\nassert sys.argv[2:]==["-verify_arch","arm64","x86_64"]\n')
+        lipo.chmod(0o755)
         ditto = folder/'ditto'
         ditto.write_text('#!/usr/bin/env python3\nimport sys,shutil\nshutil.copytree(sys.argv[-2],sys.argv[-1],symlinks=True,copy_function=shutil.copy2)\n')
         ditto.chmod(0o755)
@@ -145,7 +148,7 @@ class PackageHooks(unittest.TestCase):
             script = (original/name).read_text().replace('/Users/', str(self.root/'Users')+'/').replace('/Library/', str(self.system/'Library')+'/').replace('/Applications/', str(self.system/'Applications')+'/')
             script = script.replace('/var/tmp/audio.wolf.tide-install.lock', str(self.root/'package.lock'))
             script = script.replace('/usr/libexec/PlistBuddy', str(buddy)).replace('/usr/bin/ditto', str(ditto))
-            script = script.replace('/usr/bin/codesign', str(success)).replace('/usr/bin/lipo', str(success))
+            script = script.replace('/usr/bin/codesign', str(success)).replace('/usr/bin/lipo', str(lipo))
             (folder/name).write_text(script)
         (folder/'version.txt').write_text('1.2.2\n')
         hashes = [hashlib.sha256((self.art/kind/name/'Contents/MacOS/Wolf Tide').read_bytes()).hexdigest() for kind,name in zip(installer.FORMATS,installer.BUNDLES)]
