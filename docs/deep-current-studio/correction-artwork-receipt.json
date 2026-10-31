@@ -1,0 +1,44 @@
+{
+  "provider": "Higgsfield",
+  "assets": [
+    {
+      "asset": "H02",
+      "job_id": "88a1d601-7b0a-402a-8d96-e9ccda8cfedb",
+      "source_path": "assets/tide/deep-current-studio/originals/corrections/H02-88a1d601-7b0a-402a-8d96-e9ccda8cfedb.png",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_022233_88a1d601-7b0a-402a-8d96-e9ccda8cfedb.png",
+      "source_sha256": "5d4c87dce74b54d476162a82b13f127b6b84a1087f9b46442f0fb32f7f335d1c",
+      "source_dimensions": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 7464387,
+      "approved": false
+    },
+    {
+      "asset": "H03",
+      "job_id": "ce48fc82-2069-4dac-b523-b4ce5be31760",
+      "source_path": "assets/tide/deep-current-studio/originals/corrections/H03-ce48fc82-2069-4dac-b523-b4ce5be31760.png",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_022235_ce48fc82-2069-4dac-b523-b4ce5be31760.png",
+      "source_sha256": "dca388c4fe0f78e65b88fc75beb11d8a1fa46a38dfa3cefcce957e9601ec9d2b",
+      "source_dimensions": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 7618692,
+      "approved": false
+    },
+    {
+      "asset": "H01",
+      "job_id": "c1fe02e3-0a6a-49cd-a603-b957e1ac9c7e",
+      "source_path": "assets/tide/deep-current-studio/originals/corrections/H01-c1fe02e3-0a6a-49cd-a603-b957e1ac9c7e.png",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_022530_c1fe02e3-0a6a-49cd-a603-b957e1ac9c7e.png",
+      "source_sha256": "0bbe92e85bcb01888538be49b8539497c32d224ca207e2c94c1165dce9a5a7df",
+      "source_dimensions": [
+        2512,
+        1664
+      ],
+      "encoded_bytes": 6260232,
+      "approved": false
+    }
+  ]
+}
