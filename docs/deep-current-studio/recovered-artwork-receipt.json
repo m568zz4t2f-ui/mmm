@@ -1,0 +1,822 @@
+{
+  "schema_version": 1,
+  "originals": 29,
+  "frozen_files_verified": 220,
+  "plugin_code_changed": false,
+  "new_generations_submitted": 0,
+  "note": "Integrity checks do not establish runtime readiness, visual approval, or new audio/performance results.",
+  "assets": [
+    {
+      "id": "H01-chassis-expanded-91b48dee",
+      "job_id": "91b48dee-f24a-4992-8493-2dbe220c4bd0",
+      "source_path": "assets/tide/deep-current-studio/originals/H01-chassis-expanded-91b48dee.png",
+      "source_sha256": "ac01df520c3503f6e6e6d17b5b6c08f00d71774adc8ef9ff3f4f167a9d230330",
+      "encoded_bytes": 32404418,
+      "actual_size": [
+        3552,
+        4736
+      ],
+      "reported_size": [
+        3552,
+        4736
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        3552,
+        4736
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H01-chassis-main-2baa32e4",
+      "job_id": "2baa32e4-245f-4654-92e6-3740429e0033",
+      "source_path": "assets/tide/deep-current-studio/originals/H01-chassis-main-2baa32e4.png",
+      "source_sha256": "37683ccfd573381fd2324feabcc093a3d594e089b20bbd62c6a5d9277bfaa27f",
+      "encoded_bytes": 32040554,
+      "actual_size": [
+        5024,
+        3344
+      ],
+      "reported_size": [
+        5024,
+        3344
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        5024,
+        3344
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H02-delay-panel-cfc5c6b7",
+      "job_id": "cfc5c6b7-906e-47b4-b066-2f8b8f4b0cb9",
+      "source_path": "assets/tide/deep-current-studio/originals/H02-delay-panel-cfc5c6b7.png",
+      "source_sha256": "a03e32b037d1e3b00acd7095a7c29ae23b7b606112e91429dd6392eb3098aec3",
+      "encoded_bytes": 6882637,
+      "actual_size": [
+        2048,
+        2048
+      ],
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2048,
+        2048
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H03-reverb-panel-900fb647",
+      "job_id": "900fb647-e54d-40d4-bf3a-e09d7e177c4e",
+      "source_path": "assets/tide/deep-current-studio/originals/H03-reverb-panel-900fb647.png",
+      "source_sha256": "3c0d05a70bfae6f6a2906dde846afc82a285a0168fbb39dafa9f4b0682107eec",
+      "encoded_bytes": 7718472,
+      "actual_size": [
+        2048,
+        2048
+      ],
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2048,
+        2048
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H04-master-strip-56de8e65",
+      "job_id": "56de8e65-f8de-401f-b3db-112ae02c9376",
+      "source_path": "assets/tide/deep-current-studio/originals/H04-master-strip-56de8e65.png",
+      "source_sha256": "df056ed018100bf546ed6ffa8e19a5ec82cb459d1e958a092f5515b95854aebb",
+      "encoded_bytes": 26070273,
+      "actual_size": [
+        6256,
+        2688
+      ],
+      "reported_size": [
+        6256,
+        2688
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        6256,
+        2688
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H05-universal-knob-cap-dee71a7a",
+      "job_id": "dee71a7a-f039-4835-8bbe-439764228e45",
+      "source_path": "assets/tide/deep-current-studio/originals/H05-universal-knob-cap-dee71a7a.png",
+      "source_sha256": "3c54fbf0aeac9362e53dc22eea9a1291be1e863acdab090d5c9060c6e3981d76",
+      "encoded_bytes": 4350689,
+      "actual_size": [
+        2048,
+        2048
+      ],
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2048,
+        2048
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H06-display-bezel-glass-4f6e97a0",
+      "job_id": "4f6e97a0-206c-4015-821f-4e84ec528100",
+      "source_path": "assets/tide/deep-current-studio/originals/H06-display-bezel-glass-4f6e97a0.png",
+      "source_sha256": "21a6c9166f888f7892e23b75aab82d82495cb07831cdbb19d6d7b5f5610c8d77",
+      "encoded_bytes": 4672207,
+      "actual_size": [
+        3136,
+        1344
+      ],
+      "reported_size": [
+        3136,
+        1344
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        3136,
+        1344
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-active-delay-dd344852",
+      "job_id": "dd344852-2e14-488d-af40-600c807eede1",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-active-delay-dd344852.png",
+      "source_sha256": "7fb6ab5ece993005ab85844bbdbc467696bb7455e84849a70d72e4d1ac1c1a65",
+      "encoded_bytes": 2398273,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-active-reverb-fdd82f27",
+      "job_id": "fdd82f27-e8e4-405a-a1b9-5e7374894632",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-active-reverb-fdd82f27.png",
+      "source_sha256": "cd5e6fbf4a34c9402e561361d2001ef9f604e6ada75433afde9cb71b79b11316",
+      "encoded_bytes": 2264135,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-disabled-c2492485",
+      "job_id": "c2492485-fc79-4530-847d-83545f2ce1ea",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-disabled-c2492485.png",
+      "source_sha256": "31450fe7339c5984a46840e2bf3116e134958ac0ce7b5d378dece08ac4eb4165",
+      "encoded_bytes": 2339747,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-hover-0ef73ce8",
+      "job_id": "0ef73ce8-9fd8-48a9-bd0f-c0205746bd39",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-hover-0ef73ce8.png",
+      "source_sha256": "6c9bc5a263b868d1e508cafdbd96bb976013e98b6345115839e8db90172a3735",
+      "encoded_bytes": 1554848,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-normal-f16df529",
+      "job_id": "f16df529-c5f0-478a-8d03-c025bc4b5dd6",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-normal-f16df529.png",
+      "source_sha256": "1a85d027d2ebb8bcef95922652553a9461f4122d975751446e2179fac247c206",
+      "encoded_bytes": 3747087,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-pressed-6d24e203",
+      "job_id": "6d24e203-33ba-49e8-ad88-b722bb8d64f1",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-pressed-6d24e203.png",
+      "source_sha256": "d318a7cb17f65b76f057433d765edebe0511a03ee8b2bf25ac052219f3a88126",
+      "encoded_bytes": 2822906,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-active-611de7a4",
+      "job_id": "611de7a4-7f69-44c2-8095-55b1e3aebbcb",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-active-611de7a4.png",
+      "source_sha256": "1782fc2108388fa195fe0809a913481bc77a2c682ab621fe478efe427c7532f8",
+      "encoded_bytes": 2495035,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-disabled-1d6d916b",
+      "job_id": "1d6d916b-8286-4b08-87ec-62e71ee81899",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-disabled-1d6d916b.png",
+      "source_sha256": "29f1d0d876eb23483777959fd08bb4c0dbd1a3a46e6041d806d6573ec89b348a",
+      "encoded_bytes": 2214214,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-hover-9126ad11",
+      "job_id": "9126ad11-77d3-4ff9-9684-89879ad4c2ad",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-hover-9126ad11.png",
+      "source_sha256": "c339ce913c762f8ad56107ae723352740cd9c78b577f1fbaf52dcc0dfd54d00a",
+      "encoded_bytes": 3164018,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-normal-51c1310e",
+      "job_id": "51c1310e-3f00-4721-8b85-262e5c57adf1",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-normal-51c1310e.png",
+      "source_sha256": "8d9d3c372fb205ab873e546c2b0fd2019b416a6fca86dae99d954c61834bfe6f",
+      "encoded_bytes": 5079421,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-normal-bfebfd07",
+      "job_id": "bfebfd07-f089-4276-a358-e1e9769e0967",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-normal-bfebfd07.png",
+      "source_sha256": "344115d0e233369af80ab081d29bfd7848b6124367c9edbf5c0b0800636a5388",
+      "encoded_bytes": 5224984,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-normal-corrected-11c9ba62",
+      "job_id": "11c9ba62-3f3d-4834-81db-f6268bc126ec",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-normal-corrected-11c9ba62.png",
+      "source_sha256": "9a8681f30484857c35b93239510b8ff2573b929968cbb4cd44dc3a31f87896db",
+      "encoded_bytes": 1699805,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-pressed-05e6dca5",
+      "job_id": "05e6dca5-0435-4cca-829b-67f4c41bea95",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-pressed-05e6dca5.png",
+      "source_sha256": "bd0e7158497c3ed5e17273d9ef2f7cb9f98e995a3836b58c9bdd223938f10370",
+      "encoded_bytes": 3257104,
+      "actual_size": [
+        2368,
+        1776
+      ],
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2368,
+        1776
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H09-linear-thumb-e2a06567",
+      "job_id": "e2a06567-ad6a-47e9-9851-fb3f7a4b9c54",
+      "source_path": "assets/tide/deep-current-studio/originals/H09-linear-thumb-e2a06567.png",
+      "source_sha256": "31e32053c78f46561f5a10d878f8ddbeb4a0accc626f55638cfc371effcf9d23",
+      "encoded_bytes": 4331005,
+      "actual_size": [
+        2048,
+        2048
+      ],
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2048,
+        2048
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H09-linear-track-8235f4f2",
+      "job_id": "8235f4f2-caa9-4996-ac03-77598069f854",
+      "source_path": "assets/tide/deep-current-studio/originals/H09-linear-track-8235f4f2.png",
+      "source_sha256": "028c1a950496861abc3b57566df53ea2560a988a4f425c3be4638facd0c34c04",
+      "encoded_bytes": 5418636,
+      "actual_size": [
+        3136,
+        1344
+      ],
+      "reported_size": [
+        3136,
+        1344
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        3136,
+        1344
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H10-browser-selected-row-5303a89c",
+      "job_id": "5303a89c-9c3b-48e8-a757-3fd392651087",
+      "source_path": "assets/tide/deep-current-studio/originals/H10-browser-selected-row-5303a89c.png",
+      "source_sha256": "569c3514e077cb7e8a6eee7036a14da474b2ecc9ce179bd32322fcd1d36056b4",
+      "encoded_bytes": 3794285,
+      "actual_size": [
+        3136,
+        1344
+      ],
+      "reported_size": [
+        3136,
+        1344
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        3136,
+        1344
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H10-callout-browser-body-068d6c5f",
+      "job_id": "068d6c5f-f3a0-4885-901d-3598209ca865",
+      "source_path": "assets/tide/deep-current-studio/originals/H10-callout-browser-body-068d6c5f.png",
+      "source_sha256": "f3da48c60cecda646544590d0e0b523cf49f0c02aaa268b54a9b1b65087177f3",
+      "encoded_bytes": 5600625,
+      "actual_size": [
+        2512,
+        1664
+      ],
+      "reported_size": [
+        2512,
+        1664
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2512,
+        1664
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H11-dropdown-chevron-26ab595d",
+      "job_id": "26ab595d-68f5-4765-a39f-09fc51bffdde",
+      "source_path": "assets/tide/deep-current-studio/originals/H11-dropdown-chevron-26ab595d.png",
+      "source_sha256": "6f5e5d1d00d2d47533dc160b1c64fe7f52c5b8bd2712dddf12d716b2176a3909",
+      "encoded_bytes": 3400993,
+      "actual_size": [
+        2048,
+        2048
+      ],
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2048,
+        2048
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H12-optional-current-contour-36979eb9",
+      "job_id": "36979eb9-7ef5-4987-ad3c-37fca0216d19",
+      "source_path": "assets/tide/deep-current-studio/originals/H12-optional-current-contour-36979eb9.png",
+      "source_sha256": "49ae07e048dec6b88af14d2a74c12a1287a3448df32f65495231ca130c4bd9ff",
+      "encoded_bytes": 5219183,
+      "actual_size": [
+        3136,
+        1344
+      ],
+      "reported_size": [
+        3136,
+        1344
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        3136,
+        1344
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "M01-material-master-8923c77d",
+      "job_id": "8923c77d-c403-43c1-b75c-8d599595a5c9",
+      "source_path": "assets/tide/deep-current-studio/originals/M01-material-master-8923c77d.png",
+      "source_sha256": "caf182924fb6a28be12de940503397b2757c5ad06f6c37433d932833bfc638e2",
+      "encoded_bytes": 6557472,
+      "actual_size": [
+        2512,
+        1664
+      ],
+      "reported_size": [
+        2512,
+        1664
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2512,
+        1664
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "M02-material-master-b8504d01",
+      "job_id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+      "source_path": "assets/tide/deep-current-studio/originals/M02-material-master-b8504d01.png",
+      "source_sha256": "db59e6c9eafc096a108d5a7dfd41b58a6992878c3d6f35581112c13696cc2581",
+      "encoded_bytes": 6709819,
+      "actual_size": [
+        2512,
+        1664
+      ],
+      "reported_size": [
+        2512,
+        1664
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2512,
+        1664
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "M03-material-master-1a46ea26",
+      "job_id": "1a46ea26-0480-4f3e-a98a-8cf644fe4671",
+      "source_path": "assets/tide/deep-current-studio/originals/M03-material-master-1a46ea26.png",
+      "source_sha256": "3748a3c337e2ac459dc081e0e0c289d4074d1cd0682a1ea5bc5a566d380d8d33",
+      "encoded_bytes": 6489932,
+      "actual_size": [
+        2512,
+        1664
+      ],
+      "reported_size": [
+        2512,
+        1664
+      ],
+      "size_matches_report": true,
+      "alpha_bounds": [
+        0,
+        0,
+        2512,
+        1664
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "production_approved": false,
+      "runtime_exports": []
+    }
+  ]
+}
