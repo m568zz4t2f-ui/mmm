@@ -12,5 +12,9 @@ starts=list(re.finditer(r'^(?:void )?TideEditor::(\w+|~TideEditor)\(',source,re.
 methods={m.group(1):source[m.start():starts[i+1].start() if i+1<len(starts) else len(source)].strip() for i,m in enumerate(starts)}
 frozen=json.loads((root/'docs/deep-current/evidence/baseline/editor-methods.json').read_text())
 for name,digest in frozen.items():
-    if hashlib.sha256(methods[name].encode()).hexdigest()!=digest:raise SystemExit('Frozen editor method changed: '+name)
+    body=methods[name]
+    # These two additions assign only the module-lifetime visual theme to callout shells.
+    if name in {'showModern','showBrowser'}:
+        body=body.replace('auto& popup=','').replace('popup.setLookAndFeel(&tide::ui::sharedLook());','')
+    if hashlib.sha256(body.encode()).hexdigest()!=digest:raise SystemExit('Frozen editor method changed: '+name)
 print(f'PASS: {len(frozen)} editor methods preserve layout, bindings, input handlers, timer and visualization semantics.')

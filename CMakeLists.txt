@@ -6,6 +6,7 @@ include(CTest)
 find_package(Python3 COMPONENTS Interpreter)
 if(Python3_Interpreter_FOUND)
  add_test(NAME installer COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_mac_install.py)
+ add_test(NAME studio_artwork COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/verify-studio-artwork.py)
 endif()
 option(TIDE_DSP_ONLY "Build DSP validation without JUCE" OFF)
 add_executable(tide_dsp_tests tests/dsp_tests.cpp)
@@ -61,11 +62,30 @@ juce_add_plugin(WolfTide COMPANY_NAME "Wolf Audio" BUNDLE_ID "audio.wolf.tide"
  MICROPHONE_PERMISSION_ENABLED TRUE MICROPHONE_PERMISSION_TEXT "Wolf Tide processes live audio from your selected input device."
  VST3_CATEGORIES Fx Delay Reverb AU_MAIN_TYPE kAudioUnitType_Effect FORMATS ${tide_formats})
 set(tide_artwork
- assets/tide/deep-current/production/chassis.png
- assets/tide/deep-current/production/graphite.png
- assets/tide/deep-current/production/teal.png
- assets/tide/deep-current/production/glass.png
- assets/tide/deep-current/production/titanium.png)
+ assets/tide/deep-current-studio/runtime/chassis.png
+ assets/tide/deep-current-studio/runtime/expanded.png
+ assets/tide/deep-current-studio/runtime/delay.png
+ assets/tide/deep-current-studio/runtime/reverb.png
+ assets/tide/deep-current-studio/runtime/master.png
+ assets/tide/deep-current-studio/runtime/knob.png
+ assets/tide/deep-current-studio/runtime/glass.png
+ assets/tide/deep-current-studio/runtime/button_normal.png
+ assets/tide/deep-current-studio/runtime/button_hover.png
+ assets/tide/deep-current-studio/runtime/button_pressed.png
+ assets/tide/deep-current-studio/runtime/button_delay.png
+ assets/tide/deep-current-studio/runtime/button_reverb.png
+ assets/tide/deep-current-studio/runtime/button_disabled.png
+ assets/tide/deep-current-studio/runtime/field_normal.png
+ assets/tide/deep-current-studio/runtime/field_hover.png
+ assets/tide/deep-current-studio/runtime/field_active.png
+ assets/tide/deep-current-studio/runtime/field_disabled.png
+ assets/tide/deep-current-studio/runtime/track.png
+ assets/tide/deep-current-studio/runtime/thumb.png
+ assets/tide/deep-current-studio/runtime/body.png
+ assets/tide/deep-current-studio/runtime/selected_row.png
+ assets/tide/deep-current-studio/runtime/chevron.png
+ assets/tide/deep-current-studio/fonts/IBMPlexSans-Regular.ttf
+ assets/tide/deep-current-studio/fonts/IBMPlexSans-Medium.ttf)
 juce_add_binary_data(TideArtwork SOURCES ${tide_artwork})
 target_link_libraries(WolfTide PRIVATE "$<LINK_ONLY:TideArtwork>")
 get_target_property(tide_art_includes TideArtwork INTERFACE_INCLUDE_DIRECTORIES)

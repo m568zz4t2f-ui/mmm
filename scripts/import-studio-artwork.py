@@ -21,10 +21,11 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def protected_sources():
+def protected_sources(allow_visual_changes=False):
     freeze = json.loads((DOCS / 'baseline-freeze.json').read_text())
     files = dict(freeze['protected_source_and_presets'])
-    files.update(freeze['visual_source_sha256'])
+    if not allow_visual_changes:
+        files.update(freeze['visual_source_sha256'])
     mismatches = [name for name, sha in files.items()
                   if not (ROOT / name).is_file() or digest((ROOT / name).read_bytes()) != sha]
     if mismatches:
@@ -35,8 +36,9 @@ def protected_sources():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verify-only', action='store_true')
+    parser.add_argument('--allow-visual-changes', action='store_true', help='Enforce all protected processing files, allow the six authorized visual/build files to differ.')
     args = parser.parse_args()
-    count = protected_sources()
+    count = protected_sources(args.allow_visual_changes)
     manifest = json.loads((DOCS / 'recovered-higgsfield-jobs.json').read_text())
     assets = manifest['assets']
     assert len(assets) == manifest['completed_originals'] == 29

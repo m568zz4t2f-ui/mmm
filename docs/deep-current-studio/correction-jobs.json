@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "material_master_job": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+  "purpose": "Correct broad highlight brightness and palette after actual-size native UI review.",
+  "quoted_total_credits": 12,
+  "maximum_total_credits": 12,
+  "jobs": [
+    {
+      "asset": "H01",
+      "params": {
+        "model": "flux_3_image",
+        "resolution": "2k",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "medias": [
+          {
+            "role": "image",
+            "value": "2baa32e4-245f-4654-92e6-3740429e0033"
+          },
+          {
+            "role": "image",
+            "value": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6"
+          }
+        ],
+        "prompt": "A precise material correction to reference 1 for the Wolf Audio Tide Deep Current Studio Edition. Keep the same orthographic blank single-piece chassis, exact silhouette, thin bevel, surface grain, upper-left lighting and all empty geometry. Use reference 2 only for the coherent studio material identity. Make the main flat interior SATIN BLUE-BLACK TITANIUM, target sRGB #19272E with a very restrained broad light falloff. The upper left interior MUST stay dark blue-black and never pale gray/silver; no large bright wash. Maximum broad interior highlights around #34454E, tiny rim reflections may be lighter. No text, no logo, no knobs, no cut-outs, no decorative holes, no interface, no added components. Keep quiet restrained fine grain, no diagonal beams, no speckles or colored dots, no chrome. Dark professional studio surface for ivory live typography. This corrects excessive interior brightness in the approved existing source; do not redesign geometry."
+      },
+      "quoted_credits": 3,
+      "max_credits": 3,
+      "submission": {
+        "results": [
+          {
+            "id": "97f45c4e-3ee9-4ce0-b09a-d2e6b7f58323",
+            "type": "image",
+            "status": "pending",
+            "model": "flux_3_image",
+            "params": {
+              "prompt": "A precise material correction to reference 1 for the Wolf Audio Tide Deep Current Studio Edition. Keep the same orthographic blank single-piece chassis, exact silhouette, thin bevel, surface grain, upper-left lighting and all empty geometry. Use reference 2 only for the coherent studio material identity. Make the main flat interior SATIN BLUE-BLACK TITANIUM, target sRGB #19272E with a very restrained broad light falloff. The upper left interior MUST stay dark blue-black and never pale gray/silver; no large bright wash. Maximum broad interior highlights around #34454E, tiny rim reflections may be lighter. No text, no logo, no knobs, no cut-outs, no decorative holes, no interface, no added components. Keep quiet restrained fine grain, no diagonal beams, no speckles or colored dots, no chrome. Dark professional studio surface for ivory live typography. This corrects excessive interior brightness in the approved existing source; do not redesign geometry.",
+              "aspect_ratio": "3:2",
+              "reference_images": [
+                "2baa32e4-245f-4654-92e6-3740429e0033",
+                "b8504d01-4be3-41cb-b74f-2c3e574b3ff6"
+              ],
+              "resolution": "2k",
+              "max_credits": 3
+            }
+          }
+        ],
+        "adjustments": {
+          "medias[0].role": {
+            "requested": "image",
+            "used": "image_references",
+            "reason": "FLUX 3 Image backend expects schema-key media roles"
+          },
+          "medias[1].role": {
+            "requested": "image",
+            "used": "image_references",
+            "reason": "FLUX 3 Image backend expects schema-key media roles"
+          }
+        }
+      },
+      "status": "failed"
+    },
+    {
+      "asset": "H02",
+      "params": {
+        "model": "flux_3_image",
+        "resolution": "2k",
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "medias": [
+          {
+            "role": "image",
+            "value": "cfc5c6b7-906e-47b4-b066-2f8b8f4b0cb9"
+          },
+          {
+            "role": "image",
+            "value": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6"
+          }
+        ],
+        "prompt": "Precise palette and readability correction of reference 1, a blank panel for Wolf Audio Tide Deep Current Studio Edition. Preserve the EXACT outer silhouette, straight-on orthographic shape, corner radii, bevel widths, thin edges, grain scale and soft upper-left illumination. Use reference 2 only for the approved coherent material family. The panel is warm graphite satin metal, midtone #5B6568; broad highlight interior no brighter than #70797D. Keep ALL interior label areas dark enough for ivory live text with at least 4.5:1 contrast: no silver/white/bright gray wash in the upper left. The panel must look restrained and high-end, never weathered, marbled, mottled stone or plastic. Uniform quiet fine satin grain. No holes, screens, logos, text, pointers, knobs or controls. Pure black background outside the unchanged isolated rounded rectangular panel. ONE blank panel only. Do not change geometry or invent elements. This is a specific brightness/color correction of the supplied production image."
+      },
+      "quoted_credits": 3,
+      "max_credits": 3,
+      "submission": {
+        "results": [
+          {
+            "id": "88a1d601-7b0a-402a-8d96-e9ccda8cfedb",
+            "type": "image",
+            "status": "pending",
+            "model": "flux_3_image",
+            "params": {
+              "prompt": "Precise palette and readability correction of reference 1, a blank panel for Wolf Audio Tide Deep Current Studio Edition. Preserve the EXACT outer silhouette, straight-on orthographic shape, corner radii, bevel widths, thin edges, grain scale and soft upper-left illumination. Use reference 2 only for the approved coherent material family. The panel is warm graphite satin metal, midtone #5B6568; broad highlight interior no brighter than #70797D. Keep ALL interior label areas dark enough for ivory live text with at least 4.5:1 contrast: no silver/white/bright gray wash in the upper left. The panel must look restrained and high-end, never weathered, marbled, mottled stone or plastic. Uniform quiet fine satin grain. No holes, screens, logos, text, pointers, knobs or controls. Pure black background outside the unchanged isolated rounded rectangular panel. ONE blank panel only. Do not change geometry or invent elements. This is a specific brightness/color correction of the supplied production image.",
+              "aspect_ratio": "1:1",
+              "reference_images": [
+                "cfc5c6b7-906e-47b4-b066-2f8b8f4b0cb9",
+                "b8504d01-4be3-41cb-b74f-2c3e574b3ff6"
+              ],
+              "resolution": "2k",
+              "max_credits": 3
+            }
+          }
+        ],
+        "adjustments": {
+          "medias[0].role": {
+            "requested": "image",
+            "used": "image_references",
+            "reason": "FLUX 3 Image backend expects schema-key media roles"
+          },
+          "medias[1].role": {
+            "requested": "image",
+            "used": "image_references",
+            "reason": "FLUX 3 Image backend expects schema-key media roles"
+          }
+        }
+      },
+      "status": "completed",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_022233_88a1d601-7b0a-402a-8d96-e9ccda8cfedb.png"
+    },
+    {
+      "asset": "H03",
+      "params": {
+        "model": "flux_3_image",
+        "resolution": "2k",
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "medias": [
+          {
+            "role": "image",
+            "value": "900fb647-e54d-40d4-bf3a-e09d7e177c4e"
+          },
+          {
+            "role": "image",
+            "value": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6"
+          }
+        ],
+        "prompt": "Precise palette and readability correction of reference 1, a blank panel for Wolf Audio Tide Deep Current Studio Edition. Preserve the EXACT outer silhouette, straight-on orthographic shape, corner radii, bevel widths, thin edges, grain scale and soft upper-left illumination. Use reference 2 only for the approved coherent material family. The panel is rich deep desaturated petrol-teal anodized metal, midtone #246E76; broad highlight interior no brighter than #397C83. Keep ALL interior label areas dark enough for ivory live text with at least 4.5:1 contrast: no silver/white/bright gray wash in the upper left. The panel must look restrained and high-end, never weathered, marbled, mottled stone or plastic. Uniform quiet fine satin grain. No holes, screens, logos, text, pointers, knobs or controls. Pure black background outside the unchanged isolated rounded rectangular panel. ONE blank panel only. Do not change geometry or invent elements. This is a specific brightness/color correction of the supplied production image."
+      },
+      "quoted_credits": 3,
+      "max_credits": 3,
+      "submission": {
+        "results": [
+          {
+            "id": "ce48fc82-2069-4dac-b523-b4ce5be31760",
+            "type": "image",
+            "status": "pending",
+            "model": "flux_3_image",
+            "params": {
+              "prompt": "Precise palette and readability correction of reference 1, a blank panel for Wolf Audio Tide Deep Current Studio Edition. Preserve the EXACT outer silhouette, straight-on orthographic shape, corner radii, bevel widths, thin edges, grain scale and soft upper-left illumination. Use reference 2 only for the approved coherent material family. The panel is rich deep desaturated petrol-teal anodized metal, midtone #246E76; broad highlight interior no brighter than #397C83. Keep ALL interior label areas dark enough for ivory live text with at least 4.5:1 contrast: no silver/white/bright gray wash in the upper left. The panel must look restrained and high-end, never weathered, marbled, mottled stone or plastic. Uniform quiet fine satin grain. No holes, screens, logos, text, pointers, knobs or controls. Pure black background outside the unchanged isolated rounded rectangular panel. ONE blank panel only. Do not change geometry or invent elements. This is a specific brightness/color correction of the supplied production image.",
+              "aspect_ratio": "1:1",
+              "reference_images": [
+                "900fb647-e54d-40d4-bf3a-e09d7e177c4e",
+                "b8504d01-4be3-41cb-b74f-2c3e574b3ff6"
+              ],
+              "resolution": "2k",
+              "max_credits": 3
+            }
+          }
+        ],
+        "adjustments": {
+          "medias[0].role": {
+            "requested": "image",
+            "used": "image_references",
+            "reason": "FLUX 3 Image backend expects schema-key media roles"
+          },
+          "medias[1].role": {
+            "requested": "image",
+            "used": "image_references",
+            "reason": "FLUX 3 Image backend expects schema-key media roles"
+          }
+        }
+      },
+      "status": "completed",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_022235_ce48fc82-2069-4dac-b523-b4ce5be31760.png"
+    },
+    {
+      "asset": "H01",
+      "params": {
+        "model": "flux_3_image",
+        "resolution": "2k",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "medias": [
+          {
+            "role": "image",
+            "value": "068d6c5f-f3a0-4885-901d-3598209ca865"
+          },
+          {
+            "role": "image",
+            "value": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6"
+          }
+        ],
+        "prompt": "Create a corrected blank outer chassis for Wolf Audio Tide Deep Current Studio Edition, using reference 1 for blank front-on geometry and reference 2 ONLY for material identity. A single empty 3:2 rectangular studio instrument surface, perfectly orthographic, subtle rounded corners, extremely thin dark titanium bevel, very shallow depth. The entire flat interior must be DARK SATIN BLUE-BLACK #19272E, restrained soft upper-left light, broad highlights never brighter than #34454E. No bright silver or pale gray wash anywhere inside. Immaculately clean low-contrast ultra-fine satin grain, no speckles, no colored dots, no mottling, no diagonal beams, no reflections that reduce readability. No text, branding, knobs, holes, slots, buttons, displays, screws, patterns, ornamental linework or additional elements. This is an empty dark backdrop and perimeter only, preserving the calm professional material family so ivory runtime text is readable."
+      },
+      "quoted_credits": 3,
+      "max_credits": 3,
+      "reason": "One bounded retry after confirmed provider failure, using smaller existing references.",
+      "submission": {
+        "results": [
+          {
+            "id": "c1fe02e3-0a6a-49cd-a603-b957e1ac9c7e",
+            "type": "image",
+            "status": "pending",
+            "model": "flux_3_image",
+            "params": {
+              "prompt": "Create a corrected blank outer chassis for Wolf Audio Tide Deep Current Studio Edition, using reference 1 for blank front-on geometry and reference 2 ONLY for material identity. A single empty 3:2 rectangular studio instrument surface, perfectly orthographic, subtle rounded corners, extremely thin dark titanium bevel, very shallow depth. The entire flat interior must be DARK SATIN BLUE-BLACK #19272E, restrained soft upper-left light, broad highlights never brighter than #34454E. No bright silver or pale gray wash anywhere inside. Immaculately clean low-contrast ultra-fine satin grain, no speckles, no colored dots, no mottling, no diagonal beams, no reflections that reduce readability. No text, branding, knobs, holes, slots, buttons, displays, screws, patterns, ornamental linework or additional elements. This is an empty dark backdrop and perimeter only, preserving the calm professional material family so ivory runtime text is readable.",
+              "aspect_ratio": "3:2",
+              "reference_images": [
+                "068d6c5f-f3a0-4885-901d-3598209ca865",
+                "b8504d01-4be3-41cb-b74f-2c3e574b3ff6"
+              ],
+              "resolution": "2k",
+              "max_credits": 3
+            }
+          }
+        ],
+        "adjustments": {
+          "medias[0].role": {
+            "requested": "image",
+            "used": "image_references",
+            "reason": "FLUX 3 Image backend expects schema-key media roles"
+          },
+          "medias[1].role": {
+            "requested": "image",
+            "used": "image_references",
+            "reason": "FLUX 3 Image backend expects schema-key media roles"
+          }
+        }
+      },
+      "status": "completed",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_022530_c1fe02e3-0a6a-49cd-a603-b957e1ac9c7e.png"
+    }
+  ],
+  "charge_note": "Four requests were quoted at 3 credits each; one failed. Actual billing/refunds were not independently audited."
+}

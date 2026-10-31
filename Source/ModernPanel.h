@@ -51,9 +51,9 @@ class TideModernPanel final:public juce::Component,private juce::Timer {
  }
 public:
  TideModernPanel(TideProcessor& p,int tab):processor(p){
-  setLookAndFeel(&theme);addAndMakeVisible(page);addAndMakeVisible(heading);addAndMakeVisible(viewport);viewport.setViewedComponent(&content,false);heading.setText("TIDE 1.3 / INDEPENDENT MACHINES",juce::dontSendNotification);heading.setColour(juce::Label::textColourId,tide::ui::ink);page.addItemList({"Delay A","Delay B","Reverb A","Reverb B","Routing / global"},1);page.setSelectedId(tab+1,juce::dontSendNotification);page.onChange=[this]{queueRebuild();};setSize(850,600);rebuild();if(isShowing())startTimerHz(8);}
+  setLookAndFeel(&theme);addAndMakeVisible(page);addAndMakeVisible(heading);addAndMakeVisible(viewport);viewport.setViewedComponent(&content,false);heading.setText("TIDE 1.3 / INDEPENDENT MACHINES",juce::dontSendNotification);heading.setColour(juce::Label::textColourId,tide::ui::ink);heading.setFont(tide::ui::font(17,juce::Font::bold));page.addItemList({"Delay A","Delay B","Reverb A","Reverb B","Routing / global"},1);page.setSelectedId(tab+1,juce::dontSendNotification);page.onChange=[this]{queueRebuild();};setSize(850,600);rebuild();if(isShowing())startTimerHz(8);}
  ~TideModernPanel()override{setLookAndFeel(nullptr);stopTimer();viewport.setViewedComponent(nullptr,false);}
  void visibilityChanged()override{if(isShowing()){refreshEnabled();startTimerHz(8);}else stopTimer();}
- void paint(juce::Graphics& g)override{g.fillAll(tide::ui::chassis);g.setColour(tide::ui::edge);g.drawHorizontalLine(85,18,float(getWidth()-18));}
+ void paint(juce::Graphics& g)override{tide::ui::paintSkin(g,getLocalBounds().toFloat(),tide::ui::Skin::body);}
  void resized()override{heading.setBounds(18,12,800,28);page.setBounds(18,48,800,30);viewport.setBounds(8,90,getWidth()-16,getHeight()-98);}
 };

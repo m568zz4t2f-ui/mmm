@@ -1,0 +1,830 @@
+{
+  "provider": "Higgsfield",
+  "material_master_job": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+  "new_generations_submitted": 0,
+  "exports": [
+    {
+      "name": "chassis",
+      "source_path": "assets/tide/deep-current-studio/originals/H01-chassis-main-2baa32e4.png",
+      "source_sha256": "37683ccfd573381fd2324feabcc093a3d594e089b20bbd62c6a5d9277bfaa27f",
+      "source_dimensions": [
+        5024,
+        3344
+      ],
+      "crop": [
+        0,
+        0,
+        5024,
+        3344
+      ],
+      "mask": "none; opaque full-surface source",
+      "export_path": "assets/tide/deep-current-studio/runtime/chassis.png",
+      "export_dimensions": [
+        1620,
+        1080
+      ],
+      "export_sha256": "d0f7c7102aee5c144cc155b2c341590a6dfed1db63f7e12057de5d11c2b8a889",
+      "encoded_bytes": 2351466,
+      "decoded_bytes": 5248800,
+      "alpha_bounds": [
+        0,
+        0,
+        1620,
+        1080
+      ],
+      "slice_margins": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "logical_corner": 10,
+      "approved": true
+    },
+    {
+      "name": "expanded",
+      "source_path": "assets/tide/deep-current-studio/originals/H01-chassis-expanded-91b48dee.png",
+      "source_sha256": "ac01df520c3503f6e6e6d17b5b6c08f00d71774adc8ef9ff3f4f167a9d230330",
+      "source_dimensions": [
+        3552,
+        4736
+      ],
+      "crop": [
+        426,
+        0,
+        3142,
+        4736
+      ],
+      "mask": "none; opaque full-surface source",
+      "export_path": "assets/tide/deep-current-studio/runtime/expanded.png",
+      "export_dimensions": [
+        1080,
+        1440
+      ],
+      "export_sha256": "890e39c9529b14b28c3d2469f131cac50474b27d7a56580e3f8bb85b2fe8af32",
+      "encoded_bytes": 2481124,
+      "decoded_bytes": 4665600,
+      "alpha_bounds": [
+        0,
+        0,
+        1080,
+        1440
+      ],
+      "slice_margins": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "logical_corner": 10,
+      "approved": true
+    },
+    {
+      "name": "delay",
+      "source_path": "assets/tide/deep-current-studio/originals/H02-delay-panel-cfc5c6b7.png",
+      "source_sha256": "a03e32b037d1e3b00acd7095a7c29ae23b7b606112e91429dd6392eb3098aec3",
+      "source_dimensions": [
+        2048,
+        2048
+      ],
+      "crop": [
+        80,
+        74,
+        1964,
+        1970
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/delay.png",
+      "export_dimensions": [
+        1020,
+        930
+      ],
+      "export_sha256": "a476b5feed78f9a8497dc2ca817abca47ae2a2a6bf277fe30493837feccd39d9",
+      "encoded_bytes": 1489657,
+      "decoded_bytes": 3794400,
+      "alpha_bounds": [
+        0,
+        0,
+        1020,
+        930
+      ],
+      "slice_margins": [
+        42,
+        42,
+        42,
+        42
+      ],
+      "logical_corner": 12,
+      "approved": true
+    },
+    {
+      "name": "reverb",
+      "source_path": "assets/tide/deep-current-studio/originals/H03-reverb-panel-900fb647.png",
+      "source_sha256": "3c0d05a70bfae6f6a2906dde846afc82a285a0168fbb39dafa9f4b0682107eec",
+      "source_dimensions": [
+        2048,
+        2048
+      ],
+      "crop": [
+        80,
+        74,
+        1964,
+        1970
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/reverb.png",
+      "export_dimensions": [
+        1020,
+        930
+      ],
+      "export_sha256": "542f2a274423ff142650022677681d3b8adc618c069a7e6f8b7a453d88986b6b",
+      "encoded_bytes": 1672477,
+      "decoded_bytes": 3794400,
+      "alpha_bounds": [
+        0,
+        0,
+        1020,
+        930
+      ],
+      "slice_margins": [
+        42,
+        42,
+        42,
+        42
+      ],
+      "logical_corner": 12,
+      "approved": true
+    },
+    {
+      "name": "master",
+      "source_path": "assets/tide/deep-current-studio/originals/H04-master-strip-56de8e65.png",
+      "source_sha256": "df056ed018100bf546ed6ffa8e19a5ec82cb459d1e958a092f5515b95854aebb",
+      "source_dimensions": [
+        6256,
+        2688
+      ],
+      "crop": [
+        120,
+        720,
+        6170,
+        1890
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/master.png",
+      "export_dimensions": [
+        1536,
+        294
+      ],
+      "export_sha256": "4bede2b14df34ed90c7b0dac4b576f40567d17b8725225fae842fabdd9fb8d3b",
+      "encoded_bytes": 624242,
+      "decoded_bytes": 1806336,
+      "alpha_bounds": [
+        0,
+        0,
+        1536,
+        294
+      ],
+      "slice_margins": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "logical_corner": 8,
+      "approved": true
+    },
+    {
+      "name": "knob",
+      "source_path": "assets/tide/deep-current-studio/originals/H05-universal-knob-cap-dee71a7a.png",
+      "source_sha256": "3c54fbf0aeac9362e53dc22eea9a1291be1e863acdab090d5c9060c6e3981d76",
+      "source_dimensions": [
+        2048,
+        2048
+      ],
+      "crop": [
+        655,
+        663,
+        1393,
+        1389
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/knob.png",
+      "export_dimensions": [
+        384,
+        384
+      ],
+      "export_sha256": "c92ad615551fcb891f02416eb0abaedc0bc48ab21c17818e548febc59faada0e",
+      "encoded_bytes": 257983,
+      "decoded_bytes": 589824,
+      "alpha_bounds": [
+        0,
+        0,
+        384,
+        384
+      ],
+      "slice_margins": null,
+      "logical_corner": 0,
+      "approved": true
+    },
+    {
+      "name": "glass",
+      "source_path": "assets/tide/deep-current-studio/originals/H06-display-bezel-glass-4f6e97a0.png",
+      "source_sha256": "21a6c9166f888f7892e23b75aab82d82495cb07831cdbb19d6d7b5f5610c8d77",
+      "source_dimensions": [
+        3136,
+        1344
+      ],
+      "crop": [
+        248,
+        171,
+        2889,
+        1141
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/glass.png",
+      "export_dimensions": [
+        1422,
+        435
+      ],
+      "export_sha256": "65b9e755d68ff12a01569fa4119d82a8329ea58b720f5866bee92128beeb012a",
+      "encoded_bytes": 708749,
+      "decoded_bytes": 2474280,
+      "alpha_bounds": [
+        1,
+        0,
+        1421,
+        435
+      ],
+      "slice_margins": [
+        54,
+        54,
+        54,
+        54
+      ],
+      "logical_corner": 8,
+      "approved": true
+    },
+    {
+      "name": "button_normal",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-normal-f16df529.png",
+      "source_sha256": "1a85d027d2ebb8bcef95922652553a9461f4122d975751446e2179fac247c206",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        554,
+        716,
+        1815,
+        1050
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/button_normal.png",
+      "export_dimensions": [
+        336,
+        90
+      ],
+      "export_sha256": "85d0db69cfe7f78d9a1bf1ebfaa03e05c091cfca2a067bb4be29a4bb3b059ffb",
+      "encoded_bytes": 41378,
+      "decoded_bytes": 120960,
+      "alpha_bounds": [
+        0,
+        0,
+        336,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "button_hover",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-hover-0ef73ce8.png",
+      "source_sha256": "6c9bc5a263b868d1e508cafdbd96bb976013e98b6345115839e8db90172a3735",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        554,
+        716,
+        1815,
+        1050
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/button_hover.png",
+      "export_dimensions": [
+        336,
+        90
+      ],
+      "export_sha256": "5cb9a70dc0e1e0c7a086eb626cf38b13e764d9669bce52b20aa05c485fd75352",
+      "encoded_bytes": 44153,
+      "decoded_bytes": 120960,
+      "alpha_bounds": [
+        0,
+        0,
+        336,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "button_pressed",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-pressed-6d24e203.png",
+      "source_sha256": "d318a7cb17f65b76f057433d765edebe0511a03ee8b2bf25ac052219f3a88126",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        554,
+        716,
+        1815,
+        1050
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/button_pressed.png",
+      "export_dimensions": [
+        336,
+        90
+      ],
+      "export_sha256": "4af56371e091707b1f916affe832e7ad0d38da13ce1f88d211a9fe0e3ec9f616",
+      "encoded_bytes": 42690,
+      "decoded_bytes": 120960,
+      "alpha_bounds": [
+        0,
+        0,
+        336,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "button_delay",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-active-delay-dd344852.png",
+      "source_sha256": "7fb6ab5ece993005ab85844bbdbc467696bb7455e84849a70d72e4d1ac1c1a65",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        554,
+        716,
+        1815,
+        1050
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/button_delay.png",
+      "export_dimensions": [
+        336,
+        90
+      ],
+      "export_sha256": "5d496c88bb74e71065a1e29e286fc1d65d4728fb06e160eb322c16502664593c",
+      "encoded_bytes": 42850,
+      "decoded_bytes": 120960,
+      "alpha_bounds": [
+        0,
+        0,
+        336,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "button_reverb",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-active-reverb-fdd82f27.png",
+      "source_sha256": "cd5e6fbf4a34c9402e561361d2001ef9f604e6ada75433afde9cb71b79b11316",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        554,
+        716,
+        1815,
+        1050
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/button_reverb.png",
+      "export_dimensions": [
+        336,
+        90
+      ],
+      "export_sha256": "3b2004a429799aea975e051ede5d6fac5e2110b0f7541402b6eb8883432ed38f",
+      "encoded_bytes": 40865,
+      "decoded_bytes": 120960,
+      "alpha_bounds": [
+        0,
+        0,
+        336,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "button_disabled",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-disabled-c2492485.png",
+      "source_sha256": "31450fe7339c5984a46840e2bf3116e134958ac0ce7b5d378dece08ac4eb4165",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        554,
+        716,
+        1815,
+        1050
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/button_disabled.png",
+      "export_dimensions": [
+        336,
+        90
+      ],
+      "export_sha256": "0f9801555392517b141dc26327419c00b607808524d8504d493b35756a368d0b",
+      "encoded_bytes": 43738,
+      "decoded_bytes": 120960,
+      "alpha_bounds": [
+        0,
+        0,
+        336,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "field_normal",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-normal-corrected-11c9ba62.png",
+      "source_sha256": "9a8681f30484857c35b93239510b8ff2573b929968cbb4cd44dc3a31f87896db",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        107,
+        744,
+        2262,
+        1028
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/field_normal.png",
+      "export_dimensions": [
+        756,
+        90
+      ],
+      "export_sha256": "594eb3761e92ee485b00cd1fa782c7df8af0b7daed221f5fc8178693ae0c064f",
+      "encoded_bytes": 98879,
+      "decoded_bytes": 272160,
+      "alpha_bounds": [
+        0,
+        0,
+        756,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "field_hover",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-hover-9126ad11.png",
+      "source_sha256": "c339ce913c762f8ad56107ae723352740cd9c78b577f1fbaf52dcc0dfd54d00a",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        107,
+        744,
+        2262,
+        1028
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/field_hover.png",
+      "export_dimensions": [
+        756,
+        90
+      ],
+      "export_sha256": "2bd0323cb902641f76670343e85a876a8ebfe7766bf96927f00c814fb7c34496",
+      "encoded_bytes": 110319,
+      "decoded_bytes": 272160,
+      "alpha_bounds": [
+        0,
+        0,
+        756,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "field_active",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-active-611de7a4.png",
+      "source_sha256": "1782fc2108388fa195fe0809a913481bc77a2c682ab621fe478efe427c7532f8",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        107,
+        744,
+        2262,
+        1028
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/field_active.png",
+      "export_dimensions": [
+        756,
+        90
+      ],
+      "export_sha256": "2a8ea7076cd53a37721de75fa90ab4e72e4c6a89aeff0841e72c8dd7ad68d22c",
+      "encoded_bytes": 109629,
+      "decoded_bytes": 272160,
+      "alpha_bounds": [
+        0,
+        0,
+        756,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "field_disabled",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-disabled-1d6d916b.png",
+      "source_sha256": "29f1d0d876eb23483777959fd08bb4c0dbd1a3a46e6041d806d6573ec89b348a",
+      "source_dimensions": [
+        2368,
+        1776
+      ],
+      "crop": [
+        107,
+        744,
+        2262,
+        1028
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/field_disabled.png",
+      "export_dimensions": [
+        756,
+        90
+      ],
+      "export_sha256": "1ac127c6af0fe526c456fb582e065646dafad3496e7c0e7c22a59da7f0c23158",
+      "encoded_bytes": 102716,
+      "decoded_bytes": 272160,
+      "alpha_bounds": [
+        0,
+        0,
+        756,
+        90
+      ],
+      "slice_margins": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "logical_corner": 5,
+      "approved": true
+    },
+    {
+      "name": "track",
+      "source_path": "assets/tide/deep-current-studio/originals/H09-linear-track-8235f4f2.png",
+      "source_sha256": "028c1a950496861abc3b57566df53ea2560a988a4f425c3be4638facd0c34c04",
+      "source_dimensions": [
+        3136,
+        1344
+      ],
+      "crop": [
+        323,
+        636,
+        2814,
+        706
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/track.png",
+      "export_dimensions": [
+        900,
+        24
+      ],
+      "export_sha256": "de6bb45fa0ff1b4061c72027aded58af2580b9b92726eeb2719a62c9b50e7c60",
+      "encoded_bytes": 24842,
+      "decoded_bytes": 86400,
+      "alpha_bounds": [
+        0,
+        0,
+        900,
+        24
+      ],
+      "slice_margins": [
+        18,
+        8,
+        18,
+        8
+      ],
+      "logical_corner": 4,
+      "approved": true
+    },
+    {
+      "name": "thumb",
+      "source_path": "assets/tide/deep-current-studio/originals/H09-linear-thumb-e2a06567.png",
+      "source_sha256": "31e32053c78f46561f5a10d878f8ddbeb4a0accc626f55638cfc371effcf9d23",
+      "source_dimensions": [
+        2048,
+        2048
+      ],
+      "crop": [
+        815,
+        360,
+        1235,
+        1604
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/thumb.png",
+      "export_dimensions": [
+        36,
+        108
+      ],
+      "export_sha256": "7782c7f0dca60da617ddcd530130f239974c824bd785ca28130c53de26b93956",
+      "encoded_bytes": 5855,
+      "decoded_bytes": 15552,
+      "alpha_bounds": [
+        0,
+        0,
+        36,
+        108
+      ],
+      "slice_margins": null,
+      "logical_corner": 0,
+      "approved": true
+    },
+    {
+      "name": "body",
+      "source_path": "assets/tide/deep-current-studio/originals/H10-callout-browser-body-068d6c5f.png",
+      "source_sha256": "f3da48c60cecda646544590d0e0b523cf49f0c02aaa268b54a9b1b65087177f3",
+      "source_dimensions": [
+        2512,
+        1664
+      ],
+      "crop": [
+        268,
+        144,
+        2277,
+        1416
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/body.png",
+      "export_dimensions": [
+        1275,
+        810
+      ],
+      "export_sha256": "e8123ac827a0bb18f3bf8dca178f082460d8c53a7857c5095be0426e849c2b18",
+      "encoded_bytes": 1574389,
+      "decoded_bytes": 4131000,
+      "alpha_bounds": [
+        1,
+        1,
+        1274,
+        809
+      ],
+      "slice_margins": [
+        72,
+        72,
+        72,
+        72
+      ],
+      "logical_corner": 8,
+      "approved": true
+    },
+    {
+      "name": "selected_row",
+      "source_path": "assets/tide/deep-current-studio/originals/H10-browser-selected-row-5303a89c.png",
+      "source_sha256": "569c3514e077cb7e8a6eee7036a14da474b2ecc9ce179bd32322fcd1d36056b4",
+      "source_dimensions": [
+        3136,
+        1344
+      ],
+      "crop": [
+        170,
+        552,
+        2960,
+        712
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/selected_row.png",
+      "export_dimensions": [
+        1284,
+        72
+      ],
+      "export_sha256": "69dccdcd601e0656f4dfa71ab1e1b0f9741283859624476460d4ccb637b27f25",
+      "encoded_bytes": 142053,
+      "decoded_bytes": 369792,
+      "alpha_bounds": [
+        0,
+        0,
+        1284,
+        72
+      ],
+      "slice_margins": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "logical_corner": 3,
+      "approved": true
+    },
+    {
+      "name": "chevron",
+      "source_path": "assets/tide/deep-current-studio/originals/H11-dropdown-chevron-26ab595d.png",
+      "source_sha256": "6f5e5d1d00d2d47533dc160b1c64fe7f52c5b8bd2712dddf12d716b2176a3909",
+      "source_dimensions": [
+        2048,
+        2048
+      ],
+      "crop": [
+        620,
+        777,
+        1428,
+        1262
+      ],
+      "mask": "exterior flood mask at max(R,G,B)<32; enclosed interiors retained",
+      "export_path": "assets/tide/deep-current-studio/runtime/chevron.png",
+      "export_dimensions": [
+        72,
+        44
+      ],
+      "export_sha256": "ddf96220e8f69b1bc5ea3f0f751e9178d4d9d3e1f01c63ba6465e6cfd689539e",
+      "encoded_bytes": 3919,
+      "decoded_bytes": 12672,
+      "alpha_bounds": [
+        0,
+        0,
+        72,
+        44
+      ],
+      "slice_margins": null,
+      "logical_corner": 0,
+      "approved": true
+    }
+  ],
+  "total_decoded_bytes": 28803456,
+  "total_encoded_bytes": 12013973
+}

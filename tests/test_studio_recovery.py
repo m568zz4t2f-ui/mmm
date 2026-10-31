@@ -57,6 +57,18 @@ class RecoveryTests(unittest.TestCase):
             finally:
                 sys.argv = previous
 
+    def test_visual_permission_never_exempts_processing(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);recovery.ROOT=root;recovery.DOCS=root/'docs';recovery.DOCS.mkdir()
+            (root/'processor.cpp').write_bytes(b'audio');(root/'editor.cpp').write_bytes(b'visual')
+            freeze={'protected_source_and_presets':{'processor.cpp':hashlib.sha256(b'audio').hexdigest()},'visual_source_sha256':{'editor.cpp':hashlib.sha256(b'visual').hexdigest()}}
+            (recovery.DOCS/'baseline-freeze.json').write_text(json.dumps(freeze))
+            (root/'editor.cpp').write_bytes(b'authorized visual change')
+            with self.assertRaisesRegex(ValueError,'Frozen source changed'):recovery.protected_sources()
+            self.assertEqual(recovery.protected_sources(allow_visual_changes=True),1)
+            (root/'processor.cpp').write_bytes(b'unauthorized audio change')
+            with self.assertRaisesRegex(ValueError,'Frozen source changed'):recovery.protected_sources(allow_visual_changes=True)
+
 
 if __name__ == '__main__':
     unittest.main()

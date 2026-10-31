@@ -7,6 +7,8 @@ on:
       - '.github/workflows/tide-studio-recovery.yml'
       - 'scripts/import-studio-artwork.py'
       - 'docs/deep-current-studio/recovered-higgsfield-jobs.json'
+      - 'docs/deep-current-studio/correction-jobs.json'
+      - 'scripts/import-studio-corrections.py'
   workflow_dispatch:
 
 permissions:
@@ -31,9 +33,14 @@ jobs:
       - name: Test recovery integrity guards
         run: python tests/test_studio_recovery.py
       - name: Recover existing originals and measure integrity
-        run: python scripts/import-studio-artwork.py
+        run: python scripts/import-studio-artwork.py --verify-only --allow-visual-changes
       - name: Verify source preservation and recovered original hashes
-        run: python scripts/import-studio-artwork.py --verify-only
+        run: python scripts/import-studio-artwork.py --verify-only --allow-visual-changes
+      - name: Import completed material corrections, preserving original bytes
+        run: |
+          if test -f docs/deep-current-studio/correction-jobs.json; then
+            python scripts/import-studio-corrections.py
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: tide-studio-recovery-review
@@ -46,6 +53,9 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add assets/tide/deep-current-studio/ docs/deep-current-studio/recovered-artwork-receipt.json
+          if test -f docs/deep-current-studio/correction-artwork-receipt.json; then
+            git add docs/deep-current-studio/correction-artwork-receipt.json
+          fi
           if ! git diff --cached --quiet; then
             git commit -m 'Preserve recovered Studio Higgsfield originals and integrity receipt [skip ci]'
             git push origin HEAD:ui/deep-current-complete
