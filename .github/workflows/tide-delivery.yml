@@ -1,0 +1,62 @@
+name: Split validated Tide Mac downloads
+on:
+  push:
+    branches: [ui/deep-current-complete]
+    paths: ['.github/workflows/tide-delivery.yml']
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Wolf-Tide-1.3.1-macos-15-4b9ea985fb54a081c10bef79cb17c3d1341312c1
+          run-id: 41165630481
+          github-token: ${{ github.token }}
+          path: delivery
+      - name: Verify original hashes and split without rebuilding
+        run: |
+          cd delivery
+          sha256sum -c SHA256SUMS.txt
+          python3 - <<'PY'
+          import hashlib, json, shutil
+          from pathlib import Path
+          root=Path('.')
+          groups={'Installer':['Wolf-Tide-1.3.1-unsigned.pkg'], 'Source':['Wolf-Tide-1.3.1-Source.zip'], 'Plugins':['Wolf-Tide-1.3.1-AU.zip','Wolf-Tide-1.3.1-VST3.zip','Wolf-Tide-1.3.1-Standalone.zip']}
+          for group,files in groups.items():
+              target=root/group;target.mkdir()
+              for name in files:shutil.move(str(root/name),target/name)
+              for name in ['Read-Before-Installing.md','Native-Build-ID.txt','Source-Revision.txt','mac-artifacts.json']:shutil.copy2(root/name,target/name)
+              (target/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256((target/name).read_bytes()).hexdigest()+'  '+name+'\n' for name in files))
+          print(json.dumps({group:{p.name:dict(bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in (root/group).iterdir() if p.suffix in {'.pkg','.zip'}} for group in groups},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Wolf-Tide-1.3.1-Installer-9df094ca455b
+          path: delivery/Installer/
+          compression-level: 0
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Wolf-Tide-1.3.1-Source-9df094ca455b
+          path: delivery/Source/
+          compression-level: 0
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Wolf-Tide-1.3.1-AU-VST3-App-9df094ca455b
+          path: delivery/Plugins/
+          compression-level: 0
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Wolf-Tide-1.3.1-Validation-9df094ca455b
+          path: |
+            delivery/logs/
+            delivery/Mac-build-*.log
+            delivery/mac-payload.txt
+          retention-days: 30
