@@ -17,7 +17,7 @@ permissions:
 
 concurrency:
   group: tide-mac-rollout-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   mac:
