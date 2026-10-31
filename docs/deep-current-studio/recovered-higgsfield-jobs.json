@@ -1,0 +1,999 @@
+{
+  "schema_version": 1,
+  "recovered_from": "Authenticated Higgsfield generation history",
+  "recovery_date": "2026-10-30",
+  "repository_baseline": "2240aa91aef85884ab47748e614fd73d5bd82b31",
+  "submitted_in_this_recovery": 0,
+  "total_recovered_jobs": 30,
+  "completed_originals": 29,
+  "failed_jobs": [
+    {
+      "job_id": "d8ffe37f-6c89-4f78-87ab-d18b23e4df0e",
+      "model": "flux_3_image",
+      "status": "failed",
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H11 dropdown-chevron. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY ONE very simple downward dropdown chevron glyph for the existing selector arrows. Two straight diagonal warm ivory #F4EADC strokes meeting at the bottom, optically equal, round stroke caps, consistent medium stroke weight, front-on. Center it with generous padding on pure uniform black. No button, circle, field, outline shape, text, shadows, extra lines, embossing or metallic background. This matches the existing runtime chevron semantic; it is not a new toolbar."
+    }
+  ],
+  "material_reference_used_by_production": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+  "approval_note": "References in generation prompts establish lineage, not production approval. Imported originals are not runtime-ready. Actual sizes/hashes are measured by import-studio-artwork.py. Superseded sources are retained for provenance; never use them in production.",
+  "assets": [
+    {
+      "id": "H03-reverb-panel-900fb647",
+      "family": "H03",
+      "label": "reverb-panel",
+      "provider": "Higgsfield",
+      "job_id": "900fb647-e54d-40d4-bf3a-e09d7e177c4e",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:38:34.673Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013834_900fb647-e54d-40d4-bf3a-e09d7e177c4e.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H03-reverb-panel-900fb647.png",
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H03 reverb-panel. Edit the FIRST reference, the blank graphite panel, changing ONLY its satin metal finish/color to deep desaturated TEAL #246E76. Keep the first reference's exact panel silhouette, position, bevel width, corner radius, grain scale, upper-left illumination and clean blank interior unchanged. The second reference is the overall material family only. No new details, labels, controls, screens, holes, icons, logos, waves, lines or panel subdivisions. One completely blank teal panel centered on uniform pure black surround. Target logical510x465; do not copy any controls from the second reference.",
+      "references": [
+        {
+          "id": "cfc5c6b7-906e-47b4-b066-2f8b8f4b0cb9",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013607_cfc5c6b7-906e-47b4-b066-2f8b8f4b0cb9.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "1:1",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H11-dropdown-chevron-26ab595d",
+      "family": "H11",
+      "label": "dropdown-chevron",
+      "provider": "Higgsfield",
+      "job_id": "26ab595d-68f5-4765-a39f-09fc51bffdde",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:38:01.438Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013801_26ab595d-68f5-4765-a39f-09fc51bffdde.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H11-dropdown-chevron-26ab595d.png",
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H11 dropdown-chevron. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY ONE very simple downward dropdown chevron glyph for the existing selector arrows. Two straight diagonal warm ivory #F4EADC strokes meeting at the bottom, optically equal, round stroke caps, consistent medium stroke weight, front-on. Center it with generous padding on pure uniform black. No button, circle, field, outline shape, text, shadows, extra lines, embossing or metallic background. This matches the existing runtime chevron semantic; it is not a new toolbar.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "1:1",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H12-optional-current-contour-36979eb9",
+      "family": "H12",
+      "label": "optional-current-contour",
+      "provider": "Higgsfield",
+      "job_id": "36979eb9-7ef5-4987-ad3c-37fca0216d19",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:29.827Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013629_36979eb9-7ef5-4987-ad3c-37fca0216d19.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H12-optional-current-contour-36979eb9.png",
+      "reported_size": [
+        3136,
+        1344
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H12 optional-current-contour. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY ONE extremely restrained fine current-line motif: two or three gently flowing parallel contours, lowcontrast desaturated aqua matching deep teal panel, wide horizontal shape target510:50. Pure uniform black surround. Thin calm lines, soft smooth curves, no ocean photo, filled water, particles, glow, icons, letters, logos, frame, controls or other decorations. Optional branding contour for quiet lower panel edge, never behind functional text.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "21:9",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H10-callout-browser-body-068d6c5f",
+      "family": "H10",
+      "label": "callout-browser-body",
+      "provider": "Higgsfield",
+      "job_id": "068d6c5f-f3a0-4885-901d-3598209ca865",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:20.528Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013620_068d6c5f-f3a0-4885-901d-3598209ca865.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H10-callout-browser-body-068d6c5f.png",
+      "reported_size": [
+        2512,
+        1664
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H10 callout-browser-body. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY ONE blank dark titanium callout/browser surface, exact OBJECT850:600 ratio. Quiet blue-black #19272E interior, soft upper-left light, consistent thin satin rim, radius8 logicalpx. Center on pure uniform black surround. One uninterrupted flat rectangle. No text, controls, inputs, rows, panels, handles, shadows of components, windows, icons or decoration. Can be sliced for680x440 browser and850x600 machine editor.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "3:2",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-disabled-1d6d916b",
+      "family": "H08",
+      "label": "selector-disabled",
+      "provider": "Higgsfield",
+      "job_id": "1d6d916b-8286-4b08-87ec-62e71ee81899",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:20.244Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013620_1d6d916b-8286-4b08-87ec-62e71ee81899.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-disabled-1d6d916b.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H08 selector-disabled. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render one isolated blank dropdown selector field matching the provided approved BASE component reference exactly. State: disabled, low contrast but legible. Preserve identical camera, outer dimensions, corner shape, bevel, material placement and centered position. Change only the specified state treatment. No knobs, text, arrows, symbols, or decorative panel. Keep the center visually quiet and suitable for horizontal slicing. Pure uniform black surround. Exact object ratio 8:1. One object only. No arrow or chevron even at the right end. Base reference controls the precise geometry; material master controls finish.",
+      "references": [
+        {
+          "id": "11c9ba62-3f3d-4834-81db-f6268bc126ec",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013407_11c9ba62-3f3d-4834-81db-f6268bc126ec.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H09-linear-thumb-e2a06567",
+      "family": "H09",
+      "label": "linear-thumb",
+      "provider": "Higgsfield",
+      "job_id": "e2a06567-ad6a-47e9-9851-fb3f7a4b9c54",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:20.055Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013620_e2a06567-ad6a-47e9-9851-fb3f7a4b9c54.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H09-linear-thumb-e2a06567.png",
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H09 linear-thumb. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY ONE isolated small satin smoked titanium slider thumb, front-on narrow rounded rectangle exact OBJECT10:14 ratio, occupying60percent image height. Same upper-left illumination and fine bevel as knob family. A tiny warm ivory central highlight for legibility, not a symbol. Pure uniform black surround, no track, numbers, letters, arrows, holes, symbols or other objects. Clean silhouette suitable for deterministic alpha mask.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "1:1",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H10-browser-selected-row-5303a89c",
+      "family": "H10",
+      "label": "browser-selected-row",
+      "provider": "Higgsfield",
+      "job_id": "5303a89c-9c3b-48e8-a757-3fd392651087",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:19.820Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013619_5303a89c-9c3b-48e8-a757-3fd392651087.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H10-browser-selected-row-5303a89c.png",
+      "reported_size": [
+        3136,
+        1344
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H10 browser-selected-row. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY ONE isolated blank selected preset-list row background. Exact OBJECT642:30 ratio, horizontal long thin rectangle centered filling90percentcanvaswidth. Flat calm deep teal #284C50, extremely subtle satin texture matching approved controls, minimal border, nearly square corners. Pure uniform black surround. No lettering, symbols, list items, numbers, knobs, arrows or icons. One blank selection stripe only, never multiple rows.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "21:9",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H09-linear-track-8235f4f2",
+      "family": "H09",
+      "label": "linear-track",
+      "provider": "Higgsfield",
+      "job_id": "8235f4f2-caa9-4996-ac03-77598069f854",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:19.486Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013619_8235f4f2-caa9-4996-ac03-77598069f854.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H09-linear-track-8235f4f2.png",
+      "reported_size": [
+        3136,
+        1344
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H09 linear-track. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY ONE isolated horizontal linear slider track, targetlogical240px long and4px high, exact OBJECT60:1 ratio. A narrow recessed groove matching the blue-black titanium control material. Quiet dark center, soft upper-left edge catch. Center in pure uniform black surround. NO slider thumb, no handle, no fill, no values, tick marks, labels, logos, panels or other objects. These will be live. A thin straight quiet groove only.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "21:9",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-active-611de7a4",
+      "family": "H08",
+      "label": "selector-active",
+      "provider": "Higgsfield",
+      "job_id": "611de7a4-7f69-44c2-8095-55b1e3aebbcb",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:14.788Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013614_611de7a4-7f69-44c2-8095-55b1e3aebbcb.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-active-611de7a4.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H08 selector-active. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render one isolated blank dropdown selector field matching the provided approved BASE component reference exactly. State: active with restrained thin aqua #77D7D5 border. Preserve identical camera, outer dimensions, corner shape, bevel, material placement and centered position. Change only the specified state treatment. No knobs, text, arrows, symbols, or decorative panel. Keep the center visually quiet and suitable for horizontal slicing. Pure uniform black surround. Exact object ratio 8:1. One object only. No arrow or chevron even at the right end. Base reference controls the precise geometry; material master controls finish.",
+      "references": [
+        {
+          "id": "11c9ba62-3f3d-4834-81db-f6268bc126ec",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013407_11c9ba62-3f3d-4834-81db-f6268bc126ec.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-active-reverb-fdd82f27",
+      "family": "H07",
+      "label": "button-active-reverb",
+      "provider": "Higgsfield",
+      "job_id": "fdd82f27-e8e4-405a-a1b9-5e7374894632",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:14.517Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013614_fdd82f27-e8e4-405a-a1b9-5e7374894632.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-active-reverb-fdd82f27.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H07 button-active-reverb. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render one isolated blank rectangular button matching the provided approved BASE component reference exactly. State: latched with thin aqua #77D7D5 rim. Preserve identical camera, outer dimensions, corner shape, bevel, material placement and centered position. Change only the specified state treatment. No knobs, text, arrows, symbols, or decorative panel. Keep the center visually quiet and suitable for horizontal slicing. Pure uniform black surround. Exact object ratio 4:1. One object only. No arrow or chevron even at the right end. Base reference controls the precise geometry; material master controls finish.",
+      "references": [
+        {
+          "id": "f16df529-c5f0-478a-8d03-c025bc4b5dd6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_f16df529-c5f0-478a-8d03-c025bc4b5dd6.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-hover-9126ad11",
+      "family": "H08",
+      "label": "selector-hover",
+      "provider": "Higgsfield",
+      "job_id": "9126ad11-77d3-4ff9-9684-89879ad4c2ad",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:14.243Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013614_9126ad11-77d3-4ff9-9684-89879ad4c2ad.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-hover-9126ad11.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H08 selector-hover. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render one isolated blank dropdown selector field matching the provided approved BASE component reference exactly. State: hover. Preserve identical camera, outer dimensions, corner shape, bevel, material placement and centered position. Change only the specified state treatment. No knobs, text, arrows, symbols, or decorative panel. Keep the center visually quiet and suitable for horizontal slicing. Pure uniform black surround. Exact object ratio 8:1. One object only. No arrow or chevron even at the right end. Base reference controls the precise geometry; material master controls finish.",
+      "references": [
+        {
+          "id": "11c9ba62-3f3d-4834-81db-f6268bc126ec",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013407_11c9ba62-3f3d-4834-81db-f6268bc126ec.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-active-delay-dd344852",
+      "family": "H07",
+      "label": "button-active-delay",
+      "provider": "Higgsfield",
+      "job_id": "dd344852-2e14-488d-af40-600c807eede1",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:13.930Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013613_dd344852-2e14-488d-af40-600c807eede1.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-active-delay-dd344852.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H07 button-active-delay. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render one isolated blank rectangular button matching the provided approved BASE component reference exactly. State: latched with thin champagne #D6CBB8 rim. Preserve identical camera, outer dimensions, corner shape, bevel, material placement and centered position. Change only the specified state treatment. No knobs, text, arrows, symbols, or decorative panel. Keep the center visually quiet and suitable for horizontal slicing. Pure uniform black surround. Exact object ratio 4:1. One object only. No arrow or chevron even at the right end. Base reference controls the precise geometry; material master controls finish.",
+      "references": [
+        {
+          "id": "f16df529-c5f0-478a-8d03-c025bc4b5dd6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_f16df529-c5f0-478a-8d03-c025bc4b5dd6.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-pressed-05e6dca5",
+      "family": "H08",
+      "label": "selector-pressed",
+      "provider": "Higgsfield",
+      "job_id": "05e6dca5-0435-4cca-829b-67f4c41bea95",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:13.558Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013613_05e6dca5-0435-4cca-829b-67f4c41bea95.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-pressed-05e6dca5.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H08 selector-pressed. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render one isolated blank dropdown selector field matching the provided approved BASE component reference exactly. State: pressed/open. Preserve identical camera, outer dimensions, corner shape, bevel, material placement and centered position. Change only the specified state treatment. No knobs, text, arrows, symbols, or decorative panel. Keep the center visually quiet and suitable for horizontal slicing. Pure uniform black surround. Exact object ratio 8:1. One object only. No arrow or chevron even at the right end. Base reference controls the precise geometry; material master controls finish.",
+      "references": [
+        {
+          "id": "11c9ba62-3f3d-4834-81db-f6268bc126ec",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013407_11c9ba62-3f3d-4834-81db-f6268bc126ec.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-disabled-c2492485",
+      "family": "H07",
+      "label": "button-disabled",
+      "provider": "Higgsfield",
+      "job_id": "c2492485-fc79-4530-847d-83545f2ce1ea",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:13.147Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013613_c2492485-fc79-4530-847d-83545f2ce1ea.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-disabled-c2492485.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H07 button-disabled. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render one isolated blank rectangular button matching the provided approved BASE component reference exactly. State: disabled, reduced contrast yet visible. Preserve identical camera, outer dimensions, corner shape, bevel, material placement and centered position. Change only the specified state treatment. No knobs, text, arrows, symbols, or decorative panel. Keep the center visually quiet and suitable for horizontal slicing. Pure uniform black surround. Exact object ratio 4:1. One object only. No arrow or chevron even at the right end. Base reference controls the precise geometry; material master controls finish.",
+      "references": [
+        {
+          "id": "f16df529-c5f0-478a-8d03-c025bc4b5dd6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_f16df529-c5f0-478a-8d03-c025bc4b5dd6.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-hover-0ef73ce8",
+      "family": "H07",
+      "label": "button-hover",
+      "provider": "Higgsfield",
+      "job_id": "0ef73ce8-9fd8-48a9-bd0f-c0205746bd39",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:08.163Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013608_0ef73ce8-9fd8-48a9-bd0f-c0205746bd39.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-hover-0ef73ce8.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H07 button-hover. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render one isolated blank rectangular button matching the provided approved BASE component reference exactly. State: hover. Preserve identical camera, outer dimensions, corner shape, bevel, material placement and centered position. Change only the specified state treatment. No knobs, text, arrows, symbols, or decorative panel. Keep the center visually quiet and suitable for horizontal slicing. Pure uniform black surround. Exact object ratio 4:1. One object only. No arrow or chevron even at the right end. Base reference controls the precise geometry; material master controls finish.",
+      "references": [
+        {
+          "id": "f16df529-c5f0-478a-8d03-c025bc4b5dd6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_f16df529-c5f0-478a-8d03-c025bc4b5dd6.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-pressed-6d24e203",
+      "family": "H07",
+      "label": "button-pressed",
+      "provider": "Higgsfield",
+      "job_id": "6d24e203-33ba-49e8-ad88-b722bb8d64f1",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:07.856Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013607_6d24e203-33ba-49e8-ad88-b722bb8d64f1.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-pressed-6d24e203.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H07 button-pressed. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render one isolated blank rectangular button matching the provided approved BASE component reference exactly. State: pressed. Preserve identical camera, outer dimensions, corner shape, bevel, material placement and centered position. Change only the specified state treatment. No knobs, text, arrows, symbols, or decorative panel. Keep the center visually quiet and suitable for horizontal slicing. Pure uniform black surround. Exact object ratio 4:1. One object only. No arrow or chevron even at the right end. Base reference controls the precise geometry; material master controls finish.",
+      "references": [
+        {
+          "id": "f16df529-c5f0-478a-8d03-c025bc4b5dd6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_f16df529-c5f0-478a-8d03-c025bc4b5dd6.png"
+        },
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H02-delay-panel-cfc5c6b7",
+      "family": "H02",
+      "label": "delay-panel",
+      "provider": "Higgsfield",
+      "job_id": "cfc5c6b7-906e-47b4-b066-2f8b8f4b0cb9",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:07.608Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013607_cfc5c6b7-906e-47b4-b066-2f8b8f4b0cb9.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H02-delay-panel-cfc5c6b7.png",
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H02 delay-panel. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY ONE isolated blank graphite Delay panel at exact OBJECT ratio510:465. Warm graphite satin metal #5B6568, not bronze/beige/silver. Match the material master upper-left light and thin shallow bevel, radius12 logicalpx. Fills90 percent canvas width, pure uniform black surround. No holes, labels, controls, icons, screens, logos, separators or shadows suggesting other components. Quiet flat interior suitable for readable overlaid controls. This is a solid blank panel.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "1:1",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H04-master-strip-56de8e65",
+      "family": "H04",
+      "label": "master-strip",
+      "provider": "Higgsfield",
+      "job_id": "56de8e65-f8de-401f-b3db-112ae02c9376",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:07.398Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013607_56de8e65-f8de-401f-b3db-112ae02c9376.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H04-master-strip-56de8e65.png",
+      "reported_size": [
+        6256,
+        2688
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H04 master-strip. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY ONE isolated very wide blank dark titanium master-control strip, exact OBJECT ratio1032:105, centered and filling95percent canvas width. Target logical1032x105; physical coverage3096x315. Satin blue-black #19272E matching chassis, shallow narrow edge bevel, radius12logicalpx. Pure uniform black surround. Empty quiet interior. No controls, knobs, lettering, text, icons, holes, arrows, logos, waves, screens or subdivisions. Not a full UI; one long thin rectangle.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "21:9",
+        "resolution": "4k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H01-chassis-expanded-91b48dee",
+      "family": "H01",
+      "label": "chassis-expanded",
+      "provider": "Higgsfield",
+      "job_id": "91b48dee-f24a-4992-8493-2dbe220c4bd0",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:07.177Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013607_91b48dee-f24a-4992-8493-2dbe220c4bd0.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H01-chassis-expanded-91b48dee.png",
+      "reported_size": [
+        3552,
+        4736
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H01 chassis-expanded. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY one blank taller satin blue-black titanium chassis/material faceplate for expanded Tide view. Same exact finish and lighting as approved main chassis master; target #19272E. Exact OBJECT ratio1080:1130, front-on, fills about95 percent canvas width centered with uniform black surround. Large flat uninterrupted quiet interior, narrow edge rim, radius12 logical px. No panels, screens, controls, lettering, holes, icons, logos or ornaments. This is the portrait-compatible expanded chassis surface, not an interface mockup.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "3:4",
+        "resolution": "4k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H01-chassis-main-2baa32e4",
+      "family": "H01",
+      "label": "chassis-main",
+      "provider": "Higgsfield",
+      "job_id": "2baa32e4-245f-4654-92e6-3740429e0033",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:36:06.970Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013606_2baa32e4-245f-4654-92e6-3740429e0033.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H01-chassis-main-2baa32e4.png",
+      "reported_size": [
+        5024,
+        3344
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H01 chassis-main. Isolated production artwork ONLY. Reference is a MATERIAL guide, not composition. Do NOT reproduce the whole UI. Render ONLY one blank satin blue-black titanium chassis/material faceplate, target #19272E. Entire image is the quiet flat material with a very thin outer rim and short shadow, front-on 3:2 rectangular shape. Target whole front logical1080x720, maximum physical3240x2160. No engine panels, screens, knobs, controls, lettering, logos, holes, grids, symbols or ornaments. Uniform quiet interior: materials only. Fine grain must not compete with overlaid text. Radius12 logicalpx. Use near-black surround only outside outer rounded corners.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "3:2",
+        "resolution": "4k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-normal-corrected-11c9ba62",
+      "family": "H08",
+      "label": "selector-normal-corrected",
+      "provider": "Higgsfield",
+      "job_id": "11c9ba62-3f3d-4834-81db-f6268bc126ec",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:34:07.500Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013407_11c9ba62-3f3d-4834-81db-f6268bc126ec.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-normal-corrected-11c9ba62.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H08 selector-normal final correction. This is ONLY a completely EMPTY blank recessed metallic rectangular BAR/NAMEPLATE skin. Exact object width:height 8:1. Use the provided BLANK BUTTON solely as material and border reference. Stretch its quiet center horizontally while retaining shallow inset bevel and rounded ends. The entire interior is clean uninterrupted blank satin blue-black metal. Single object centered on solid pure black surrounding background, filling90percentcanvaswidth. There must be absolutely nothing inside or on this bar: zero markings, zero symbols, zero arrows, zero chevrons, zero lines, zero text, zero numbers. No whole UI, no controls, no screenshot. One empty long metal bar only. This is not a completed dropdown control; the programmer will add its content later.",
+      "references": [
+        {
+          "id": "f16df529-c5f0-478a-8d03-c025bc4b5dd6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_f16df529-c5f0-478a-8d03-c025bc4b5dd6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-normal-bfebfd07",
+      "family": "H08",
+      "label": "selector-normal",
+      "provider": "Higgsfield",
+      "job_id": "bfebfd07-f089-4276-a358-e1e9769e0967",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:32:37.583Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013237_bfebfd07-f089-4276-a358-e1e9769e0967.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-normal-bfebfd07.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H08 selector-normal. This is an isolated component export, not a whole interface mockup. The reference controls materials and lighting only. REMOVE all surrounding UI. Render ONE isolated blank horizontal rectangular dropdown selector field, normal neutral state. Exact OBJECT ratio 8:1, centered, filling 90 percent canvas width; large pure uniform black surround. A shallow dark recessed text field of blue-black satin titanium, same bevel and radius family as buttons, quiet interior. Logical target 240 by 30 px, radius5. No arrow, letters, text, knobs, other controls, logos, marks or multiple examples. The actual arrow and text will be live. This is a functional inset field, never a knob.\n\nCRITICAL CORRECTION: No dropdown arrow or chevron anywhere. No glyphs or symbols. The sample image is a material-only reference. The ONE long inset field must be completely BLANK across its entire interior including both ends. Use a completely pure black surrounding background, not gray. Do not copy the reference selector arrow. Exact object ratio8:1.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": true,
+      "runtime_exports": []
+    },
+    {
+      "id": "H08-selector-normal-51c1310e",
+      "family": "H08",
+      "label": "selector-normal",
+      "provider": "Higgsfield",
+      "job_id": "51c1310e-3f00-4721-8b85-262e5c57adf1",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:30:54.854Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_51c1310e-3f00-4721-8b85-262e5c57adf1.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H08-selector-normal-51c1310e.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H08 selector-normal. This is an isolated component export, not a whole interface mockup. The reference controls materials and lighting only. REMOVE all surrounding UI. Render ONE isolated blank horizontal rectangular dropdown selector field, normal neutral state. Exact OBJECT ratio 8:1, centered, filling 90 percent canvas width; large pure uniform black surround. A shallow dark recessed text field of blue-black satin titanium, same bevel and radius family as buttons, quiet interior. Logical target 240 by 30 px, radius5. No arrow, letters, text, knobs, other controls, logos, marks or multiple examples. The actual arrow and text will be live. This is a functional inset field, never a knob.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": true,
+      "runtime_exports": []
+    },
+    {
+      "id": "H07-button-normal-f16df529",
+      "family": "H07",
+      "label": "button-normal",
+      "provider": "Higgsfield",
+      "job_id": "f16df529-c5f0-478a-8d03-c025bc4b5dd6",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:30:54.600Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_f16df529-c5f0-478a-8d03-c025bc4b5dd6.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H07-button-normal-f16df529.png",
+      "reported_size": [
+        2368,
+        1776
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H07 button-normal. This is an isolated component export, not a whole interface mockup. The reference controls materials and lighting only. REMOVE all surrounding UI. Render ONE isolated blank rectangular push button, normal neutral state. Actual object aspect ratio 4:1, horizontal, in the center of the canvas with large empty surround. Thin satin titanium bevel, blue-black body #19272E, quiet flat interior, no control mounted on it. Target logical object 120 by 30 with radius 5. No knobs, text, arrows, symbols, holes, decoration, ticks or display. Pure uniform black surround. No perspective. The button is ONE rectangle; do not include multiple examples.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "4:3",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H06-display-bezel-glass-4f6e97a0",
+      "family": "H06",
+      "label": "display-bezel-glass",
+      "provider": "Higgsfield",
+      "job_id": "4f6e97a0-206c-4015-821f-4e84ec528100",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:30:54.383Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_4f6e97a0-206c-4015-821f-4e84ec528100.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H06-display-bezel-glass-4f6e97a0.png",
+      "reported_size": [
+        3136,
+        1344
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H06 display-bezel-glass. This is an isolated component export, not a whole interface mockup. The reference controls materials and lighting only. REMOVE all surrounding UI. Render an empty recessed dark-glass display bezel matching the approved material reference, at a 474:145 OBJECT ratio. Front-on, shallow inset, thin satin metal rim, subtle fixed upper-left glass reflection. No waveform, bars, text, numbers, LEDs, or reflections across the main information region. Generate the housing only; real stereo taps and flowing lines will remain live. ONE horizontal rectangle centered on pure uniform black surround, filling 90 percent of canvas width. Glass #0C222A, smooth dark quiet center; radius about 8 logical px. Do not draw any artwork within the glass.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "21:9",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "H05-universal-knob-cap-dee71a7a",
+      "family": "H05",
+      "label": "universal-knob-cap",
+      "provider": "Higgsfield",
+      "job_id": "dee71a7a-f039-4835-8bbe-439764228e45",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:30:54.111Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_013054_dee71a7a-f039-4835-8bbe-439764228e45.png",
+      "source_path": "assets/tide/deep-current-studio/originals/H05-universal-knob-cap-dee71a7a.png",
+      "reported_size": [
+        2048,
+        2048
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nASSET H05 universal-knob-cap. This is an isolated component export, not a whole interface mockup. The reference controls materials and lighting only. REMOVE all surrounding UI. Render one isolated pointer-free smoked titanium knob cap, perfectly circular, directly facing the camera, centered with generous consistent padding. Match the approved reference material and upper-left light. No indicator, marking, letters, numbers, arc, scale, background panel, or second object. Keep reflections restrained enough that a live ivory pointer will remain readable. Return clean separation from the background; use true transparency only when supported and verify the result. Use a completely uniform pure black surround for deterministic masking if alpha is unavailable. No circle behind the knob. The cap itself occupies 70 percent of the square image.",
+      "references": [
+        {
+          "id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+          "type": "image_job",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "1:1",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "M02-material-master-b8504d01",
+      "family": "M02",
+      "label": "material-master",
+      "provider": "Higgsfield",
+      "job_id": "b8504d01-4be3-41cb-b74f-2c3e574b3ff6",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:28:31.218Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012831_b8504d01-4be3-41cb-b74f-2c3e574b3ff6.png",
+      "source_path": "assets/tide/deep-current-studio/originals/M02-material-master-b8504d01.png",
+      "reported_size": [
+        2512,
+        1664
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nRestyle the supplied real Tide screen while keeping every control, panel, screen, and master-strip position. Preserve the large stereo Delay and Reverb visualization areas. Improve material refinement and consistency only. Keep the original italic Tide identity. Any sample text is a placement reference; it will be drawn as live text in production. Do not replace dropdowns with tabs or remove the lower control strip.\nCandidate M02: soft satin metal, moderately defined shallow bevels, gentle upper-left highlights. Palette target chassis #19272E, Delay #5B6568, Reverb #246E76; ivory #F4EADC, active aqua #77D7D5. Keep the exact screenshot layout, no new elements.",
+      "references": [
+        {
+          "id": "f5181e93-ebc1-42ba-899c-f0468306c782",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/f5181e93-ebc1-42ba-899c-f0468306c782.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "3:2",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "M01-material-master-8923c77d",
+      "family": "M01",
+      "label": "material-master",
+      "provider": "Higgsfield",
+      "job_id": "8923c77d-c403-43c1-b75c-8d599595a5c9",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:28:30.977Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012830_8923c77d-c403-43c1-b75c-8d599595a5c9.png",
+      "source_path": "assets/tide/deep-current-studio/originals/M01-material-master-8923c77d.png",
+      "reported_size": [
+        2512,
+        1664
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nRestyle the supplied real Tide screen while keeping every control, panel, screen, and master-strip position. Preserve the large stereo Delay and Reverb visualization areas. Improve material refinement and consistency only. Keep the original italic Tide identity. Any sample text is a placement reference; it will be drawn as live text in production. Do not replace dropdowns with tabs or remove the lower control strip.\nCandidate M01: fine matte satin, minimal bevel depth, especially restrained reflections. Palette target chassis #19272E, Delay #5B6568, Reverb #246E76; ivory #F4EADC, active aqua #77D7D5. Keep the exact screenshot layout, no new elements.",
+      "references": [
+        {
+          "id": "c2c16566-c625-45c5-8177-0cdd20adb50e",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/c2c16566-c625-45c5-8177-0cdd20adb50e.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "3:2",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    },
+    {
+      "id": "M03-material-master-1a46ea26",
+      "family": "M03",
+      "label": "material-master",
+      "provider": "Higgsfield",
+      "job_id": "1a46ea26-0480-4f3e-a98a-8cf644fe4671",
+      "model": "flux_3_image",
+      "status": "completed",
+      "created_at_utc": "2026-10-31T01:28:30.749Z",
+      "source_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/hf_20261031_012830_1a46ea26-0480-4f3e-a98a-8cf644fe4671.png",
+      "source_path": "assets/tide/deep-current-studio/originals/M03-material-master-1a46ea26.png",
+      "reported_size": [
+        2512,
+        1664
+      ],
+      "prompt": "Wolf Audio Tide professional stereo delay and reverb audio plugin. Original Deep Current Studio Edition identity. Orthographic front elevation, no perspective distortion. Satin blue-black titanium chassis, warm graphite Delay panel, deep desaturated teal anodized Reverb panel, smoked titanium controls, dark glass wells, warm ivory typography reference. One broad soft light from upper left, consistent short soft shadows and thin bevels. Restrained fine grain, calm negative space, clear instrument hierarchy. Match the supplied approved material reference exactly. The actual Tide UI screenshot controls layout and component count. No invented controls, extra meters, screws, chrome glare, neon glow, ornamental machinery, or borrowed pedal branding.\n\nRestyle the supplied real Tide screen while keeping every control, panel, screen, and master-strip position. Preserve the large stereo Delay and Reverb visualization areas. Improve material refinement and consistency only. Keep the original italic Tide identity. Any sample text is a placement reference; it will be drawn as live text in production. Do not replace dropdowns with tabs or remove the lower control strip.\nCandidate M03: fine brushed satin metal, slightly deeper recesses, restrained upper-left reflections. Palette target chassis #19272E, Delay #5B6568, Reverb #246E76; ivory #F4EADC, active aqua #77D7D5. Keep the exact screenshot layout, no new elements.",
+      "references": [
+        {
+          "id": "d199a6e1-58ee-4247-b835-1b6f84f9e925",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3JKUae4GIiCUFu3kbupkoLE3mRV/d199a6e1-58ee-4247-b835-1b6f84f9e925.png"
+        }
+      ],
+      "generation_parameters": {
+        "aspect_ratio": "3:2",
+        "resolution": "2k",
+        "batch_size": 1
+      },
+      "production_approved": false,
+      "superseded": false,
+      "runtime_exports": []
+    }
+  ]
+}
