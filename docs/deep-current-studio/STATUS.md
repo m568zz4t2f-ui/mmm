@@ -1,4 +1,14 @@
-# Studio Edition — native implementation and Linux validation delivered
+# Studio Edition — 1.3.1 combined test rollout
+
+The completed interface below is now combined with the authorized 1.3.1 modern
+processing candidate. See [rollout and installation notes](../ROLLOUT-1.3.1.md).
+Only the exact approved `ModernDSP.h` hash is exempted from the historical audio
+freeze; 213 other protected hashes and all artwork remain enforced. The old
+byte-identical audio result below describes **1.3.0 UI-only**, not this upgrade.
+Mac results must be read from the current rollout workflow, not inferred from
+the historical Linux evidence. No public release is authorized.
+
+## Historical UI-only 1.3.0 validation
 
 Branch: `ui/deep-current-complete`. Native build **`6df7d3b58bbf`**, Tide **1.3.0**.
 Continued from recovery `46b47a90147d882ec267f83b2493a014f3d93163` without reset;

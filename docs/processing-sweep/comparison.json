@@ -1,0 +1,180 @@
+{
+  "fixture": "48kHz, 64-sample blocks, short two-tone burst plus tail; shimmer enabled for Halo/Glint; shared Linux wall-clock timing",
+  "models": [
+    {
+      "kind": "delay",
+      "model": 0,
+      "energy_delta_db": 0.001,
+      "render_ratio": 0.849,
+      "worst_candidate_block_us": 1026.703
+    },
+    {
+      "kind": "delay",
+      "model": 1,
+      "energy_delta_db": 0.0,
+      "render_ratio": 0.862,
+      "worst_candidate_block_us": 170.837
+    },
+    {
+      "kind": "delay",
+      "model": 2,
+      "energy_delta_db": 0.0,
+      "render_ratio": 0.843,
+      "worst_candidate_block_us": 42.584
+    },
+    {
+      "kind": "delay",
+      "model": 3,
+      "energy_delta_db": -0.018,
+      "render_ratio": 0.827,
+      "worst_candidate_block_us": 125.088
+    },
+    {
+      "kind": "delay",
+      "model": 4,
+      "energy_delta_db": 3.23,
+      "render_ratio": 0.868,
+      "worst_candidate_block_us": 1129.067
+    },
+    {
+      "kind": "delay",
+      "model": 5,
+      "energy_delta_db": 8.321,
+      "render_ratio": 0.593,
+      "worst_candidate_block_us": 119.149
+    },
+    {
+      "kind": "delay",
+      "model": 6,
+      "energy_delta_db": 0.001,
+      "render_ratio": 1.127,
+      "worst_candidate_block_us": 49.865
+    },
+    {
+      "kind": "delay",
+      "model": 7,
+      "energy_delta_db": -0.0,
+      "render_ratio": 0.878,
+      "worst_candidate_block_us": 67.101
+    },
+    {
+      "kind": "delay",
+      "model": 8,
+      "energy_delta_db": 0.031,
+      "render_ratio": 0.798,
+      "worst_candidate_block_us": 22.805
+    },
+    {
+      "kind": "delay",
+      "model": 9,
+      "energy_delta_db": -2.281,
+      "render_ratio": 1.067,
+      "worst_candidate_block_us": 72.228
+    },
+    {
+      "kind": "delay",
+      "model": 10,
+      "energy_delta_db": 0.351,
+      "render_ratio": 0.864,
+      "worst_candidate_block_us": 32.699
+    },
+    {
+      "kind": "delay",
+      "model": 11,
+      "energy_delta_db": -0.046,
+      "render_ratio": 1.043,
+      "worst_candidate_block_us": 379.27
+    },
+    {
+      "kind": "reverb",
+      "model": 0,
+      "energy_delta_db": -0.512,
+      "render_ratio": 0.99,
+      "worst_candidate_block_us": 185.258
+    },
+    {
+      "kind": "reverb",
+      "model": 1,
+      "energy_delta_db": -0.827,
+      "render_ratio": 0.587,
+      "worst_candidate_block_us": 2047.418
+    },
+    {
+      "kind": "reverb",
+      "model": 2,
+      "energy_delta_db": 0.036,
+      "render_ratio": 1.001,
+      "worst_candidate_block_us": 389.866
+    },
+    {
+      "kind": "reverb",
+      "model": 3,
+      "energy_delta_db": -1.749,
+      "render_ratio": 0.585,
+      "worst_candidate_block_us": 202.494
+    },
+    {
+      "kind": "reverb",
+      "model": 4,
+      "energy_delta_db": 1.142,
+      "render_ratio": 1.025,
+      "worst_candidate_block_us": 192.63
+    },
+    {
+      "kind": "reverb",
+      "model": 5,
+      "energy_delta_db": -1.835,
+      "render_ratio": 0.729,
+      "worst_candidate_block_us": 987.845
+    },
+    {
+      "kind": "reverb",
+      "model": 6,
+      "energy_delta_db": -0.162,
+      "render_ratio": 0.788,
+      "worst_candidate_block_us": 200.912
+    },
+    {
+      "kind": "reverb",
+      "model": 7,
+      "energy_delta_db": 3.346,
+      "render_ratio": 1.08,
+      "worst_candidate_block_us": 208.684
+    },
+    {
+      "kind": "reverb",
+      "model": 8,
+      "energy_delta_db": 1.674,
+      "render_ratio": 0.554,
+      "worst_candidate_block_us": 183.165
+    },
+    {
+      "kind": "reverb",
+      "model": 9,
+      "energy_delta_db": -1.023,
+      "render_ratio": 0.808,
+      "worst_candidate_block_us": 800.153
+    },
+    {
+      "kind": "reverb",
+      "model": 10,
+      "energy_delta_db": 1.45,
+      "render_ratio": 0.633,
+      "worst_candidate_block_us": 274.643
+    },
+    {
+      "kind": "reverb",
+      "model": 11,
+      "energy_delta_db": -0.828,
+      "render_ratio": 0.489,
+      "worst_candidate_block_us": 181.663
+    },
+    {
+      "kind": "reverb",
+      "model": 12,
+      "energy_delta_db": -0.655,
+      "render_ratio": 0.393,
+      "worst_candidate_block_us": 199.48
+    }
+  ]
+}

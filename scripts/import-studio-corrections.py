@@ -3,11 +3,12 @@
 import hashlib,io,json,urllib.parse,urllib.request,uuid
 from pathlib import Path
 from PIL import Image
+from protected_source_hashes import effective_hashes
 ROOT=Path(__file__).resolve().parents[1]
 DOCS=ROOT/'docs/deep-current-studio'
 manifest=json.loads((DOCS/'correction-jobs.json').read_text())
 freeze=json.loads((DOCS/'baseline-freeze.json').read_text())
-for path,digest in freeze['protected_source_and_presets'].items():
+for path,digest in effective_hashes(freeze['protected_source_and_presets']).items():
  if hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=digest:raise ValueError('Protected source changed: '+path)
 records=[]
 for job in manifest['jobs']:

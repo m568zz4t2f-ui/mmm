@@ -1,0 +1,9 @@
+prepared,44100,41427136,512
+processing,44100,0,0
+prepared,48000,45087840,512
+processing,48000,0,0
+prepared,96000,90153376,512
+processing,96000,0,0
+prepared,192000,180282976,512
+processing,192000,0,0
+PASS: allocation instrumentation, bounded automation fixtures, slot sleep, dry identity and invalid-control checks. Not realtime certification.

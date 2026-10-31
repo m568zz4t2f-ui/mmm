@@ -9,7 +9,7 @@ xcrun --find clang++ >/dev/null
 mkdir -p dist
 TIDE_BUILD_LOG="dist/Mac-build-$(date +%Y%m%d-%H%M%S).log"
 {
- echo 'Wolf Tide 1.3.0 — universal AU, VST3, standalone and installer build'
+ echo 'Wolf Tide 1.3.1 Deep Current Studio Edition — universal test build'
  sw_vers
  cmake --version
  xcrun clang++ --version

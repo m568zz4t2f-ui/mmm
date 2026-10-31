@@ -1,0 +1,23 @@
+{
+  "ui_base_revision": "4db6ab6d9b2cd52415f4620589647e5302c1963f",
+  "processing_base_revision": "f4e4123a6a2c4bba3ed4b29712bce1c7ac55e81c",
+  "input_patch_sha256": "c2a23041833347721ad8f600c228e6f90b0eb58c0a708ccc28c18f14b934c7b5",
+  "merged_native_build_id": "9df094ca455b",
+  "files": {
+    "Source/ModernDSP.h": "e5106dceac1faec3b667840aeb3a5ce5dab762de52484cc8ed0d20c4bfade024",
+    "CMakeLists.txt": "50db8e7c3355131e86cb8d4811f383cb52237010a19f93203560d9917f1e326a",
+    "scripts/protected_source_hashes.py": "221dd64293d27fc79e2563a61a34fd14afeca7c7dfc037d2270d0580ccceef5d"
+  },
+  "unchanged_historical_protected_files": 213,
+  "authorized_processing_file": "Source/ModernDSP.h",
+  "modern_audio_identical_to_130": false,
+  "artwork_and_ui_sources_changed_by_merge": false,
+  "local_results": {
+    "standalone_dsp_suites": 8,
+    "asan_ubsan": "PASS",
+    "recovery_tests": 3,
+    "installer_tests": 12,
+    "editor_method_invariants": 14
+  },
+  "mac_results": "See actual workflow run; not yet established by this report"
+}

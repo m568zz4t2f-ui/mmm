@@ -9,6 +9,7 @@ import urllib.parse
 import urllib.request
 
 from PIL import Image, ImageDraw, ImageOps
+from protected_source_hashes import effective_hashes
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs/deep-current-studio'
@@ -23,7 +24,7 @@ def digest(data):
 
 def protected_sources(allow_visual_changes=False):
     freeze = json.loads((DOCS / 'baseline-freeze.json').read_text())
-    files = dict(freeze['protected_source_and_presets'])
+    files = effective_hashes(freeze['protected_source_and_presets'])
     if not allow_visual_changes:
         files.update(freeze['visual_source_sha256'])
     mismatches = [name for name, sha in files.items()

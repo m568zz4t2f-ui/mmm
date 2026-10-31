@@ -36,6 +36,7 @@ cp docs/QUICK-START.md "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/
 cp LICENSE "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/LICENSE.txt"
 cp assets/tide/deep-current-studio/fonts/OFL.txt "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/IBM-Plex-Sans-OFL.txt"
 cp docs/ALGORITHMS-1.3.md "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Algorithms.md"
+cp docs/ROLLOUT-1.3.1.md "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Read Before Installing.md"
 if [ -d Factory-Presets ]; then
  ditto Factory-Presets "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Factory Presets"
 fi
@@ -90,3 +91,9 @@ if [ -n "${TIDE_INSTALLER_IDENTITY:-}" ]; then
 else
  echo "Created $TIDE_UNSIGNED (ad-hoc plugin signatures; installer NOT Developer ID signed or notarized)."
 fi
+# Deliver the verified staged bundles as well as the installer; preserve signatures.
+cp "$TIDE_STAGE/root/Library/Application Support/Wolf Audio/Wolf Tide/Source.zip" "dist/Wolf-Tide-$TIDE_VERSION-Source.zip"
+ditto -c -k --sequesterRsrc --keepParent "$TIDE_STAGE/root/Library/Audio/Plug-Ins/Components/Wolf Tide.component" "dist/Wolf-Tide-$TIDE_VERSION-AU.zip"
+ditto -c -k --sequesterRsrc --keepParent "$TIDE_STAGE/root/Library/Audio/Plug-Ins/VST3/Wolf Tide.vst3" "dist/Wolf-Tide-$TIDE_VERSION-VST3.zip"
+ditto -c -k --sequesterRsrc --keepParent "$TIDE_STAGE/root/Applications/Wolf Audio/Wolf Tide.app" "dist/Wolf-Tide-$TIDE_VERSION-Standalone.zip"
+cp docs/ROLLOUT-1.3.1.md dist/Read-Before-Installing.md

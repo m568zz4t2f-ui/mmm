@@ -2,12 +2,13 @@
 """Verify immutable originals/processing and prepared resources; report authorized UI edits."""
 import hashlib,json,struct
 from pathlib import Path
+from protected_source_hashes import effective_hashes
 ROOT=Path(__file__).resolve().parents[1]
 DOCS=ROOT/'docs/deep-current-studio'
 def digest(path):return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
 def verify():
  freeze=json.loads((DOCS/'baseline-freeze.json').read_text())
- for path,sha in freeze['protected_source_and_presets'].items():
+ for path,sha in effective_hashes(freeze['protected_source_and_presets']).items():
   if digest(path)!=sha:raise ValueError('Protected source changed: '+path)
  receipt=json.loads((DOCS/'recovered-artwork-receipt.json').read_text())
  corrections=json.loads((DOCS/'correction-artwork-receipt.json').read_text())['assets']

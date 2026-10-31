@@ -11,12 +11,22 @@ import unittest
 from PIL import Image
 
 SCRIPT = Path(__file__).resolve().parents[1] / 'scripts/import-studio-artwork.py'
+sys.path.insert(0, str(SCRIPT.parent))
 spec = importlib.util.spec_from_file_location('studio_import', SCRIPT)
 recovery = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(recovery)
 
 
 class RecoveryTests(unittest.TestCase):
+    def test_processing_upgrade_is_an_exact_hash_replacement(self):
+        from protected_source_hashes import effective_hashes, MODERN_BASE, MODERN_131
+        frozen = {'Source/ModernDSP.h': MODERN_BASE, 'Source/TideDSP.h': 'legacy'}
+        expected = effective_hashes(frozen)
+        self.assertEqual(expected, {'Source/ModernDSP.h': MODERN_131, 'Source/TideDSP.h': 'legacy'})
+        self.assertEqual(frozen['Source/ModernDSP.h'], MODERN_BASE)
+        with self.assertRaisesRegex(ValueError, 'historical ModernDSP baseline'):
+            effective_hashes({'Source/ModernDSP.h': 'unrecognized source'})
+
     def test_integrity_receipt_and_source_guard(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

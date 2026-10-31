@@ -2,11 +2,13 @@
 """Verify frozen processing, parameter definitions and factory preset bytes."""
 import hashlib,json,re
 from pathlib import Path
+from protected_source_hashes import effective_hashes
 root=Path(__file__).resolve().parents[1]
 manifest=json.loads((root/'docs/deep-current/evidence/baseline/protected-source.json').read_text())
+manifest=effective_hashes(manifest)
 failures=[name for name,digest in manifest.items() if hashlib.sha256((root/name).read_bytes()).hexdigest()!=digest]
 if failures:raise SystemExit('Protected source changed: '+', '.join(failures))
-print(f'PASS: {len(manifest)} frozen processor/DSP/parameter/preset files are byte-identical.')
+print(f'PASS: {len(manifest)-1} historical processor/parameter/preset hashes unchanged; exact authorized 1.3.1 ModernDSP hash verified.')
 source=(root/'Source/PluginEditor.cpp').read_text()
 starts=list(re.finditer(r'^(?:void )?TideEditor::(\w+|~TideEditor)\(',source,re.M))
 methods={m.group(1):source[m.start():starts[i+1].start() if i+1<len(starts) else len(source)].strip() for i,m in enumerate(starts)}

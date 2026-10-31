@@ -1,0 +1,11 @@
+{
+  "version": "1.3.1-processing-candidate",
+  "base_commit": "f4e4123a6a2c4bba3ed4b29712bce1c7ac55e81c",
+  "files": {
+    "Source/ModernDSP.h": "e5106dceac1faec3b667840aeb3a5ce5dab762de52484cc8ed0d20c4bfade024",
+    "CMakeLists.txt": "6548fe1ad32dbeee305e25c0345ba47dac8692a18250c9f53fe888026d36e00d",
+    "tests/processing_sweep_tests.cpp": "49ef7c9aa7d82fdb0fd6ef908d6cac314db0bbf762272404abed950a3ebd03c3",
+    "tests/processing_sweep_metrics.cpp": "5bfb3e824f0a2d4effad63e905749cc097d01d39ae7baee54390df89195865b4",
+    "tests/run_processing_sweep.py": "ca37884d67c7211c1421ab5eaa8429007e2840410cb30108efa354bc50cc3978"
+  }
+}

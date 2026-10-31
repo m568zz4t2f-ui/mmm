@@ -1,0 +1,11 @@
+dsp_tests: PASS
+models_tests: PASS
+repair_tests: PASS
+update_tests: PASS
+modern_tests: PASS
+modern_controls: PASS
+modern_stress: PASS
+processing_sweep_tests: PASS
+AddressSanitizer/UndefinedBehaviorSanitizer: PASS
+LeakSanitizer disabled: unavailable in the managed process environment.
+Mac AU/VST3 host, musical audition and installer validation: NOT RUN.
