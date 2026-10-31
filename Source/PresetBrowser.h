@@ -26,7 +26,7 @@ class TidePresetBrowser final:public juce::Component,private juce::ListBoxModel 
   if(refreshAction)refreshAction();
   recent.removeString(e.key);recent.insert(0,e.key);while(recent.size()>20)recent.remove(recent.size()-1);persist();}
  int getNumRows()override{return int(shown.size());}
- void paintListBoxItem(int row,juce::Graphics& g,int w,int h,bool selected)override{if(row<0||row>=int(shown.size()))return;const auto& e=shown[std::size_t(row)];g.fillAll(juce::Colour(selected?0xff284c50:0xff15252a));g.setColour(juce::Colour(0xffeee9df));g.setFont(tide::ui::font(14));g.drawText((favorites.contains(e.key)?"* ":"")+e.name,12,0,w-24,h,juce::Justification::centredLeft,true);}
+ void paintListBoxItem(int row,juce::Graphics& g,int w,int h,bool selected)override{if(row<0||row>=int(shown.size()))return;const auto& e=shown[std::size_t(row)];g.fillAll(juce::Colour(selected?0xff284c50:0xff15252a));g.setColour(juce::Colour(0xfff4eadc));g.setFont(tide::ui::font(14));g.drawText((favorites.contains(e.key)?"* ":"")+e.name,12,0,w-24,h,juce::Justification::centredLeft,true);}
  void listBoxItemDoubleClicked(int,const juce::MouseEvent&)override{apply();}
  void returnKeyPressed(int)override{apply();}
 public:
@@ -34,8 +34,8 @@ public:
   for(juce::Component* component:std::initializer_list<juce::Component*>{&search,&name,&collection,&tags,&list,&load,&star,&save,&import,&previous,&next,&heading,&message})addAndMakeVisible(component);
   setLookAndFeel(&theme);
   list.setColour(juce::ListBox::backgroundColourId,juce::Colour(0xff15252a));message.setColour(juce::Label::textColourId,juce::Colour(0xffc2d4d8));
-  for(auto* field:{&search,&name}){field->setColour(juce::TextEditor::backgroundColourId,juce::Colour(0xff0b1b22));field->setColour(juce::TextEditor::textColourId,juce::Colour(0xffeee9df));}
-  heading.setText(section==0?"TIDE / COMBINED PRESETS":section==1?"TIDE / DELAY PRESETS":"TIDE / REVERB PRESETS",juce::dontSendNotification);heading.setFont(tide::ui::font(17,juce::Font::bold));heading.setColour(juce::Label::textColourId,juce::Colour(0xffeee9df));
+  for(auto* field:{&search,&name}){field->setColour(juce::TextEditor::backgroundColourId,juce::Colour(0xff0b1b22));field->setColour(juce::TextEditor::textColourId,juce::Colour(0xfff4eadc));}
+  heading.setText(section==0?"TIDE / COMBINED PRESETS":section==1?"TIDE / DELAY PRESETS":"TIDE / REVERB PRESETS",juce::dontSendNotification);heading.setFont(tide::ui::font(17,juce::Font::bold));heading.setColour(juce::Label::textColourId,juce::Colour(0xfff4eadc));
   search.setName("presetSearch");name.setName("presetName");collection.setName("presetCollection");
   search.setTextToShowWhenEmpty("Search sounds...",juce::Colour(0xffaabac0));name.setTextToShowWhenEmpty("Name your user preset",juce::Colour(0xffaabac0));
   collection.addItemList({"Factory","User","Favorites","Recent"},1);collection.setSelectedId(1);tags.addItemList({"All instruments","Guitar","Vocal","Keys","Ambient","Utility"},1);tags.setSelectedId(1);tags.setEnabled(scope==0);
@@ -46,6 +46,6 @@ public:
   import.onClick=[this]{importAction();};list.setRowHeight(30);readPreferences();inventory();filter();setSize(680,440);
  }
  ~TidePresetBrowser()override{setLookAndFeel(nullptr);}
- void paint(juce::Graphics& g)override{g.fillAll(juce::Colour(0xff10191d));g.setColour(juce::Colour(0xff4b6063));g.drawRoundedRectangle(getLocalBounds().toFloat().reduced(.5f),8,1);}
+ void paint(juce::Graphics& g)override{g.fillAll(juce::Colour(0xff19272e));g.setColour(juce::Colour(0xff4b6063));g.drawRoundedRectangle(getLocalBounds().toFloat().reduced(.5f),8,1);}
  void resized()override{heading.setBounds(18,12,640,26);search.setBounds(18,48,642,30);collection.setBounds(18,88,200,28);tags.setBounds(230,88,230,28);previous.setBounds(474,88,40,28);next.setBounds(522,88,40,28);star.setBounds(570,88,90,28);list.setBounds(18,126,642,212);name.setBounds(18,350,350,30);save.setBounds(378,350,130,30);load.setBounds(518,350,142,30);message.setBounds(18,387,420,35);import.setBounds(440,390,220,28);}
 };

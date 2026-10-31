@@ -1,0 +1,91 @@
+{
+  "input_note": "Repository previews are 1200px derivatives, not the original full resolution images.",
+  "knob_repair": "Fixed needle reconstructed from adjacent face; outer alpha replaced with clean ellipse.",
+  "assets": [
+    {
+      "name": "graphite.png",
+      "source": "Tide_02.png",
+      "crop": [
+        180,
+        590,
+        420,
+        900
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "encoded_bytes": 63630,
+      "decoded_bytes": 196608,
+      "source_sha256": "04abb805716b0b523b24216855ff0a610ef6159f02852064e4adb46eecfdfc8c"
+    },
+    {
+      "name": "teal.png",
+      "source": "Tide_03.png",
+      "crop": [
+        110,
+        680,
+        420,
+        920
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "encoded_bytes": 60903,
+      "decoded_bytes": 196608,
+      "source_sha256": "b9e691e4d8fa0050d24bee7f36ea7730126b56494cc60b07cffe9f8e2ccc159b"
+    },
+    {
+      "name": "chassis.png",
+      "source": "Tide_01.jpg",
+      "crop": [
+        150,
+        130,
+        1050,
+        680
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "encoded_bytes": 36169,
+      "decoded_bytes": 196608,
+      "source_sha256": "28871a1ea645f6229272835f7bea4acb1b287e68612c67ddc3d5fb1e1a40afa9"
+    },
+    {
+      "name": "glass.png",
+      "source": "Tide_08.png",
+      "crop": [
+        250,
+        235,
+        950,
+        280
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "encoded_bytes": 12692,
+      "decoded_bytes": 196608,
+      "source_sha256": "4d453e25bdbcd64cd82bc801cf3ad2a49b4ddf50082e99141330627174d0d841"
+    },
+    {
+      "name": "titanium.png",
+      "source": "Tide_05.png",
+      "crop": [
+        116,
+        92,
+        1070,
+        1054
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "encoded_bytes": 87250,
+      "decoded_bytes": 262144,
+      "source_sha256": "17547887d29d7d79cdb07adf502d73daf84ca5993edd605632e497b5179fccfe"
+    }
+  ]
+}

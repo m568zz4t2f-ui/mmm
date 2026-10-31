@@ -35,7 +35,7 @@ private:
  juce::TooltipWindow tips{this,650};
  std::unique_ptr<juce::FileChooser> chooser;juce::MemoryBlock alternate;
  int editing=0;float phase=0,dLevel=0,rLevel=0,oLevel=0;bool alternateReady=false;
- juce::Image backdrop;std::array<juce::Path,9> oceanCurves;float curvePhase=-100,curveActivity=-1,curveMovement=-1;
+ int backdropPage=-1;juce::Image backdrop;std::array<juce::Path,9> oceanCurves;float curvePhase=-100,curveActivity=-1,curveMovement=-1;
  std::array<float,101> waveEnvelope{},waveSinA{},waveCosA{},waveSinB{},waveCosB{};std::array<float,32> visualValues{};
  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TideEditor)
 };

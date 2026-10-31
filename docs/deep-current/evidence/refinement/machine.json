@@ -1,0 +1,14 @@
+{
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "cpu_quota": "200000 100000",
+  "memory_limit_bytes": "8589934592",
+  "display": "Xvfb 1920x1200x24; JUCE software rendering",
+  "sample_rate": 48000,
+  "block_size": 256,
+  "baseline": "a54c5f143e01b0d3e7b56eb587881e2232248041",
+  "baseline_build": "327e76352705",
+  "candidate_build": "9c1e62f44667",
+  "native_daw": null,
+  "gpu_measurements": null
+}

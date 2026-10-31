@@ -26,7 +26,13 @@ struct Bench:juce::Timer {
 int main(int argc,char** argv){juce::ScopedJuceInitialiser_GUI init;if(argc>1&&std::string(argv[1])=="--bench"){Bench bench(std::stoi(argv[2]),std::stoi(argv[3])!=0);juce::MessageManager::getInstance()->runDispatchLoop();return 0;}
  if(argc>2&&std::string(argv[1])=="--audio"){TideProcessor p;p.prepareToPlay(48000,256);TideEditor editor(p);std::ofstream out(argv[2],std::ios::binary);juce::AudioBuffer<float> block(2,256);juce::MidiBuffer midi;for(int program=0;program<tide::numPresets;++program){p.setCurrentProgram(program);p.clearRequested=true;for(int n=0;n<96;++n){for(int i=0;i<256;++i){const float x=n<48?.03f*std::sin(float(i+n*256)*.071f):0;block.setSample(0,i,x);block.setSample(1,i,x*.61f);}p.processBlock(block,midi);for(int c=0;c<2;++c)out.write(reinterpret_cast<const char*>(block.getReadPointer(c)),256*sizeof(float));}}check(bool(out),"audio fixture write");return 0;}
  if(argc>2&&std::string(argv[1])=="--screens"){juce::File folder(argv[2]);folder.createDirectory();TideProcessor p;TideEditor editor(p);auto save=[&](juce::Component& component,const juce::String& name,float scale){auto image=component.createComponentSnapshot(component.getLocalBounds(),true,scale);auto stream=folder.getChildFile(name+".png").createOutputStream();check(bool(stream),"screenshot write");stream->setPosition(0);stream->truncate();juce::PNGImageFormat png;check(png.writeImageToStream(image,*stream),"PNG write");};
+  auto savePanel=[&](TideModernPanel& panel,const juce::String& name){save(panel,name,1);for(auto* child:panel.getChildren())if(auto* viewport=dynamic_cast<juce::Viewport*>(child))if(auto* content=viewport->getViewedComponent())save(*content,name+"-controls",1);};
   for(int width:{900,1080,1620}){editor.setSize(width,width*2/3);save(editor,"main-"+juce::String(width),1);if(width==1080)save(editor,"main-retina",2);}
-  for(int tab=0;tab<5;++tab){TideModernPanel panel(p,tab);save(panel,"advanced-"+juce::String(tab),1);}
-  TidePresetBrowser browser(p,0,[]{});save(browser,"presets",1);return 0;}
+  for(int tab=0;tab<5;++tab){TideModernPanel panel(p,tab);savePanel(panel,"advanced-"+juce::String(tab));}
+  for(int scope=0;scope<3;++scope){TidePresetBrowser browser(p,scope,[]{});save(browser,scope==0?"presets":"presets-"+juce::String(scope),1);}
+  for(int model=0;model<12;++model){p.setValue("d13Model",float(model));TideModernPanel panel(p,0);savePanel(panel,"delay-model-"+juce::String(model));}
+  for(int model=0;model<13;++model){p.setValue("r13Model",float(model));TideModernPanel panel(p,2);savePanel(panel,"reverb-model-"+juce::String(model));}
+  p.setValue("dRevision",0);p.setValue("rRevision",0);TideEditor legacy(p);
+  for(const auto* title:{"EDIT DELAY","EDIT REVERB","ROUTING"}){for(auto* child:legacy.getChildren())if(auto* button=dynamic_cast<juce::TextButton*>(child))if(button->getButtonText()==title){button->onClick();break;}save(legacy,juce::String("legacy-")+title,1);}
+  return 0;}
  return 2;}

@@ -2,7 +2,7 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 namespace tide::ui {
-inline const juce::Colour chassis(0xff10191d),surface(0xff1a282e),ink(0xffeee9df),muted(0xffb6beb9),delay(0xffd6cbb8),reverb(0xff72d3cd),edge(0xff4b6063);
+inline const juce::Colour chassis(0xff19272e),surface(0xff1a282e),ink(0xfff4eadc),muted(0xffb6beb9),delay(0xffd6cbb8),reverb(0xff77d7d5),edge(0xff4b6063);
 inline juce::Font font(float size,int style=juce::Font::plain){return juce::Font(juce::FontOptions(juce::Font::getDefaultSansSerifFontName(),size,style));}
 }
 class TideLook final:public juce::LookAndFeel_V4 {

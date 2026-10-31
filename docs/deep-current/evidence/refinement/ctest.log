@@ -1,0 +1,28 @@
+Internal ctest changing into directory: /workspace/work/tide-build
+Test project /workspace/work/tide-build
+      Start  1: installer
+ 1/11 Test  #1: installer ........................   Passed    1.84 sec
+      Start  2: dsp
+ 2/11 Test  #2: dsp ..............................   Passed    6.51 sec
+      Start  3: update
+ 3/11 Test  #3: update ...........................   Passed    0.09 sec
+      Start  4: models
+ 4/11 Test  #4: models ...........................   Passed    2.99 sec
+      Start  5: repairs
+ 5/11 Test  #5: repairs ..........................   Passed    0.72 sec
+      Start  6: modern_dsp_lab
+ 6/11 Test  #6: modern_dsp_lab ...................   Passed   13.92 sec
+      Start  7: modern_stress_lab
+ 7/11 Test  #7: modern_stress_lab ................   Passed    1.57 sec
+      Start  8: modern_controls
+ 8/11 Test  #8: modern_controls ..................   Passed   10.28 sec
+      Start  9: host
+ 9/11 Test  #9: host .............................   Passed    0.92 sec
+      Start 10: ui
+10/11 Test #10: ui ...............................   Passed    4.37 sec
+      Start 11: modern_host
+11/11 Test #11: modern_host ......................   Passed    2.13 sec
+
+100% tests passed, 0 tests failed out of 11
+
+Total Test time (real) =  45.34 sec

@@ -81,6 +81,13 @@ int main(int argc,char** argv){
  for(auto* child:browser.getChildren())if(auto* button=dynamic_cast<juce::TextButton*>(child))if(button->getButtonText()=="LOAD")button->onClick();
  check(refreshed&&p.presetDisplay(0).name=="Browser saved","browser user load refreshes identity immediately");refresh(p,editor);
  if(argc>1){editor.setSize(1080,720);auto picture=editor.createComponentSnapshot(editor.getLocalBounds());auto output=juce::File(argv[1]).createOutputStream();check(bool(output),"UI snapshot output");output->setPosition(0);output->truncate();juce::PNGImageFormat png;check(png.writeImageToStream(picture,*output),"UI snapshot rendered");}
+ // A same-size page switch must invalidate the printed heading cache.
+ {TideProcessor legacy;legacy.setValue("dRevision",0);legacy.setValue("rRevision",0);TideEditor view(legacy);
+  auto press=[&](const char* title){bool found=false;for(auto* child:view.getChildren())if(auto* button=dynamic_cast<juce::TextButton*>(child))if(button->getButtonText()==title){button->onClick();found=true;break;}check(found,"legacy edit button exists");};
+  press("EDIT DELAY");const auto first=view.createComponentSnapshot({43,713,450,24});const auto height=view.getHeight();
+  press("EDIT REVERB");const auto second=view.createComponentSnapshot({43,713,450,24});check(view.getHeight()==height,"legacy page switch keeps geometry");
+  bool changed=false;for(int y=0;y<first.getHeight();++y)for(int x=0;x<first.getWidth();++x)changed|=first.getPixelAt(x,y)!=second.getPixelAt(x,y);
+  check(changed,"same-size expanded page switch refreshes printed heading");}
  folder.deleteRecursively();
  std::cout<<"PASS: 64 combined, 50 side starters, 206 portable files, independent user names, project recall, automation, 1024 lock combinations, browser refresh and compiled release label.\n";
 }

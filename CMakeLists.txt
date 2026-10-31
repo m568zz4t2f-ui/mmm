@@ -60,9 +60,19 @@ juce_add_plugin(WolfTide COMPANY_NAME "Wolf Audio" BUNDLE_ID "audio.wolf.tide"
  EDITOR_WANTS_KEYBOARD_FOCUS FALSE COPY_PLUGIN_AFTER_BUILD FALSE
  MICROPHONE_PERMISSION_ENABLED TRUE MICROPHONE_PERMISSION_TEXT "Wolf Tide processes live audio from your selected input device."
  VST3_CATEGORIES Fx Delay Reverb AU_MAIN_TYPE kAudioUnitType_Effect FORMATS ${tide_formats})
+set(tide_artwork
+ assets/tide/deep-current/production/chassis.png
+ assets/tide/deep-current/production/graphite.png
+ assets/tide/deep-current/production/teal.png
+ assets/tide/deep-current/production/glass.png
+ assets/tide/deep-current/production/titanium.png)
+juce_add_binary_data(TideArtwork SOURCES ${tide_artwork})
+target_link_libraries(WolfTide PRIVATE "$<LINK_ONLY:TideArtwork>")
+get_target_property(tide_art_includes TideArtwork INTERFACE_INCLUDE_DIRECTORIES)
+set_property(SOURCE Source/PluginEditor.cpp APPEND PROPERTY INCLUDE_DIRECTORIES "${tide_art_includes}")
 # Build identity follows the compiled source, including local changes.
 set(tide_source_hashes "")
-foreach(tide_source Source/PluginProcessor.cpp Source/PluginProcessor.h Source/PluginEditor.cpp Source/PluginEditor.h Source/TideLook.h Source/PresetBrowser.h Source/Parameters.h Source/ModernParameters.h Source/ModernDSP.h Source/VersionedDSP.h Source/ModernPanel.h Source/TideDSP.h Source/BloomDSP.h)
+foreach(tide_source Source/PluginProcessor.cpp Source/PluginProcessor.h Source/PluginEditor.cpp Source/PluginEditor.h Source/TideLook.h Source/PresetBrowser.h Source/Parameters.h Source/ModernParameters.h Source/ModernDSP.h Source/VersionedDSP.h Source/ModernPanel.h Source/TideDSP.h Source/BloomDSP.h ${tide_artwork})
  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/${tide_source}" tide_hash)
  string(APPEND tide_source_hashes "${tide_hash}")
  set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/${tide_source}")

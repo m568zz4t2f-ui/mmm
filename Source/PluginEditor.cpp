@@ -2,6 +2,7 @@
 #include "PluginEditor.h"
 #include "PresetBrowser.h"
 #include "ModernPanel.h"
+#include "BinaryData.h"
 namespace {
 const auto ink=tide::ui::ink,muted=tide::ui::muted,silver=tide::ui::delay,blue=tide::ui::reverb,bg=tide::ui::chassis;
 using SA=juce::AudioProcessorValueTreeState::SliderAttachment;
@@ -18,16 +19,21 @@ void label(juce::Graphics& g,const juce::String& text,float x,float y,float w,fl
 }
 namespace {
 const juce::Image& knobArtwork(){
- static const auto artwork=[] {
-  juce::Image image(juce::Image::ARGB,512,512,true);juce::Graphics g(image);g.addTransform(juce::AffineTransform::scale(4));
-  g.setColour(juce::Colours::black.withAlpha(.35f));g.fillEllipse(6,8,116,116);
-  g.setGradientFill(juce::ColourGradient(juce::Colour(0xffa6aaa5),28,12,juce::Colour(0xff22292b),105,116,false));g.fillEllipse(8,8,112,112);
-  g.setGradientFill(juce::ColourGradient(juce::Colour(0xff525c5d),32,18,juce::Colour(0xff1a2227),96,114,false));g.fillEllipse(12,12,104,104);
-  g.setColour(juce::Colour(0xffcbd2cb).withAlpha(.12f));g.drawEllipse(13,13,102,102,.6f);
-  for(int i=0;i<38;++i){const float inset=18+float(i);g.setColour(juce::Colours::white.withAlpha(i%3==0?.018f:.006f));g.drawEllipse(inset,inset,128-2*inset,128-2*inset,.35f);}
-  g.setGradientFill(juce::ColourGradient(juce::Colours::white.withAlpha(.06f),30,20,juce::Colours::transparentWhite,95,100,false));g.fillEllipse(17,17,94,94);
-  return image;
+ static const auto artwork=[] {return juce::ImageFileFormat::loadFrom(BinaryData::titanium_png,BinaryData::titanium_pngSize);
  }();return artwork;
+}
+const juce::Image& material(int index){
+ static const std::array<juce::Image,4> images={
+  juce::ImageFileFormat::loadFrom(BinaryData::chassis_png,BinaryData::chassis_pngSize),
+  juce::ImageFileFormat::loadFrom(BinaryData::graphite_png,BinaryData::graphite_pngSize),
+  juce::ImageFileFormat::loadFrom(BinaryData::teal_png,BinaryData::teal_pngSize),
+  juce::ImageFileFormat::loadFrom(BinaryData::glass_png,BinaryData::glass_pngSize)};
+ return images[std::size_t(index)];
+}
+void metal(juce::Graphics& g,juce::Rectangle<float> bounds,int index,juce::Colour tint,float radius){
+ g.saveState();juce::Path clip;clip.addRoundedRectangle(bounds,radius);g.reduceClipRegion(clip);
+ g.drawImage(material(index),bounds);g.setColour(tint.withAlpha(.65f));g.fillRect(bounds);
+ g.setGradientFill(juce::ColourGradient(juce::Colours::white.withAlpha(.055f),bounds.getTopLeft(),juce::Colours::black.withAlpha(.18f),bounds.getBottomRight(),false));g.fillRect(bounds);g.restoreState();
 }
 const juce::Image& sizedKnobArtwork(int pixels){
  // GUI-thread-only, bounded cache. Resample once per physical size, not per knob/frame.
@@ -45,7 +51,7 @@ TideLook::TideLook(){
  setColour(juce::TextEditor::backgroundColourId,tide::ui::chassis);setColour(juce::TextEditor::textColourId,tide::ui::ink);setColour(juce::TextEditor::outlineColourId,tide::ui::edge);setColour(juce::TextEditor::focusedOutlineColourId,tide::ui::reverb);setColour(juce::TextEditor::highlightColourId,tide::ui::reverb.withAlpha(.25f));
  setColour(juce::ListBox::backgroundColourId,tide::ui::chassis);setColour(juce::ListBox::outlineColourId,tide::ui::edge);setColour(juce::ScrollBar::thumbColourId,tide::ui::reverb.withAlpha(.45f));
  setColour(juce::AlertWindow::backgroundColourId,tide::ui::surface);setColour(juce::AlertWindow::textColourId,tide::ui::ink);setColour(juce::AlertWindow::outlineColourId,tide::ui::edge);
- (void)knobArtwork();
+ (void)knobArtwork();(void)material(0);
 }
 juce::Label* TideLook::createSliderTextBox(juce::Slider& slider){auto* box=juce::LookAndFeel_V4::createSliderTextBox(slider);box->setFont(tide::ui::font(13.5f));return box;}
 void TideLook::drawButtonBackground(juce::Graphics& g,juce::Button& b,const juce::Colour&,bool hover,bool down){
@@ -64,7 +70,7 @@ void TideLook::drawComboBox(juce::Graphics& g,int w,int h,bool,int,int,int,int,j
 void TideLook::positionComboBoxText(juce::ComboBox& box,juce::Label& label){label.setBounds(10,1,box.getWidth()-33,box.getHeight()-2);label.setFont(getComboBoxFont(box));}
 void TideLook::drawLinearSlider(juce::Graphics& g,int x,int y,int w,int h,float position,float,float,juce::Slider::SliderStyle,juce::Slider& slider){
  const float cy=float(y)+float(h)*.5f,left=float(x)+5,right=float(x+w)-5;const auto accent=slider.findColour(juce::Slider::trackColourId).withAlpha(slider.isEnabled()?1.f:.3f);
- g.setColour(juce::Colour(0xff0e1b20));g.fillRoundedRectangle(left,cy-2,right-left,4,2);g.setColour(accent.withAlpha(.8f));g.fillRoundedRectangle(left,cy-1.5f,std::max(0.f,std::min(position,right)-left),3,1.5f);g.setColour(tide::ui::ink.withAlpha(slider.isEnabled()?1.f:.35f));g.fillEllipse(position-4.5f,cy-4.5f,9,9);
+ g.setColour(juce::Colour(0xff0e1b20));g.fillRoundedRectangle(left,cy-2,right-left,4,2);g.setColour(accent);g.fillRoundedRectangle(left,cy-1.5f,std::max(0.f,std::min(position,right)-left),3,1.5f);g.setGradientFill(juce::ColourGradient(tide::ui::ink.withAlpha(slider.isEnabled()?1.f:.35f),position-4,cy-6,tide::ui::edge,position+4,cy+6,false));g.fillRoundedRectangle(position-4.5f,cy-6,9,12,2);
 }
 void TideLook::drawRotarySlider(juce::Graphics& g,int x,int y,int w,int h,float pos,float start,float end,juce::Slider& slider){
  const auto r=juce::Rectangle<float>(float(x),float(y),float(w),float(h)).reduced(6);const float diameter=std::min(r.getWidth(),r.getHeight()),radius=diameter*.5f,cx=r.getCentreX(),cy=r.getCentreY();
@@ -239,14 +245,13 @@ void TideEditor::drawOcean(juce::Graphics& g){
  g.restoreState();
 }
 void TideEditor::buildBackdrop(){
- const int h=editing?1130:720;const float scale=std::clamp(2.f*float(getWidth())/1080,1.f,3.f);const int imageW=juce::roundToInt(1080*scale),imageH=juce::roundToInt(float(h)*scale);if(backdrop.getWidth()==imageW&&backdrop.getHeight()==imageH)return;backdrop=juce::Image(juce::Image::RGB,imageW,imageH,true);juce::Graphics g(backdrop);g.addTransform(juce::AffineTransform::scale(scale));g.fillAll(bg);
- // Printed artwork is generated once per layout, never per animation frame.
- juce::Random grain(0x574f4c46);for(int i=0;i<8000;++i){g.setColour(ink.withAlpha(.018f));g.fillRect(grain.nextInt(1080),grain.nextInt(h),1,1);}
- g.setGradientFill(juce::ColourGradient(juce::Colour(0xff484c48),24,105,juce::Colour(0xff292f30),534,570,false));g.fillRoundedRectangle(24,105,510,465,12);
- g.setGradientFill(juce::ColourGradient(juce::Colour(0xff236f70),546,105,juce::Colour(0xff173e43),1056,570,false));g.fillRoundedRectangle(546,105,510,465,12);
- for(int side=0;side<2;++side){g.saveState();g.reduceClipRegion(juce::Rectangle<int>(side?547:25,106,508,463));for(int j=0;j<13;++j){juce::Path contour;for(int i=0;i<90;++i){float x=float((side?550:24)+i*6),y=123.f+float(j)*37+12*std::sin(float(i)*.12f+float(j)*.43f);if(i==0)contour.startNewSubPath(x,y);else contour.lineTo(x,y);}g.setColour(ink.withAlpha(.025f));g.strokePath(contour,juce::PathStrokeType(.7f));}g.restoreState();}
+ const int h=editing?1130:720;const float scale=std::clamp(2.f*float(getWidth())/1080,1.f,3.f);const int imageW=juce::roundToInt(1080*scale),imageH=juce::roundToInt(float(h)*scale);if(backdrop.getWidth()==imageW&&backdrop.getHeight()==imageH&&backdropPage==editing)return;backdropPage=editing;backdrop=juce::Image(juce::Image::RGB,imageW,imageH,true);juce::Graphics g(backdrop);g.addTransform(juce::AffineTransform::scale(scale));g.fillAll(bg);
+ // Static materials are composed only on resize/page change, never on audio or animation callbacks.
+ metal(g,{0,0,1080,float(h)},0,tide::ui::chassis,0);
+ metal(g,{24,105,510,465},1,juce::Colour(0xff5b6568),12);
+ metal(g,{546,105,510,465},2,juce::Colour(0xff246e76),12);
  // Recessed displays and a restrained printed faceplate are cached with the artwork.
- g.setColour(juce::Colour(0xff0c191d));g.fillRoundedRectangle(42,233,474,145,8);g.fillRoundedRectangle(564,233,474,145,8);
+ metal(g,{42,233,474,145},3,juce::Colour(0xff0c222a),8);metal(g,{564,233,474,145},3,juce::Colour(0xff0c222a),8);
  g.setColour(ink.withAlpha(.18f));g.drawRoundedRectangle(42,233,474,145,8,1);g.drawRoundedRectangle(564,233,474,145,8,1);
  label(g,"STEREO ECHO FIELD",57,244,330,16,10,muted);label(g,"ATMOSPHERIC FIELD",580,244,400,16,10,blue);
  g.setColour(juce::Colour(0xffa9aaa0).withAlpha(.45f));g.drawRoundedRectangle(24,105,510,465,16,.8f);g.drawRoundedRectangle(546,105,510,465,16,.8f);
@@ -255,9 +260,9 @@ void TideEditor::buildBackdrop(){
  g.setColour(juce::Colour(0xffa9aaa0));g.drawEllipse(570,38,35,35,1.1f);g.drawLine(588,32,588,79,.7f);g.drawLine(566,56,609,56,.7f);
  label(g,"01   DELAY",43,121,220,24,18,silver);label(g,"02   REVERB",565,121,230,24,18,blue);
  label(g,"CHARACTER",45,189,90,18,10,muted);label(g,"CHARACTER",567,189,90,18,10,muted);
- g.setColour(juce::Colour(0xff1c2c32));g.fillRoundedRectangle(24,585,1032,105,12);g.setColour(juce::Colour(0xffa9aaa0).withAlpha(.4f));g.drawRoundedRectangle(24,585,1032,105,12,.7f);
+ metal(g,{24,585,1032,105},0,tide::ui::surface,12);g.setColour(juce::Colour(0xffa9aaa0).withAlpha(.4f));g.drawRoundedRectangle(24,585,1032,105,12,.7f);
  label(g,"COMBINED PRESET",43,596,180,20,10,muted);label(g,"MIX",846,595,70,20,10,muted);label(g,"BLOOM",953,595,80,20,10,blue);
- if(editing){g.setColour(juce::Colour(0xff1c2c32));g.fillRoundedRectangle(24,704,1032,397,12);label(g,editing==1?"DELAY / DEEP EDIT":editing==2?"REVERB / DEEP EDIT":"ROUTING / MIX & OUTPUT",43,713,500,24,12,editing==1?silver:blue);}
+ if(editing){metal(g,{24,704,1032,397},0,tide::ui::surface,12);label(g,editing==1?"DELAY / DEEP EDIT":editing==2?"REVERB / DEEP EDIT":"ROUTING / MIX & OUTPUT",43,713,500,24,12,editing==1?silver:blue);}
 }
 void TideEditor::paint(juce::Graphics& g){
  const float baseH=editing?1130.f:720.f;g.addTransform(juce::AffineTransform::scale(float(getWidth())/1080,float(getHeight())/baseH));

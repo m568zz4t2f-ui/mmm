@@ -1,0 +1,90 @@
+[
+  {
+    "instances": 1,
+    "editors": "closed",
+    "elapsed_ms": 1259.02,
+    "process_cpu_ms": 81.169,
+    "audio_mean_ms": 0.300131,
+    "audio_peak_ms": 6.262,
+    "forced_paint_mean_ms": 0.0,
+    "timer_lateness_peak_ms": 3.39139,
+    "peak_rss_kib": 66956
+  },
+  {
+    "instances": 1,
+    "editors": "open",
+    "elapsed_ms": 1261.33,
+    "process_cpu_ms": 718.343,
+    "audio_mean_ms": 0.32209,
+    "audio_peak_ms": 1.98926,
+    "forced_paint_mean_ms": 13.2972,
+    "timer_lateness_peak_ms": 3.044,
+    "peak_rss_kib": 96332
+  },
+  {
+    "instances": 4,
+    "editors": "closed",
+    "elapsed_ms": 1260.32,
+    "process_cpu_ms": 226.464,
+    "audio_mean_ms": 0.905664,
+    "audio_peak_ms": 3.05963,
+    "forced_paint_mean_ms": 0.0,
+    "timer_lateness_peak_ms": 0.698442,
+    "peak_rss_kib": 250808
+  },
+  {
+    "instances": 4,
+    "editors": "open",
+    "elapsed_ms": 1271.99,
+    "process_cpu_ms": 1691.42,
+    "audio_mean_ms": 1.93673,
+    "audio_peak_ms": 22.8725,
+    "forced_paint_mean_ms": 69.267,
+    "timer_lateness_peak_ms": 142.464,
+    "peak_rss_kib": 328912
+  },
+  {
+    "instances": 8,
+    "editors": "closed",
+    "elapsed_ms": 1260.3,
+    "process_cpu_ms": 471.606,
+    "audio_mean_ms": 1.95123,
+    "audio_peak_ms": 4.85301,
+    "forced_paint_mean_ms": 0.0,
+    "timer_lateness_peak_ms": 0.403243,
+    "peak_rss_kib": 496956
+  },
+  {
+    "instances": 8,
+    "editors": "open",
+    "elapsed_ms": 1296.06,
+    "process_cpu_ms": 1855.93,
+    "audio_mean_ms": 2.76389,
+    "audio_peak_ms": 9.67282,
+    "forced_paint_mean_ms": 113.676,
+    "timer_lateness_peak_ms": 112.901,
+    "peak_rss_kib": 634284
+  },
+  {
+    "instances": 16,
+    "editors": "closed",
+    "elapsed_ms": 1264.61,
+    "process_cpu_ms": 929.543,
+    "audio_mean_ms": 3.91735,
+    "audio_peak_ms": 7.76321,
+    "forced_paint_mean_ms": 0.0,
+    "timer_lateness_peak_ms": 0.924701,
+    "peak_rss_kib": 989332
+  },
+  {
+    "instances": 16,
+    "editors": "open",
+    "elapsed_ms": 1264.44,
+    "process_cpu_ms": 2154.71,
+    "audio_mean_ms": 3.93319,
+    "audio_peak_ms": 9.64007,
+    "forced_paint_mean_ms": 179.452,
+    "timer_lateness_peak_ms": 221.505,
+    "peak_rss_kib": 1244708
+  }
+]

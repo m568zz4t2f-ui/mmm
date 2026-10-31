@@ -6,7 +6,7 @@ root=Path(__file__).resolve().parent.parent
 output=Path(sys.argv[1]).resolve()
 output.parent.mkdir(parents=True,exist_ok=True)
 pinned='29396c22c93392d6738e021b83196283d6e4d850'
-allowed={'Source','tests','docs','scripts','vendor','.github','Factory-Presets'}
+allowed={'Source','tests','docs','scripts','vendor','assets','.github','Factory-Presets'}
 handle=tempfile.NamedTemporaryFile(prefix='.tide-source-',dir=output.parent,delete=False)
 staged=Path(handle.name);handle.close()
 atexit.register(lambda: staged.unlink(missing_ok=True))
